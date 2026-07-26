@@ -1,0 +1,238 @@
+aid: kore-wireless
+url: https://raw.githubusercontent.com/api-evangelist/kore-wireless/refs/heads/main/apis.yml
+name: KORE Wireless
+kind: company
+description: >-
+  KORE Wireless (KORE Group Holdings) is an Atlanta, Georgia headquartered
+  global IoT connectivity provider operating as a mobile virtual network operator
+  (MVNO) across more than 190 countries, with over 20 million IoT connections under
+  management. KORE sits in the aggregator half of the telecom value chain: it does
+  not own spectrum or radio access network, it resells and orchestrates multi-carrier
+  cellular connectivity, eSIM/iSIM provisioning, device management, and IoT security
+  as a service to enterprises in healthcare, fleet, logistics, utilities, and
+  industrial automation. In 2024 KORE acquired the Twilio IoT business — Super SIM,
+  Programmable Wireless, and Microvisor — inheriting a genuinely developer-first API
+  surface, and it has kept that posture: KORE publishes eight OpenAPI 3.0
+  specifications in a public GitHub repository (github.com/korewireless/kore-openapi)
+  with a make-based SDK generation workflow, an open GitBook documentation site at
+  docs.korewireless.com requiring no login, self-serve account registration at
+  console.korewireless.com, OAuth 2.0 client-credentials authorization, signed
+  webhooks, and CloudEvents-formatted event streams. KORE publishes no CAMARA network
+  APIs and is not a GSMA Open Gateway operator participant — as an MVNO it consumes
+  carrier network capability rather than exposing it, and no CAMARA, Open Gateway,
+  TM Forum, or NEF/SCEF reference appears anywhere in its documentation. In 2026 KORE
+  was taken private by Searchlight Capital Partners and Abry Partners and delisted
+  from the NYSE.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Telecommunications
+- United States
+- IoT
+- eSIM
+- Connectivity
+- MVNO
+- SIM Management
+- Roaming
+- Messaging
+- SMS
+- Device Management
+- Network APIs
+created: '2026-07-25'
+modified: '2026-07-25'
+specificationVersion: '0.19'
+apis:
+- aid: kore-wireless:kore-connectivity-pro-api
+  name: KORE Connectivity Pro API
+  description: The KORE ConnectivityPro API is the largest of KORE's published
+    surfaces — 49 paths and 55 operations covering SIM and eSIM provisioning,
+    eSIM profile management, activation profiles, subscriptions, accounts, usage
+    and session data, diagnostics, eligibility checks, testing, alerting, and
+    reporting for KORE's global multi-carrier IoT connectivity platform.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Connectivity
+  - eSIM
+  - Provisioning
+  - SIM Management
+  - IoT
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-connectivity-pro.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+- aid: kore-wireless:kore-super-sim-api
+  name: KORE Super SIM API
+  description: Super SIM is the multi-IMSI global cellular connectivity platform
+    KORE acquired from Twilio IoT. The API exposes 20 paths and 31 operations across
+    Sim, Fleet, NetworkAccessProfile, Network, eSimProfile, SettingsUpdate,
+    BillingPeriod, UsageRecord, SmsCommand, IpCommand, and OTA resources, letting
+    developers provision SIMs, control which mobile networks devices may attach to,
+    and exchange machine-to-machine SMS and IP/UDP messages with devices.
+  humanURL: https://docs.korewireless.com/api/products/supersim
+  baseURL: https://supersim.api.korewireless.com
+  tags:
+  - Super SIM
+  - eSIM
+  - IoT
+  - Connectivity
+  - Roaming
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersim.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+- aid: kore-wireless:kore-programmable-wireless-api
+  name: KORE Programmable Wireless API
+  description: Programmable Wireless is the legacy Twilio IoT cellular product now
+    operated by KORE. The API publishes 9 paths and 16 operations covering the
+    Wireless Sim resource, RatePlan, Command, DataSession, and account- and
+    SIM-level UsageRecord resources for managing single-network programmable
+    cellular subscriptions.
+  humanURL: https://docs.korewireless.com/api/products/programmable-wireless-r
+  baseURL: https://programmable-wireless.api.korewireless.com
+  tags:
+  - Programmable Wireless
+  - IoT
+  - SIM Management
+  - Connectivity
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-programmable-wireless.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+- aid: kore-wireless:kore-sms-api
+  name: KORE SMS API
+  description: The KORE SMS API programmatically exchanges short messages with IoT
+    devices on KORE connectivity. Three operations — send a message, list messages,
+    and retrieve SMS message history — form the messaging surface. This is
+    device-directed machine-to-machine SMS, not an A2P/CPaaS messaging product.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/sms
+  tags:
+  - SMS
+  - Messaging
+  - IoT
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-sms.yml
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+- aid: kore-wireless:kore-webhook-api
+  name: KORE Webhook API
+  description: The public KORE Webhook API creates, retrieves, and modifies the
+    signing secrets used to verify callbacks KORE sends to customer endpoints.
+    KORE webhooks are signature-verified and idempotent, and the companion Event
+    Streams product delivers CloudEvents 1.0 formatted events with versioned
+    JSON Schema (draft-07) payloads to webhook or AWS Kinesis destinations.
+  humanURL: https://docs.korewireless.com/api/global-resources/webhook
+  baseURL: https://webhook.api.korewireless.com
+  tags:
+  - Webhooks
+  - Events
+  - CloudEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-webhook.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+- aid: kore-wireless:kore-iam-api
+  name: KORE Identity and Access Management API
+  description: The KORE IAM API manages customer accounts and their relationships —
+    creating accounts, retrieving account hierarchies, and managing platform-specific
+    mappings between parent and child accounts across KORE's product platforms.
+  humanURL: https://docs.korewireless.com/api/global-resources/iam/account
+  baseURL: https://iam.api.korewireless.com
+  tags:
+  - IAM
+  - Accounts
+  - Identity
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-iam.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+- aid: kore-wireless:kore-api-clients-api
+  name: KORE API Clients API
+  description: The Client Management API creates, retrieves, and lists the API
+    Clients that hold the credentials and settings for an integration with KORE.
+    An API Client is the required gateway to every other KORE API — it issues the
+    Client ID and Client Secret exchanged for an OAuth 2.0 access token.
+  humanURL: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  baseURL: https://client.api.korewireless.com
+  tags:
+  - API Management
+  - Clients
+  - Credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-api-clients.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+- aid: kore-wireless:kore-token-api
+  name: KORE Token API
+  description: The KORE Token API is the OAuth 2.0 authorization endpoint for the
+    whole platform. A single POST to /v1/auth/token exchanges Client Credentials
+    for a bearer access token per RFC 6749 section 4.4, with a configurable token
+    expiry set on the API Client.
+  humanURL: https://docs.korewireless.com/developers/api-management/auth
+  baseURL: https://api.korewireless.com/api-services
+  tags:
+  - Authentication
+  - OAuth
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-token.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+common:
+- type: Website
+  url: https://www.korewireless.com/
+- type: Documentation
+  url: https://docs.korewireless.com/
+- type: APIReference
+  url: https://docs.korewireless.com/api/api-reference
+- type: DeveloperPortal
+  url: https://developer.korewireless.com/
+- type: Console
+  url: https://console.korewireless.com/
+- type: SignUp
+  url: https://console.korewireless.com/
+- type: GitHubOrganization
+  url: https://github.com/korewireless
+- type: OpenAPIRepository
+  url: https://github.com/korewireless/kore-openapi
+- type: Authentication
+  url: https://docs.korewireless.com/developers/api-management/auth
+- type: Webhooks
+  url: https://docs.korewireless.com/developers/webhooks
+- type: EventStreams
+  url: https://docs.korewireless.com/developers/event-streams
+- type: StatusPage
+  url: https://korewireless.service-now.com/csm?id=services_status
+- type: Blog
+  url: https://www.korewireless.com/blog/
+- type: News
+  url: https://www.korewireless.com/news/
+- type: TechnicalDocumentation
+  url: https://www.korewireless.com/technical-documentation/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/kore-wireless
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

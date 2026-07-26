@@ -1,0 +1,457 @@
+aid: kore-wireless
+name: KORE Wireless
+review:
+  question: Does KORE Wireless publish a real, self-serve public API surface, and what
+    is its CAMARA / GSMA Open Gateway posture?
+  answer: true
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  sector: Telecommunications
+  tier: iot-esim
+  homeMarket: United States
+  valueChainPosition: |
+    Aggregator, not carrier. KORE Group Holdings is a global mobile virtual network
+    operator (MVNO) headquartered in Atlanta, Georgia. It owns no spectrum and no
+    radio access network; it resells and orchestrates multi-carrier cellular
+    connectivity, eSIM/iSIM provisioning, device management, and IoT security to
+    enterprises in more than 190 countries, with over 20 million IoT connections
+    under management. KORE acquired the Twilio IoT business in 2024 (Super SIM,
+    Programmable Wireless, Microvisor) and inherited Twilio's developer-first API
+    posture along with it. KORE was taken private by Searchlight Capital Partners
+    and Abry Partners in 2026 and delisted from the NYSE.
+findings:
+  summary: |
+    KORE Wireless lands squarely in the API-native half of the telecom split. This
+    is a real self-serve developer surface, not a partner-gated carrier landing
+    page. Documentation at docs.korewireless.com is fully open (GitBook, HTTP 200,
+    no login, llms.txt and .md content negotiation for agents), account
+    registration at console.korewireless.com is self-serve with email OTP
+    verification, and — the strongest signal — KORE publishes eight OpenAPI 3.0
+    specifications VERBATIM in a public GitHub repository at
+    github.com/korewireless/kore-openapi, in both YAML and JSON, with a
+    machine-readable specs/catalog.json and a make-based openapi-generator SDK
+    workflow. All eight specs were fetched at HTTP 200 and all eight parse as valid
+    OpenAPI 3.0.x with paths.
+
+    The CAMARA finding is a clean negative and it is the honest one. KORE exposes
+    NO CAMARA network APIs. There is no Number Verification, SIM Swap, Device
+    Location, Device Status, Quality on Demand, Carrier Billing, KYC Match, Scam
+    Signal, Device Swap, or Population Density surface anywhere in KORE's specs or
+    documentation. A full-text grep of the complete documentation index
+    (docs.korewireless.com/llms.txt, 358 entries) for "CAMARA", "Open Gateway",
+    "TM Forum", "TMF", "NEF", "network exposure", "SCEF", and "network slicing"
+    returned ZERO matches. KORE is not on the GSMA Open Gateway operator
+    participant list, which is expected: Open Gateway is an MNO commitment layer
+    and KORE is an MVNO — it consumes carrier network capability rather than
+    exposing it. There is not even a press release naming CAMARA. The only public
+    KORE/CAMARA adjacency found is a KORE engineer (Jorrit Kronjee) quoted in
+    third-party coverage about the security risks of opening telco network APIs —
+    commentary on the standard, not an implementation of it.
+
+    So KORE's API story is entirely its own IoT connectivity platform, not the
+    industry network-API standard. That is a meaningful distinction for the sector
+    report: the aggregator layer out-publishes the carriers, but what it publishes
+    is proprietary connectivity management, not CAMARA.
+  developerPortal:
+    documentation:
+      url: https://docs.korewireless.com/
+      status: 200
+      gated: false
+      verdict: Real, open, no-login GitBook documentation site. Publishes llms.txt,
+        sitemap.md, llms-full.txt, and per-page .md content negotiation — explicitly
+        agent-readable.
+    apiReference:
+      url: https://docs.korewireless.com/api/api-reference
+      status: 200
+      gated: false
+    developerConsole:
+      url: https://build.korewireless.com
+      status: 200
+      redirectsTo: https://one.korewireless.com/
+      gated: true
+      verdict: The KORE One / build console requires a login. This is the normal
+        authenticated control plane where API Clients are created, not a wall in
+        front of the documentation.
+    legacyDeveloperPortal:
+      url: https://developer.korewireless.com/
+      status: 200
+      redirectsTo: https://one.korewireless.com/
+      gated: true
+      note: Listed in specs/catalog.json as the docs_url for ConnectivityPro and
+        SMS. It now redirects to the KORE One console; the specs for those two
+        products remain openly downloadable from GitHub.
+    signup:
+      url: https://console.korewireless.com/
+      status: 200
+      selfServe: true
+      note: Self-serve registration — email OTP verification, password setup, user
+        profile, then Business or Individual account creation. No sales contact
+        required to reach the console.
+    probes:
+    - url: https://korewireless.com
+      status: 200
+      note: redirects to https://www.korewireless.com/
+    - url: https://developer.korewireless.com
+      status: 200
+      note: redirects to https://one.korewireless.com/
+    - url: https://developers.korewireless.com
+      status: 0
+      note: does not resolve
+    - url: https://docs.korewireless.com
+      status: 200
+    - url: https://api.korewireless.com
+      status: 403
+      note: API host is live and rejecting unauthenticated root requests
+    - url: https://apidocs.korewireless.com
+      status: 0
+      note: does not resolve
+    - url: https://portal.korewireless.com
+      status: 0
+      note: does not resolve
+    - url: https://www.korewireless.com/developer
+      status: 200
+      note: catch-all redirect to homepage — not a developer page
+    - url: https://www.korewireless.com/developers
+      status: 200
+      note: catch-all redirect to homepage — not a developer page
+    - url: https://www.korewireless.com/api
+      status: 200
+      note: catch-all redirect to homepage — not a developer page
+    - url: https://www.korewireless.com/technical-documentation/
+      status: 200
+      note: real marketing-side index of technical documentation
+    - url: https://console.korewireless.com
+      status: 200
+    - url: https://shop.korewireless.com
+      status: 200
+    - url: https://status.korewireless.com
+      status: 200
+      note: redirects to https://korewireless.service-now.com/csm?id=services_status
+  openapi:
+    published: true
+    downloadable: true
+    gated: false
+    count: 8
+    sourceRepository: https://github.com/korewireless/kore-openapi
+    catalog: https://github.com/korewireless/kore-openapi/blob/main/specs/catalog.json
+    fetchDate: '2026-07-25'
+    note: |
+      Public GitHub repository, HTTP 200, no authentication. Each product ships both
+      YAML and JSON. A machine-readable specs/catalog.json maps every spec id to its
+      base_url, token_url, portal, and docs_url. A Makefile drives openapi-generator
+      SDK generation (make generate-sdk SPEC=supersim-v1 GENERATOR=typescript-fetch)
+      and a smoke-test harness. All 8 YAML specs were harvested verbatim into
+      openapi/ and all 8 parse as valid OpenAPI.
+    specs:
+    - file: openapi/kore-wireless-connectivity-pro.yml
+      title: Connectivity APIs
+      openapiVersion: 3.0.1
+      infoVersion: 1.0.0
+      paths: 49
+      operations: 55
+      baseURL: https://api.korewireless.com/connectivity
+      tags: [eligibility, eSIM Profile Management, usage, provisioning, Diagnostics,
+        Activation Profiles, Session, subscription, account, testing, alerting, Reports]
+      security: [oauth2 clientCredentials, apiKey x-api-key]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+      httpStatus: 200
+      bytes: 925187
+    - file: openapi/kore-wireless-supersim.yml
+      title: KORE - Supersim
+      openapiVersion: 3.0.1
+      infoVersion: 1.0.0
+      paths: 20
+      operations: 31
+      baseURL: https://supersim.api.korewireless.com
+      security: [oauth2 clientCredentials, http basic accountSid_authToken]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/supersim/yaml/kore-supersim-v1.yaml
+      httpStatus: 200
+      bytes: 247098
+    - file: openapi/kore-wireless-programmable-wireless.yml
+      title: Programmable Wireless APIs
+      openapiVersion: 3.0.0
+      infoVersion: 1.0.0
+      paths: 9
+      operations: 16
+      baseURL: https://programmable-wireless.api.korewireless.com
+      security: [oauth2 clientCredentials]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/programmable-wireless/yaml/kore-programmable-wireless-v1.yaml
+      httpStatus: 200
+      bytes: 195058
+    - file: openapi/kore-wireless-sms.yml
+      title: SMS API
+      openapiVersion: 3.0.1
+      infoVersion: 1.0.0
+      paths: 3
+      operations: 3
+      baseURL: https://api.korewireless.com/sms
+      security: [oauth2 clientCredentials, apiKey x-api-key]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/sms/yaml/kore-sms-v1.yaml
+      httpStatus: 200
+      bytes: 43521
+    - file: openapi/kore-wireless-api-clients.yml
+      title: Client APIs
+      openapiVersion: 3.0.1
+      infoVersion: 1.0.0
+      paths: 3
+      operations: 4
+      baseURL: https://client.api.korewireless.com
+      security: [oauth2 clientCredentials]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/api-clients/yaml/kore_client_v1.yaml
+      httpStatus: 200
+      bytes: 26268
+    - file: openapi/kore-wireless-iam.yml
+      title: IaM APIs
+      openapiVersion: 3.0.0
+      infoVersion: 1.0.0
+      paths: 2
+      operations: 3
+      baseURL: https://iam.api.korewireless.com
+      security: [oauth2 clientCredentials]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/iam/yaml/kore-iam-v1.yaml
+      httpStatus: 200
+      bytes: 20972
+    - file: openapi/kore-wireless-webhook.yml
+      title: Webhook APIs
+      openapiVersion: 3.0.3
+      infoVersion: 1.0.0
+      paths: 2
+      operations: 3
+      baseURL: https://webhook.api.korewireless.com
+      security: [oauth2 clientCredentials]
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/webhook/yaml/kore-webhook-v1.yaml
+      httpStatus: 200
+      bytes: 18593
+    - file: openapi/kore-wireless-token.yml
+      title: v1-token
+      openapiVersion: 3.0.1
+      infoVersion: '1.0'
+      paths: 1
+      operations: 2
+      baseURL: https://api.korewireless.com/api-services
+      security: []
+      source: https://raw.githubusercontent.com/korewireless/kore-openapi/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+      httpStatus: 200
+      bytes: 4421
+  camara:
+    posture: No CAMARA implementation and no CAMARA reference — MVNO consumes carrier
+      network capability rather than exposing it
+    exposesCamaraApis: false
+    camaraApis: []
+    pressReleaseOnly: false
+    note: |
+      This is not "a press release with nothing callable" — there is not even a press
+      release. A grep of the complete published documentation index
+      (docs.korewireless.com/llms.txt) for CAMARA, Open Gateway, opengateway, TM
+      Forum, TMF, NEF, network exposure, SCEF, network slicing, SIM swap, number
+      verification, quality on demand, and carrier billing returned zero matches.
+      None of the eight OpenAPI specifications contains a CAMARA-shaped operation.
+      The only KORE/CAMARA adjacency in public record is a KORE engineer quoted in
+      third-party coverage about the security exposure that opening network APIs
+      creates for telcos — commentary, not implementation.
+    evidence:
+    - url: https://docs.korewireless.com/llms.txt
+      note: Full documentation index, 358 entries — zero CAMARA / Open Gateway / TM
+        Forum / NEF matches.
+    - url: https://github.com/korewireless/kore-openapi
+      note: All eight published specs are proprietary IoT connectivity management —
+        no CAMARA API shapes.
+  openGateway:
+    member: false
+    note: KORE is not listed as a GSMA Open Gateway operator participant. Open Gateway
+      is an MNO commitment layer; KORE is an MVNO reselling other operators' networks.
+  aduna:
+    reachesMarketThroughAduna: false
+    note: No evidence of any Aduna (Ericsson/carrier JV) channel relationship. KORE
+      goes direct to enterprise developers with its own platform APIs.
+  tmForum:
+    conformanceCertification: false
+    apisImplemented: []
+    note: No TM Forum Open API conformance certification found, and no TMF620 /
+      TMF622 / TMF641 or any other TMF reference in KORE's documentation. KORE's
+      account, subscription, and provisioning APIs are proprietary shapes, not TM
+      Forum Open API shapes.
+  threeGppExposure:
+    nef: false
+    scef: false
+    networkSlicing: false
+    edgeMec: false
+    note: No Network Exposure Function, SCEF, 5G network-slicing, or edge/MEC API is
+      published or referenced. KORE's network-side control is expressed as
+      NetworkAccessProfiles (which mobile networks a SIM may attach to) and multi-IMSI
+      steering, not as 3GPP exposure APIs.
+  auth:
+    primaryScheme: OAuth 2.0 client credentials
+    tokenEndpoint: https://api.korewireless.com/api-services/v1/auth/token
+    legacyTokenEndpoint: https://api.korewireless.com/Api/api/token
+    schemesFound:
+    - oauth2 clientCredentials (all eight specs' declared platform scheme; RFC 6749
+      section 4.4)
+    - apiKey in header x-api-key (ConnectivityPro and SMS)
+    - http basic accountSid / authToken (Super SIM — inherited Twilio credential
+      style)
+    scopes: 'Declared scopes object is empty in every spec — no OAuth scopes are
+      published. Authorization is expressed through API Client roles and permissions
+      in the console, not through token scopes.'
+    ciba: false
+    cibaNote: CIBA (Client-Initiated Backchannel Authentication) does NOT appear
+      anywhere. That is consistent with the CAMARA finding — CIBA is the CAMARA/OIDC
+      network-authorization pattern and KORE implements no CAMARA APIs.
+    oidc: false
+    wellKnown:
+    - url: https://api.korewireless.com/.well-known/openid-configuration
+      status: 404
+    - url: https://api.korewireless.com/.well-known/oauth-authorization-server
+      status: 404
+    - url: https://one.korewireless.com/.well-known/openid-configuration
+      status: 404
+    note: No OIDC discovery document is served. Token acquisition is a plain
+      form-encoded POST with client_id and client_secret.
+  webhooksAndEvents:
+    webhooks: true
+    signatureVerification: true
+    idempotency: true
+    eventStreams: true
+    eventFormat: CloudEvents 1.0 (application/json)
+    payloadSchema: JSON Schema draft-07, versioned per event type
+    destinations: [Webhook, AWS Kinesis]
+    documentedEventProducts: [Super SIM connection events and data sessions]
+    asyncapi: false
+    note: KORE publishes a real event architecture — signed, idempotent webhooks with
+      rotatable secrets managed through the Webhook API, plus Event Streams with
+      streaming rules routing CloudEvents-formatted events to webhook or AWS Kinesis
+      destinations. No AsyncAPI document is published.
+    docs:
+    - https://docs.korewireless.com/developers/webhooks
+    - https://docs.korewireless.com/developers/event-streams/events
+    - https://docs.korewireless.com/developers/how-to/webhooks/validate-webhook-signatures
+  sdks:
+    firstPartyRegistryPackages: false
+    note: |
+      KORE publishes no first-party SDK packages on npm, PyPI, Maven, or NuGet under
+      its own name (npm korewireless, @korewireless/*, kore-wireless and PyPI
+      korewireless, kore-wireless, omnicore all return 404). The one npm package
+      named kore-wireless-sdk is third-party (maintainer sauravkoli31,
+      github.com/sauravkoli31/kore-wireless-sdk), NOT published by KORE.
+      KORE's actual SDK strategy is generate-your-own: the kore-openapi repo ships a
+      Makefile target (make generate-sdk SPEC=<id> GENERATOR=<lang>) that runs
+      openapi-generator against the published specs.
+    githubSourceSdks:
+    - https://github.com/korewireless/OmniCore-JavaScript-SDK
+    - https://github.com/korewireless/OmniCore-Python-SDK
+    - https://github.com/korewireless/OmniCore-Go-SDK
+    - https://github.com/korewireless/OmniCore-Ruby-SDK
+    - https://github.com/korewireless/OmniCore-CSharp-SDK
+    - https://github.com/korewireless/OmniCore-C-Device-SDK
+    - https://github.com/korewireless/API-Clients
+    - https://github.com/korewireless/Microvisor-SDK
+  otherSurfaces:
+    graphql: false
+    grpc: false
+    proto: false
+    postmanWorkspace: false
+    mcpServer: false
+    note: No public GraphQL endpoint, no published .proto files, no public Postman
+      workspace, and no MCP server found. Documentation is agent-addressable through
+      GitBook's llms.txt / llms-full.txt / .md negotiation and an ?ask= query
+      interface, which is the closest thing to an agent surface KORE ships.
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://api.korewireless.com/connectivity
+    documented: true
+  - protocol: REST
+    scheme: https
+    baseURL: https://supersim.api.korewireless.com
+    documented: true
+  - protocol: REST
+    scheme: https
+    baseURL: https://programmable-wireless.api.korewireless.com
+    documented: true
+  - protocol: REST
+    scheme: https
+    baseURL: https://api.korewireless.com/sms
+    documented: true
+  - protocol: REST
+    scheme: https
+    baseURL: https://iam.api.korewireless.com
+    documented: true
+  - protocol: REST
+    scheme: https
+    baseURL: https://client.api.korewireless.com
+    documented: true
+  - protocol: REST
+    scheme: https
+    baseURL: https://webhook.api.korewireless.com
+    documented: true
+  - protocol: Webhook
+    scheme: https
+    documented: true
+    note: Customer-hosted endpoints receiving signed, idempotent CloudEvents callbacks.
+  - protocol: AWS Kinesis
+    documented: true
+    note: Event Streams destination type.
+  - protocol: GraphQL
+    documented: false
+  - protocol: WebSocket
+    documented: false
+  - protocol: gRPC
+    documented: false
+sources:
+- url: https://github.com/korewireless/kore-openapi
+  type: OpenAPIRepository
+  status: 200
+  note: Public repo holding all eight OpenAPI specs in YAML and JSON plus
+    specs/catalog.json and a make-based SDK generation workflow.
+- url: https://docs.korewireless.com/
+  type: Documentation
+  status: 200
+  note: Open GitBook documentation, no login.
+- url: https://docs.korewireless.com/llms.txt
+  type: Documentation
+  status: 200
+  note: 358-entry documentation index; grepped for CAMARA / Open Gateway / TM Forum /
+    NEF / SCEF / network slicing with zero matches.
+- url: https://docs.korewireless.com/api/api-reference
+  type: APIReference
+  status: 200
+- url: https://docs.korewireless.com/developers/api-management/auth
+  type: Authentication
+  status: 200
+  note: 'Documents OAuth 2.0 client-credentials flow against
+    https://api.korewireless.com/api-services/v1/auth/token. No CIBA, no OIDC.'
+- url: https://docs.korewireless.com/developers/api-management/api-clients
+  type: Documentation
+  status: 200
+  note: API Client creation in the console at build.korewireless.com is the required
+    on-ramp to every KORE API.
+- url: https://docs.korewireless.com/developers/event-streams/events
+  type: Documentation
+  status: 200
+  note: CloudEvents 1.0 event format, JSON Schema draft-07 data schemas, versioned.
+- url: https://docs.korewireless.com/developers/webhooks
+  type: Documentation
+  status: 200
+  note: Signature verification and idempotency for KORE callbacks.
+- url: https://docs.korewireless.com/iam/get-started/first-account
+  type: Documentation
+  status: 200
+  note: Self-serve registration at https://console.korewireless.com/ with email OTP.
+- url: https://docs.korewireless.com/twilio-iot-acquisition/twilio-iot-is-now-part-of-kore
+  type: Documentation
+  status: 200
+  note: Twilio IoT (Super SIM, Programmable Wireless, Microvisor) migration to KORE.
+- url: https://www.korewireless.com/technical-documentation/
+  type: Documentation
+  status: 200
+- url: https://github.com/korewireless
+  type: GitHubOrganization
+  status: 200
+  note: 31 public repos — OmniCore SDKs in six languages, Microvisor demos, Super SIM
+    tooling, kore-openapi.
+actions:
+  openapiHarvested: 8
+  openapiDirectory: openapi/
+  apisYmlEntries: 8
+  githubRepoCreated: false
+  pushed: false
