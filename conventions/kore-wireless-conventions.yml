@@ -1,0 +1,120 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/developers/api-management/api-responses
+docs:
+- https://docs.korewireless.com/developers/api-management/api-responses
+- https://docs.korewireless.com/developers/api-management/auth
+- https://docs.korewireless.com/developers/webhooks
+- https://docs.korewireless.com/developers/webhooks/idempotency
+- https://docs.korewireless.com/developers/webhooks/verifying-callbacks-from-kore
+- https://docs.korewireless.com/errors/errors
+authentication:
+  style: oauth2-client-credentials
+  token_endpoint: https://api.korewireless.com/api-services/v1/auth/token
+  request: POST application/x-www-form-urlencoded with grant_type=client_credentials,
+    client_id, client_secret
+  response: '{access_token, expires_in, token_type: Bearer, scope}'
+  call_header: 'Authorization: Bearer {access_token}'
+  token_expiry_options: [1 hour, 24 hours, 30 days, 24 months]
+  legacy: ConnectivityPro and SMS specs also declare an x-api-key apiKey scheme; the
+    Super SIM spec retains a Twilio-era accountSid/authToken HTTP basic scheme.
+  artifact: authentication/kore-wireless-authentication.yml
+idempotency:
+  supported: true
+  scope: webhook and event-stream delivery (receiver-side deduplication)
+  header: kore-idempotency-token
+  direction: KORE -> customer endpoint
+  semantics: >-
+    Every event KORE sends carries a kore-idempotency-token header with a unique
+    value. The token does NOT change when the same event is redelivered, so
+    consumers deduplicate on it and can safely process retries without performing
+    the same operation twice. KORE explicitly documents that it may send the same
+    event more than once and directs developers to log and compare tokens.
+  docs: https://docs.korewireless.com/developers/webhooks/idempotency
+  request_side_idempotency_key: false
+  request_side_note: >-
+    KORE documents no client-supplied Idempotency-Key request header for inbound
+    API writes, and no such parameter appears in any of the eight OpenAPI
+    documents. The idempotency contract KORE publishes is delivery-side only.
+    Recorded honestly so the distinction is not lost.
+pagination:
+  style: page-number with server-supplied page links
+  envelope: meta-data
+  fields:
+  - {name: count, description: total size of the result set}
+  - {name: page_size, description: items per page}
+  - {name: page_number, description: page offset, starting from which page}
+  - {name: previous_page_url, description: absolute URL of the previous page}
+  - {name: next_page_url, description: absolute URL of the next page}
+  example_link: https://client.api.korewireless.com/v1/clients?page_size=10&page_number=3
+  note: >-
+    The Super SIM and Programmable Wireless surfaces inherited from Twilio IoT use
+    the Twilio-style meta {page, page_size, first_page_url, next_page_url,
+    previous_page_url, url, key} envelope instead. The two conventions coexist —
+    check the product before writing a pager.
+error_envelope:
+  format: proprietary JSON (not RFC 9457 application/problem+json)
+  content_type: application/json
+  fields:
+  - {name: status, type: integer, description: HTTP status code}
+  - {name: message, type: string, description: descriptive message}
+  - {name: code, type: integer, description: KORE error code (conditional)}
+  - {name: more_info, type: string, description: URL of the KORE documentation for
+      that error code (conditional)}
+  example: |
+    {
+      "status": 400,
+      "message": "Super SIM registration failed due to Internal Error",
+      "code": 83000,
+      "more_info": "https://docs.korewireless.com/errors/83000"
+    }
+  catalog: errors/kore-wireless-error-codes.yml
+  http_semantics: 2xx success, 4xx client error, 5xx server error, with a KORE error
+    code layered on top
+versioning:
+  scheme: uri-path
+  current: v1
+  applies_to: all eight published APIs
+  artifact: lifecycle/kore-wireless-lifecycle.yml
+data_formats:
+  dates: all dates and times are GMT/UTC
+  webhook_date_header_format: '%Y-%m-%dT%H:%M:%SZ'
+  encoding: UTF-8
+  content_type: application/json
+request_tracing:
+  request_id_header: none documented
+  webhook_user_agent: KoreProxy/1.1
+webhook_security:
+  signature_header: kore-signature
+  transport: HTTPS only; KORE will not connect to an endpoint with a self-signed certificate
+  source_ips: sent from a pool of IPs, no publishable range to allowlist
+  docs: https://docs.korewireless.com/developers/how-to/webhooks/validate-webhook-signatures
+  secret_management_api: openapi/kore-wireless-webhook.yml
+delivery_reliability:
+  connection_timeout_ms: 5000
+  read_timeout_ms: 15000
+  total_time_ms: 15000
+  retry_count: 1
+  retry_policy: retry on 408, 423, or 5xx
+  guidance: return 2XX immediately and process asynchronously
+  docs: https://docs.korewireless.com/developers/webhooks/connection-settings
+rate_limits:
+  published_quotas: none
+  signal: >-
+    No rate-limit response headers are documented and no plan-level quota table is
+    published. The only rate-limit surface is behavioural: HTTP 429 on one
+    ConnectivityPro operation and network-side error 83703 "Attachment Rejected Due
+    To Rate Limiting".
+scopes:
+  model: API Client scopes chosen at client creation — Global Resources (e.g. API
+    Clients) and Products, each with Read/Write/Modify/Delete access
+  rotation: changing scopes requires re-authorizing to mint a new token; existing
+    tokens keep their old scopes until expiry
+  artifact: scopes/kore-wireless-scopes.yml
+cross_links:
+  errors: errors/kore-wireless-error-codes.yml
+  problem_types: errors/kore-wireless-problem-types.yml
+  lifecycle: lifecycle/kore-wireless-lifecycle.yml
+  authentication: authentication/kore-wireless-authentication.yml
+  sandbox: sandbox/kore-wireless-sandbox.yml
+  events: asyncapi/kore-wireless-event-streams-webhooks.yml

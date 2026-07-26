@@ -1,0 +1,131 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/errors/errors
+docs: https://docs.korewireless.com/errors/
+format: proprietary JSON envelope (not RFC 9457)
+envelope:
+  content_type: application/json
+  fields: [status, message, code, more_info]
+  code_field: code
+  documentation_field: more_info
+  example: |
+    {
+      "status": 400,
+      "message": "Super SIM registration failed due to Internal Error",
+      "code": 83000,
+      "more_info": "https://docs.korewireless.com/errors/83000"
+    }
+numbering:
+  description: KORE error codes are numeric and blocked by product, inherited from
+    the Twilio IoT numbering convention.
+  blocks:
+  - {range: 20000-29999, family: Platform, product: cross-cutting platform/gateway}
+  - {range: 33000-33999, family: Programmable Wireless, product: Programmable Wireless}
+  - {range: 40000-49999, family: Client, product: API Clients / API gateway}
+  - {range: 83000-83999, family: Super SIM, product: Super SIM}
+error_codes:
+- {code: 20001, family: Platform, message: Unknown parameters, docs: 'https://docs.korewireless.com/errors/20001'}
+- {code: 20002, family: Platform, message: Missing parameters, docs: 'https://docs.korewireless.com/errors/20002'}
+- {code: 20004, family: Platform, message: Method not allowed, docs: 'https://docs.korewireless.com/errors/20004'}
+- {code: 20006, family: Platform, message: Access Denied, docs: 'https://docs.korewireless.com/errors/20006'}
+- {code: 20404, family: Platform, message: Not Found, docs: 'https://docs.korewireless.com/errors/20404'}
+- {code: 20409, family: Platform, message: Account SID is invalid, docs: 'https://docs.korewireless.com/errors/20409'}
+- {code: 20500, family: Platform, message: Internal Server Error, docs: 'https://docs.korewireless.com/errors/20500'}
+- {code: 20503, family: Platform, message: Service unavailable, docs: 'https://docs.korewireless.com/errors/20503'}
+- {code: 33000, family: Programmable Wireless, message: Generic error, docs: 'https://docs.korewireless.com/errors/33000'}
+- {code: 33004, family: Programmable Wireless, message: Service is unavailable / overloaded,
+  docs: 'https://docs.korewireless.com/errors/33004'}
+- {code: 33010, family: Programmable Wireless, message: Conflicting update, docs: 'https://docs.korewireless.com/errors/33010'}
+- {code: 33101, family: Programmable Wireless, message: Invalid parameter value, docs: 'https://docs.korewireless.com/errors/33101'}
+- {code: 33102, family: Programmable Wireless, message: Parameter missing, docs: 'https://docs.korewireless.com/errors/33102'}
+- {code: 33103, family: Programmable Wireless, message: Paging information invalid,
+  docs: 'https://docs.korewireless.com/errors/33103'}
+- {code: 33104, family: Programmable Wireless, message: Configuration incomplete, docs: 'https://docs.korewireless.com/errors/33104'}
+- {code: 33105, family: Programmable Wireless, message: Transition invalid, docs: 'https://docs.korewireless.com/errors/33105'}
+- {code: 33107, family: Programmable Wireless, message: SIM not found, docs: 'https://docs.korewireless.com/errors/33107'}
+- {code: 33108, family: Programmable Wireless, message: Rate plan not found, docs: 'https://docs.korewireless.com/errors/33108'}
+- {code: 33111, family: Programmable Wireless, message: Command exceeded max length,
+  docs: 'https://docs.korewireless.com/errors/33111'}
+- {code: 33118, family: Programmable Wireless, message: Number of commands exceeded,
+  docs: 'https://docs.korewireless.com/errors/33118'}
+- {code: 33119, family: Programmable Wireless, message: SIM connectivity reset not
+    allowed, docs: 'https://docs.korewireless.com/errors/33119'}
+- {code: 33120, family: Programmable Wireless, message: SIM connectivity reset in progress,
+  docs: 'https://docs.korewireless.com/errors/33120'}
+- {code: 33121, family: Programmable Wireless, message: Invalid parameter combination,
+  docs: 'https://docs.korewireless.com/errors/33121'}
+- {code: 33122, family: Programmable Wireless, message: Rate plan is not allowed, docs: 'https://docs.korewireless.com/errors/33122'}
+- {code: 33201, family: Programmable Wireless, message: Unauthorized, docs: 'https://docs.korewireless.com/errors/33201'}
+- {code: 33203, family: Programmable Wireless, message: Messaging not allowed, docs: 'https://docs.korewireless.com/errors/33203'}
+- {code: 40400, family: Client, message: Bad request, docs: 'https://docs.korewireless.com/errors/40400'}
+- {code: 40401, family: Client, message: Unauthorized, docs: 'https://docs.korewireless.com/errors/40401'}
+- {code: 40403, family: Client, message: Access denied, docs: 'https://docs.korewireless.com/errors/40403'}
+- {code: 40404, family: Client, message: Not found, docs: 'https://docs.korewireless.com/errors/40404'}
+- {code: 40405, family: Client, message: Method not allowed, docs: 'https://docs.korewireless.com/errors/40405'}
+- {code: 40500, family: Client, message: Internal server error, docs: 'https://docs.korewireless.com/errors/40500'}
+- {code: 40502, family: Client, message: Bad gateway, docs: 'https://docs.korewireless.com/errors/40502'}
+- {code: 40503, family: Client, message: Service unavailable, docs: 'https://docs.korewireless.com/errors/40503'}
+- {code: 40504, family: Client, message: Gateway timeout, docs: 'https://docs.korewireless.com/errors/40504'}
+- {code: 83000, family: Super SIM, message: Super SIM registration failed due to Internal
+    Error, docs: 'https://docs.korewireless.com/errors/83000'}
+- {code: 83001, family: Super SIM, message: Parameter missing while registering a Super
+    SIM, docs: 'https://docs.korewireless.com/errors/83001'}
+- {code: 83002, family: Super SIM, message: Super SIM cannot be registered, docs: 'https://docs.korewireless.com/errors/83002'}
+- {code: 83003, family: Super SIM, message: The Super SIM already belongs to the requesting
+    Account, docs: 'https://docs.korewireless.com/errors/83003'}
+- {code: 83004, family: Super SIM, message: Super SIM update operation failed due to
+    Internal Error, docs: 'https://docs.korewireless.com/errors/83004'}
+- {code: 83005, family: Super SIM, message: Super SIM not found, docs: 'https://docs.korewireless.com/errors/83005'}
+- {code: 83006, family: Super SIM, message: Super SIM's Target Fleet not found, docs: 'https://docs.korewireless.com/errors/83006'}
+- {code: 83007, family: Super SIM, message: Unable to activate your Super SIM as it
+    does not belong to a Fleet, docs: 'https://docs.korewireless.com/errors/83007'}
+- {code: 83008, family: Super SIM, message: Unable to remove your Super SIM from its
+    Fleet, docs: 'https://docs.korewireless.com/errors/83008'}
+- {code: 83009, family: Super SIM, message: Unable to update your Super SIM's Fleet
+    while it is in status scheduled, docs: 'https://docs.korewireless.com/errors/83009'}
+- {code: 83010, family: Super SIM, message: Unable to update your Super SIM to the
+    desired status, docs: 'https://docs.korewireless.com/errors/83010'}
+- {code: 83011, family: Super SIM, message: A Super SIM with the specified Unique Name
+    exists already, docs: 'https://docs.korewireless.com/errors/83011'}
+- {code: 83400, family: Super SIM, message: IP Commands error, docs: 'https://docs.korewireless.com/errors/83400'}
+- {code: 83401, family: Super SIM, message: The device was not attached to a cellular
+    network, docs: 'https://docs.korewireless.com/errors/83401'}
+- {code: 83402, family: Super SIM, message: Received error response to IP Command callback
+    request, docs: 'https://docs.korewireless.com/errors/83402'}
+- {code: 83500, family: Super SIM, message: No eSIM Profiles are available, docs: 'https://docs.korewireless.com/errors/83500'}
+- {code: 83600, family: Super SIM, message: An invalid parameter value was passed to
+    the API, docs: 'https://docs.korewireless.com/errors/83600'}
+- {code: 83601, family: Super SIM, message: Request StartTime and/or EndTime must be
+    aligned to UTC day boundaries, docs: 'https://docs.korewireless.com/errors/83601'}
+- {code: 83602, family: Super SIM, message: Request StartTime and/or EndTime must be
+    aligned to UTC hour boundaries, docs: 'https://docs.korewireless.com/errors/83602'}
+- {code: 83603, family: Super SIM, message: The maximum allowed query period is 31
+    days for group by sim queries, docs: 'https://docs.korewireless.com/errors/83603'}
+- {code: 83604, family: Super SIM, message: The requested query period exceeds the
+    maximum allowed period for the requested Granularity, docs: 'https://docs.korewireless.com/errors/83604'}
+- {code: 83605, family: Super SIM, message: StartTime parameter is too far in the past.
+    It must be within the last 18 months, docs: 'https://docs.korewireless.com/errors/83605'}
+- {code: 83700, family: Super SIM, message: Attachment Failed Due To Internal Error,
+  docs: 'https://docs.korewireless.com/errors/83700'}
+- {code: 83701, family: Super SIM, message: Data Session Establishment Failed Due To
+    Internal Error, docs: 'https://docs.korewireless.com/errors/83701'}
+- {code: 83702, family: Super SIM, message: Attachment Rejected Due To Network Not
+    Allowed, docs: 'https://docs.korewireless.com/errors/83702'}
+- {code: 83703, family: Super SIM, message: Attachment Rejected Due To Rate Limiting,
+  docs: 'https://docs.korewireless.com/errors/83703'}
+- {code: 83704, family: Super SIM, message: Attachment Rejected Due To SIM In New State,
+  docs: 'https://docs.korewireless.com/errors/83704'}
+- {code: 83705, family: Super SIM, message: Attachment Rejected Due To SIM In Inactive
+    State, docs: 'https://docs.korewireless.com/errors/83705'}
+auth_errors:
+- {http: 401, body: '{"error":"unauthorized_client","error_description":"Invalid client
+    or Invalid client credentials"}', cause: bad client_id/client_secret at the token
+    endpoint}
+- {http: 403, body: '{"message":"User is not authorized to access this resource with
+    an explicit deny","error":"Invalid or expired token"}', cause: expired or out-of-scope
+    access token}
+coverage:
+  codes_captured: 61
+  source_pages: 61 per-code documentation pages under /errors/
+  note: KORE is not a payments or card-authorization provider — there is no decline-code
+    surface, so errors/kore-wireless-decline-codes.yml is intentionally absent.

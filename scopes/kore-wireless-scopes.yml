@@ -1,0 +1,102 @@
+generated: '2026-07-25'
+method: searched
+source: openapi/kore-wireless-api-clients.yml, openapi/kore-wireless-connectivity-pro.yml,
+  openapi/kore-wireless-iam.yml, openapi/kore-wireless-programmable-wireless.yml,
+  openapi/kore-wireless-sms.yml, openapi/kore-wireless-supersim.yml, openapi/kore-wireless-webhook.yml
+docs: https://docs.korewireless.com/developers/api-management/api-clients
+auth_docs: https://docs.korewireless.com/developers/api-management/auth
+model:
+  style: client-bound resource scopes, not string scopes in the authorization request
+  description: >-
+    KORE does not publish a string scope vocabulary (no read:sims / write:fleets
+    style identifiers), and no oauth2 flow in any of the eight OpenAPI documents
+    declares a scopes map — every declared clientCredentials flow has an empty
+    scopes object. Scope is instead bound to the API Client at creation time in the
+    console: you pick a Client Type, then select the Global Resources and Products
+    the client may reach, each with an access level. Those selections are minted
+    into the access token as structured claims, so the token — not the request —
+    carries the grant. Changing a client's scope requires re-authorizing to obtain a
+    new token; previously issued tokens keep their original scopes until they expire.
+  selection_surface: https://build.korewireless.com/clients/list
+  token_claim_shape: |
+    "scopes": {
+      "globalResources": [
+        {"resourceName": "API Clients", "access": ["Read", "Write", "Modify", "Delete"]}
+      ]
+    }
+  claim_source: sample access token published at https://docs.korewireless.com/developers/api-management/auth
+client_types:
+- name: Admin
+  grants: global resources and product resources
+  who_can_create: Account Owner, Account Admin
+- name: Standard
+  grants: product resources only
+  who_can_create: Account Owner, Account Admin, Developer
+scope_dimensions:
+- dimension: globalResources
+  description: account-wide resources the client may manage. The documented example
+    is "API Clients", which lets a client manage API Clients through the API.
+  known_values: [API Clients]
+  note: KORE does not publish the full enumeration of global resource names.
+- dimension: products
+  description: the KORE products the client may call. Product selection is what makes
+    a client's token valid against ConnectivityPro, Super SIM, Programmable Wireless,
+    SMS, Webhook or IAM.
+  known_values: [ConnectivityPro / OmniSIM, Super SIM, Programmable Wireless, SMS,
+    Webhook, IAM]
+  note: read from the eight published API surfaces; KORE does not publish the
+    console's product enumeration as a reference table.
+access_levels: [Read, Write, Modify, Delete]
+token:
+  endpoint: https://api.korewireless.com/api-services/v1/auth/token
+  grant_type: client_credentials
+  response_scope_field: scope
+  observed_scope_value: email
+  expiry_options: [1 hour, 24 hours, 30 days, 24 months]
+  rotation_rule: changing Token Expiry Time, Client Type, Global Resources or Products
+    requires re-authorizing to mint a new token
+schemes:
+- name: Auth
+  source: openapi/kore-wireless-api-clients.yml
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/api-services/v1/auth/token'}
+- name: Auth
+  source: openapi/kore-wireless-connectivity-pro.yml
+  description: token expiry is given in seconds
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/Api/api/token'}
+  note: this spec still names the legacy developer-portal token URL; the current
+    platform endpoint is /api-services/v1/auth/token
+- name: Auth
+  source: openapi/kore-wireless-iam.yml
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/api-services/v1/auth/token'}
+- name: Auth
+  source: openapi/kore-wireless-programmable-wireless.yml
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/api-services/v1/auth/token'}
+- name: Auth
+  source: openapi/kore-wireless-sms.yml
+  description: token expiry is given in seconds
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/Api/api/token'}
+  note: legacy developer-portal token URL, as with ConnectivityPro
+- name: OAuth
+  source: openapi/kore-wireless-supersim.yml
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/api-services/v1/auth/token'}
+- name: Auth
+  source: openapi/kore-wireless-webhook.yml
+  flows:
+  - {flow: clientCredentials, tokenUrl: 'https://api.korewireless.com/api-services/v1/auth/token'}
+scopes: []
+scopes_note: >-
+  Intentionally empty. No named OAuth scope string is published by KORE anywhere —
+  not in the specs, not in the docs, not in a scopes reference page. Filling this
+  list would mean inventing scope identifiers. The real grant model is the
+  scope_dimensions block above.
+gaps_for_provider:
+- publish the enumeration of Global Resources and Products selectable on an API Client
+- declare the scopes map on each oauth2 securityScheme in the OpenAPI documents
+- apply per-operation security requirements so a consumer can compute the minimum
+  client scope for a given call

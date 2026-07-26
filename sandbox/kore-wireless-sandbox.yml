@@ -1,0 +1,90 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/developers/how-to/event-streams/test-my-destination
+summary: >-
+  KORE publishes no test-vs-live key separation and no simulated/sandbox account
+  mode — there is one set of API Client credentials and one production platform.
+  What it does publish is a set of real, first-party test facilities: a ping
+  endpoint on two APIs, a console-triggered Test Event for event-stream and webhook
+  destinations with a published payload, a webhook integration test/troubleshoot
+  guide, and a GSMA TS.48 test profile on OmniSIM eSIMs with published APDU/AT
+  commands. Everything captured below is quoted from KORE documentation; nothing is
+  invented.
+test_live_separation:
+  supported: false
+  key_prefixes: none
+  note: API Client credentials are per-account and production-only; there is no test
+    mode and no test key prefix.
+health_checks:
+- name: API Clients ping
+  operation: openapi/kore-wireless-api-clients.yml#getPingStatus
+  http: GET https://client.api.korewireless.com/v1/ping
+  purpose: gives online connection status for the API gateway
+  docs: https://docs.korewireless.com/api/global-resources/api-clients/ping
+- name: ConnectivityPro ping
+  operation: openapi/kore-wireless-connectivity-pro.yml#getConnectionStatus
+  http: GET https://api.korewireless.com/connectivity/v1/ping
+  purpose: get online connection status
+  tag: testing
+event_test_harness:
+  name: Test Event
+  how: Destinations -> select destination -> action drop-down -> Test Event
+  applies_to: [webhook destinations, AWS Kinesis destinations, callbacks]
+  docs: https://docs.korewireless.com/developers/how-to/event-streams/test-my-destination
+  published_payload: |
+    {
+      "data": {
+        "test_id": "88bf54a9-f2fb-40b6-8faf-e6c5a3c348d2"
+      },
+      "id": "fff521c2-c7db-4b53-a5a0-c5d5d01f66ce",
+      "time": "2024-09-25T19:09:48.5842087+00:00",
+      "type": "com.kore.eventstreams.test.event",
+      "source": "kore-events",
+      "dataschema": "/schemas/test/1",
+      "specversion": "1.0",
+      "datacontenttype": "application/json"
+    }
+  event_type: com.kore.eventstreams.test.event
+  verification_points:
+  - HTTP method will be GET or POST depending on destination configuration
+  - kore-idempotency-token header carries a unique value per request for deduplication
+  - kore-signature header must be verified to confirm the request came from KORE
+  - Content-Type application/json, charset UTF-8
+webhook_testing:
+  docs: https://docs.korewireless.com/developers/how-to/webhooks/test-and-troubleshoot
+  signature_validation_guide: https://docs.korewireless.com/developers/how-to/webhooks/validate-webhook-signatures
+  secret_rotation_guide: https://docs.korewireless.com/developers/how-to/webhooks/rotate-my-webhook-secret
+  secret_management_api: openapi/kore-wireless-webhook.yml
+  connection_settings:
+    connection_timeout_ms: 5000
+    read_timeout_ms: 15000
+    retry_count: 1
+    retry_policy: retry on HTTP 408, 423 or 5xx
+device_test_profile:
+  name: GSMA Test Profile (TS.48)
+  product: OmniSIM
+  spec_version: TS.48 v4.x
+  reference: https://www.gsma.com/newsroom/wp-content/uploads/TS.48-v4.0.pdf
+  docs: https://docs.korewireless.com/omnisim/omnisim-how-to/gsma-ts48-test-profile
+  default_state: disabled; not referenced in ConnectivityPro or the SM-DP+ (RSP)
+  supported: false
+  support_note: 'KORE states the test profile is present but not supported, and assumes
+    the user knows how to drive TS.48.'
+  commands:
+  - {action: switch to TS.48 test profile, at_command: 'AT+CSIM=16,"80C2000003E40102"',
+    response: '+CSIM: 4,"6103" / OK'}
+  - {action: switch back to the last enabled KORE profile, at_command: 'AT+CSIM=16,"80C2000003E40103"',
+    response: '+CSIM: 4,"6103" / OK'}
+  warning: the device will lose connectivity and possibly reset when the profile is
+    switched
+getting_started_guides:
+- {name: eSIM activation and testing quick start guide, url: 'https://docs.korewireless.com/omnisim/get-started/esim-activation-and-testing-quick-start-guide'}
+- {name: Webhook Quick Start, url: 'https://docs.korewireless.com/developers/get-started/event-streams/webhook-quick-start'}
+- {name: AWS Kinesis Quick Start, url: 'https://docs.korewireless.com/developers/get-started/event-streams/aws-kinesis-quick-start'}
+- {name: APIs getting started, url: 'https://docs.korewireless.com/developers/get-started/apis'}
+smoke_tooling:
+  name: kore-openapi smoke checks
+  command: make smoke [SPEC=<spec-id>] [STRICT=1] [DRY_RUN=1]
+  url: https://github.com/korewireless/kore-openapi/blob/main/docs/smoke-testing.md
+  description: First-party per-spec smoke checks that call the cataloged base URLs
+    with inferred endpoints.

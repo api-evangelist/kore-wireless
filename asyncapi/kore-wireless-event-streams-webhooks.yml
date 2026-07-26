@@ -1,0 +1,106 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/developers/event-streams
+spec_type: none
+asyncapi_published: false
+asyncapi_note: >-
+  KORE publishes no AsyncAPI document. Probed /asyncapi.yaml and /asyncapi.json on
+  every API host and the docs host, searched the korewireless GitHub organization
+  (including the kore-openapi spec repository and its specs/catalog.json), and
+  grepped the full documentation index at docs.korewireless.com/llms.txt — zero
+  AsyncAPI references. The event surface below is real and documented, it is simply
+  described in prose plus per-event JSON Schema rather than in an AsyncAPI contract.
+  Recorded as type Webhooks, not AsyncAPI.
+surfaces:
+  event_streams:
+    docs: https://docs.korewireless.com/developers/event-streams
+    format: CloudEvents 1.0
+    format_spec: https://github.com/cloudevents/spec/blob/v1.0/spec.md
+    content_type: application/json
+    data_schema: JSON Schema draft-07, versioned per event type
+    envelope_fields: [data, id, time, type, source, dataschema, specversion, datacontenttype]
+    example: |
+      {
+        "data": { },
+        "id": "fff521c2-c7db-4b53-a5a0-c5d5d01f66ce",
+        "time": "2024-09-25T19:09:48.5842087+00:00",
+        "type": "com.kore.eventstreams.test.event",
+        "source": "kore-events",
+        "dataschema": "/schemas/test/1",
+        "specversion": "1.0",
+        "datacontenttype": "application/json"
+      }
+    source_value: kore-events
+    type_namespace: com.kore.eventstreams.*
+    schema_versioning: >-
+      Schemas are versioned and the streaming rule selects the schema version, so a
+      consumer pins the exact event structure it receives.
+  destinations:
+    docs: https://docs.korewireless.com/developers/event-streams/destinations
+    types: [webhook, AWS Kinesis]
+    quick_starts:
+    - https://docs.korewireless.com/developers/get-started/event-streams/webhook-quick-start
+    - https://docs.korewireless.com/developers/get-started/event-streams/aws-kinesis-quick-start
+  streaming_rules:
+    docs: https://docs.korewireless.com/developers/event-streams/streaming-rules
+    description: A streaming rule subscribes a destination to one or more event types
+      at a chosen schema version.
+  webhooks:
+    docs: https://docs.korewireless.com/developers/webhooks
+    configuration_methods:
+    - API call with a callback URL
+    - resource configuration in the console UI with a callback URL
+    - webhook destination on Event Streams
+    management_portal: https://build.korewireless.com/webhook
+    secret_management_api: openapi/kore-wireless-webhook.yml
+    transport: HTTPS only, no self-signed certificates
+    user_agent: KoreProxy/1.1
+    headers:
+    - {name: kore-idempotency-token, custom: true, purpose: unique per event, stable
+        across redelivery — use for deduplication}
+    - {name: kore-signature, custom: true, purpose: KORE signature over the payload,
+        verify to authenticate the sender}
+    - {name: date, custom: true, purpose: 'UTC date, format %Y-%m-%dT%H:%M:%SZ'}
+    - {name: user-agent, custom: false, purpose: always KoreProxy/1.1}
+    signature_verification: https://docs.korewireless.com/developers/how-to/webhooks/validate-webhook-signatures
+    source_ips: sent from a pool of IPs; KORE publishes no range to allowlist
+    delivery:
+      connection_timeout_ms: 5000
+      read_timeout_ms: 15000
+      total_time_ms: 15000
+      retry_count: 1
+      retry_policy: retry on HTTP 408, 423 or 5xx
+      guidance: return 2XX immediately, process asynchronously
+event_catalog:
+- product: Super SIM
+  event_family: Connection Events
+  description: Events on device connection status and data sessions.
+  docs: https://docs.korewireless.com/supersim/get-started/get-started-with-super-sim-connection-events
+  how_to: https://docs.korewireless.com/supersim/how-to/how-to-use-super-sim-connection-events
+  reference_architecture: https://docs.korewireless.com/supersim/how-to/how-to-monitor-super-sim-connection-events-using-aws-elasticsearch-and-kibana
+- product: platform
+  event_family: Test
+  type: com.kore.eventstreams.test.event
+  dataschema: /schemas/test/1
+  description: Console-triggered test event used to validate a destination.
+  docs: https://docs.korewireless.com/developers/how-to/event-streams/test-my-destination
+- product: ConnectivityPro
+  event_family: Alerting
+  description: >-
+    ConnectivityPro exposes an alerting surface over REST (events, rules, alert
+    history, actions) rather than through Event Streams — see the alerting tag in
+    openapi/kore-wireless-connectivity-pro.yml (getEventsByAccountId,
+    getRulesByAccountId, createRule, updateRuleByRuleId).
+  docs: https://docs.korewireless.com/api/api-reference
+coverage:
+  event_types_published_individually: 1 (the test event); product event type lists
+    are described narratively rather than enumerated in a catalog page
+  note: >-
+    KORE documents the envelope, the schema discipline and the delivery contract
+    thoroughly, but does not publish a machine-readable per-event-type registry. An
+    AsyncAPI document would be the single highest-value artifact KORE could add to
+    this surface.
+cross_links:
+  conventions: conventions/kore-wireless-conventions.yml
+  sandbox: sandbox/kore-wireless-sandbox.yml
+  webhook_api: openapi/kore-wireless-webhook.yml

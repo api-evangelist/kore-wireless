@@ -1,0 +1,120 @@
+generated: '2026-07-25'
+method: searched
+source: https://github.com/korewireless
+notes: >-
+  KORE does not publish client libraries to npm, PyPI, Maven Central, NuGet,
+  RubyGems, Packagist or crates.io. Its first-party SDKs are source-distributed
+  from the korewireless GitHub organization (openapi-generator output, committed
+  in full), and the kore-openapi repository ships a make-based workflow that
+  generates a client for any of the eight cataloged specs in any
+  openapi-generator language. A registry search for KORE client libraries returns
+  only third-party work (npm kore-wireless-sdk, published by an individual, not
+  KORE) which is recorded below as official:false.
+registry_probes:
+- registry: npm
+  query: korewireless
+  result: no first-party package (only third-party kore-wireless-sdk)
+- registry: pypi
+  query: korewireless / omnicore / kore-omnicore
+  result: 404 — not published
+- registry: rubygems
+  result: not published
+- registry: nuget
+  result: not published
+- registry: pkg.go.dev
+  result: github.com/korewireless/OmniCore-Go-SDK resolves (Go module proxy serves
+    directly from GitHub)
+packages:
+- language: go
+  registry: github
+  name: github.com/korewireless/OmniCore-Go-SDK
+  url: https://github.com/korewireless/OmniCore-Go-SDK
+  docs: https://pkg.go.dev/github.com/korewireless/OmniCore-Go-SDK
+  install: go get github.com/korewireless/OmniCore-Go-SDK
+  product: OmniCore
+  generated_from: openapi-generator
+  official: true
+- language: python
+  registry: github
+  name: OmniCore
+  url: https://github.com/korewireless/OmniCore-Python-SDK
+  install: pip install git+https://github.com/korewireless/OmniCore-Python-SDK.git
+  version: 1.8.11
+  product: OmniCore
+  generated_from: openapi-generator
+  official: true
+- language: javascript
+  registry: github
+  name: omni_core_model_and_state_management_api
+  url: https://github.com/korewireless/OmniCore-JavaScript-SDK
+  install: npm install github:korewireless/OmniCore-JavaScript-SDK
+  version: 1.8.21
+  product: OmniCore
+  generated_from: openapi-generator
+  official: true
+- language: csharp
+  registry: github
+  name: OmniCore
+  url: https://github.com/korewireless/OmniCore-CSharp-SDK
+  install: build OmniCore.sln from source
+  product: OmniCore
+  generated_from: openapi-generator
+  official: true
+- language: ruby
+  registry: github
+  name: OmniCore-Ruby-SDK
+  url: https://github.com/korewireless/OmniCore-Ruby-SDK
+  install: clone and build from source
+  product: OmniCore
+  generated_from: openapi-generator
+  official: true
+- language: c
+  registry: github
+  name: OmniCore-C-Device-SDK
+  url: https://github.com/korewireless/OmniCore-C-Device-SDK
+  product: OmniCore (device side)
+  official: true
+- language: c
+  registry: github
+  name: Microvisor-SDK
+  url: https://github.com/korewireless/Microvisor-SDK
+  description: Artifacts for building Microvisor user applications (STM32U5 target).
+  product: Microvisor
+  official: true
+- language: c
+  registry: github
+  name: Microvisor-HAL-STM32U5
+  url: https://github.com/korewireless/Microvisor-HAL-STM32U5
+  description: Microvisor-compatible port of ST Microelectronics' STM32CubeU5 HAL.
+  product: Microvisor
+  official: true
+- language: multiple
+  registry: github
+  name: kore-openapi (SDK generation workflow)
+  url: https://github.com/korewireless/kore-openapi
+  install: make generate-sdk SPEC=<spec-id> GENERATOR=<name>
+  description: >-
+    First-party repository holding all eight KORE OpenAPI specs (YAML + JSON) plus
+    specs/catalog.json and a Makefile/scripts wrapper around openapi-generator that
+    builds a client library for any spec in any supported language. This is KORE's
+    stated SDK story in place of published registry packages.
+  docs: https://github.com/korewireless/kore-openapi/blob/main/docs/generating-sdks.md
+  official: true
+- language: javascript
+  registry: npm
+  name: kore-wireless-sdk
+  url: https://www.npmjs.com/package/kore-wireless-sdk
+  install: npm install kore-wireless-sdk
+  version: 1.0.8
+  official: false
+  note: Community package published by an individual maintainer; not affiliated with
+    KORE Wireless.
+sample_code:
+- url: https://github.com/korewireless/OmniCore-Sample-Apps
+  description: Sample code in popular languages showing how to consume OmniCore APIs.
+- url: https://github.com/korewireless/Developer-API-examples
+  description: Java examples for the KORE Developer API.
+- url: https://github.com/korewireless/Super-Sim-Raspberry-Pi-Pico-Demos
+  description: Source from the Super SIM Raspberry Pi Pico tutorials.
+- url: https://github.com/korewireless/Prog-Wireless-Raspberry-Pi-Demos
+  description: Sample code for the Programmable Wireless + Raspberry Pi tutorial.

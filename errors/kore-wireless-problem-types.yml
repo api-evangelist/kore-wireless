@@ -1,0 +1,268 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/kore-wireless-api-clients.yml, openapi/kore-wireless-connectivity-pro.yml, openapi/kore-wireless-iam.yml,
+  openapi/kore-wireless-programmable-wireless.yml, openapi/kore-wireless-sms.yml, openapi/kore-wireless-supersim.yml,
+  openapi/kore-wireless-token.yml, openapi/kore-wireless-webhook.yml
+format: proprietary-json
+note: Derived from the 4xx/5xx responses declared across all eight KORE OpenAPI documents. KORE does not
+  use RFC 9457 application/problem+json; every error response is application/json carrying the {status,
+  message, code, more_info} envelope documented at https://docs.korewireless.com/developers/api-management/api-responses.
+  The numeric code values that appear in that envelope are catalogued in errors/kore-wireless-error-codes.yml.
+envelope:
+  content_type: application/json
+  fields:
+  - status
+  - message
+  - code
+  - more_info
+problems:
+- status: 400
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Bad Request
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 401
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Unauthorised User
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 403
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Forbidden
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 404
+  spec: openapi/kore-wireless-api-clients.yml
+  title: The specified resource was not found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 500
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Server Error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 502
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Bad gateway
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 503
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Service Unavailable
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 504
+  spec: openapi/kore-wireless-api-clients.yml
+  title: Gateway Timeout error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+- status: 400
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Bad Request
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByAccountId
+- status: 401
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Unauthorised User
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByAccountId
+- status: 403
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Forbidden
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByAccountId
+- status: 404
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: The Specified Resource Was Not Found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByAccountId
+- status: 409
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Request Conflict
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByAccountId
+- status: 500
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Server Error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByAccountId
+- status: 502
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Bad Gateway
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByAccountId
+- status: 503
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Service Unavailable
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByAccountId
+- status: 504
+  spec: openapi/kore-wireless-connectivity-pro.yml
+  title: Gateway Timeout
+  content_type: application/json
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByAccountId
+- status: 400
+  spec: openapi/kore-wireless-iam.yml
+  title: Invalid request
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 401
+  spec: openapi/kore-wireless-iam.yml
+  title: Credentials were not provided and are required to access this resource
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 403
+  spec: openapi/kore-wireless-iam.yml
+  title: Forbidden error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 404
+  spec: openapi/kore-wireless-iam.yml
+  title: Resource not found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 409
+  spec: openapi/kore-wireless-iam.yml
+  title: Conflict error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 422
+  spec: openapi/kore-wireless-iam.yml
+  title: Unprocessable Content
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 500
+  spec: openapi/kore-wireless-iam.yml
+  title: Internal Server Error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 503
+  spec: openapi/kore-wireless-iam.yml
+  title: Server is temporarily not available
+  content_type: application/json
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+- status: 400
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Invalid request
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 401
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Credentials were not provided and are required to access this resource
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 403
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Credentials were not provided and are required to access this resource
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 404
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Resource not found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 409
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Resource not found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 415
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Resource not found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 422
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Resource not found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 500
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Internal Server Error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 503
+  spec: openapi/kore-wireless-programmable-wireless.yml
+  title: Server is temporary not available
+  content_type: application/json
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+- status: 400
+  spec: openapi/kore-wireless-sms.yml
+  title: Bad Request
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 401
+  spec: openapi/kore-wireless-sms.yml
+  title: Unauthorised User
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 403
+  spec: openapi/kore-wireless-sms.yml
+  title: Forbidden
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 404
+  spec: openapi/kore-wireless-sms.yml
+  title: The Specified Resource Was Not Found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 422
+  spec: openapi/kore-wireless-sms.yml
+  title: Unprocessable content
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 429
+  spec: openapi/kore-wireless-sms.yml
+  title: Too Many Requests
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 500
+  spec: openapi/kore-wireless-sms.yml
+  title: Server Error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-sms.yml#POST /v1/messages/send
+- status: 400
+  spec: openapi/kore-wireless-token.yml
+  title: 400 response
+  content_type: application/json
+  source_operation: openapi/kore-wireless-token.yml#POST /v1/auth/token
+- status: 401
+  spec: openapi/kore-wireless-token.yml
+  title: 401 response
+  content_type: application/json
+  source_operation: openapi/kore-wireless-token.yml#POST /v1/auth/token
+- status: 500
+  spec: openapi/kore-wireless-token.yml
+  title: 500 response
+  content_type: application/json
+  source_operation: openapi/kore-wireless-token.yml#POST /v1/auth/token
+- status: 400
+  spec: openapi/kore-wireless-webhook.yml
+  title: Bad Request
+  content_type: application/json
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret
+- status: 401
+  spec: openapi/kore-wireless-webhook.yml
+  title: Unauthorized
+  content_type: application/json
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret
+- status: 403
+  spec: openapi/kore-wireless-webhook.yml
+  title: Forbidden
+  content_type: application/json
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret
+- status: 404
+  spec: openapi/kore-wireless-webhook.yml
+  title: Not Found
+  content_type: application/json
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret
+- status: 405
+  spec: openapi/kore-wireless-webhook.yml
+  title: Method Not Allowed
+  content_type: application/json
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret
+- status: 500
+  spec: openapi/kore-wireless-webhook.yml
+  title: Internal Server Error
+  content_type: application/json
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret

@@ -1,0 +1,52 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Connectivity APIs
+  version: 1.0.0
+extends: openapi/kore-wireless-connectivity-pro.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: kore-wireless
+    x-apievangelist-source: https://github.com/korewireless/kore-openapi
+    x-apievangelist-artifacts:
+      authentication: authentication/kore-wireless-authentication.yml
+      scopes: scopes/kore-wireless-scopes.yml
+      conventions: conventions/kore-wireless-conventions.yml
+      errors: errors/kore-wireless-error-codes.yml
+      lifecycle: lifecycle/kore-wireless-lifecycle.yml
+      events: asyncapi/kore-wireless-event-streams-webhooks.yml
+- target: $.info
+  update:
+    x-apievangelist-conventions:
+      pagination: meta-data {count, page_size, page_number, previous_page_url, next_page_url}
+      error_envelope: '{status, message, code, more_info}'
+      idempotency: delivery-side only — kore-idempotency-token on webhook/event deliveries
+      versioning: uri-path v1
+      dates: GMT/UTC
+- target: $.components.securitySchemes
+  update:
+    x-apievangelist-note: KORE authorizes every API with OAuth 2.0 client credentials against https://api.korewireless.com/api-services/v1/auth/token;
+      scopes are selected per API Client.
+x-apievangelist-observations:
+  paths: 49
+  operations: 55
+  operations_missing_operationId: 18
+  operations_missing_operationId_list:
+  - POST /v1/accounts/{account-id}/subscription-requests/sim-transfer
+  - POST /v1/accounts/{account-id}/subscription-requests/cost-center
+  - POST /v1/accounts/{account-id}/cost-centers
+  - PUT /v1/accounts/{account-id}/cost-centers
+  - GET /v1/accounts/{account-id}/alerts
+  - GET /v1/accounts/{account-id}/alerts/{alert-id}
+  - GET /v1/accounts/{account-id}/actions
+  - GET /v1/accounts/{account-id}/esim-profile-switch-requests/{esim-profile-switch-request-id}
+  - GET /v1/accounts/{account-id}/esim-profile-switch-requests
+  - POST /v1/accounts/{account-id}/esim-profile-switch-requests
+  - POST /v1/accounts/{account-id}/esim-profile-switch-requests/retry
+  - GET /v1/accounts/{account-id}/sessions
+  - GET /v1/accounts/{account-id}/in-session
+  - POST /v1/accounts/{account-id}/esim-profile-enable-requests
+  - POST /v1/accounts/{account-id}/esim-profile-download-requests
+  - POST /v1/accounts/{account-id}/esim-profile-delete-requests
+  - POST /v1/accounts/{account-id}/esim-profile-switch-requests/cancel
+  - GET /v1/esim/profile-status

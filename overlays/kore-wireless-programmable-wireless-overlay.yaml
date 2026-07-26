@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Programmable Wireless APIs
+  version: 1.0.0
+extends: openapi/kore-wireless-programmable-wireless.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: kore-wireless
+    x-apievangelist-source: https://github.com/korewireless/kore-openapi
+    x-apievangelist-artifacts:
+      authentication: authentication/kore-wireless-authentication.yml
+      scopes: scopes/kore-wireless-scopes.yml
+      conventions: conventions/kore-wireless-conventions.yml
+      errors: errors/kore-wireless-error-codes.yml
+      lifecycle: lifecycle/kore-wireless-lifecycle.yml
+      events: asyncapi/kore-wireless-event-streams-webhooks.yml
+- target: $.info
+  update:
+    x-apievangelist-conventions:
+      pagination: meta-data {count, page_size, page_number, previous_page_url, next_page_url}
+      error_envelope: '{status, message, code, more_info}'
+      idempotency: delivery-side only — kore-idempotency-token on webhook/event deliveries
+      versioning: uri-path v1
+      dates: GMT/UTC
+- target: $.components.securitySchemes
+  update:
+    x-apievangelist-note: KORE authorizes every API with OAuth 2.0 client credentials against https://api.korewireless.com/api-services/v1/auth/token;
+      scopes are selected per API Client.
+x-apievangelist-observations:
+  paths: 9
+  operations: 16
+  operations_missing_operationId: 0
+  operations_missing_operationId_list: null

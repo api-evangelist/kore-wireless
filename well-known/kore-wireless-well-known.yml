@@ -1,0 +1,79 @@
+generated: '2026-07-25'
+method: searched
+source: live probes of every apis.yml baseURL host, every OpenAPI servers[] host,
+  and the docs/marketing hosts
+result: none
+notes: >-
+  KORE publishes no /.well-known/ discovery surface. Every API host answers the
+  whole /.well-known/ space with the API gateway's 401 JSON envelope (the gateway
+  authenticates before routing, so the path is never served anonymously), and
+  www.korewireless.com answers every unknown path with a 200 HTML homepage
+  catch-all, which is not a well-known document. No security.txt, no
+  openid-configuration, no oauth-authorization-server, no api-catalog, no
+  ai-plugin.json. This is a recorded negative, not a missing probe: no WellKnown or
+  SecurityTxt pointer is wired in apis.yml because no document exists. KORE's
+  vulnerability-disclosure contact is published as an HTML page instead — see
+  security/kore-wireless-vulnerability-disclosure.yml.
+documents: []
+probes:
+- host: https://api.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+  - {path: /.well-known/api-catalog, status: 403}
+  - {path: /.well-known/ai-plugin.json, status: 403}
+- host: https://supersim.api.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+- host: https://programmable-wireless.api.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 401}
+  - {path: /.well-known/openid-configuration, status: 401}
+  - {path: /.well-known/oauth-authorization-server, status: 401}
+  - {path: /.well-known/api-catalog, status: 401}
+  - {path: /.well-known/ai-plugin.json, status: 401}
+- host: https://webhook.api.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 401}
+  - {path: /.well-known/openid-configuration, status: 401}
+  - {path: /.well-known/oauth-authorization-server, status: 401}
+  - {path: /.well-known/api-catalog, status: 401}
+  - {path: /.well-known/ai-plugin.json, status: 401}
+- host: https://client.api.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 401}
+  - {path: /.well-known/openid-configuration, status: 401}
+  - {path: /.well-known/oauth-authorization-server, status: 401}
+  - {path: /.well-known/api-catalog, status: 401}
+  - {path: /.well-known/ai-plugin.json, status: 401}
+- host: https://iam.api.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 403}
+  - {path: /.well-known/openid-configuration, status: 403}
+  - {path: /.well-known/oauth-authorization-server, status: 403}
+- host: https://docs.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /llms.txt, status: 200, note: 'not a well-known path, but the real agent
+      discovery surface — harvested to llms/kore-wireless-llms.txt'}
+- host: https://www.korewireless.com
+  paths:
+  - {path: /.well-known/security.txt, status: 200, note: HTML homepage catch-all, not
+      a security.txt}
+  - {path: /.well-known/openid-configuration, status: 200, note: HTML homepage catch-all}
+  - {path: /.well-known/api-catalog, status: 200, note: HTML homepage catch-all}
+spec_probes:
+  notes: >-
+    Contract discovery also probed /openapi.json, /openapi.yaml, /swagger.json,
+    /v1/openapi.json, /api-docs, /docs and /redoc on every API host and the docs
+    host. All returned the gateway 401/403 envelope or a docs 404 — KORE does not
+    self-host its specs. The real machine-readable contract is the public GitHub
+    repository github.com/korewireless/kore-openapi (eight OpenAPI 3.0 documents in
+    YAML and JSON, plus specs/catalog.json), already harvested into openapi/.
+  graphql: none — no /graphql surface on any KORE host
+  mcp: none — no hosted MCP server published by KORE

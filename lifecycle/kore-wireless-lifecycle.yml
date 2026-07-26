@@ -1,0 +1,74 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  applies_to: all eight published KORE APIs (ConnectivityPro, Super SIM, Programmable
+    Wireless, SMS, Webhook, IAM, API Clients, Token)
+  spec_versions:
+    kore-connectivity-pro: 1.0.0
+    kore-supersim: 1.0.0
+    kore-programmable-wireless: 1.0.0
+    kore-sms: 1.0.0
+    kore-webhook: 1.0.0
+    kore-iam: 1.0.0
+    kore-api-clients: 1.0.0
+    kore-token: '1.0'
+  catalog: https://github.com/korewireless/kore-openapi/blob/main/specs/catalog.json
+  note: >-
+    KORE has never shipped a v2 of any published API. Version discipline is
+    expressed through the spec catalog and the advisories stream rather than a
+    written versioning policy page.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  mechanism: >-
+    KORE has no written deprecation or sunset policy and does not emit RFC 8594
+    Sunset/Deprecation headers. Retirement is announced through dated advisories
+    on the documentation site and through migration guides, and marked inline in
+    the OpenAPI summary text. This is a real but informal practice; recorded as
+    such rather than claimed as a policy.
+  advisories:
+  - https://docs.korewireless.com/twilio-iot-acquisition/advisories
+  - https://docs.korewireless.com/omnisim/advisories
+  migration_guides: https://docs.korewireless.com/twilio-iot-acquisition/migration-guides
+  observed_retirements:
+  - {item: 'OmniSIM Reach 1.1 (SKU 14239, 14240, 14639, 16474)', date: '2024-08-06',
+    source: 'https://docs.korewireless.com/omnisim/advisories/retiring-omnisim-reach-1.1-sku-14239-14240-14639-16474-6th-august-2024'}
+  - {item: Twilio IoT API endpoints migrating to KORE hosts, date: '2025-01', source: 'https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kores-apis'}
+  - {item: 'OmniSIM 1.3 SKU update', date: '2025-12-16', source: 'https://docs.korewireless.com/omnisim/advisories/omnisim-1.3-sku-update-december-2025'}
+deprecated_operations:
+- spec: openapi/kore-wireless-sms.yml
+  operation: GET /v1/sms/messages
+  operationId: null
+  signal: summary text "Get Messages (To be deprecated soon)"
+  replacement: GET /v1/messages
+  openapi_deprecated_flag: false
+  note: >-
+    The only deprecation signal anywhere in the eight specs, and it is carried in
+    prose rather than the OpenAPI `deprecated: true` flag. No operation in any KORE
+    spec sets `deprecated: true`.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA or uptime commitment is published on the documentation or
+    marketing site; SLAs are contractual.
+status_page:
+  url: https://korewireless.service-now.com/csm?id=services_status
+  platform: ServiceNow Customer Service Management
+  status: 200
+  migration_note: Twilio IoT customers were migrated to this page — see
+    https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kores-status-page
+support:
+  help_center: https://docs.korewireless.com/troubleshooting/
+  console: https://console.korewireless.com/
+  build_portal: https://build.korewireless.com/
+release_notes:
+- https://docs.korewireless.com/omnisim/omnisim-esim/release-note
+- https://docs.korewireless.com/omnisim/omnisim-esim/omnisim-1.4-what-is-new
+cross_links:
+  changelog: changelog/kore-wireless-changelog.yml
+  conventions: conventions/kore-wireless-conventions.yml

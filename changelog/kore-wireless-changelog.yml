@@ -1,0 +1,102 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/twilio-iot-acquisition/advisories
+docs:
+- https://docs.korewireless.com/twilio-iot-acquisition/advisories
+- https://docs.korewireless.com/omnisim/advisories
+- https://docs.korewireless.com/omnisim/omnisim-esim/release-note
+scheme:
+  style: dated advisories + per-product release notes
+  formal_changelog: false
+  note: >-
+    KORE publishes no single dated API changelog page. Change is communicated in two
+    real, dated streams: platform/API advisories (largely the Twilio IoT migration
+    programme) and per-product release notes for OmniSIM. Entries below are the
+    published, dated items — this is the recent window, not a complete history.
+current_version: v1 (all eight published APIs)
+entries:
+- date: '2025-12-16'
+  product: OmniSIM
+  title: OmniSIM 1.3 SKU Update
+  kind: advisory
+  breaking: false
+  url: https://docs.korewireless.com/omnisim/advisories/omnisim-1.3-sku-update-december-2025
+- date: '2025-04'
+  product: Super SIM
+  title: New Super SIM hardware and applets updates
+  kind: advisory
+  breaking: false
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/new-super-sim-hardware-and-applets-updates-april-2025
+- date: '2025-03'
+  product: Super SIM
+  title: More on Super SIM migration to KORE
+  kind: migration
+  breaking: true
+  highlights: Super SIM account and API migration from Twilio to KORE hosts.
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/more-on-super-sim-migration-to-kore-march-2025
+- date: '2025-01'
+  product: platform
+  title: KORE Shop, API migration, Programmable Wireless Console
+  kind: migration
+  breaking: true
+  highlights: Programmable Wireless API traffic moves to programmable-wireless.api.korewireless.com;
+    new console.
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-shop-api-migration-programmable-wireless-console-january-2025
+- date: '2024-11'
+  product: platform
+  title: Update on Our Migration to KORE
+  kind: advisory
+  breaking: false
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/update-on-our-migration-to-kore-november-2024
+- date: '2024-12'
+  product: Super SIM, Programmable Wireless
+  title: More on Super SIM and Programmable Wireless Migration to KORE
+  kind: migration
+  breaking: true
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/more-on-super-sim-and-programmable-wireless-migration-to-kore-december-2024
+- date: '2024-10'
+  product: IAM
+  title: KORE Child Accounts Created and Linked to Your Twilio Subaccounts
+  kind: addition
+  breaking: false
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-child-accounts-created-and-linked-to-your-twilio-subaccounts-october-2024
+- date: '2024-09'
+  product: Event Streams
+  title: KORE Event Streams Available
+  kind: addition
+  breaking: false
+  highlights: CloudEvents 1.0 event streaming to webhook and AWS Kinesis destinations
+    goes live.
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-event-streams-available-september-2024
+- date: '2024-09'
+  product: Webhooks
+  title: KORE Callbacks Available
+  kind: addition
+  breaking: false
+  highlights: Signed, idempotent callbacks with the kore-signature and kore-idempotency-token
+    headers.
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-callbacks-available-september-2024
+- date: '2024-08'
+  product: Super SIM, Programmable Wireless
+  title: New UI and APIs Available at KORE
+  kind: addition
+  breaking: false
+  highlights: The KORE-hosted Super SIM and Programmable Wireless APIs replace the
+    Twilio-hosted originals.
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/new-ui-and-apis-available-at-kore-and-more-for-super-sim-and-programmable-wireless-august-2024
+- date: '2024-08-06'
+  product: OmniSIM
+  title: 'Retiring OmniSIM Reach 1.1 (SKU 14239, 14240, 14639, 16474)'
+  kind: retirement
+  breaking: true
+  url: https://docs.korewireless.com/omnisim/advisories/retiring-omnisim-reach-1.1-sku-14239-14240-14639-16474-6th-august-2024
+- date: '2024-04'
+  product: Super SIM, Programmable Wireless
+  title: Upcoming Changes to Developer Experience
+  kind: advisory
+  breaking: false
+  url: https://docs.korewireless.com/twilio-iot-acquisition/advisories/upcoming-changes-to-developer-experience-for-super-sim-and-programmable-wireless-april-2024
+spec_repository:
+  url: https://github.com/korewireless/kore-openapi
+  note: The OpenAPI repository's git history is the closest thing KORE publishes to a
+    machine-readable API changelog.

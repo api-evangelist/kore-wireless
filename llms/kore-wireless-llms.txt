@@ -1,0 +1,358 @@
+# KORE
+
+## Home
+
+- [KORE Knowledge Center](https://docs.korewireless.com/kore-knowledge-center.md)
+
+## KORE Console
+
+- [KORE Console](https://docs.korewireless.com/console/kore-console.md)
+- [Quick start guide](https://docs.korewireless.com/console/get-started/quick-start-guide.md)
+- [Dashboard](https://docs.korewireless.com/console/get-started/dashboard.md)
+- [Account](https://docs.korewireless.com/console/accounts/account.md)
+- [Add additional accounts](https://docs.korewireless.com/console/accounts/add-additional-accounts.md)
+- [Change accounts](https://docs.korewireless.com/console/accounts/change-accounts.md)
+- [Multiple accounts](https://docs.korewireless.com/console/accounts/multiple-accounts.md): Single and parent/child accounts
+- [New account setup](https://docs.korewireless.com/console/accounts/new-account-setup.md)
+- [VAT validation issues](https://docs.korewireless.com/console/accounts/new-account-setup/vat-validation-issues.md)
+- [Invoices](https://docs.korewireless.com/console/billing-and-payments/invoices.md)
+- [Payment methods](https://docs.korewireless.com/console/billing-and-payments/payment-methods.md)
+- [Users](https://docs.korewireless.com/console/user-management/users.md): Review all users for an account.
+- [Invite users to an account](https://docs.korewireless.com/console/user-management/invite-users-to-an-account.md): Invite users to an account
+- [Invite - accept an invitation to join an account](https://docs.korewireless.com/console/user-management/invite-accept-an-invitation-to-join-an-account.md)
+- [Passwords](https://docs.korewireless.com/console/user-management/passwords.md)
+- [Profile](https://docs.korewireless.com/console/user-management/profile.md)
+- [Remove users](https://docs.korewireless.com/console/user-management/remove-users.md)
+- [Transfer account ownership](https://docs.korewireless.com/console/user-management/transfer-account-ownership.md)
+- [User roles and permissions](https://docs.korewireless.com/console/user-management/user-roles-and-permissions.md)
+
+## OmniSIM
+
+- [KORE OmniSIM®](https://docs.korewireless.com/omnisim/kore-omnisim-r.md): Overview of the KORE OmniSIM Global Connectivity product
+- [eSIM activation and testing quick start guide](https://docs.korewireless.com/omnisim/get-started/esim-activation-and-testing-quick-start-guide.md): Quick start guide for activating and testing your OmniSIM eSIM device
+- [Prepaid plans quick start guide](https://docs.korewireless.com/omnisim/get-started/prepaid-plans-quick-start-guide.md): OmniSIM Reach prepaid plans quick start guide for ConnectivityPro
+- [SIM states](https://docs.korewireless.com/omnisim/get-started/sim-states.md): SIM states available for KORE OmniSIM
+- [eSIM switch](https://docs.korewireless.com/omnisim/esim-switch.md)
+- [eSIM switch process](https://docs.korewireless.com/omnisim/esim-switch/esim-switch-process.md)
+- [eSIM switch  - monitor and troubleshooting](https://docs.korewireless.com/omnisim/esim-switch/esim-switch-monitor-and-troubleshooting.md)
+- [OmniSIM Reach - Centralized Multi-IMSI](https://docs.korewireless.com/omnisim/omnisim-reach/centralized-multi-imsi.md): OmniSIM Reach, technical description of the network steered multi-IMSI implementation.
+- [OmniSIM Product Datasheet](https://docs.korewireless.com/omnisim/omnisim-esim/product-datasheet.md)
+- [What is a SIM, eSIM, iSIM?](https://docs.korewireless.com/omnisim/omnisim-esim/what-is-a-sim-esim-isim.md)
+- [OmniSIM 1.3.x What is New?](https://docs.korewireless.com/omnisim/omnisim-esim/release-note.md)
+- [OmniSIM 1.4 What is New?](https://docs.korewireless.com/omnisim/omnisim-esim/omnisim-1.4-what-is-new.md)
+- [Identify OmniSIM Versions](https://docs.korewireless.com/omnisim/omnisim-esim/identify-versions.md): KORE OmniSIM and eSIM products have evolved over time and this guide will help you identify what generation you have.
+- [OmniSIM Power Saving](https://docs.korewireless.com/omnisim/omnisim-esim/omnisim-power-saving.md): OmniSIM is meticulously engineered to support Internet of Things (IoT) devices that operate under tight power constraints. Here's how OmniSIM caters to low-power or power-constrained devices.
+- [OmniSIM APN Settings](https://docs.korewireless.com/omnisim/omnisim-how-to/apn-settings.md)
+- [OmniSIM Multi-IMSI Top Tips](https://docs.korewireless.com/omnisim/omnisim-how-to/multi-imsi-top-tips.md): Some of the top tips from our OmniSIM guru's on multi-IMSI.
+- [OmniSIM Troubleshooting Tips](https://docs.korewireless.com/omnisim/omnisim-how-to/troubleshooting-tips.md): Use this guide when having difficulties with your eSIM connecting or need help creating a case (ticket).
+- [Local Profile Management Guide](https://docs.korewireless.com/omnisim/omnisim-how-to/manage-local-profiles.md): Local Profile Management (LPM) is a feature of OmniSIM that extends the M2M Profile management to allow a device to manage resilient connectivity.
+- [OmniSIM - GSMA Test Profile (TS.48)](https://docs.korewireless.com/omnisim/omnisim-how-to/gsma-ts48-test-profile.md)
+- [Maximum transmission units (MTUs) in devices](https://docs.korewireless.com/omnisim/omnisim-device-guides/maximum-transmission-units-mtus-in-devices.md): Maximum transmission units (MTU)
+- [Quectel BG95 BG96 BG77 extended configuration settings](https://docs.korewireless.com/omnisim/omnisim-device-guides/quectel-bg95-bg96-bg77-extended-configuration-settings.md): The article provides some best practices for the most commonly used QCFG commands.
+- [Quectel BG95 BG96 BG77 APN settings](https://docs.korewireless.com/omnisim/omnisim-device-guides/quectel-bg95-bg96-bg77-apn-settings.md): The article is intended to provide some best practices for setting and keeping the APN setting.
+- [Cradlepoint E300EU APN Settings](https://docs.korewireless.com/omnisim/omnisim-device-guides/cradlepoint-e300eu-apn-settings.md): This guide outlines how to setup a Cradlepoint E300EU for OmniSIM
+- [How Devices Manage eSIM Profile Management & Power Management](https://docs.korewireless.com/omnisim/omnisim-device-guides/profile-management-device-power.md)
+- [OmniSIM 1.3 SKU Update - December 2025](https://docs.korewireless.com/omnisim/advisories/omnisim-1.3-sku-update-december-2025.md): The following advisory was sent out on December 16, 2025.
+- [Retiring OmniSIM Reach 1.1 (SKU: 14239, 14240, 14639, 16474) - 6th August 2024](https://docs.korewireless.com/omnisim/advisories/retiring-omnisim-reach-1.1-sku-14239-14240-14639-16474-6th-august-2024.md): The following advisory was sent out on August 6, 2024.
+
+## Super SIM&#x20;
+
+- [Super SIM®](https://docs.korewireless.com/supersim/supersim.md): An overview of Super SIM, a resilient, global cellular connectivity platform to connect your IoT devices around the world.
+- [Super SIM's Available Networks](https://docs.korewireless.com/supersim/available-networks.md): Learn about all the cellular networks from around the world that Super SIM can connect to
+- [Super SIM version 3.0.0 Available Networks](https://docs.korewireless.com/supersim/available-networks/super-sim-version-3.0.0-available-networks.md)
+- [Super SIM’s Multi-IMSI Applet](https://docs.korewireless.com/supersim/supersim-multi-imsi-applet.md): Super SIM's multi-IMSI technology enables access to the best networks with redundant backup access to keep your devices connected
+- [Over-the-Air Updates](https://docs.korewireless.com/supersim/over-the-air-updates.md): Learn when, how and why KORE pushes updates to the settings and applets stored on every Super SIM.
+- [Get Started with Super SIM](https://docs.korewireless.com/supersim/supersim-first-steps.md): Follow step-by-step instructions to create your KORE account, order your first Super SIM, and begin using it.
+- [Overview](https://docs.korewireless.com/supersim/supersim-first-steps/overview.md): Follow step-by-step instructions to create your KORE account, order your first Super SIM, and begin using it.
+- [Get Started with Super SIM, the Raspberry Pi 4 and the Waveshare 4G Hat](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-the-raspberry-pi-4-and-the-waveshare-4g-hat.md)
+- [Get Started with Super SIM, the Raspberry Pi 4 and the Sixfab Base Hat](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-the-raspberry-pi-4-and-the-sixfab-base-hat.md)
+- [Get Started with Data Comms and the Raspberry Pi Pico](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-data-comms-and-the-raspberry-pi-pico.md)
+- [Get Started with Super SIM SMS Commands and the Raspberry Pi 4](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-sms-commands-and-the-raspberry-pi-4.md)
+- [Get Started with Super SIM SMS Commands and the Raspberry Pi Pico](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-sms-commands-and-the-raspberry-pi-pico.md)
+- [Get Started with Super SIM IP Commands and the Raspberry Pi](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-ip-commands-and-the-raspberry-pi.md)
+- [Get Started with Super SIM IP Commands and the Raspberry Pi Pico](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-ip-commands-and-the-raspberry-pi-pico.md)
+- [Get Started with Super SIM eSIM Profiles for eUICCs](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-esim-profiles-for-euiccs.md)
+- [Get Started with Super SIM Connection Events](https://docs.korewireless.com/supersim/supersim-first-steps/get-started-with-super-sim-connection-events.md)
+- [How To](https://docs.korewireless.com/supersim/how-to.md)
+- [How to Set a Device’s APN for Super SIM](https://docs.korewireless.com/supersim/how-to/apn-configuration.md): Learn how to set a device's Access Point Name (APN) for use with your Super SIM and verify that you're connected to the network.
+- [How to Enable Device Roaming for Super SIM](https://docs.korewireless.com/supersim/how-to/how-enable-roaming.md): Get a general idea of how to enable roaming for Super SIM on your device and see how to verify your connection.
+- [How to Determine Whether a Device Contains a Super SIM](https://docs.korewireless.com/supersim/how-to/check-a-device-has-super-sim.md): Learn how to check whether a device contains a Super SIM
+- [How to Set up iPhones/iPads for Super SIM](https://docs.korewireless.com/supersim/how-to/how-to-set-up-iphones-ipads-for-super-sim.md): Learn how to configure iPhone APN settings the right way for Super SIM
+- [How to Determine a Super SIM’s Status](https://docs.korewireless.com/supersim/how-to/how-to-determine-a-super-sims-status.md): Learn how to determine a Super SIM's status, what each of the states are, and how a Sim resource enters them.
+- [How to Use Console Bulk Actions to Update Multiple Super SIMs](https://docs.korewireless.com/supersim/how-to/how-to-use-console-bulk-actions-to-update-multiple-super-sims.md)
+- [How to Download Bulk Super SIM Data](https://docs.korewireless.com/supersim/how-to/how-to-download-bulk-super-sim-data.md)
+- [How to Use Super SIM Fleets and Network Access Profiles](https://docs.korewireless.com/supersim/how-to/understanding-network-access-profiles.md): Learn how the Super SIM API provides you with the ability to specify which mobile networks a Super SIM device is permitted to connect to.
+- [How to Understand the Settings on your SIM](https://docs.korewireless.com/supersim/how-to/sim-settings.md): Understand the settings installed on your Super SIM and how they influence how your devices connect.
+- [Base Settings Package](https://docs.korewireless.com/supersim/how-to/sim-settings/base-settings-package.md)
+- [How and Why You Can Set Super SIM’s Network Attach Priority List](https://docs.korewireless.com/supersim/how-to/how-and-why-to-set-super-sims-uplmn-table.md): Every Super SIM, like all SIMs, includes a list of operator-preferred   networks. Learn how and why to set your Super SIM's preferred network.
+- [How to Set Up and Use a Super SIM VPN](https://docs.korewireless.com/supersim/how-to/how-to-set-up-and-use-a-super-sim-vpn.md)
+- [How to Configure AWS for a Super SIM VPN](https://docs.korewireless.com/supersim/how-to/how-to-configure-aws-for-a-super-sim-vpn.md): Learn how to use the AWS console to connect your AWS Virtual Private Cloud to a Super SIM VPN for a secure private network between your devices and your VPC.
+- [How to Make and Take IoT VoIP Calls via Super SIM](https://docs.korewireless.com/supersim/how-to/how-to-make-and-take-iot-voip-calls-via-super-sim.md): A demo showing how to create voice-over-data applications for IoT devices using Super SIM and Twilio services.
+- [How to Use Super SIM Connection Events](https://docs.korewireless.com/supersim/how-to/how-to-use-super-sim-connection-events.md): Powerful network insights streamed to you
+- [How to use Super SIM eSIM Profiles](https://docs.korewireless.com/supersim/how-to/how-to-use-super-sim-esim-profiles.md)
+- [How to Monitor Super SIM Connection Events using AWS ElasticSearch and Kibana](https://docs.korewireless.com/supersim/how-to/how-to-monitor-super-sim-connection-events-using-aws-elasticsearch-and-kibana.md)
+- [How to Use OpenAPI Clients with Super SIM](https://docs.korewireless.com/supersim/how-to/how-to-use-openapi-clients-with-super-sim.md): Learn how to use KORE's OpenAPI specification file to generate an API client that you can use to make calls to the Super SIM APIs.
+- [Into Production](https://docs.korewireless.com/supersim/into-production.md)
+- [Prepare for Production Deployments with Super SIM](https://docs.korewireless.com/supersim/into-production/prepare-for-production-deployments-with-super-sim.md): Key issues you need to address on your journey to volume production with Twilio Super SIM
+- [Super SIM Datasheet](https://docs.korewireless.com/supersim/into-production/super-sim-datasheet.md)
+- [Super SIM Network Timeouts](https://docs.korewireless.com/supersim/into-production/super-sim-network-timeouts.md): Learn about the timeouts applied by Super SIM's mobile core to internet traffic
+- [Works with Super SIM](https://docs.korewireless.com/supersim/works-with-super-sim.md)
+- [Works with Super SIM: Quectel BG95](https://docs.korewireless.com/supersim/works-with-super-sim/works-with-super-sim-quectel-bg95.md)
+- [Works with Super SIM: Quectel EG21-G](https://docs.korewireless.com/supersim/works-with-super-sim/works-with-super-sim-quectel-eg21-g.md)
+- [Works with Super SIM: Quectel EG25-G](https://docs.korewireless.com/supersim/works-with-super-sim/works-with-super-sim-quectel-eg25-g.md)
+- [Works with Super SIM: Thales Cinterion EXS62-W](https://docs.korewireless.com/supersim/works-with-super-sim/works-with-super-sim-thales-cinterion-exs62-w.md)
+- [Works with Super SIM: u-blox SARA-R5](https://docs.korewireless.com/supersim/works-with-super-sim/works-with-super-sim-u-blox-sara-r5.md)
+- [Cellular Module Knowledgebase](https://docs.korewireless.com/supersim/cellular-module-knowledgebase.md)
+- [Overview](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/overview.md)
+- [About AT Commands](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/about-at-commands.md)
+- [Nordic Modules with Super SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/nordic-modules-with-super-sim.md)
+- [Quectel Modules with Super SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/quectel-modules-with-super-sim.md)
+- [Quectel Modules with the KORE Narrowband SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/quectel-modules-with-the-kore-narrowband-sim.md)
+- [Simcom Modules with Super SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/simcom-modules-with-super-sim.md)
+- [Telit Modules with Super SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/telit-modules-with-super-sim.md)
+- [Thales Cinterion Modules with Super SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/thales-cinterion-modules-with-super-sim.md)
+- [U-blox Modules with Super SIM](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/u-blox-modules-with-super-sim.md)
+- [Cellular IoT Terminology](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/cellular-iot-terminology.md)
+- [Low-power Optimization for Cellular Modules](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/low-power-optimization-for-cellular-modules.md)
+- [Four Best Practices for Cellular Module Registration](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/four-best-practices-for-cellular-module-registration.md)
+- [How to Determine Good Cellular Signal Strength](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/how-to-determine-good-cellular-signal-strength.md)
+- [How Super SIM Devices Connect to Cell Networks](https://docs.korewireless.com/supersim/cellular-module-knowledgebase/how-super-sim-devices-connect-to-cell-networks.md)
+- [New KORE Super SIM SKU & IMSI Update - June 2026](https://docs.korewireless.com/supersim/super-sim-advisories/new-kore-super-sim-sku-and-imsi-update-june-2026.md)
+- [KORE Super SIM Pooled Plans - December 2025](https://docs.korewireless.com/supersim/super-sim-advisories/kore-super-sim-pooled-plans-december-2025.md)
+- [Update on New Super SIM hardware and applets - November 2025](https://docs.korewireless.com/supersim/super-sim-advisories/update-on-new-super-sim-hardware-and-applets-november-2025.md)
+- [New Super SIM hardware and applets updates - April 2025 (Archived)](https://docs.korewireless.com/supersim/super-sim-advisories/new-super-sim-hardware-and-applets-updates-april-2025-archived.md)
+
+## Twilio IoT Acquisition
+
+- [Twilio IoT is now part of KORE](https://docs.korewireless.com/twilio-iot-acquisition/twilio-iot-is-now-part-of-kore.md)
+- [Link Your Twilio & KORE Accounts](https://docs.korewireless.com/twilio-iot-acquisition/twilio-iot-is-now-part-of-kore/link-your-twilio-and-kore-accounts.md)
+- [Self-Service Limitations](https://docs.korewireless.com/twilio-iot-acquisition/twilio-iot-is-now-part-of-kore/self-service-limitations.md)
+- [IoT Customer Support Migration to KORE](https://docs.korewireless.com/twilio-iot-acquisition/twilio-iot-is-now-part-of-kore/iot-customer-support-migration-to-kore.md)
+- [Frequently Asked Questions (FAQ)](https://docs.korewireless.com/twilio-iot-acquisition/twilio-iot-is-now-part-of-kore/frequently-asked-questions-faq.md)
+- [Twilio to KORE Migration Guides](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides.md)
+- [Migrating to KORE Console](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kore-console.md)
+- [Migrating to KORE's APIs](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kores-apis.md)
+- [Migrating to KORE Callbacks](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kore-callbacks.md)
+- [Migrating to KORE Super SIM Connection Events](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kore-super-sim-connection-events.md)
+- [Migrating to KORE's Status Page](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-kores-status-page.md)
+- [Migrating to SIM Ordering at KORE](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-sim-ordering-at-kore.md)
+- [Migrating to the New Super SIM Hardware](https://docs.korewireless.com/twilio-iot-acquisition/migration-guides/migrating-to-the-new-super-sim-hardware.md)
+- [Advisories](https://docs.korewireless.com/twilio-iot-acquisition/advisories.md)
+- [Upcoming Changes to Developer Experience for Super SIM & Programmable Wireless – April 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/upcoming-changes-to-developer-experience-for-super-sim-and-programmable-wireless-april-2024.md)
+- [New UI and APIs Available at KORE & More for Super SIM & Programmable Wireless - August 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/new-ui-and-apis-available-at-kore-and-more-for-super-sim-and-programmable-wireless-august-2024.md)
+- [KORE Callbacks Available - September 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-callbacks-available-september-2024.md)
+- [KORE Event Streams Available - September 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-event-streams-available-september-2024.md)
+- [KORE Child Accounts Created and Linked to Your Twilio Subaccounts - October 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-child-accounts-created-and-linked-to-your-twilio-subaccounts-october-2024.md)
+- [Update on Our Migration to KORE - November 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/update-on-our-migration-to-kore-november-2024.md)
+- [More on Super SIM and Programmable Wireless Migration to KORE - December 2024](https://docs.korewireless.com/twilio-iot-acquisition/advisories/more-on-super-sim-and-programmable-wireless-migration-to-kore-december-2024.md)
+- [KORE Shop, API migration, Programmable Wireless Console - January 2025](https://docs.korewireless.com/twilio-iot-acquisition/advisories/kore-shop-api-migration-programmable-wireless-console-january-2025.md)
+- [More on Super SIM migration to KORE - March 2025](https://docs.korewireless.com/twilio-iot-acquisition/advisories/more-on-super-sim-migration-to-kore-march-2025.md)
+- [New Super SIM hardware and applets updates - April 2025](https://docs.korewireless.com/twilio-iot-acquisition/advisories/new-super-sim-hardware-and-applets-updates-april-2025.md)
+
+## Developers
+
+- [KORE Developer Experience Overview](https://docs.korewireless.com/developers/kore-developer-experience-overview.md)
+- [API Management](https://docs.korewireless.com/developers/api-management.md)
+- [API Clients](https://docs.korewireless.com/developers/api-management/api-clients.md)
+- [Authorization](https://docs.korewireless.com/developers/api-management/auth.md)
+- [API Responses](https://docs.korewireless.com/developers/api-management/api-responses.md)
+- [Webhooks](https://docs.korewireless.com/developers/webhooks.md): Listen to events on your webhook endpoint and automatically trigger actions
+- [Connection Settings](https://docs.korewireless.com/developers/webhooks/connection-settings.md)
+- [Verifying Callbacks from KORE](https://docs.korewireless.com/developers/webhooks/verifying-callbacks-from-kore.md)
+- [Idempotency](https://docs.korewireless.com/developers/webhooks/idempotency.md)
+- [Event Streams](https://docs.korewireless.com/developers/event-streams.md)
+- [Destinations](https://docs.korewireless.com/developers/event-streams/destinations.md)
+- [Streaming Rules](https://docs.korewireless.com/developers/event-streams/streaming-rules.md)
+- [Events](https://docs.korewireless.com/developers/event-streams/events.md)
+- [APIs](https://docs.korewireless.com/developers/get-started/apis.md)
+- [Webhooks](https://docs.korewireless.com/developers/get-started/webhooks.md)
+- [Event Streams](https://docs.korewireless.com/developers/get-started/event-streams.md)
+- [AWS Kinesis Quick Start](https://docs.korewireless.com/developers/get-started/event-streams/aws-kinesis-quick-start.md)
+- [Script to Create a Kinesis Stream](https://docs.korewireless.com/developers/get-started/event-streams/aws-kinesis-quick-start/script-to-create-a-kinesis-stream.md)
+- [Webhook Quick Start](https://docs.korewireless.com/developers/get-started/event-streams/webhook-quick-start.md)
+- [APIs](https://docs.korewireless.com/developers/how-to/apis.md)
+- [Refresh API Access Token](https://docs.korewireless.com/developers/how-to/apis/refresh-api-access-token.md)
+- [Webhooks](https://docs.korewireless.com/developers/how-to/webhooks.md)
+- [Validate Webhook Signatures](https://docs.korewireless.com/developers/how-to/webhooks/validate-webhook-signatures.md)
+- [Rotate my Webhook Secret](https://docs.korewireless.com/developers/how-to/webhooks/rotate-my-webhook-secret.md)
+- [Test and Troubleshoot my Webhook Integration](https://docs.korewireless.com/developers/how-to/webhooks/test-and-troubleshoot.md)
+- [Event Streams](https://docs.korewireless.com/developers/how-to/event-streams.md)
+- [Test My Destination](https://docs.korewireless.com/developers/how-to/event-streams/test-my-destination.md)
+- [Modify my Destination](https://docs.korewireless.com/developers/how-to/event-streams/modify-my-destination.md)
+- [Modify my Streaming Rule](https://docs.korewireless.com/developers/how-to/event-streams/modify-my-streaming-rule.md)
+
+## Troubleshooting
+
+- [Unable to Login](https://docs.korewireless.com/troubleshooting/troubleshooting/unable-to-login.md): If you're having trouble logging into your account, follow these steps to resolve the issue:
+- [Agreed price not shown](https://docs.korewireless.com/troubleshooting/troubleshooting/agreed-price-not-shown.md): You’ve noticed that the custom price is not appearing for SKUs in your cart or product page.
+- [Unable to Place Order](https://docs.korewireless.com/troubleshooting/troubleshooting/unable-to-place-order.md): If you're experiencing difficulty completing your order on KORE Shop, here are some steps you can try to resolve the issue:
+- [Credit Card Payment Issues](https://docs.korewireless.com/troubleshooting/troubleshooting/credit-card-payment-issues.md): Follow these steps to resolve credit card payment issue:
+- [Terms Purchase Issues](https://docs.korewireless.com/troubleshooting/troubleshooting/terms-purchase-issues.md): Follow these steps to resolve KORE Credit Terms payment issue:
+- [Order Confirmation Email Issue](https://docs.korewireless.com/troubleshooting/troubleshooting/order-confirmation-email-issue.md): What to do If you haven't received your order confirmation email:
+- [Unable to cancel order](https://docs.korewireless.com/troubleshooting/troubleshooting/unable-to-cancel-order.md): Here are steps to help resolve the issue:
+- [Unable to find my Invoice for the order](https://docs.korewireless.com/troubleshooting/troubleshooting/unable-to-find-my-invoice-for-the-order.md): If you're unable to find the invoice for your order, follow these steps:
+- [Order never recieved](https://docs.korewireless.com/troubleshooting/troubleshooting/order-never-recieved.md): We’re sorry to hear that your order hasn’t arrived! Here’s what you can do:
+
+## Programmable Wireless
+
+- [What is Programmable Wireless?](https://docs.korewireless.com/programmable-wireless/what-is-programmable-wireless.md)
+- [What is Narrowband?](https://docs.korewireless.com/programmable-wireless/what-is-narrowband.md)
+- [Get Started with the Raspberry Pi](https://docs.korewireless.com/programmable-wireless/get-started/get-started-with-the-raspberry-pi.md)
+- [Get Started with Programmable Wireless Machine-to-Machine SMS Commands](https://docs.korewireless.com/programmable-wireless/get-started/get-started-with-programmable-wireless-machine-to-machine-sms-commands.md)
+- [Set a Device’s APN](https://docs.korewireless.com/programmable-wireless/how-to.../set-a-devices-apn.md)
+- [Configure a VPN](https://docs.korewireless.com/programmable-wireless/how-to.../configure-a-vpn.md)
+- [About Rate Plans](https://docs.korewireless.com/programmable-wireless/help-and-support/about-rate-plans.md)
+- [About SIM States](https://docs.korewireless.com/programmable-wireless/help-and-support/about-sim-states.md)
+- [Supported Devices](https://docs.korewireless.com/programmable-wireless/help-and-support/supported-devices.md)
+- [Pricing](https://docs.korewireless.com/programmable-wireless/help-and-support/pricing.md)
+- [Cellular Module Knowledgebase](https://docs.korewireless.com/programmable-wireless/help-and-support/cellular-module-knowledgebase.md)
+
+## API Reference
+
+- [Overview](https://docs.korewireless.com/api/api-reference.md)
+- [Super SIM®](https://docs.korewireless.com/api/products/supersim.md)
+- [Sim Resource](https://docs.korewireless.com/api/products/supersim/sim-resource.md): Access individual SIMs
+- [Sim BillingPeriod subresource](https://docs.korewireless.com/api/products/supersim/sim-resource/billingperiod-resource.md): Access Super SIM billing data
+- [ESimProfile Resource](https://docs.korewireless.com/api/products/supersim/esimprofile-resource.md): Access Super SIM functionality via eUICCs
+- [Fleet Resource](https://docs.korewireless.com/api/products/supersim/fleet-resource.md): Organize and configure groups of Sim resources
+- [NetworkAccessProfile Resource](https://docs.korewireless.com/api/products/supersim/networkaccessprofile-resource.md): Control which mobile networks Super SIMs can connect to
+- [NetworkAccessProfile Network Subresource](https://docs.korewireless.com/api/products/supersim/networkaccessprofile-resource/network-resource.md): Control which cellular networks are allowed by your Network Access Profile
+- [Network Resource](https://docs.korewireless.com/api/products/supersim/network-resource.md): Access cellular networks to which Super SIMs can connect
+- [SettingsUpdates Resource](https://docs.korewireless.com/api/products/supersim/settingsupdates-resource.md): Read SettingsUpdates Resource
+- [Usage Record Resource](https://docs.korewireless.com/api/products/supersim/usage-record-resource.md): Access Super SIM usage data
+- [SMSCommand Resource](https://docs.korewireless.com/api/products/supersim/smscommand-resource.md): Exchange machine-to-machine (M2M) messages via SMS
+- [IPCommand Resource](https://docs.korewireless.com/api/products/supersim/ipcommand-resource.md): Transfer IP/UDP messages between your cloud and your devices
+- [Programmable Wireless®](https://docs.korewireless.com/api/products/programmable-wireless-r.md)
+- [Account UsageRecord Resource](https://docs.korewireless.com/api/products/programmable-wireless-r/account-usagerecord-resource.md)
+- [Command Resource](https://docs.korewireless.com/api/products/programmable-wireless-r/command-resource.md)
+- [DataSession Resource](https://docs.korewireless.com/api/products/programmable-wireless-r/datasession-resource.md)
+- [RatePlan Resource](https://docs.korewireless.com/api/products/programmable-wireless-r/rateplan-resource.md)
+- [Wireless Sim Resource](https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource.md)
+- [Sim UsageRecord Resource](https://docs.korewireless.com/api/products/programmable-wireless-r/sim-usagerecord-resource.md)
+- [Microvisor](https://docs.korewireless.com/api/products/microvisor.md)
+- [App Resource](https://docs.korewireless.com/api/products/microvisor/app-resource.md)
+- [Config Resource](https://docs.korewireless.com/api/products/microvisor/config-resource.md)
+- [Device Resource](https://docs.korewireless.com/api/products/microvisor/device-resource.md)
+- [Device Config Subresource](https://docs.korewireless.com/api/products/microvisor/device-resource/config-subresource.md)
+- [Device Secret Subresource](https://docs.korewireless.com/api/products/microvisor/device-resource/secret-subresource.md)
+- [Secret Resource](https://docs.korewireless.com/api/products/microvisor/secret-resource.md)
+- [API Clients](https://docs.korewireless.com/api/global-resources/api-clients.md)
+- [Ping](https://docs.korewireless.com/api/global-resources/api-clients/ping.md)
+- [Clients](https://docs.korewireless.com/api/global-resources/api-clients/clients.md)
+- [Identity and Access Management](https://docs.korewireless.com/api/global-resources/iam.md)
+- [Account](https://docs.korewireless.com/api/global-resources/iam/account.md)
+- [Webhook](https://docs.korewireless.com/api/global-resources/webhook.md)
+
+## Error Dictionary
+
+- [Error Dictionary](https://docs.korewireless.com/errors/errors.md)
+- [20001](https://docs.korewireless.com/errors/20001.md): Unknown parameters
+- [20002](https://docs.korewireless.com/errors/20002.md): Missing parameters
+- [20004](https://docs.korewireless.com/errors/20004.md): Method not allowed
+- [20006](https://docs.korewireless.com/errors/20006.md): Access Denied
+- [20404](https://docs.korewireless.com/errors/20404.md): Not Found
+- [20409](https://docs.korewireless.com/errors/20409.md): Account SID is invalid
+- [20500](https://docs.korewireless.com/errors/20500.md): Internal Server Error
+- [20503](https://docs.korewireless.com/errors/20503.md): Service unavailable
+- [40400](https://docs.korewireless.com/errors/40400.md)
+- [40401](https://docs.korewireless.com/errors/40401.md)
+- [40403](https://docs.korewireless.com/errors/40403.md)
+- [40404](https://docs.korewireless.com/errors/40404.md)
+- [40405](https://docs.korewireless.com/errors/40405.md)
+- [40500](https://docs.korewireless.com/errors/40500.md)
+- [40502](https://docs.korewireless.com/errors/40502.md)
+- [40503](https://docs.korewireless.com/errors/40503.md)
+- [40504](https://docs.korewireless.com/errors/40504.md)
+- [83000](https://docs.korewireless.com/errors/83000.md): Super SIM registration failed due to Internal Error
+- [83001](https://docs.korewireless.com/errors/83001.md): Parameter missing while registering a Super SIM
+- [83002](https://docs.korewireless.com/errors/83002.md): Super SIM cannot be registered
+- [83003](https://docs.korewireless.com/errors/83003.md): The Super SIM already belongs to the requesting Account.
+- [83004](https://docs.korewireless.com/errors/83004.md): Super SIM update operation failed due to Internal Error
+- [83005](https://docs.korewireless.com/errors/83005.md): Super SIM not found
+- [83006](https://docs.korewireless.com/errors/83006.md): Super SIM’s Target Fleet not found
+- [83007](https://docs.korewireless.com/errors/83007.md): Unable to activate your Super SIM as it does not belong to a Fleet
+- [83008](https://docs.korewireless.com/errors/83008.md): Unable to remove your Super SIM from its Fleet
+- [83009](https://docs.korewireless.com/errors/83009.md): Unable to update your Super SIM’s Fleet while it is in status scheduled
+- [83010](https://docs.korewireless.com/errors/83010.md): Unable to update your Super SIM to the desired status
+- [83011](https://docs.korewireless.com/errors/83011.md): A Super SIM with the specified Unique Name exists already
+- [83400](https://docs.korewireless.com/errors/83400.md): IP Commands error
+- [83401](https://docs.korewireless.com/errors/83401.md): The device was not attached to a cellular network
+- [83402](https://docs.korewireless.com/errors/83402.md): Received error response to IP Command callback request
+- [83500](https://docs.korewireless.com/errors/83500.md): No eSIM Profiles are available
+- [83600](https://docs.korewireless.com/errors/83600.md): An invalid parameter value was passed to the API
+- [83601](https://docs.korewireless.com/errors/83601.md): Request StartTime and/or EndTime must be aligned to UTC day boundaries
+- [83602](https://docs.korewireless.com/errors/83602.md): Request StartTime and/or EndTime must be aligned to UTC hour boundaries.
+- [83603](https://docs.korewireless.com/errors/83603.md): The maximum allowed query period is 31 days for group by sim queries
+- [83604](https://docs.korewireless.com/errors/83604.md): The requested query period exceeds the maximum allowed period for the requested Granularity
+- [83605](https://docs.korewireless.com/errors/83605.md): StartTime parameter is too far in the past. It must be within the last 18 months.
+- [83700](https://docs.korewireless.com/errors/83700.md): Attachment Failed Due To Internal Error
+- [83701](https://docs.korewireless.com/errors/83701.md): Data Session Establishment Failed Due To Internal Error
+- [83702](https://docs.korewireless.com/errors/83702.md): Attachment Rejected Due To Network Not Allowed
+- [83703](https://docs.korewireless.com/errors/83703.md): Attachment Rejected Due To Rate Limiting
+- [83704](https://docs.korewireless.com/errors/83704.md): Attachment Rejected Due To SIM In New State
+- [83705](https://docs.korewireless.com/errors/83705.md): Attachment Rejected Due To SIM In Inactive State
+- [33000](https://docs.korewireless.com/errors/33000.md): Generic Error
+- [33004](https://docs.korewireless.com/errors/33004.md): Service is unavailable
+- [33010](https://docs.korewireless.com/errors/33010.md): Conflicting update
+- [33101](https://docs.korewireless.com/errors/33101.md): Invalid Parameter Value
+- [33102](https://docs.korewireless.com/errors/33102.md): Parameter missing
+- [33103](https://docs.korewireless.com/errors/33103.md): Paging information invalid
+- [33104](https://docs.korewireless.com/errors/33104.md): Configuration incomplete
+- [33105](https://docs.korewireless.com/errors/33105.md): Transition invalid
+- [33107](https://docs.korewireless.com/errors/33107.md): SIM not found
+- [33108](https://docs.korewireless.com/errors/33108.md): Rate plan not found
+- [33111](https://docs.korewireless.com/errors/33111.md): Command exceeded max length
+- [33118](https://docs.korewireless.com/errors/33118.md): Number of commands exceeded
+- [33119](https://docs.korewireless.com/errors/33119.md): SIM connectivity reset not allowed
+- [33120](https://docs.korewireless.com/errors/33120.md): SIM connectivity reset in progress
+- [33121](https://docs.korewireless.com/errors/33121.md): Invalid Parameter Combination
+- [33122](https://docs.korewireless.com/errors/33122.md): Rate Plan Is Not Allowed
+- [33201](https://docs.korewireless.com/errors/33201.md): Unauthorized
+- [33203](https://docs.korewireless.com/errors/33203.md): Messaging not allowed
+
+## KORE Wireless Business Internet Solutions
+
+- [KORE Wireless Business Internet Solutions](https://docs.korewireless.com/kwbi/kwbi.md)
+- [Essentials](https://docs.korewireless.com/kwbi/quick-start/essentials.md)
+- [Primary - Teltonika RUT241 quick start guide](https://docs.korewireless.com/kwbi/quick-start/essentials/primary-teltonika-rut241-quick-start-guide.md)
+- [Global Essentials - Teltonika RUTx11 quick start guide](https://docs.korewireless.com/kwbi/quick-start/essentials/global-essentials-teltonika-rutx11-quick-start-guide.md)
+- [Global Essentials - Teltonika RUTx14 quick start guide](https://docs.korewireless.com/kwbi/quick-start/essentials/global-essentials-teltonika-rutx14-quick-start-guide.md)
+- [Backup - Teltonika RUT241 quick start guide](https://docs.korewireless.com/kwbi/quick-start/essentials/backup-teltonika-rut241-quick-start-guide.md)
+- [Premium](https://docs.korewireless.com/kwbi/quick-start/premium.md)
+- [Global Premium - Cradlepoint E300 quick start guide](https://docs.korewireless.com/kwbi/quick-start/premium/global-premium-cradlepoint-e300-quick-start-guide.md)
+- [Global Premium - Cradlepoint L950 quick start guide](https://docs.korewireless.com/kwbi/quick-start/premium/global-premium-cradlepoint-l950-quick-start-guide.md)
+- [Primary - Cradlepoint L950 quick start guide](https://docs.korewireless.com/kwbi/quick-start/premium/primary-cradlepoint-l950-quick-start-guide.md)
+- [Backup - Cradlepoint L950 quick start guide](https://docs.korewireless.com/kwbi/quick-start/premium/backup-cradlepoint-l950-quick-start-guide.md)
+- [Primary - Cradlepoint W1850 quick start guide](https://docs.korewireless.com/kwbi/quick-start/premium/primary-cradlepoint-w1850-quick-start-guide.md)
+- [Backup - Cradlepoint W1850 quick start guide](https://docs.korewireless.com/kwbi/quick-start/premium/backup-cradlepoint-w1850-quick-start-guide.md)
+
+## Identity & Access Management
+
+- [Identity & Access Management (IAM)](https://docs.korewireless.com/iam/identity-and-access-management-iam.md)
+- [Accounts](https://docs.korewireless.com/iam/accounts.md): What is a KORE Account?
+- [Multiple Accounts](https://docs.korewireless.com/iam/accounts/multiple-accounts.md)
+- [Users](https://docs.korewireless.com/iam/users.md): Collaborating with users
+- [Role Based Access Control (RBAC)](https://docs.korewireless.com/iam/users/rbac.md)
+- [User Profile](https://docs.korewireless.com/iam/users/user-profile.md): Who you are
+- [User Security](https://docs.korewireless.com/iam/users/user-security.md)
+- [Create your first account](https://docs.korewireless.com/iam/get-started/first-account.md)
+- [Transfer Account Ownership](https://docs.korewireless.com/iam/how-to/transfer-account-ownership.md)
+- [Invite developers to build against the API](https://docs.korewireless.com/iam/how-to/invite-developers-to-build-against-the-api.md)
+- [Resolve account in a Pending State](https://docs.korewireless.com/iam/how-to/resolve-account-in-a-pending-state.md): How To Resolve Account In Pending State?
+- [Resolve VAT Number Validation Issues](https://docs.korewireless.com/iam/how-to/resolve-vat-number-validation-issues.md): How to fix VAT number validation errors?
+
+
+---
+
+# Agent Instructions
+This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com.
+
+## Querying This Documentation
+If you need additional information, you can query the documentation dynamically by asking a question.
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+```
+GET https://docs.korewireless.com/kore-knowledge-center.md?ask=<question>
+```
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

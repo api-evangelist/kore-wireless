@@ -59,6 +59,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-connectivity-pro.yml
+  - type: Overlay
+    url: overlays/kore-wireless-connectivity-pro-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/omnisim/kore-omnisim-r
   - type: APIReference
@@ -82,6 +84,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-supersim.yml
+  - type: Overlay
+    url: overlays/kore-wireless-supersim-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/supersim/supersim
   - type: APIReference
@@ -103,6 +107,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-programmable-wireless.yml
+  - type: Overlay
+    url: overlays/kore-wireless-programmable-wireless-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/api/products/programmable-wireless-r
   - type: APIReference
@@ -122,6 +128,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-sms.yml
+  - type: Overlay
+    url: overlays/kore-wireless-sms-overlay.yaml
   - type: APIReference
     url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
 - aid: kore-wireless:kore-webhook-api
@@ -140,6 +148,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-webhook.yml
+  - type: Overlay
+    url: overlays/kore-wireless-webhook-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/developers/webhooks
   - type: APIReference
@@ -158,6 +168,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-iam.yml
+  - type: Overlay
+    url: overlays/kore-wireless-iam-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/iam/get-started/first-account
   - type: APIReference
@@ -177,6 +189,8 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-api-clients.yml
+  - type: Overlay
+    url: overlays/kore-wireless-api-clients-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/developers/api-management/api-clients
   - type: APIReference
@@ -196,11 +210,23 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/kore-wireless-token.yml
+  - type: Overlay
+    url: overlays/kore-wireless-token-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/developers/api-management/auth
   - type: APIReference
     url: https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/kore-wireless-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/kore-wireless-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/kore-wireless-domain-security.yml
+- type: OAuthScopes
+  url: scopes/kore-wireless-scopes.yml
+- type: Authentication
+  url: authentication/kore-wireless-authentication.yml
 - type: Website
   url: https://www.korewireless.com/
 - type: Documentation
@@ -233,6 +259,65 @@ common:
   url: https://www.korewireless.com/technical-documentation/
 - type: LinkedIn
   url: https://www.linkedin.com/company/kore-wireless
+- type: GettingStarted
+  url: https://docs.korewireless.com/developers/get-started/apis
+- type: Support
+  url: https://docs.korewireless.com/troubleshooting/
+- type: Contact
+  url: https://www.korewireless.com/contact-us/
+- type: Pricing
+  url: https://docs.korewireless.com/programmable-wireless/help-and-support/pricing
+- type: TermsOfService
+  url: https://www.korewireless.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.korewireless.com/privacy-policy/
+- type: Security
+  url: https://www.korewireless.com/responsible-disclosure-policy/
+- type: LLMsTxt
+  name: KORE documentation index (llms.txt)
+  url: llms/kore-wireless-llms.txt
+- type: Packages
+  name: KORE first-party client libraries and SDK generation
+  url: packages/kore-wireless-packages.yml
+- type: SDKs
+  name: KORE SDKs
+  url: packages/kore-wireless-packages.yml
+- type: MCPServer
+  name: Candidate MCP tool surface derived from KORE OpenAPI
+  url: mcp/kore-wireless-mcp.yml
+- type: AgentSkill
+  name: KORE agent skills
+  url: skills/_index.yml
+- type: Conventions
+  name: KORE cross-cutting API conventions
+  url: conventions/kore-wireless-conventions.yml
+- type: Idempotency
+  name: KORE event delivery idempotency (kore-idempotency-token)
+  url: conventions/kore-wireless-conventions.yml
+- type: ErrorCatalog
+  name: KORE error dictionary
+  url: errors/kore-wireless-error-codes.yml
+- type: ErrorCatalog
+  name: KORE error responses derived from OpenAPI
+  url: errors/kore-wireless-problem-types.yml
+- type: Lifecycle
+  name: KORE versioning, retirement and status posture
+  url: lifecycle/kore-wireless-lifecycle.yml
+- type: ChangeLog
+  name: KORE advisories and release notes
+  url: changelog/kore-wireless-changelog.yml
+- type: Sandbox
+  name: KORE test facilities and test profile
+  url: sandbox/kore-wireless-sandbox.yml
+- type: Conformance
+  name: KORE standards conformance
+  url: conformance/kore-wireless-conformance.yml
+- type: Webhooks
+  name: KORE Event Streams and webhook catalog
+  url: asyncapi/kore-wireless-event-streams-webhooks.yml
+- type: DataModel
+  name: KORE entity relationship graph
+  url: data-model/kore-wireless-data-model.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

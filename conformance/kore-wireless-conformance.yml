@@ -1,0 +1,118 @@
+generated: '2026-07-25'
+method: searched
+source: https://docs.korewireless.com/
+notes: >-
+  Standards posture asserted from KORE's own documentation and from the eight
+  published OpenAPI documents. A false entry is a recorded negative, not an
+  untested one — the CAMARA / GSMA Open Gateway / TM Forum negatives were confirmed
+  by a full-text search of the complete documentation index
+  (docs.korewireless.com/llms.txt, 358 entries) which returned zero matches for
+  CAMARA, Open Gateway, TM Forum, TMF, NEF, SCEF, network exposure and network
+  slicing. KORE is an MVNO, so it consumes carrier network capability rather than
+  exposing it — the absence is structural, not an oversight.
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: all eight published specs are OpenAPI 3.0.0/3.0.1/3.0.3 and parse with
+    paths
+  source: https://github.com/korewireless/kore-openapi
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 client-credentials grant per RFC 6749 section 4.4; token endpoint
+    https://api.korewireless.com/api-services/v1/auth/token; documented explicitly
+  source: https://docs.korewireless.com/developers/api-management/auth
+- id: rfc6749-client-credentials
+  conforms: true
+  evidence: token response follows RFC 6749 section 4.2.2 (access_token, expires_in,
+    token_type, scope); error response uses the RFC 6749 error/error_description shape
+  source: https://docs.korewireless.com/developers/api-management/auth
+- id: oauth2-scopes
+  conforms: true
+  evidence: 'scopes are selected per API Client (Global Resources + Products, with
+    Read/Write/Modify/Delete access) and carried in the issued JWT'
+  source: https://docs.korewireless.com/developers/api-management/api-clients
+- id: jwt-rfc7519
+  conforms: true
+  evidence: issued access tokens are RS256-signed JWTs with exp/iat/jti/iss/aud/sub
+    claims (documented sample response)
+  source: https://docs.korewireless.com/developers/api-management/auth
+- id: openid-connect
+  conforms: false
+  evidence: no /.well-known/openid-configuration on any KORE host; no OIDC scopes or
+    id_token documented
+- id: cloudevents-1.0
+  conforms: true
+  evidence: every Event Streams event is CloudEvents 1.0 (specversion 1.0, with data,
+    id, time, type, source, dataschema, datacontenttype)
+  source: https://docs.korewireless.com/developers/event-streams/events
+- id: json-schema-draft-07
+  conforms: true
+  evidence: event data objects are described with JSON Schema draft-07, versioned per
+    event type
+  source: https://docs.korewireless.com/developers/event-streams/events
+- id: asyncapi
+  conforms: false
+  evidence: no AsyncAPI document published for the event or webhook surface
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'errors are application/json with a proprietary {status, message, code,
+    more_info} envelope, not application/problem+json'
+  source: https://docs.korewireless.com/developers/api-management/api-responses
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: no Sunset or Deprecation header support; retirement is announced through
+    dated advisories
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no /.well-known/security.txt on any KORE host; disclosure policy is an
+    HTML page
+- id: llms-txt
+  conforms: true
+  evidence: docs.korewireless.com/llms.txt returns a complete 358-entry documentation
+    index; every page is also available as Markdown by appending .md
+  source: https://docs.korewireless.com/llms.txt
+- id: gsma-sgp.32
+  conforms: true
+  evidence: KORE ships SGP.32 (IoT eSIM / eIM) capable OmniSIM product and markets it
+    directly
+  source: https://www.korewireless.com/
+- id: gsma-ts.48
+  conforms: true
+  evidence: OmniSIM carries the GSMA TS.48 v4.x Generic eUICC Test Profile, switchable
+    by documented APDU/AT command
+  source: https://docs.korewireless.com/omnisim/omnisim-how-to/gsma-ts48-test-profile
+- id: camara
+  conforms: false
+  evidence: zero CAMARA references across the entire documentation corpus and all
+    eight specs; no Number Verification, SIM Swap, Device Location, Device Status,
+    Quality on Demand, Carrier Billing, KYC Match or Scam Signal surface
+- id: gsma-open-gateway
+  conforms: false
+  evidence: KORE is not a GSMA Open Gateway operator participant; as an MVNO it
+    consumes rather than exposes network capability
+- id: tmforum-open-apis
+  conforms: false
+  evidence: zero TM Forum / TMF references in documentation or specs
+- id: 3gpp-nef-scef
+  conforms: false
+  evidence: no network-exposure function surface; KORE owns no core network
+- id: graphql
+  conforms: false
+  evidence: no /graphql endpoint on any KORE host
+- id: grpc
+  conforms: false
+  evidence: no published .proto definitions in the korewireless GitHub organization
+    or on buf.build
+- id: model-context-protocol
+  conforms: false
+  evidence: no hosted or remote MCP server published; see mcp/kore-wireless-mcp.yml
+compliance_program:
+  published: false
+  trust_center: none
+  certifications_published: []
+  note: >-
+    No trust center, no security/compliance landing page, and no named certification
+    (SOC 2, ISO 27001, PCI DSS, HIPAA, FedRAMP) is published on korewireless.com or
+    docs.korewireless.com. The only public security-posture artifact is the
+    responsible disclosure policy. No `Compliance` pointer is wired in apis.yml
+    because there is no published compliance program to point at.

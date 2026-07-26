@@ -1,0 +1,408 @@
+generated: '2026-07-25'
+method: derived
+status: candidate
+source: openapi/kore-wireless-api-clients.yml, openapi/kore-wireless-connectivity-pro.yml, openapi/kore-wireless-iam.yml,
+  openapi/kore-wireless-programmable-wireless.yml, openapi/kore-wireless-sms.yml, openapi/kore-wireless-supersim.yml,
+  openapi/kore-wireless-token.yml, openapi/kore-wireless-webhook.yml
+searched:
+  result: none
+  notes: No hosted or remote MCP server is published by KORE Wireless. Probed the docs host (docs.korewireless.com
+    llms.txt full index — zero MCP references), the korewireless GitHub organization, npm @modelcontextprotocol,
+    and the official MCP registry. KORE does publish an agent-readable documentation surface (llms.txt
+    plus .md content negotiation plus GitBook ?ask= query endpoint), but no tool server.
+server:
+  name: kore-wireless
+  transport: http
+  url: null
+  note: candidate only — no server exists; tools below are derived one-per-OpenAPI-operation
+auth:
+  type: oauth2
+  flow: client_credentials
+  token_url: https://api.korewireless.com/api-services/v1/auth/token
+  note: an MCP server fronting KORE would exchange API Client credentials for a bearer token per request
+    scope
+coverage:
+  specs: 8
+  operations_total: 117
+  operations_with_operationId: 94
+  tools_derived: 94
+  note: 23 of 117 published operations declare no operationId, so no stable tool name can be derived for
+    them without inventing one. Tools are derived only for GET/POST/PUT/PATCH/DELETE operations that carry
+    an operationId.
+tools:
+- name: kore_list_client
+  description: List Client
+  source_operation: openapi/kore-wireless-api-clients.yml#listClient
+  http: GET /v1/clients
+- name: kore_create_client
+  description: Create Client
+  source_operation: openapi/kore-wireless-api-clients.yml#createClient
+  http: POST /v1/clients
+- name: kore_get_client
+  description: Get Client
+  source_operation: openapi/kore-wireless-api-clients.yml#getClient
+  http: GET /v1/clients/{client_id}
+- name: kore_get_ping_status
+  description: Gives Online Connection Status for API Gateway
+  source_operation: openapi/kore-wireless-api-clients.yml#getPingStatus
+  http: GET /v1/ping
+- name: kore_get_plan_by_account_id
+  description: Lists All Eligible Plans
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByAccountId
+  http: GET /v1/accounts/{account-id}/plans
+- name: kore_get_plan_type_by_account_id
+  description: Lists All Plan Types
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanTypeByAccountId
+  http: GET /v1/accounts/{account-id}/plan-types
+- name: kore_get_plan_by_plan_id
+  description: Finds Plan by PlanId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getPlanByPlanId
+  http: GET /v1/accounts/{account-id}/plans/{plan-id}
+- name: kore_get_service_type_by_account_id
+  description: Lists All Eligible Service Types
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getServiceTypeByAccountId
+  http: GET /v1/accounts/{account-id}/service-types
+- name: kore_get_service_type_by_service_type_id
+  description: Finds ServiceType by ServiceTypeId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getServiceTypeByServiceTypeId
+  http: GET /v1/accounts/{account-id}/service-types/{service-type-id}
+- name: kore_get_feature_by_account_id
+  description: Lists All Eligible Features
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getFeatureByAccountId
+  http: GET /v1/accounts/{account-id}/features
+- name: kore_get_feature_by_feature_id
+  description: Finds Feature by FeatureId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getFeatureByFeatureId
+  http: GET /v1/accounts/{account-id}/features/{feature-id}
+- name: kore_get_usage_record_by_sim_numberand_date_range
+  description: Finds Usage Records By Sim Number And Date Range
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getUsageRecordBySimNumberandDateRange
+  http: GET /v1/accounts/{account-id}/subscriptions/{subscription-id}/usage-records
+- name: kore_get_usage_record_by_plan_id
+  description: Finds Usage Records By PlanId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getUsageRecordByPlanId
+  http: GET /v1/accounts/{account-id}/plans/{plan-id}/usage-records
+- name: kore_get_request_status_by_account_id
+  description: Lists All Requests
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByAccountId
+  http: GET /v1/accounts/{account-id}/provisioning-requests
+- name: kore_create_provisioning_request
+  description: Create A Provisioning Request
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#CreateProvisioningRequest
+  http: POST /v1/accounts/{account-id}/provisioning-requests
+- name: kore_suspend_a_sim
+  description: Suspend a SIM
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#SuspendASim
+  http: POST /v1/accounts/{account-id}/provisioning-requests/suspend
+- name: kore_activate_a_sim
+  description: Activate a SIM
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#ActivateASim
+  http: POST /v1/accounts/{account-id}/provisioning-requests/activate
+- name: kore_deactivate_a_sim
+  description: Deactivate a SIM
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#DeactivateASim
+  http: POST /v1/accounts/{account-id}/provisioning-requests/deactivate
+- name: kore_plan_change_for_a_sim
+  description: Change Plan for a SIM
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#PlanChangeForASim
+  http: POST /v1/accounts/{account-id}/provisioning-requests/plan-feature-change
+- name: kore_reactivate_a_sim
+  description: Reactivate a SIM
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#ReactivateASim
+  http: POST /v1/accounts/{account-id}/provisioning-requests/reactivate
+- name: kore_terminate_a_sim
+  description: Terminate a SIM
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#TerminateASim
+  http: POST /v1/accounts/{account-id}/provisioning-requests/terminate
+- name: kore_get_request_status_by_provisioning_request_id
+  description: Finds Request Status By ProvisioningRequestId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByProvisioningRequestId
+  http: GET /v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}
+- name: kore_get_subscriptions_by_account_id
+  description: Lists All Subscription Details
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getSubscriptionsByAccountId
+  http: GET /v1/accounts/{account-id}/subscriptions
+- name: kore_update_subscriptions_by_subscription_id
+  description: Update Subscription Details
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#updateSubscriptionsBySubscriptionId
+  http: POST /v1/accounts/{account-id}/subscription-requests
+- name: kore_update_connected_hardware_by_subscription_id
+  description: Update Connected Hardware Details
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#updateConnectedHardwareBySubscriptionId
+  http: POST /v1/accounts/{account-id}/subscription-requests/connected-hardware
+- name: kore_get_subscription_details_by_subscription_id
+  description: Finds Subscription Details For Given SubscriptionId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getSubscriptionDetailsBySubscriptionId
+  http: GET /v1/accounts/{account-id}/subscriptions/{subscription-id}
+- name: kore_get_subscription_request_details_by_i_d
+  description: Finds Subscription Request For Given ID
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getSubscriptionRequestDetailsByID
+  http: GET /v1/accounts/{account-id}/subscription-requests/{subscription-request-id}
+- name: kore_get_profiles_by_account_id
+  description: Finds Profile Details By ProfileId
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getProfilesByAccountId
+  http: GET /v1/accounts/{account-id}/profiles/{profile-id}
+- name: kore_get_accounts_by_email
+  description: Get All Accounts
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#GetAccountsByEmail
+  http: GET /v1/accounts
+- name: kore_get_activation_profile_by_account_id
+  description: Lists All Activation Profiles
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getActivationProfileByAccountId
+  http: GET /v1/accounts/{account-id}/activation-profiles
+- name: kore_get_activation_profile_by_activation_profile_id
+  description: Finds Activation Profile by Activation Profile Id
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getActivationProfileByActivationProfileId
+  http: GET /v1/accounts/{account-id}/activation-profiles/{activation-profile-id}
+- name: kore_get_cost_center_by_account_id
+  description: Lists All Cost Centers
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getCostCenterByAccountId
+  http: GET /v1/accounts/{account-id}/cost-centers
+- name: kore_get_connection_status
+  description: Get Online Connection Status
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getConnectionStatus
+  http: GET /v1/ping
+- name: kore_get_events_by_account_id
+  description: Lists All Events
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getEventsByAccountId
+  http: GET /v1/accounts/{account-id}/events
+- name: kore_get_rules_by_account_id
+  description: Lists All Rules
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRulesByAccountId
+  http: GET /v1/accounts/{account-id}/rules
+- name: kore_create_rule
+  description: Add A New Rule
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#createRule
+  http: POST /v1/accounts/{account-id}/rules
+- name: kore_update_rule_by_rule_id
+  description: Update An Existing Rule
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#updateRuleByRuleId
+  http: PUT /v1/accounts/{account-id}/rules/{rule-id}
+- name: kore_get_diagnostics_request_status_by_account_id
+  description: Lists All Requests
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getDiagnosticsRequestStatusByAccountId
+  http: GET /v1/accounts/{account-id}/diagnostics
+- name: kore_create_diagnostic_request
+  description: Create A Diagnostic Request
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#CreateDiagnosticRequest
+  http: POST /v1/accounts/{account-id}/diagnostics
+- name: kore_get_request_status_by_diagnostics_request_id
+  description: Finds Request Status By Diagnostics Request Id
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getRequestStatusByDiagnosticsRequestId
+  http: GET /v1/accounts/{account-id}/diagnostics/{diagnostics-request-id}
+- name: kore_get_scheduled_report_download_url
+  description: Get The Scheduled Report Details
+  source_operation: openapi/kore-wireless-connectivity-pro.yml#getScheduledReportDownloadUrl
+  http: GET /v1/accounts/{account-id}/scheduled-reports/daily-subscriptions
+- name: kore_fetch_account_mappings
+  description: Get Platform Account mappings
+  source_operation: openapi/kore-wireless-iam.yml#fetchAccountMappings
+  http: GET /v1/platform_account_mappings
+- name: kore_create_child
+  description: Create Child Account
+  source_operation: openapi/kore-wireless-iam.yml#createChild
+  http: POST /v1/accounts
+- name: kore_fetch_all_accounts
+  description: Get All Accounts
+  source_operation: openapi/kore-wireless-iam.yml#fetchAllAccounts
+  http: GET /v1/accounts
+- name: kore_list_data_usage
+  description: List Data Usage records for an account
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsage
+  http: GET /v1/UsageRecords
+- name: kore_list_data_usage_for_sim
+  description: List Data Usage records for a sim
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listDataUsageForSim
+  http: GET /v1/Sims/{Sid}/UsageRecords
+- name: kore_get_data_session
+  description: List Data Usage records for a sim
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#getDataSession
+  http: GET /v1/Sims/{Sid}/DataSessions
+- name: kore_list_rate_plans
+  description: List Data Rate Plans
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listRatePlans
+  http: GET /v1/RatePlans
+- name: kore_create_rate_plans
+  description: Create Data Rate Plans
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#createRatePlans
+  http: POST /v1/RatePlans
+- name: kore_get_rate_plan
+  description: Get Data Rate Plan
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#getRatePlan
+  http: GET /v1/RatePlans/{Sid}
+- name: kore_update_rate_plan
+  description: Update Rate Plan
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#updateRatePlan
+  http: POST /v1/RatePlans/{Sid}
+- name: kore_delete_rate_plan
+  description: Delete Data Rate Plan
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#deleteRatePlan
+  http: DELETE /v1/RatePlans/{Sid}
+- name: kore_list_sims
+  description: List Sims
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listSims
+  http: GET /v1/Sims
+- name: kore_get_a_sim
+  description: Get a Sim
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#getASim
+  http: GET /v1/Sims/{Sid}
+- name: kore_update_a_sim
+  description: Update A Sim
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#updateASim
+  http: POST /v1/Sims/{Sid}
+- name: kore_delete_a_sim
+  description: Delete a Sim
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#deleteASim
+  http: DELETE /v1/Sims/{Sid}
+- name: kore_list_commands
+  description: List Commands
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#listCommands
+  http: GET /v1/Commands
+- name: kore_send_command
+  description: Send a Command to a Sim.
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#sendCommand
+  http: POST /v1/Commands
+- name: kore_get_command
+  description: Fetch a Command instance from your account.
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#getCommand
+  http: GET /v1/Commands/{Sid}
+- name: kore_delete_command
+  description: Delete a Command instance from your account.
+  source_operation: openapi/kore-wireless-programmable-wireless.yml#deleteCommand
+  http: DELETE /v1/Commands/{Sid}
+- name: kore_list_billing_period
+  description: Read multiple BillingPeriod resources
+  source_operation: openapi/kore-wireless-supersim.yml#ListBillingPeriod
+  http: GET /v1/Sims/{SimSid}/BillingPeriods
+- name: kore_create_esim_profile
+  description: Create an ESimProfile resource to reserve a Super SIM profile
+  source_operation: openapi/kore-wireless-supersim.yml#CreateEsimProfile
+  http: POST /v1/ESimProfiles
+- name: kore_list_esim_profile
+  description: Read all ESimProfile resources
+  source_operation: openapi/kore-wireless-supersim.yml#ListEsimProfile
+  http: GET /v1/ESimProfiles
+- name: kore_fetch_esim_profile
+  description: Fetch an ESimProfile resource
+  source_operation: openapi/kore-wireless-supersim.yml#FetchEsimProfile
+  http: GET /v1/ESimProfiles/{Sid}
+- name: kore_create_fleet
+  description: Create a Fleet
+  source_operation: openapi/kore-wireless-supersim.yml#CreateFleet
+  http: POST /v1/Fleets
+- name: kore_list_fleet
+  description: Retrieve a list of Fleets from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#ListFleet
+  http: GET /v1/Fleets
+- name: kore_fetch_fleet
+  description: Fetch a Fleet instance from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#FetchFleet
+  http: GET /v1/Fleets/{Sid}
+- name: kore_update_fleet
+  description: Updates the given properties of a Super SIM Fleet instance from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#UpdateFleet
+  http: POST /v1/Fleets/{Sid}
+- name: kore_create_ip_command
+  description: Send an IP Command to a Super SIM.
+  source_operation: openapi/kore-wireless-supersim.yml#CreateIpCommand
+  http: POST /v1/IpCommands
+- name: kore_list_ip_command
+  description: Retrieve a list of IP Commands from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#ListIpCommand
+  http: GET /v1/IpCommands
+- name: kore_fetch_ip_command
+  description: Fetch IP Command instance from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#FetchIpCommand
+  http: GET /v1/IpCommands/{Sid}
+- name: kore_fetch_network
+  description: Fetch a Network resource.
+  source_operation: openapi/kore-wireless-supersim.yml#FetchNetwork
+  http: GET /v1/Networks/{Sid}
+- name: kore_list_network
+  description: Retrieve a list of Network resources.
+  source_operation: openapi/kore-wireless-supersim.yml#ListNetwork
+  http: GET /v1/Networks
+- name: kore_create_network_access_profile
+  description: Create a new Network Access Profile
+  source_operation: openapi/kore-wireless-supersim.yml#CreateNetworkAccessProfile
+  http: POST /v1/NetworkAccessProfiles
+- name: kore_list_network_access_profile
+  description: Retrieve a list of Network Access Profiles from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#ListNetworkAccessProfile
+  http: GET /v1/NetworkAccessProfiles
+- name: kore_fetch_network_access_profile
+  description: Fetch a Network Access Profile instance from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#FetchNetworkAccessProfile
+  http: GET /v1/NetworkAccessProfiles/{Sid}
+- name: kore_update_network_access_profile
+  description: Updates the given properties of a Network Access Profile in your account.
+  source_operation: openapi/kore-wireless-supersim.yml#UpdateNetworkAccessProfile
+  http: POST /v1/NetworkAccessProfiles/{Sid}
+- name: kore_list_network_access_profile_network
+  description: Retrieve a list of Network Access Profile resource's Network resource.
+  source_operation: openapi/kore-wireless-supersim.yml#ListNetworkAccessProfileNetwork
+  http: GET /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks
+- name: kore_create_network_access_profile_network
+  description: Add a Network resource to the Network Access Profile resource.
+  source_operation: openapi/kore-wireless-supersim.yml#CreateNetworkAccessProfileNetwork
+  http: POST /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks
+- name: kore_delete_network_access_profile_network
+  description: Remove a Network resource from the Network Access Profile resource's.
+  source_operation: openapi/kore-wireless-supersim.yml#DeleteNetworkAccessProfileNetwork
+  http: DELETE /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}
+- name: kore_fetch_network_access_profile_network
+  description: Fetch a Network Access Profile resource's Network resource.
+  source_operation: openapi/kore-wireless-supersim.yml#FetchNetworkAccessProfileNetwork
+  http: GET /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}
+- name: kore_list_settings_update
+  description: Retrieve a list of Settings Updates.
+  source_operation: openapi/kore-wireless-supersim.yml#ListSettingsUpdate
+  http: GET /v1/SettingsUpdates
+- name: kore_create_sim
+  description: Register a Super SIM
+  source_operation: openapi/kore-wireless-supersim.yml#CreateSim
+  http: POST /v1/Sims
+- name: kore_list_sim
+  description: List Super SIMs
+  source_operation: openapi/kore-wireless-supersim.yml#ListSim
+  http: GET /v1/Sims
+- name: kore_fetch_sim
+  description: Fetch a Super SIM
+  source_operation: openapi/kore-wireless-supersim.yml#FetchSim
+  http: GET /v1/Sims/{Sid}
+- name: kore_update_sim
+  description: Update a SIM
+  source_operation: openapi/kore-wireless-supersim.yml#UpdateSim
+  http: POST /v1/Sims/{Sid}
+- name: kore_list_sim_ip_address
+  description: Retrieve a list of IP Addresses for the given Super SIM.
+  source_operation: openapi/kore-wireless-supersim.yml#ListSimIpAddress
+  http: GET /v1/Sims/{SimSid}/IpAddresses
+- name: kore_create_sms_command
+  description: Send SMS Command to a Sim.
+  source_operation: openapi/kore-wireless-supersim.yml#CreateSmsCommand
+  http: POST /v1/SmsCommands
+- name: kore_list_sms_command
+  description: Retrieve a list of SMS Commands from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#ListSmsCommand
+  http: GET /v1/SmsCommands
+- name: kore_fetch_sms_command
+  description: Fetch SMS Command instance from your account.
+  source_operation: openapi/kore-wireless-supersim.yml#FetchSmsCommand
+  http: GET /v1/SmsCommands/{Sid}
+- name: kore_list_usage_record
+  description: List UsageRecords
+  source_operation: openapi/kore-wireless-supersim.yml#ListUsageRecord
+  http: GET /v1/UsageRecords
+- name: kore_create_secret
+  description: Create a new secret
+  source_operation: openapi/kore-wireless-webhook.yml#createSecret
+  http: POST /v1/secrets
+- name: kore_get_secrets
+  description: Retrieve a list of secrets
+  source_operation: openapi/kore-wireless-webhook.yml#getSecrets
+  http: GET /v1/secrets
+- name: kore_modify_secret
+  description: Modify an existing secret
+  source_operation: openapi/kore-wireless-webhook.yml#modifySecret
+  http: PATCH /v1/secrets/{id}
