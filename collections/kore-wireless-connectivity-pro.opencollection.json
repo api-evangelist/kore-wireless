@@ -1,0 +1,1593 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Connectivity APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "eligibility",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists All Eligible Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/plans",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all eligible plans for an account"
+        },
+        {
+          "info": {
+            "name": "Lists All Plan Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/plan-types",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all plan types for an account"
+        },
+        {
+          "info": {
+            "name": "Finds Plan by PlanId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/plans/:plan-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "plan-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your plan"
+              }
+            ]
+          },
+          "docs": "Get details of a specific plan for an account"
+        },
+        {
+          "info": {
+            "name": "Lists All Eligible Service Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/service-types",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all eligible service types for an account"
+        },
+        {
+          "info": {
+            "name": "Finds ServiceType by ServiceTypeId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/service-types/:service-type-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "service-type-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the service type"
+              }
+            ]
+          },
+          "docs": "Get details of a specific service type for an account"
+        },
+        {
+          "info": {
+            "name": "Lists All Eligible Features",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/features",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all eligible features for an account"
+        },
+        {
+          "info": {
+            "name": "Finds Feature by FeatureId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/features/:feature-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "feature-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your feature"
+              }
+            ]
+          },
+          "docs": "Get details of a specific feature for an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "usage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Finds Usage Records By Sim Number And Date Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "subscription-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the SIM"
+              },
+              {
+                "name": "start-date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "query",
+                "description": "Date range must fall in between 60 days"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include-plan-name",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response."
+              }
+            ]
+          },
+          "docs": "Get usage records for a subscription"
+        },
+        {
+          "info": {
+            "name": "Finds Usage Records By PlanId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/plans/:plan-id/usage-records",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "plan-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your plan"
+              },
+              {
+                "name": "start-date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "query",
+                "description": "Date range must fall in between 60 days"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get usage records for a plan"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "provisioning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists All Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "number of records"
+              },
+              {
+                "name": "subscription-id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "query",
+                "description": "The ICCID of the subscription"
+              }
+            ]
+          },
+          "docs": "Get all requests made for an account"
+        },
+        {
+          "info": {
+            "name": "Create A Provisioning Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a provisioning request for an account <br /> \nNote: New provisioning endpoints have been created, one endpoint per action, to simplify provisioning SIMs. The current endpoint will continue to work.  \n- [Activate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/activate)\n- [Change Plan for a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/plan-feature"
+        },
+        {
+          "info": {
+            "name": "Suspend a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/suspend",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Suspend a SIM for an account"
+        },
+        {
+          "info": {
+            "name": "Activate a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/activate",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a SIM for an account"
+        },
+        {
+          "info": {
+            "name": "Deactivate a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/deactivate",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate a SIM for an account"
+        },
+        {
+          "info": {
+            "name": "Change Plan for a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/plan-feature-change",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change plan for a SIM of an account"
+        },
+        {
+          "info": {
+            "name": "Reactivate a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/reactivate",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reactivate a SIM for an account"
+        },
+        {
+          "info": {
+            "name": "Terminate a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/terminate",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Terminate a SIM for an account"
+        },
+        {
+          "info": {
+            "name": "Finds Request Status By ProvisioningRequestId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/provisioning-requests/:provisioning-request-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "provisioning-request-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a specific request made"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists All Subscription Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscriptions",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "page-index",
+                "value": "",
+                "type": "query",
+                "description": "page index starting with zero"
+              },
+              {
+                "name": "max-page-item",
+                "value": "",
+                "type": "query",
+                "description": "maximum 1000 records per page"
+              },
+              {
+                "name": "sort-field",
+                "value": "",
+                "type": "query",
+                "description": "the values are case-sensitive, if not specified, will be sorted based on created time."
+              },
+              {
+                "name": "sort-direction",
+                "value": "",
+                "type": "query",
+                "description": "the values are case-sensitive"
+              },
+              {
+                "name": "imsi",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "imei",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "query",
+                "description": "Please note to add iccids using comma separators and upto max of 100.<br /> eg: 8765367892,856326787,8456095345,....."
+              },
+              {
+                "name": "eid",
+                "value": "",
+                "type": "query",
+                "description": "32 - digit unique identifier for the eSIM"
+              },
+              {
+                "name": "sim-state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "msisdn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "show-state-history",
+                "value": "",
+                "type": "query",
+                "description": "default - false"
+              },
+              {
+                "name": "last-modified-from",
+                "value": "",
+                "type": "query",
+                "description": "Date from which subscription was last modified,eg: 2023-02-23T11:20:04.077Z"
+              },
+              {
+                "name": "last-modified-to",
+                "value": "",
+                "type": "query",
+                "description": "Date to which subscription was last modified,eg: 2023-02-23T11:20:04.077Z"
+              }
+            ]
+          },
+          "docs": "Get details on all subscriptions for an account"
+        },
+        {
+          "info": {
+            "name": "Update Subscription Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscription-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a subscription request to update Subscriptions"
+        },
+        {
+          "info": {
+            "name": "Update Connected Hardware Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscription-requests/connected-hardware",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a subscription request to update connected hardware details"
+        },
+        {
+          "info": {
+            "name": "Transfer a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscription-requests/sim-transfer",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a request to transfer \"Stock\" Subscriptions to another account using the \"account-id\" key"
+        },
+        {
+          "info": {
+            "name": "Finds Subscription Details For Given SubscriptionId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscriptions/:subscription-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "subscription-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the SIM"
+              }
+            ]
+          },
+          "docs": "Get details for a specific subscription for an account"
+        },
+        {
+          "info": {
+            "name": "Finds Subscription Request For Given ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscription-requests/:subscription-request-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "subscription-request-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the Subscription request"
+              }
+            ]
+          },
+          "docs": "Get request details for a specific subscription for an account"
+        },
+        {
+          "info": {
+            "name": "Update Subscription Cost Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/subscription-requests/cost-center",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a request to update cost center for a subscription"
+        },
+        {
+          "info": {
+            "name": "Finds Profile Details By ProfileId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/profiles/:profile-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "profile-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a specific profile for an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query",
+                "description": "Input the dev portal admin email"
+              }
+            ]
+          },
+          "docs": "Get All Accounts"
+        },
+        {
+          "info": {
+            "name": "Lists All Cost Centers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/cost-centers",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all cost centers for an account"
+        },
+        {
+          "info": {
+            "name": "Create Cost Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/cost-centers",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new cost center for an account"
+        },
+        {
+          "info": {
+            "name": "Update Cost Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/cost-centers",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update existing  cost center for an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Activation Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists All Activation Profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/activation-profiles",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all activation profiles for an account"
+        },
+        {
+          "info": {
+            "name": "Finds Activation Profile by Activation Profile Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/activation-profiles/:activation-profile-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "activation-profile-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a specific activation profile for an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "testing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Online Connection Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/ping"
+          },
+          "docs": "Test API integration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "alerting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists All Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/events",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all eligible events for an account"
+        },
+        {
+          "info": {
+            "name": "Lists All Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/rules",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get all eligible rules for an account"
+        },
+        {
+          "info": {
+            "name": "Add A New Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/rules",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "adds a new rule for non usage alerting"
+        },
+        {
+          "info": {
+            "name": "Update An Existing Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/rules/:rule-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "rule-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "modifies an existing rule upon providing the rule Id"
+        },
+        {
+          "info": {
+            "name": "Lists All Alert History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/alerts",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "start-date",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the date from which alert history will be shown. <br /> eg: YYYY-MM-DD"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the date from which alert history will be shown. <br /> eg: YYYY-MM-DD"
+              },
+              {
+                "name": "page-index",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the index of a page during pagination."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Specifies the maximum number of records that needs to be included in the page."
+              }
+            ]
+          },
+          "docs": "Gets a list of alerts for an account in the last 15 days"
+        },
+        {
+          "info": {
+            "name": "Lists Alert History By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/alerts/:alert-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "alert-id",
+                "value": "",
+                "type": "path",
+                "description": "This specifies the id of an alert."
+              }
+            ]
+          },
+          "docs": "Gets details of a specific alert for an account"
+        },
+        {
+          "info": {
+            "name": "Lists All Actions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/actions",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Gets all supported actions for an account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "eSIM Profile Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Finds Switch Request By eSIM Profile Switch Request ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-switch-requests/:esim-profile-switch-request-id",
+            "params": [
+              {
+                "name": "esim-profile-switch-request-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the switch request"
+              },
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get details of a specific switch request by eSIM Profile Switch Request ID"
+        },
+        {
+          "info": {
+            "name": "Lists All Switch Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-switch-requests",
+            "params": [
+              {
+                "name": "eid",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the eSIM"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "Number of records"
+              },
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ]
+          },
+          "docs": "Get details of all switch requests by EID"
+        },
+        {
+          "info": {
+            "name": "Create A Switch Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-switch-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a switch profile request for an account. Downloads a new profile to the eSIM, activates the new subscription, enables the new profile in the eSIM, and deactivates or suspends the old subscription, or (optionally) the old subscription remains active and is subject to MRC"
+        },
+        {
+          "info": {
+            "name": "Retry Switch Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-switch-requests/retry",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retry a failed switch request or skip failed step of a switch request.<br> Note: The only step that can be skipped for a switch request is the session check step. If the device is not online the request may fail at the next step."
+        },
+        {
+          "info": {
+            "name": "Create An Enable Profile Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-enable-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "cmp-pp-org-000",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an enable profile request for an account. Enables a specified profile on the eSIM."
+        },
+        {
+          "info": {
+            "name": "Create A Download Profile Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-download-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "cmp-pp-org-000",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a download profile request for an account. Downloads a new profile to the eSIM and activates the subscription. "
+        },
+        {
+          "info": {
+            "name": "Create A Delete Profile Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-delete-requests",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "cmp-pp-org-000",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a delete profile request for an account. Deletes a specified profile from the eSIM."
+        },
+        {
+          "info": {
+            "name": "Cancel Switch Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/esim-profile-switch-requests/cancel",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "cmp-pp-org-000",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel all type of switch requests (switch/ enable/ download/ delete) Or cancel the pending auto retries"
+        },
+        {
+          "info": {
+            "name": "Get eSIM profile status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/esim/profile-status",
+            "params": [
+              {
+                "name": "eid",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier of the eSIM"
+              },
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "query",
+                "description": "The ICCID of the subscription"
+              }
+            ]
+          },
+          "docs": "Get the RSP profile status for all subscriptions associated with the EID. Profile status is not returned for profiles that are not downloaded or were deleted."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Session",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Session Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/sessions",
+            "params": [
+              {
+                "name": "query-by-field",
+                "value": "",
+                "type": "query",
+                "description": "This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid."
+              },
+              {
+                "name": "query-by-values",
+                "value": "",
+                "type": "query",
+                "description": "This field expects one or more values up to 100 for the field selected in the query-by-field."
+              },
+              {
+                "name": "include-active-sessions",
+                "value": "",
+                "type": "query",
+                "description": "Include details of the active/open session in the response. Default value is false."
+              },
+              {
+                "name": "date-range-start",
+                "value": "",
+                "type": "query",
+                "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z."
+              },
+              {
+                "name": "date-range-end",
+                "value": "",
+                "type": "query",
+                "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Session data is paginated, and this field defines the page number to be queried."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Session data is paginated, and this field defines the page size to be queried."
+              },
+              {
+                "name": "sort-by",
+                "value": "",
+                "type": "query",
+                "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC"
+              },
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for an account"
+              }
+            ]
+          },
+          "docs": "Session details API queried by subscription-id or msisdn or iccid will return list of session details for a subscription. API will return an empty array in response if there are no RADIUS session details available for that subscription."
+        },
+        {
+          "info": {
+            "name": "Get Session Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/in-session",
+            "params": [
+              {
+                "name": "query-by-field",
+                "value": "",
+                "type": "query",
+                "description": "This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid."
+              },
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "query-by-values",
+                "value": "",
+                "type": "query",
+                "description": "This field expects one or more values up to 100 for the field selected in the query-by-field."
+              },
+              {
+                "name": "include-session-timestamp",
+                "value": "",
+                "type": "query",
+                "description": "Indicates whether the response should include the timestamp of the last updated session"
+              }
+            ]
+          },
+          "docs": "Get in-session status, that can be queried by subscription-id or msisdn or iccid. This API will return in session True/False based on the latest RADIUS event available. API will return an empty array in response if there are no RADIUS session events available for that subscription. "
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Diagnostics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists All Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/diagnostics",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "take",
+                "value": "",
+                "type": "query",
+                "description": "number of records"
+              },
+              {
+                "name": "subscription-id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "query",
+                "description": "The ICCID of the subscription"
+              },
+              {
+                "name": "msisdn",
+                "value": "",
+                "type": "query",
+                "description": "The phone number attached to the subscription"
+              }
+            ]
+          },
+          "docs": "Get all requests made for an account"
+        },
+        {
+          "info": {
+            "name": "Create A Diagnostic Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/diagnostics",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a diagnostics request for an account"
+        },
+        {
+          "info": {
+            "name": "Finds Request Status By Diagnostics Request Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "diagnostics-request-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details of a specific request made"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get The Scheduled Report Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/connectivity/v1/accounts/:account-id/scheduled-reports/daily-subscriptions",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of your account"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "The date for which the scheduled report is requested. Eg: 2023-02-23"
+              }
+            ]
+          },
+          "docs": "Get a previously configured scheduled report."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

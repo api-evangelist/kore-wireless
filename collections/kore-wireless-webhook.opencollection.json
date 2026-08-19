@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Webhook APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Secrets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of secrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://webhook.api.korewireless.com/v1/secrets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter secrets by their status."
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "Optional Filter that indicates the current pagination index of the response."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Optional Filter that indicates the total number of records included in the response."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of secrets, optionally filtered by status."
+        },
+        {
+          "info": {
+            "name": "Create a new secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://webhook.api.korewireless.com/v1/secrets",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new secret with associated metadata."
+        },
+        {
+          "info": {
+            "name": "Modify an existing secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://webhook.api.korewireless.com/v1/secrets/:id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the secret to be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the details of an existing secret specified by `id`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

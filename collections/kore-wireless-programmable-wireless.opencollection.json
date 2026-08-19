@@ -1,0 +1,681 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Programmable Wireless APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UsageRecords Resource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Usage records for an account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/UsageRecords",
+            "params": [
+              {
+                "name": "Start",
+                "value": "",
+                "type": "query",
+                "description": "Only include usage that has occurred on or after this date. Format is ISO 8601"
+              },
+              {
+                "name": "End",
+                "value": "",
+                "type": "query",
+                "description": "Only include usage that has occurred on or before this date. Format is ISO 8601."
+              },
+              {
+                "name": "Granularity",
+                "value": "",
+                "type": "query",
+                "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ]
+          },
+          "docs": "List Data Usage records for an account"
+        },
+        {
+          "info": {
+            "name": "List Data Usage records for a sim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Sims/:Sid/UsageRecords",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Sim resource to read the usage from."
+              },
+              {
+                "name": "Start",
+                "value": "",
+                "type": "query",
+                "description": "Only include usage that has occurred on or after this date. Format is ISO 8601"
+              },
+              {
+                "name": "End",
+                "value": "",
+                "type": "query",
+                "description": "Only include usage that has occurred on or before this date. Format is ISO 8601."
+              },
+              {
+                "name": "Granularity",
+                "value": "",
+                "type": "query",
+                "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ]
+          },
+          "docs": "List Data Usage records for a sim"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DataSessions Resource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Usage records for a sim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Sims/:Sid/DataSessions",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Sim resource to read the usage from."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ]
+          },
+          "docs": "List Data Usage records for a sim"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RatePlans Resource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Data Rate Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/RatePlans",
+            "params": [
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ]
+          },
+          "docs": "List Data Rate Plans"
+        },
+        {
+          "info": {
+            "name": "Create Data Rate Plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/RatePlans",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "FriendlyName",
+                  "value": ""
+                },
+                {
+                  "name": "DataEnabled",
+                  "value": ""
+                },
+                {
+                  "name": "DataLimit",
+                  "value": ""
+                },
+                {
+                  "name": "DataMetering",
+                  "value": ""
+                },
+                {
+                  "name": "MessagingEnabled",
+                  "value": ""
+                },
+                {
+                  "name": "VoiceEnabled",
+                  "value": ""
+                },
+                {
+                  "name": "NationalRoamingEnabled",
+                  "value": ""
+                },
+                {
+                  "name": "InternationalRoaming",
+                  "value": ""
+                },
+                {
+                  "name": "NationalRoamingDataLimit",
+                  "value": ""
+                },
+                {
+                  "name": "InternationalRoamingDataLimit",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create Data Rate Plans"
+        },
+        {
+          "info": {
+            "name": "Get Data Rate Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/RatePlans/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ]
+          },
+          "docs": "Get Data Rate Plan"
+        },
+        {
+          "info": {
+            "name": "Update Rate Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/RatePlans/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "FriendlyName",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update Rate Plan"
+        },
+        {
+          "info": {
+            "name": "Delete Data Rate Plan",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/RatePlans/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ]
+          },
+          "docs": "Delete Data Rate Plan"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sims Resource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Sims",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Sims",
+            "params": [
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Only return Sim resources with this status."
+              },
+              {
+                "name": "Iccid",
+                "value": "",
+                "type": "query",
+                "description": "Only return Sim resources with this ICCID. This will return a list with a maximum size of 1."
+              },
+              {
+                "name": "RatePlan",
+                "value": "",
+                "type": "query",
+                "description": "The SID or unique name of a RatePlan resource. Only return Sim resources assigned to this RatePlan resource."
+              },
+              {
+                "name": "EId",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated."
+              },
+              {
+                "name": "SimRegistrationCode",
+                "value": "",
+                "type": "query",
+                "description": "Only return Sim resources with this registration code. This will return a list with a maximum size of 1."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ]
+          },
+          "docs": "List Sims"
+        },
+        {
+          "info": {
+            "name": "Get a Sim",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Sims/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ]
+          },
+          "docs": "Get a Sim"
+        },
+        {
+          "info": {
+            "name": "Update A Sim",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Sims/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "FriendlyName",
+                  "value": ""
+                },
+                {
+                  "name": "RatePlan",
+                  "value": ""
+                },
+                {
+                  "name": "Status",
+                  "value": ""
+                },
+                {
+                  "name": "CommandsCallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "CommandsCallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "SmsFallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "SmsFallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "SmsMethod",
+                  "value": ""
+                },
+                {
+                  "name": "SmsUrl",
+                  "value": ""
+                },
+                {
+                  "name": "VoiceFallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "VoiceFallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "VoiceMethod",
+                  "value": ""
+                },
+                {
+                  "name": "VoiceUrl",
+                  "value": ""
+                },
+                {
+                  "name": "ResetStatus",
+                  "value": ""
+                },
+                {
+                  "name": "AccountSid",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update A Sim"
+        },
+        {
+          "info": {
+            "name": "Delete a Sim",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Sims/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ]
+          },
+          "docs": "Delete a Sim"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Commands Resource",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Commands",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Commands",
+            "params": [
+              {
+                "name": "Sim",
+                "value": "",
+                "type": "query",
+                "description": "The `sid` or `unique_name` of the Sim resources to read."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`."
+              },
+              {
+                "name": "Direction",
+                "value": "",
+                "type": "query",
+                "description": "Only return Commands with this direction value."
+              },
+              {
+                "name": "Transport",
+                "value": "",
+                "type": "query",
+                "description": "Only return Commands with this transport value. Can be: `sms` or `ip`."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ]
+          },
+          "docs": "List Commands"
+        },
+        {
+          "info": {
+            "name": "Send a Command to a Sim.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Commands",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "Command",
+                  "value": ""
+                },
+                {
+                  "name": "Sim",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "CommandMode",
+                  "value": ""
+                },
+                {
+                  "name": "IncludeSid",
+                  "value": ""
+                },
+                {
+                  "name": "DeliveryReceiptRequested",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Send a Command to a Sim."
+        },
+        {
+          "info": {
+            "name": "Fetch a Command instance from your account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Commands/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ]
+          },
+          "docs": "Fetch a Command instance from your account."
+        },
+        {
+          "info": {
+            "name": "Delete a Command instance from your account.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://programmable-wireless.api.korewireless.com/v1/Commands/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the RatePlan resource to fetch."
+              }
+            ]
+          },
+          "docs": "Delete a Command instance from your account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

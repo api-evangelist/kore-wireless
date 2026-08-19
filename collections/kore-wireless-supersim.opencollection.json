@@ -1,0 +1,1491 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "KORE - Supersim",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SupersimV1BillingPeriod",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read multiple BillingPeriod resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Sims/:SimSid/BillingPeriods",
+            "params": [
+              {
+                "name": "SimSid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Super SIM to list Billing Periods for."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Billing Periods for a Super SIM."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1EsimProfile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read all ESimProfile resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/ESimProfiles",
+            "params": [
+              {
+                "name": "Eid",
+                "value": "",
+                "type": "query",
+                "description": "List the eSIM Profiles that have been associated with an EId."
+              },
+              {
+                "name": "SimSid",
+                "value": "",
+                "type": "query",
+                "description": "Find the eSIM Profile resource related to a [Sim](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "List the eSIM Profiles that are in a given status."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of eSIM Profiles."
+        },
+        {
+          "info": {
+            "name": "Create an ESimProfile resource to reserve a Super SIM profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/ESimProfiles",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "CallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "GenerateMatchingId",
+                  "value": ""
+                },
+                {
+                  "name": "Eid",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Order an eSIM Profile."
+        },
+        {
+          "info": {
+            "name": "Fetch an ESimProfile resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/ESimProfiles/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the eSIM Profile resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch an eSIM Profile."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1Fleet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListFleet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Fleets",
+            "params": [
+              {
+                "name": "NetworkAccessProfile",
+                "value": "",
+                "type": "query",
+                "description": "The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Fleets from your account."
+        },
+        {
+          "info": {
+            "name": "CreateFleet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/Fleets",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "NetworkAccessProfile",
+                  "value": ""
+                },
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "DataEnabled",
+                  "value": ""
+                },
+                {
+                  "name": "DataLimit",
+                  "value": ""
+                },
+                {
+                  "name": "IpCommandsUrl",
+                  "value": ""
+                },
+                {
+                  "name": "IpCommandsMethod",
+                  "value": ""
+                },
+                {
+                  "name": "SmsCommandsEnabled",
+                  "value": ""
+                },
+                {
+                  "name": "SmsCommandsUrl",
+                  "value": ""
+                },
+                {
+                  "name": "SmsCommandsMethod",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a Fleet"
+        },
+        {
+          "info": {
+            "name": "FetchFleet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Fleets/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Fleet resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a Fleet instance from your account."
+        },
+        {
+          "info": {
+            "name": "UpdateFleet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/Fleets/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Fleet resource to update."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "NetworkAccessProfile",
+                  "value": ""
+                },
+                {
+                  "name": "IpCommandsUrl",
+                  "value": ""
+                },
+                {
+                  "name": "IpCommandsMethod",
+                  "value": ""
+                },
+                {
+                  "name": "SmsCommandsUrl",
+                  "value": ""
+                },
+                {
+                  "name": "SmsCommandsMethod",
+                  "value": ""
+                },
+                {
+                  "name": "DataLimit",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the given properties of a Super SIM Fleet instance from your account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1IpCommand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListIpCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/IpCommands",
+            "params": [
+              {
+                "name": "Sim",
+                "value": "",
+                "type": "query",
+                "description": "The SID or unique name of the Sim resource that IP Command was sent to or from."
+              },
+              {
+                "name": "SimIccid",
+                "value": "",
+                "type": "query",
+                "description": "The ICCID of the Sim resource that IP Command was sent to or from."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/ipcommand-resource#status-values) for a description of each."
+              },
+              {
+                "name": "Direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 100."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of IP Commands from your account."
+        },
+        {
+          "info": {
+            "name": "CreateIpCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/IpCommands",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "Sim",
+                  "value": ""
+                },
+                {
+                  "name": "Payload",
+                  "value": ""
+                },
+                {
+                  "name": "DevicePort",
+                  "value": ""
+                },
+                {
+                  "name": "PayloadType",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackMethod",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Send an IP Command to a Super SIM."
+        },
+        {
+          "info": {
+            "name": "FetchIpCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/IpCommands/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the IP Command resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch IP Command instance from your account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1Network",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "FetchNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Networks/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Network resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a Network resource."
+        },
+        {
+          "info": {
+            "name": "ListNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Networks",
+            "params": [
+              {
+                "name": "IsoCountry",
+                "value": "",
+                "type": "query",
+                "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resources to read."
+              },
+              {
+                "name": "Mcc",
+                "value": "",
+                "type": "query",
+                "description": "The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read."
+              },
+              {
+                "name": "Mnc",
+                "value": "",
+                "type": "query",
+                "description": "The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Network resources."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1NetworkAccessProfile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListNetworkAccessProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles",
+            "params": [
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Network Access Profiles from your account."
+        },
+        {
+          "info": {
+            "name": "CreateNetworkAccessProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "Networks",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a new Network Access Profile"
+        },
+        {
+          "info": {
+            "name": "FetchNetworkAccessProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Network Access Profile resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a Network Access Profile instance from your account."
+        },
+        {
+          "info": {
+            "name": "UpdateNetworkAccessProfile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Network Access Profile to update."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the given properties of a Network Access Profile in your account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1NetworkAccessProfileNetwork",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListNetworkAccessProfileNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks",
+            "params": [
+              {
+                "name": "NetworkAccessProfileSid",
+                "value": "",
+                "type": "path",
+                "description": "The unique string that identifies the Network Access Profile resource."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Network Access Profile resource's Network resource."
+        },
+        {
+          "info": {
+            "name": "CreateNetworkAccessProfileNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks",
+            "params": [
+              {
+                "name": "NetworkAccessProfileSid",
+                "value": "",
+                "type": "path",
+                "description": "The unique string that identifies the Network Access Profile resource."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "Network",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Add a Network resource to the Network Access Profile resource."
+        },
+        {
+          "info": {
+            "name": "FetchNetworkAccessProfileNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks/:Sid",
+            "params": [
+              {
+                "name": "NetworkAccessProfileSid",
+                "value": "",
+                "type": "path",
+                "description": "The unique string that identifies the Network Access Profile resource."
+              },
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Network resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a Network Access Profile resource's Network resource."
+        },
+        {
+          "info": {
+            "name": "DeleteNetworkAccessProfileNetwork",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/:NetworkAccessProfileSid/Networks/:Sid",
+            "params": [
+              {
+                "name": "NetworkAccessProfileSid",
+                "value": "",
+                "type": "path",
+                "description": "The unique string that identifies the Network Access Profile resource."
+              },
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Network resource to be removed from the Network Access Profile resource."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Remove a Network resource from the Network Access Profile resource's."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1SettingsUpdate",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListSettingsUpdate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/SettingsUpdates",
+            "params": [
+              {
+                "name": "Sim",
+                "value": "",
+                "type": "query",
+                "description": "Filter the Settings Updates by a Super SIM's SID or UniqueName."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Settings Updates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1Sim",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Super SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Sims",
+            "params": [
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`."
+              },
+              {
+                "name": "Fleet",
+                "value": "",
+                "type": "query",
+                "description": "The SID or unique name of the Fleet to which a list of Sims are assigned."
+              },
+              {
+                "name": "Iccid",
+                "value": "",
+                "type": "query",
+                "description": "The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of Super SIMs from your account."
+        },
+        {
+          "info": {
+            "name": "Register a Super SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/Sims",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "Iccid",
+                  "value": ""
+                },
+                {
+                  "name": "RegistrationCode",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Register a Super SIM to your Account"
+        },
+        {
+          "info": {
+            "name": "Fetch a Super SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Sims/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Sim resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch a Super SIM instance from your account."
+        },
+        {
+          "info": {
+            "name": "Update a SIM",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/Sims/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Sim resource to update."
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "UniqueName",
+                  "value": ""
+                },
+                {
+                  "name": "Status",
+                  "value": ""
+                },
+                {
+                  "name": "Fleet",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackUrl",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "AccountSid",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the given properties of a Super SIM instance from your account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1SimIpAddress",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListSimIpAddress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/Sims/:SimSid/IpAddresses",
+            "params": [
+              {
+                "name": "SimSid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the Super SIM to list IP Addresses for."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of IP Addresses for the given Super SIM."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1SmsCommand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListSmsCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/SmsCommands",
+            "params": [
+              {
+                "name": "Sim",
+                "value": "",
+                "type": "query",
+                "description": "The SID or unique name of the Sim resource that SMS Command was sent to or from."
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each."
+              },
+              {
+                "name": "Direction",
+                "value": "",
+                "type": "query",
+                "description": "The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of SMS Commands from your account."
+        },
+        {
+          "info": {
+            "name": "CreateSmsCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://supersim.api.korewireless.com/v1/SmsCommands",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "Sim",
+                  "value": ""
+                },
+                {
+                  "name": "Payload",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackMethod",
+                  "value": ""
+                },
+                {
+                  "name": "CallbackUrl",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Send SMS Command to a Sim."
+        },
+        {
+          "info": {
+            "name": "FetchSmsCommand",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/SmsCommands/:Sid",
+            "params": [
+              {
+                "name": "Sid",
+                "value": "",
+                "type": "path",
+                "description": "The SID of the SMS Command resource to fetch."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Fetch SMS Command instance from your account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SupersimV1UsageRecord",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ListUsageRecord",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://supersim.api.korewireless.com/v1/UsageRecords",
+            "params": [
+              {
+                "name": "Sim",
+                "value": "",
+                "type": "query",
+                "description": "SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM."
+              },
+              {
+                "name": "Fleet",
+                "value": "",
+                "type": "query",
+                "description": "SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super SIMs belonging to this Fleet resource at the time the usage occurred."
+              },
+              {
+                "name": "Network",
+                "value": "",
+                "type": "query",
+                "description": "SID of a Network resource. Only show UsageRecords representing usage on this network."
+              },
+              {
+                "name": "IsoCountry",
+                "value": "",
+                "type": "query",
+                "description": "Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country."
+              },
+              {
+                "name": "Group",
+                "value": "",
+                "type": "query",
+                "description": "Dimension over which to aggregate usage records. Can be: `sim`, `fleet`, `network`, `isoCountry`. Default is to not aggregate across any of these dimensions, UsageRecords will be aggregated into the time buckets described by the `Granularity` parameter."
+              },
+              {
+                "name": "Granularity",
+                "value": "",
+                "type": "query",
+                "description": "Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or `all`. Default is `all`. `all` returns one UsageRecord that describes the usage for the entire period."
+              },
+              {
+                "name": "StartTime",
+                "value": "",
+                "type": "query",
+                "description": "Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`."
+              },
+              {
+                "name": "EndTime",
+                "value": "",
+                "type": "query",
+                "description": "Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "How many resources to return in each list page. The default is 50, and the maximum is 249."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "The page index. This value is simply for client state."
+              },
+              {
+                "name": "PageToken",
+                "value": "",
+                "type": "query",
+                "description": "The page token. This is provided by the API."
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.korewireless.com/api-services/v1/auth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List UsageRecords"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

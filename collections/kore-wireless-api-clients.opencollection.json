@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Client APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://client.api.korewireless.com/v1/clients",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "page_size",
+                "value": "10",
+                "type": "query",
+                "description": "Enter the number of items you want to view per page."
+              },
+              {
+                "name": "page_number",
+                "value": "1",
+                "type": "query",
+                "description": "Input the page number you wish to navigate to."
+              },
+              {
+                "name": "client_type",
+                "value": "standard",
+                "type": "query",
+                "description": "Type of the client"
+              }
+            ]
+          },
+          "docs": "List all active clients"
+        },
+        {
+          "info": {
+            "name": "Create Client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://client.api.korewireless.com/v1/clients",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new API client for the account for which the API credentials are for. Once created, the client ID and secret will be shown, the latter only shown once during the creation process."
+        },
+        {
+          "info": {
+            "name": "Get Client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://client.api.korewireless.com/v1/clients/:client_id",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "client_id",
+                "value": "apiclient_01exampledszqr9q",
+                "type": "path",
+                "description": "Client Identifier to obtain the details"
+              }
+            ]
+          },
+          "docs": "Get Specific Client Details"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gives Online Connection Status for API Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://client.api.korewireless.com/v1/ping",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Gives Online Connection Status for API Gateway"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "v1-token",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "POST /v1/auth/token",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.korewireless.com/api-services/v1/auth/token",
+        "body": {
+          "type": "form-urlencoded",
+          "data": [
+            {
+              "name": "grant_type",
+              "value": ""
+            },
+            {
+              "name": "client_id",
+              "value": ""
+            },
+            {
+              "name": "client_secret",
+              "value": ""
+            }
+          ]
+        }
+      }
+    },
+    {
+      "info": {
+        "name": "OPTIONS /v1/auth/token",
+        "type": "http"
+      },
+      "http": {
+        "method": "OPTIONS",
+        "url": "https://api.korewireless.com/api-services/v1/auth/token"
+      }
+    }
+  ],
+  "bundled": true
+}

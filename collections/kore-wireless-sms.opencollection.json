@@ -1,0 +1,187 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SMS API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send new message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.korewireless.com/sms/v1/messages/send",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "query",
+                "description": "Account ID to which the SIM receiving the SMS belongs to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Customers can use this to send an SMS to their SIMs in ConnectivityPro."
+        },
+        {
+          "info": {
+            "name": "Get Messages (To be deprecated soon)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/sms/v1/sms/messages",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the account associated with the messages you want to retrieve"
+              },
+              {
+                "name": "msisdn",
+                "value": "",
+                "type": "query",
+                "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+              },
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "query",
+                "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+              },
+              {
+                "name": "from-date",
+                "value": "",
+                "type": "query",
+                "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network."
+              },
+              {
+                "name": "to-date",
+                "value": "",
+                "type": "query",
+                "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated)."
+              },
+              {
+                "name": "mid",
+                "value": "",
+                "type": "query",
+                "description": "A unique identifier for the SMS message you want to retrieve"
+              },
+              {
+                "name": "page-index",
+                "value": "1",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "max-page-item",
+                "value": "10",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort-order",
+                "value": "desc",
+                "type": "query",
+                "description": "Sorting is applied based on the sent or received dates of SMS messages."
+              }
+            ]
+          },
+          "docs": "To perform a ‘Search’ operation for specific messages"
+        },
+        {
+          "info": {
+            "name": "Get Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.korewireless.com/sms/v1/messages",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "query",
+                "description": "Unique identifier for the account associated with the messages you want to retrieve"
+              },
+              {
+                "name": "msisdn",
+                "value": "",
+                "type": "query",
+                "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+              },
+              {
+                "name": "iccid",
+                "value": "",
+                "type": "query",
+                "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+              },
+              {
+                "name": "from-date",
+                "value": "",
+                "type": "query",
+                "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network."
+              },
+              {
+                "name": "to-date",
+                "value": "",
+                "type": "query",
+                "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated)."
+              },
+              {
+                "name": "mid",
+                "value": "",
+                "type": "query",
+                "description": "A unique identifier for the SMS message you want to retrieve"
+              },
+              {
+                "name": "page-index",
+                "value": "1",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "max-page-item",
+                "value": "10",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort-order",
+                "value": "desc",
+                "type": "query",
+                "description": "Sorting is applied based on the sent or received dates of SMS messages."
+              }
+            ]
+          },
+          "docs": "To perform a ‘Search’ operation for specific messages"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

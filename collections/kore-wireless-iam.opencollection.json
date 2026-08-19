@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "IaM APIs",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Platform Account mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.api.korewireless.com/v1/platform_account_mappings",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID is a unique identifier of your account, which begins with acct_. This optional filter parameter lets you get platforms mapped to a specific account."
+              }
+            ]
+          },
+          "docs": "This endpoint retrieves the platform mappings for an account and its child accounts."
+        },
+        {
+          "info": {
+            "name": "Get All Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://iam.api.korewireless.com/v1/accounts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account ID is a unique identifier of your account, which begins with acct_. This optional filter parameter lets you get information for a specific account."
+              }
+            ]
+          },
+          "docs": "This endpoint retrieves the information for an account and its child accounts."
+        },
+        {
+          "info": {
+            "name": "Create Child Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://iam.api.korewireless.com/v1/accounts",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              },
+              {
+                "name": "Accept",
+                "value": ""
+              },
+              {
+                "name": "Content-Type",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to create a child account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

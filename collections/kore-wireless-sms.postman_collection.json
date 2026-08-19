@@ -1,0 +1,1623 @@
+{
+  "item": [
+    {
+      "id": "5773b812-6087-4ccf-929a-8d026e184323",
+      "name": "Messages",
+      "description": {
+        "content": "API to send message to the SIMs about any software upgrade/similar things.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a7aeddf-32b8-440a-9335-08f7008f2cd4",
+          "name": "Send new message",
+          "request": {
+            "name": "Send new message",
+            "description": {
+              "content": "Customers can use this to send an SMS to their SIMs in ConnectivityPro.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "messages",
+                "send"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account-id",
+                  "value": "<string>",
+                  "description": "(Required) Account ID to which the SIM receiving the SMS belongs to."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a74f14b6-6c41-47ae-9b5f-05d8e2a1d576",
+              "name": "Ok",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"mid\": \"string\",\n  \"code\": 3141,\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1d23ccb-08f1-4e45-90ea-efa89a32bce0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 1550,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fdae435-7f7e-4816-b47a-588a4db9653f",
+              "name": "Unauthorised User",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5354,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baadf91b-4ecb-489e-99b3-dc39e7b08a40",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 5301,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39c66212-5d19-420f-8b13-159b26d14ec4",
+              "name": "The Specified Resource Was Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 9119,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83a98daf-c6d4-4dbc-a94b-d66ca642fb53",
+              "name": "Unprocessable content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 16,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d0558a1-5a26-4ba0-97e5-4e2224b4d3d5",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 16,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97802e3e-e566-4dfd-9646-e02ac7d51aeb",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages",
+                    "send"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 8276,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b1bde9a-d29a-407f-80b9-f28db250c3e9",
+          "name": "Get Messages (To be deprecated soon)",
+          "request": {
+            "name": "Get Messages (To be deprecated soon)",
+            "description": {
+              "content": "To perform a ‘Search’ operation for specific messages",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "sms",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account-id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the account associated with the messages you want to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "msisdn",
+                  "value": "<string>",
+                  "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "iccid",
+                  "value": "<string>",
+                  "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "from-date",
+                  "value": "<string>",
+                  "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network."
+                },
+                {
+                  "disabled": false,
+                  "key": "to-date",
+                  "value": "<string>",
+                  "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "mid",
+                  "value": "<string>",
+                  "description": "A unique identifier for the SMS message you want to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-index",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-page-item",
+                  "value": "10",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort-order",
+                  "value": "desc",
+                  "description": "Sorting is applied based on the sent or received dates of SMS messages."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "129c2345-0203-485e-b7a2-2422b99c4dc4",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sms",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"short-code\": \"string\",\n      \"iccid\": \"string\",\n      \"account-id\": \"string\",\n      \"organization\": \"string\",\n      \"mid\": \"string\",\n      \"action\": \"string\",\n      \"detail\": \"string\",\n      \"msisdn\": \"string\",\n      \"service-type-id\": 2440,\n      \"date-created\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"short-code\": \"string\",\n      \"iccid\": \"string\",\n      \"account-id\": \"string\",\n      \"organization\": \"string\",\n      \"mid\": \"string\",\n      \"action\": \"string\",\n      \"detail\": \"string\",\n      \"msisdn\": \"string\",\n      \"service-type-id\": 3332,\n      \"date-created\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"page-info-result\": {\n    \"total-count\": 5849,\n    \"page-index\": 8811,\n    \"max-page-item\": 4410\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ff6f4ae-6d17-4624-89d9-f722c7ecf1f5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sms",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 2883,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae479be6-92a7-43e0-a9fa-b78798b34588",
+              "name": "Unauthorised User",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sms",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 7296,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "827145b3-3a79-4beb-8d1e-191cba067de5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sms",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 6071,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e44d3b3-e3ff-4f2d-8ccd-08c1bc4bb48b",
+              "name": "response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sms",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 3946,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96adce75-f09e-4029-abce-46079c6cbb84",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "sms",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 4555,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9ad53fd-0bc6-4839-86f7-176ec6b63413",
+          "name": "Get Messages",
+          "request": {
+            "name": "Get Messages",
+            "description": {
+              "content": "To perform a ‘Search’ operation for specific messages",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "account-id",
+                  "value": "<string>",
+                  "description": "Unique identifier for the account associated with the messages you want to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "msisdn",
+                  "value": "<string>",
+                  "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "iccid",
+                  "value": "<string>",
+                  "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "from-date",
+                  "value": "<string>",
+                  "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network."
+                },
+                {
+                  "disabled": false,
+                  "key": "to-date",
+                  "value": "<string>",
+                  "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date."
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "mid",
+                  "value": "<string>",
+                  "description": "A unique identifier for the SMS message you want to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "page-index",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "max-page-item",
+                  "value": "10",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort-order",
+                  "value": "desc",
+                  "description": "Sorting is applied based on the sent or received dates of SMS messages."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "427c4eb2-ce8e-4944-831c-766e4549a628",
+              "name": "200 response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messages\": [\n    {\n      \"short-code\": \"string\",\n      \"iccid\": \"string\",\n      \"account-id\": \"string\",\n      \"organization\": \"string\",\n      \"mid\": \"string\",\n      \"action\": \"string\",\n      \"detail\": \"string\",\n      \"msisdn\": \"string\",\n      \"service-type-id\": 2440,\n      \"date-created\": \"string\",\n      \"status\": \"string\"\n    },\n    {\n      \"short-code\": \"string\",\n      \"iccid\": \"string\",\n      \"account-id\": \"string\",\n      \"organization\": \"string\",\n      \"mid\": \"string\",\n      \"action\": \"string\",\n      \"detail\": \"string\",\n      \"msisdn\": \"string\",\n      \"service-type-id\": 3332,\n      \"date-created\": \"string\",\n      \"status\": \"string\"\n    }\n  ],\n  \"page-info-result\": {\n    \"total-count\": 5849,\n    \"page-index\": 8811,\n    \"max-page-item\": 4410\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0dca5c7-e564-4257-b8b3-9da0799e11a7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 2883,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44bbd822-fce0-43dd-9dec-8757f5e3097f",
+              "name": "Unauthorised User",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 7296,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04035d69-b426-45a5-9d83-eaaa99383307",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 6071,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c4413567-4295-48d8-9d26-7d229542a172",
+              "name": "response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 3946,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0188e73a-0676-4001-8faf-5b8261a7e8e9",
+              "name": "Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from-date",
+                      "value": ""
+                    },
+                    {
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": 4555,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.korewireless.com/sms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "noauth"
+  },
+  "info": {
+    "_postman_id": "e061b1b5-6ad0-4d84-a688-825a0c0ec7b0",
+    "name": "SMS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "SMS API allows you to programmatically exchange short messages (SMS) with your devices.<br> Please see the <a href=\"https://korewireless.service-now.com/kb_view.do?sysparm_article=KB0011208\" style=\"text-decoration:none\" target=\"_blank\">SMS API Guide</a> for more details on how to use and supported Service Types.",
+      "type": "text/plain"
+    }
+  }
+}

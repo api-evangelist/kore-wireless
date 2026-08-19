@@ -406,3 +406,9 @@ tools:
   description: Modify an existing secret
   source_operation: openapi/kore-wireless-webhook.yml#modifySecret
   http: PATCH /v1/secrets/{id}
+deployment:
+  mode: none
+  verified: derived
+  tools: 94
+  checked: '2026-08-12'
+  source: catalog MCP census
