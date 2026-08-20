@@ -142,6 +142,10 @@ apis:
   humanURL: https://docs.korewireless.com/api/global-resources/webhook
   baseURL: https://webhook.api.korewireless.com
   tags:
+  - Webhook
+  - Event
+  - CloudEvents
+  tags_raw:
   - Webhooks
   - Events
   - CloudEvents
@@ -162,6 +166,10 @@ apis:
   humanURL: https://docs.korewireless.com/api/global-resources/iam/account
   baseURL: https://iam.api.korewireless.com
   tags:
+  - IAM
+  - Account
+  - Identity
+  tags_raw:
   - IAM
   - Accounts
   - Identity
@@ -204,6 +212,9 @@ apis:
   humanURL: https://docs.korewireless.com/developers/api-management/auth
   baseURL: https://api.korewireless.com/api-services
   tags:
+  - Authentication
+  - Security
+  tags_raw:
   - Authentication
   - OAuth
   - Security
