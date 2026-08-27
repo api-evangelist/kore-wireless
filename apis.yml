@@ -41,193 +41,1519 @@ created: '2026-07-25'
 modified: '2026-07-25'
 specificationVersion: '0.23'
 apis:
-- aid: kore-wireless:kore-connectivity-pro-api
-  name: KORE Connectivity Pro API
-  description: The KORE ConnectivityPro API is the largest of KORE's published
-    surfaces — 49 paths and 55 operations covering SIM and eSIM provisioning,
-    eSIM profile management, activation profiles, subscriptions, accounts, usage
-    and session data, diagnostics, eligibility checks, testing, alerting, and
-    reporting for KORE's global multi-carrier IoT connectivity platform.
+- aid: kore-wireless:kore-wireless-account-api
+  name: KORE Wireless Account API
+  description: Account details of customer
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
-  - Connectivity
-  - eSIM
-  - Provisioning
-  - SIM Management
-  - IoT
+  - account
   properties:
   - type: OpenAPI
-    url: openapi/kore-wireless-connectivity-pro.yml
-  - type: Overlay
-    url: overlays/kore-wireless-connectivity-pro-overlay.yaml
+    url: openapi/kore-wireless-account-api-openapi.yml
   - type: Documentation
     url: https://docs.korewireless.com/omnisim/kore-omnisim-r
   - type: APIReference
-    url: https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
-- aid: kore-wireless:kore-super-sim-api
-  name: KORE Super SIM API
-  description: Super SIM is the multi-IMSI global cellular connectivity platform
-    KORE acquired from Twilio IoT. The API exposes 20 paths and 31 operations across
-    Sim, Fleet, NetworkAccessProfile, Network, eSimProfile, SettingsUpdate,
-    BillingPeriod, UsageRecord, SmsCommand, IpCommand, and OTA resources, letting
-    developers provision SIMs, control which mobile networks devices may attach to,
-    and exchange machine-to-machine SMS and IP/UDP messages with devices.
-  humanURL: https://docs.korewireless.com/api/products/supersim
-  baseURL: https://supersim.api.korewireless.com
-  tags:
-  - Super SIM
-  - eSIM
-  - IoT
-  - Connectivity
-  - Roaming
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-supersim.yml
-  - type: Overlay
-    url: overlays/kore-wireless-supersim-overlay.yaml
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
   - type: Documentation
     url: https://docs.korewireless.com/supersim/supersim
   - type: APIReference
     url: https://docs.korewireless.com/api/products/supersim
-- aid: kore-wireless:kore-programmable-wireless-api
-  name: KORE Programmable Wireless API
-  description: Programmable Wireless is the legacy Twilio IoT cellular product now
-    operated by KORE. The API publishes 9 paths and 16 operations covering the
-    Wireless Sim resource, RatePlan, Command, DataSession, and account- and
-    SIM-level UsageRecord resources for managing single-network programmable
-    cellular subscriptions.
-  humanURL: https://docs.korewireless.com/api/products/programmable-wireless-r
-  baseURL: https://programmable-wireless.api.korewireless.com
-  tags:
-  - Programmable Wireless
-  - IoT
-  - SIM Management
-  - Connectivity
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-programmable-wireless.yml
-  - type: Overlay
-    url: overlays/kore-wireless-programmable-wireless-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/api/products/programmable-wireless-r
   - type: APIReference
     url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
-- aid: kore-wireless:kore-sms-api
-  name: KORE SMS API
-  description: The KORE SMS API programmatically exchanges short messages with IoT
-    devices on KORE connectivity. Three operations — send a message, list messages,
-    and retrieve SMS message history — form the messaging surface. This is
-    device-directed machine-to-machine SMS, not an A2P/CPaaS messaging product.
-  humanURL: https://developer.korewireless.com/
-  baseURL: https://api.korewireless.com/sms
-  tags:
-  - SMS
-  - Messaging
-  - IoT
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-sms.yml
-  - type: Overlay
-    url: overlays/kore-wireless-sms-overlay.yaml
   - type: APIReference
     url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
-- aid: kore-wireless:kore-webhook-api
-  name: KORE Webhook API
-  description: The public KORE Webhook API creates, retrieves, and modifies the
-    signing secrets used to verify callbacks KORE sends to customer endpoints.
-    KORE webhooks are signature-verified and idempotent, and the companion Event
-    Streams product delivers CloudEvents 1.0 formatted events with versioned
-    JSON Schema (draft-07) payloads to webhook or AWS Kinesis destinations.
-  humanURL: https://docs.korewireless.com/api/global-resources/webhook
-  baseURL: https://webhook.api.korewireless.com
-  tags:
-  - Webhook
-  - Event
-  - CloudEvents
-  tags_raw:
-  - Webhooks
-  - Events
-  - CloudEvents
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-webhook.yml
-  - type: Overlay
-    url: overlays/kore-wireless-webhook-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/developers/webhooks
   - type: APIReference
     url: https://docs.korewireless.com/api/global-resources/webhook
-- aid: kore-wireless:kore-iam-api
-  name: KORE Identity and Access Management API
-  description: The KORE IAM API manages customer accounts and their relationships —
-    creating accounts, retrieving account hierarchies, and managing platform-specific
-    mappings between parent and child accounts across KORE's product platforms.
-  humanURL: https://docs.korewireless.com/api/global-resources/iam/account
-  baseURL: https://iam.api.korewireless.com
-  tags:
-  - IAM
-  - Account
-  - Identity
-  tags_raw:
-  - IAM
-  - Accounts
-  - Identity
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-iam.yml
-  - type: Overlay
-    url: overlays/kore-wireless-iam-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/iam/get-started/first-account
   - type: APIReference
     url: https://docs.korewireless.com/api/global-resources/iam/account
-- aid: kore-wireless:kore-api-clients-api
-  name: KORE API Clients API
-  description: The Client Management API creates, retrieves, and lists the API
-    Clients that hold the credentials and settings for an integration with KORE.
-    An API Client is the required gateway to every other KORE API — it issues the
-    Client ID and Client Secret exchanged for an OAuth 2.0 access token.
-  humanURL: https://docs.korewireless.com/api/global-resources/api-clients/clients
-  baseURL: https://client.api.korewireless.com
-  tags:
-  - API Management
-  - Clients
-  - Credentials
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-api-clients.yml
-  - type: Overlay
-    url: overlays/kore-wireless-api-clients-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/developers/api-management/api-clients
   - type: APIReference
     url: https://docs.korewireless.com/api/global-resources/api-clients/clients
-- aid: kore-wireless:kore-token-api
-  name: KORE Token API
-  description: The KORE Token API is the OAuth 2.0 authorization endpoint for the
-    whole platform. A single POST to /v1/auth/token exchanges Client Credentials
-    for a bearer access token per RFC 6749 section 4.4, with a configurable token
-    expiry set on the API Client.
-  humanURL: https://docs.korewireless.com/developers/api-management/auth
-  baseURL: https://api.korewireless.com/api-services
-  tags:
-  - Authentication
-  - Security
-  tags_raw:
-  - Authentication
-  - OAuth
-  - Security
-  properties:
-  - type: OpenAPI
-    url: openapi/kore-wireless-token.yml
-  - type: Overlay
-    url: overlays/kore-wireless-token-overlay.yaml
   - type: Documentation
     url: https://docs.korewireless.com/developers/api-management/auth
   - type: APIReference
-    url: https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-accounts-api
+  name: KORE Wireless Accounts API
+  description: The Accounts API from KORE Wireless — 2 operation(s) for accounts.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-activation-profiles-api
+  name: KORE Wireless Activation Profiles API
+  description: >-
+    API to manage activation profile related activities for a given account . <br> For more details please
+    go to our help desk article [here](https://helpdesk.korewireless.com/hc/en-us/articles/360050144452-Activation-profiles)
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Activation Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-activation-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-alerting-api
+  name: KORE Wireless Alerting API
+  description: APIs that provides alerts on subscribed events
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - alerting
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-alerting-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-auth-api
+  name: KORE Wireless Auth API
+  description: The Auth API from KORE Wireless — 1 operation(s) for auth.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-auth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-clients-api
+  name: KORE Wireless Clients API
+  description: >-
+    These APIs enable users to perform various operations, including creating, retrieving, updating, and
+    deleting client information. Through these APIs, users can interact with a wide range of client data,
+    encompassing client IDs, secrets, account associations, ownership details, types, and lock status.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-clients-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-commands-resource-api
+  name: KORE Wireless Commands Resource API
+  description: The Commands Resource API from KORE Wireless — 2 operation(s) for commands resource.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Commands Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-commands-resource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-datasessions-resource-api
+  name: KORE Wireless DataSessions Resource API
+  description: >-
+    The DataSessions Resource API from KORE Wireless — 1 operation(s) for datasessions resource.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - DataSessions Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-datasessions-resource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-diagnostics-api
+  name: KORE Wireless Diagnostics API
+  description: The Diagnostics API from KORE Wireless — 2 operation(s) for diagnostics.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Diagnostics
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-diagnostics-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-eligibility-api
+  name: KORE Wireless Eligibility API
+  description: Retrieve details about the eligibility of a given account
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - eligibility
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-eligibility-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-esim-profile-management-api
+  name: KORE Wireless eSIM Profile Management API
+  description: >-
+    API to manage eSIM Switch related activities for a given account <br> Refer to the <a href="https://korewireless.service-now.com/csm?sys_kb_id=ec87a82f976ee110d038301e6253afa3&id=kb_article_view&sysparm_rank=2&sysparm_tsqueryId=5a20dce247b7e59018007f7a516d4392"
+    style="text-decoration:none" target="_blank">  eSIM switch</a> article on the KORE Help Center for
+    additional information
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - eSIM Profile Management
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-esim-profile-management-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-health-api
+  name: KORE Wireless Health API
+  description: ping health service
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-health-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-messages-api
+  name: KORE Wireless Messages API
+  description: API to send message to the SIMs about any software upgrade/similar things.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-messages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-provisioning-api
+  name: KORE Wireless Provisioning API
+  description: Status of requests made by the customer
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - provisioning
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-provisioning-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-rateplans-resource-api
+  name: KORE Wireless RatePlans Resource API
+  description: The RatePlans Resource API from KORE Wireless — 2 operation(s) for rateplans resource.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - RatePlans Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-rateplans-resource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-reports-api
+  name: KORE Wireless Reports API
+  description: >-
+    Customers of KORE who pre-configure report schedules have reports automatically generated and securely
+    stored at the scheduled times — when accessed via API, they receive data in the agreed format, with
+    internal integrity checks to guarantee authenticity.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-secrets-api
+  name: KORE Wireless Secrets API
+  description: The Secrets API from KORE Wireless — 2 operation(s) for secrets.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Secrets
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-secrets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-session-api
+  name: KORE Wireless Session API
+  description: >-
+    Customers of KORE having Radius Accounting integrated at carrier level will have session events collected
+    at KORE. Session START and STOP events are correlated, and data is exposed as Session API for consumption.
+    This API also provides the session count for any duration within the last 7 days.Typical use cases
+    would be 1) UI showing recent sessions against a subscription-id or iccid or msisdn in a paginated
+    fashion. 2) Fetch session count so to generate alarms when a defined threshold is crossed.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Session
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-session-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-sims-resource-api
+  name: KORE Wireless Sims Resource API
+  description: The Sims Resource API from KORE Wireless — 2 operation(s) for sims resource.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - Sims Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-sims-resource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-subscription-api
+  name: KORE Wireless Subscription API
+  description: API provides subscription enquiries made by the customer.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1billingperiod-api
+  name: KORE Wireless Supersim V1 Billing Period API
+  description: >-
+    The SupersimV1BillingPeriod API from KORE Wireless — 1 operation(s) for supersimv1billingperiod.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1BillingPeriod
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1billingperiod-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1esimprofile-api
+  name: KORE Wireless Supersim V1 Esim Profile API
+  description: >-
+    The SupersimV1EsimProfile API from KORE Wireless — 2 operation(s) for supersimv1esimprofile.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1EsimProfile
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1esimprofile-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1fleet-api
+  name: KORE Wireless Supersim V1 Fleet API
+  description: The SupersimV1Fleet API from KORE Wireless — 2 operation(s) for supersimv1fleet.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1Fleet
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1fleet-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1ipcommand-api
+  name: KORE Wireless Supersim V1 Ip Command API
+  description: The SupersimV1IpCommand API from KORE Wireless — 2 operation(s) for supersimv1ipcommand.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1IpCommand
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1ipcommand-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1network-api
+  name: KORE Wireless Supersim V1 Network API
+  description: The SupersimV1Network API from KORE Wireless — 2 operation(s) for supersimv1network.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1Network
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1network-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1networkaccessprofile-api
+  name: KORE Wireless Supersim V1 Network Access Profile API
+  description: >-
+    The SupersimV1NetworkAccessProfile API from KORE Wireless — 2 operation(s) for supersimv1networkaccessprofile.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1NetworkAccessProfile
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1networkaccessprofile-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1networkaccessprofilenetwork-api
+  name: KORE Wireless Supersim V1 Network Access Profile Network API
+  description: >-
+    The SupersimV1NetworkAccessProfileNetwork API from KORE Wireless — 2 operation(s) for supersimv1networkaccessprofilenetwork.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1NetworkAccessProfileNetwork
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1networkaccessprofilenetwork-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1settingsupdate-api
+  name: KORE Wireless Supersim V1 Settings Update API
+  description: >-
+    The SupersimV1SettingsUpdate API from KORE Wireless — 1 operation(s) for supersimv1settingsupdate.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1SettingsUpdate
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1settingsupdate-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1sim-api
+  name: KORE Wireless Supersim V1 Sim API
+  description: The SupersimV1Sim API from KORE Wireless — 2 operation(s) for supersimv1sim.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1Sim
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1sim-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1simipaddress-api
+  name: KORE Wireless Supersim V1 Sim Ip Address API
+  description: >-
+    The SupersimV1SimIpAddress API from KORE Wireless — 1 operation(s) for supersimv1simipaddress.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1SimIpAddress
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1simipaddress-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1smscommand-api
+  name: KORE Wireless Supersim V1 Sms Command API
+  description: >-
+    The SupersimV1SmsCommand API from KORE Wireless — 2 operation(s) for supersimv1smscommand.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1SmsCommand
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1smscommand-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-supersimv1usagerecord-api
+  name: KORE Wireless Supersim V1 Usage Record API
+  description: >-
+    The SupersimV1UsageRecord API from KORE Wireless — 1 operation(s) for supersimv1usagerecord.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - SupersimV1UsageRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-supersimv1usagerecord-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-testing-api
+  name: KORE Wireless Testing API
+  description: APIs that are currently under testing
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - testing
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-testing-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-usage-api
+  name: KORE Wireless Usage API
+  description: A user can retrieve usage records for a given subscription or plan
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - usage
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-usage-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
+- aid: kore-wireless:kore-wireless-usagerecords-resource-api
+  name: KORE Wireless UsageRecords Resource API
+  description: >-
+    The UsageRecords Resource API from KORE Wireless — 2 operation(s) for usagerecords resource.
+  humanURL: https://developer.korewireless.com/
+  baseURL: https://api.korewireless.com/connectivity
+  tags:
+  - UsageRecords Resource
+  properties:
+  - type: OpenAPI
+    url: openapi/kore-wireless-usagerecords-resource-api-openapi.yml
+  - type: Documentation
+    url: https://docs.korewireless.com/omnisim/kore-omnisim-r
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/supersim/supersim
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/supersim
+  - type: Documentation
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r
+  - type: APIReference
+    url: https://docs.korewireless.com/api/products/programmable-wireless-r/wireless-sim-resource
+  - type: APIReference
+    url: https://github.com/korewireless/kore-openapi/blob/main/specs/sms/yaml/kore-sms-v1.yaml
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/webhooks
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/webhook
+  - type: Documentation
+    url: https://docs.korewireless.com/iam/get-started/first-account
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/iam/account
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/api-clients
+  - type: APIReference
+    url: https://docs.korewireless.com/api/global-resources/api-clients/clients
+  - type: Documentation
+    url: https://docs.korewireless.com/developers/api-management/auth
+  - type: APIReference
+    url: >-
+      https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
 common:
+- type: Overlay
+  url: overlays/kore-wireless-connectivity-pro-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-supersim-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-programmable-wireless-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-sms-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-webhook-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-iam-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-api-clients-overlay.yaml
+- type: Overlay
+  url: overlays/kore-wireless-token-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/kore-wireless-agentic-access.yml
 - type: VulnerabilityDisclosure
