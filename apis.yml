@@ -23,6 +23,18 @@ description: >-
   TM Forum, or NEF/SCEF reference appears anywhere in its documentation. In 2026 KORE
   was taken private by Searchlight Capital Partners and Abry Partners and delisted
   from the NYSE.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Telecommunications
@@ -1538,6 +1550,9 @@ apis:
     url: >-
       https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
 common:
+- type: CapabilityMap
+  url: capabilities/kore-wireless-capability-edges.yml
+  name: KORE Wireless Business Capability Map
 - type: Overlay
   url: overlays/kore-wireless-connectivity-pro-overlay.yaml
 - type: Overlay
