@@ -59,6 +59,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Account
+  tags_raw:
   - account
   properties:
   - type: OpenAPI
@@ -101,6 +103,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -187,6 +191,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Alerting
+  tags_raw:
   - alerting
   properties:
   - type: OpenAPI
@@ -229,6 +235,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
@@ -443,6 +451,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Eligibility
+  tags_raw:
   - eligibility
   properties:
   - type: OpenAPI
@@ -572,6 +582,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -614,6 +626,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Provisioning
+  tags_raw:
   - provisioning
   properties:
   - type: OpenAPI
@@ -874,6 +888,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Subscription
+  tags_raw:
   - subscription
   properties:
   - type: OpenAPI
@@ -1428,6 +1444,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Testing
+  tags_raw:
   - testing
   properties:
   - type: OpenAPI
@@ -1470,6 +1488,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Usage
+  tags_raw:
   - usage
   properties:
   - type: OpenAPI
