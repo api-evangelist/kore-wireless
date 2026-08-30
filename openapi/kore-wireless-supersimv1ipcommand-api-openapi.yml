@@ -1,0 +1,535 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Ip Command API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1IpCommand
+paths:
+  /v1/IpCommands:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Machine-to-machine IP Commands sent to/from Super SIMs
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - status
+      - date_created
+      pathType: list
+    post:
+      description: Send an IP Command to a Super SIM.
+      tags:
+      - SupersimV1IpCommand
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -X POST "https://supersim.api.korewireless.com/v1/IpCommands" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>" --data-urlencode "Sim=<Sid>" --data-urlencode "Payload=<IP_COMMAND_PAYLOAD>" --data-urlencode "DevicePort=<DEVICE_PORT>" --data-urlencode "PayloadType=<text|binary>"  --data-urlencode "CallbackUrl=<YOUR_CALLBACK_URL>" --data-urlencode "CallbackMethod=<GET_OR_POST>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams({\n  \"Sim\": \"<Sid>\",\n  \"Payload\": \"<IP_COMMAND_PAYLOAD>\",\n  \"PayloadType\": \"<text|binary>\",\n  \"DevicePort\": \"<DEVICE_PORT>\",\n  \"CallbackUrl\": \"<YOUR_CALLBACK_URL>\",\n  \"CallbackMethod\":\"<GET_OR_POST>\"\n});\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/IpCommands', {\n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.post(\n    \"https://supersim.api.korewireless.com/v1/IpCommands\",\n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n        },\n    data={\n            \"Sim\":\"<Sid>\",\n            \"Payload\": \"<IP_COMMAND_PAYLOAD>\",\n            \"PayloadType\": \"<text|binary>\",\n            \"DevicePort\": \"<DEVICE_PORT>\",\n            \"CallbackUrl\": \"<YOUR_CALLBACK_URL>\",\n            \"CallbackMethod\":\"<GET_OR_POST>\"\n        }\n)\nresp = response.json()\nprint(resp)\n"
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.ip_command'
+              examples:
+                createFull:
+                  value:
+                    sid: HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sim_iccid: '89883070000123456789'
+                    status: queued
+                    direction: to_sim
+                    device_ip: 100.64.0.123
+                    device_port: 100
+                    payload_type: text
+                    payload: 'checkin: firmware update'
+                    date_created: '2015-07-30T20:00:00Z'
+                    date_updated: '2015-07-30T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                createMinimal:
+                  value:
+                    sid: HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sim_iccid: '89883070000123456789'
+                    status: queued
+                    direction: to_sim
+                    device_ip: 100.64.0.123
+                    device_port: 100
+                    payload_type: text
+                    payload: 'checkin: firmware update'
+                    date_created: '2015-07-30T20:00:00Z'
+                    date_updated: '2015-07-30T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: Created
+      security:
+      - OAuth: []
+      operationId: CreateIpCommand
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateIpCommandRequest
+              properties:
+                Sim:
+                  type: string
+                  description: The `sid` or `unique_name` of the [Super SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) to send the IP Command to.
+                Payload:
+                  type: string
+                  description: The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64.
+                DevicePort:
+                  type: integer
+                  description: The device port to which the IP Command will be sent.
+                PayloadType:
+                  $ref: '#/components/schemas/ip_command_enum_payload_type'
+                CallbackUrl:
+                  type: string
+                  format: uri
+                  description: The URL we should call using the `callback_method` after we have sent the IP Command.
+                CallbackMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`.
+              required:
+              - Sim
+              - Payload
+              - DevicePort
+            examples:
+              createFull:
+                value:
+                  Sim: sim
+                  Payload: 'checkin: firmware update'
+                  DevicePort: 100
+                  PayloadType: text
+                  CallbackUrl: http://www.example.com
+                  CallbackMethod: GET
+              createMinimal:
+                value:
+                  Sim: sim
+                  Payload: 'checkin: firmware update'
+                  DevicePort: 100
+    get:
+      description: Retrieve a list of IP Commands from your account.
+      tags:
+      - SupersimV1IpCommand
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/IpCommands?Sim=<Sid>&Page=1&PageSize=10" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/IpCommands\";\nconst params = new URLSearchParams(\n    { \n      Sim: \"<Sid>\", \n      Page: \"1\", \n      PageSize: \"1\" \n    }\n);\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/IpCommands\", \n    headers={\n        \"Content-Type\":\"application/x-www-form-urlencoded\",\n        \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    params={\n        \"Sim\": \"<Sid>\",\n        \"Page\": \"1\", \n        \"PageSize\": \"1\"\n    }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sim
+        in: query
+        description: The SID or unique name of the Sim resource that IP Command was sent to or from.
+        schema:
+          type: string
+        examples:
+          readEmpty:
+            value: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          readFull:
+            value: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: SimIccid
+        in: query
+        description: The ICCID of the Sim resource that IP Command was sent to or from.
+        schema:
+          type: string
+      - name: Status
+        in: query
+        description: 'The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/ipcommand-resource#status-values) for a description of each.'
+        schema:
+          $ref: '#/components/schemas/ip_command_enum_status'
+        examples:
+          readEmpty:
+            value: received
+          readFull:
+            value: received
+      - name: Direction
+        in: query
+        description: The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
+        schema:
+          $ref: '#/components/schemas/ip_command_enum_direction'
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 100.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ip_commands:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.ip_command'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListIpCommandResponse
+              examples:
+                readEmpty:
+                  value:
+                    ip_commands: []
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: ip_commands
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                readFull:
+                  value:
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: ip_commands
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/IpCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                    ip_commands:
+                    - sid: HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      sim_iccid: '89883070000123456789'
+                      status: received
+                      direction: from_sim
+                      device_ip: 100.64.0.123
+                      device_port: 100
+                      payload_type: text
+                      payload: 'checkin: firmware update'
+                      date_created: '2015-07-30T20:00:00Z'
+                      date_updated: '2015-07-30T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListIpCommand
+  /v1/IpCommands/{Sid}:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Machine-to-machine IP Commands sent to/from Super SIMs
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - status
+      - date_created
+      pathType: instance
+    get:
+      description: Fetch IP Command instance from your account.
+      tags:
+      - SupersimV1IpCommand
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/IpCommands/<IP_COMMAND_SID>" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/IpCommands/<IP_COMMAND_SID>', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/IpCommands/<IP_COMMAND_SID>\", \n    headers={\n        \"Content-Type\":\"application/x-www-form-urlencoded\",\n        \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n)\nresp = response.json()\nprint(resp) \n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the IP Command resource to fetch.
+        schema:
+          type: string
+          minLength: 34
+          maxLength: 34
+          pattern: ^HG[0-9a-fA-F]{32}$
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.ip_command'
+              examples:
+                fetch:
+                  value:
+                    sid: HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sim_iccid: '89883070000123456789'
+                    status: queued
+                    direction: to_sim
+                    device_ip: 100.64.0.123
+                    device_port: 100
+                    payload_type: text
+                    payload: 'checkin: firmware update'
+                    date_created: '2015-07-30T20:00:00Z'
+                    date_updated: '2015-07-30T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/IpCommands/HGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: FetchIpCommand
+components:
+  schemas:
+    ip_command_enum_direction:
+      type:
+      - string
+      - 'null'
+      description: Either `to_sim` or `from_sim`. Indicates whether the IP Command resource was sent from or to the Super SIM.
+      enum:
+      - to_sim
+      - from_sim
+    ip_command_enum_payload_type:
+      type:
+      - string
+      - 'null'
+      description: Indicates how the payload is encoded. Either “text” or “binary”. For an IP Command sent to a Super SIM, `payload_type` is configurable. For an IP Command sent from a Super SIM, `payload_type` is always “binary”.
+      enum:
+      - text
+      - binary
+    ip_command_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The delivery status of the IP Command. This is one of the following: “queued”, “sent”, “failed” or “received”.'
+      enum:
+      - queued
+      - sent
+      - received
+      - failed
+    supersim.v1.ip_command:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HG[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the IP Command resource.
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) that created the IP Command resource.
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HS[0-9a-fA-F]{32}$
+          description: The SID of the [Super SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) that this IP Command was sent to or from.
+        sim_iccid:
+          type:
+          - string
+          - 'null'
+          description: The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the [Super SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) that this IP Command was sent to or from.
+        status:
+          $ref: '#/components/schemas/ip_command_enum_status'
+        direction:
+          $ref: '#/components/schemas/ip_command_enum_direction'
+        device_ip:
+          type:
+          - string
+          - 'null'
+          description: The IP address of the device that the IP Command was sent to or received from. For an IP Command sent to a Super SIM, `device_ip` starts out as `null`, and once the IP Command is “sent”, the `device_ip` will be filled out. An IP Command sent from a Super SIM have its `device_ip` always set.
+        device_port:
+          type:
+          - integer
+          - 'null'
+          default: 0
+          description: For an IP Command sent to a Super SIM, it would be the destination port of the IP message. For an IP Command sent from a Super SIM, it would be the source port of the IP message.
+        payload_type:
+          $ref: '#/components/schemas/ip_command_enum_payload_type'
+        payload:
+          type:
+          - string
+          - 'null'
+          description: 'The payload that is carried in the IP/UDP message. The payload can be encoded in either text or binary format. For text payload, UTF-8 encoding must be used.
+
+
+            For an IP Command sent to a Super SIM, the payload is appended to the IP/UDP message “as is”. The payload should not exceed 1300 bytes.
+
+
+            For an IP Command sent from a Super SIM, the payload from the received IP/UDP message is extracted and sent in binary encoding. For an IP Command sent from a Super SIM, the payload should not exceed 1300 bytes. If it is larger than 1300 bytes, there might be fragmentation on the upstream and the message may appear truncated.'
+          x-kore:
+            pii:
+              handling: standard
+              deleteSla: 30
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the IP Command resource.
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

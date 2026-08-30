@@ -1,0 +1,136 @@
+openapi: 3.2.0
+info:
+  title: Client Health API
+  description: The Client Management APIs provide a comprehensive set of endpoints for managing clients within the system. These APIs facilitate operations such as creating, retrieving, updating, and deleting client information.
+  version: 1.0.0
+servers:
+- url: https://client.api.korewireless.com
+  description: PRODUCTION URL
+security:
+- {}
+- Auth: []
+tags:
+- name: Health
+  description: ping health service
+paths:
+  /v1/ping:
+    get:
+      tags:
+      - Health
+      summary: Gives Online Connection Status for API Gateway
+      operationId: getPingStatus
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ping200'
+        '404':
+          description: The specified resource was not found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Ping200:
+      type: object
+      properties:
+        status:
+          type: string
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        code:
+          type: integer
+          format: int32
+        info:
+          type: string
+  securitySchemes:
+    Auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true

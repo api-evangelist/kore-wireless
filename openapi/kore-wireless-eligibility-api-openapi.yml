@@ -1,0 +1,1830 @@
+openapi: 3.2.0
+info:
+  title: Connectivity Eligibility API
+  description: Connectivity APIs help users manage their connectivity through APIs.
+  version: 1.0.0
+servers:
+- url: https://api.korewireless.com/connectivity
+  description: Production
+security:
+- {}
+- Auth: []
+- api_key: []
+tags:
+- name: eligibility
+  description: Retrieve details about the eligibility of a given account
+paths:
+  /v1/accounts/{account-id}/plans:
+    get:
+      tags:
+      - eligibility
+      summary: Lists All Eligible Plans
+      description: Get all eligible plans for an account
+      operationId: getPlanByAccountId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plans:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        plan:
+                          type: object
+                          properties:
+                            plan-name:
+                              type: string
+                              description: The name of the plan
+                              $$ref: '#/components/schemas/plan-name'
+                            plan-id:
+                              type: string
+                              description: The unique identifier of your plan
+                              $$ref: '#/components/schemas/plan-id'
+                            plan-type-id:
+                              type: string
+                            usage-type:
+                              type: string
+                              description: Defines the usage type
+                              enum:
+                              - DATA
+                              - SMS
+                              - VOICE
+                              $$ref: '#/components/schemas/usage-type'
+                            service-type-id:
+                              type: string
+                              description: The unique identifier of the service type
+                              $$ref: '#/components/schemas/service-type-id'
+                          example: null
+                          $$ref: '#/components/schemas/PlanDetails_plan'
+                      $$ref: '#/components/schemas/PlanDetails'
+                $$ref: '#/components/schemas/Plans'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/plans'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/plans',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/plans\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/plans\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/plans',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/plans\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getPlanByAccountId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/plan-types:
+    get:
+      tags:
+      - eligibility
+      summary: Lists All Plan Types
+      description: Get all plan types for an account
+      operationId: getPlanTypeByAccountId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan-types:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        plan-type-id:
+                          type: string
+                        plan-type-name:
+                          type: string
+                      example: null
+                      $$ref: '#/components/schemas/PlanTypes_plantypes'
+                $$ref: '#/components/schemas/PlanTypes'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/plan-types'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/plan-types',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/plan-types\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/plan-types\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/plan-types',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/plan-types\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getPlanTypeByAccountId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/plans/{plan-id}:
+    get:
+      tags:
+      - eligibility
+      summary: Finds Plan by PlanId
+      description: Get details of a specific plan for an account
+      operationId: getPlanByPlanId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: plan-id
+        in: path
+        description: The unique identifier of your plan
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan:
+                    type: object
+                    properties:
+                      plan-name:
+                        type: string
+                        description: The name of the plan
+                        $$ref: '#/components/schemas/plan-name'
+                      plan-id:
+                        type: string
+                        description: The unique identifier of your plan
+                        $$ref: '#/components/schemas/plan-id'
+                      plan-type-id:
+                        type: string
+                      usage-type:
+                        type: string
+                        description: Defines the usage type
+                        enum:
+                        - DATA
+                        - SMS
+                        - VOICE
+                        $$ref: '#/components/schemas/usage-type'
+                      service-type-id:
+                        type: string
+                        description: The unique identifier of the service type
+                        $$ref: '#/components/schemas/service-type-id'
+                    example: null
+                    $$ref: '#/components/schemas/PlanDetails_plan'
+                $$ref: '#/components/schemas/PlanDetails'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/plans/{plan-id}'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/plans/{plan-id}',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/plans/{plan-id}\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/plans/{plan-id}\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/plans/{plan-id}',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/plans/{plan-id}\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getPlanByPlanId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/service-types:
+    get:
+      tags:
+      - eligibility
+      summary: Lists All Eligible Service Types
+      description: Get all eligible service types for an account
+      operationId: getServiceTypeByAccountId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service-types:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        service-type-id:
+                          type: string
+                          description: The unique identifier of the service type
+                          $$ref: '#/components/schemas/service-type-id'
+                        service-type-name:
+                          type: string
+                      $$ref: '#/components/schemas/ServiceType'
+                $$ref: '#/components/schemas/ServiceTypes'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/service-types'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/service-types',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/service-types\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/service-types\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/service-types',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/service-types\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getServiceTypeByAccountId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/service-types/{service-type-id}:
+    get:
+      tags:
+      - eligibility
+      summary: Finds ServiceType by ServiceTypeId
+      description: Get details of a specific service type for an account
+      operationId: getServiceTypeByServiceTypeId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: service-type-id
+        in: path
+        description: The unique identifier of the service type
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service-type-id:
+                    type: string
+                    description: The unique identifier of the service type
+                    $$ref: '#/components/schemas/service-type-id'
+                  service-type-name:
+                    type: string
+                $$ref: '#/components/schemas/ServiceType'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/service-types/{service-type-id}'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/service-types/{service-type-id}',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/service-types/{service-type-id}\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/service-types/{service-type-id}\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/service-types/{service-type-id}',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/service-types/{service-type-id}\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getServiceTypeByServiceTypeId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/features:
+    get:
+      tags:
+      - eligibility
+      summary: Lists All Eligible Features
+      description: Get all eligible features for an account
+      operationId: getFeatureByAccountId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  features:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        feature:
+                          type: object
+                          properties:
+                            usage-type:
+                              type: string
+                              description: Defines the usage type
+                              enum:
+                              - DATA
+                              - SMS
+                              - VOICE
+                              $$ref: '#/components/schemas/usage-type'
+                            feature-name:
+                              type: string
+                              description: The name of the feature
+                              $$ref: '#/components/schemas/feature-name'
+                            feature-id:
+                              type: string
+                              description: The unique identifier of your feature
+                              $$ref: '#/components/schemas/feature-id'
+                            description:
+                              type: string
+                              description: The description of the feature
+                            service-type-id:
+                              type: string
+                              description: The unique identifier of the service type
+                              $$ref: '#/components/schemas/service-type-id'
+                          $$ref: '#/components/schemas/Feature'
+                      example: null
+                      $$ref: '#/components/schemas/Features_features'
+                $$ref: '#/components/schemas/Features'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/features'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/features',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/features\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/features\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/features',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/features\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getFeatureByAccountId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/features/{feature-id}:
+    get:
+      tags:
+      - eligibility
+      summary: Finds Feature by FeatureId
+      description: Get details of a specific feature for an account
+      operationId: getFeatureByFeatureId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: feature-id
+        in: path
+        description: The unique identifier of your feature
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  usage-type:
+                    type: string
+                    description: Defines the usage type
+                    enum:
+                    - DATA
+                    - SMS
+                    - VOICE
+                    $$ref: '#/components/schemas/usage-type'
+                  feature-name:
+                    type: string
+                    description: The name of the feature
+                    $$ref: '#/components/schemas/feature-name'
+                  feature-id:
+                    type: string
+                    description: The unique identifier of your feature
+                    $$ref: '#/components/schemas/feature-id'
+                  description:
+                    type: string
+                    description: The description of the feature
+                  service-type-id:
+                    type: string
+                    description: The unique identifier of the service type
+                    $$ref: '#/components/schemas/service-type-id'
+                $$ref: '#/components/schemas/Feature'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/features/{feature-id}'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/features/{feature-id}',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/features/{feature-id}\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/features/{feature-id}\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/features/{feature-id}',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/features/{feature-id}\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getFeatureByFeatureId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+    Auth:
+      type: oauth2
+      description: token expiry is given in seconds
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/Api/api/token
+          scopes: {}

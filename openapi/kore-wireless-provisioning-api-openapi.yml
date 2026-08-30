@@ -1,0 +1,3896 @@
+openapi: 3.2.0
+info:
+  title: Connectivity Provisioning API
+  description: Connectivity APIs help users manage their connectivity through APIs.
+  version: 1.0.0
+servers:
+- url: https://api.korewireless.com/connectivity
+  description: Production
+security:
+- {}
+- Auth: []
+- api_key: []
+tags:
+- name: provisioning
+  description: Status of requests made by the customer
+paths:
+  /v1/accounts/{account-id}/provisioning-requests:
+    get:
+      tags:
+      - provisioning
+      summary: Lists All Requests
+      description: Get all requests made for an account
+      operationId: getRequestStatusByAccountId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: page number
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: take
+        in: query
+        description: number of records
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: subscription-id
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: iccid
+        in: query
+        description: The ICCID of the subscription
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total-records:
+                    type: integer
+                  total-pages:
+                    type: integer
+                  page:
+                    type: integer
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        provisioning-request-id:
+                          type: string
+                        date-completed:
+                          type: string
+                          format: dateTime
+                        request-status:
+                          type: string
+                        number-of-subscriptions:
+                          type: integer
+                        service-type:
+                          type: string
+                        date-created:
+                          type: string
+                          format: dateTime
+                        request-type:
+                          type: string
+                        source:
+                          type: string
+                        provisioned-by:
+                          type: string
+                        activation-profile-id:
+                          type: string
+                      example: null
+                      $$ref: '#/components/schemas/Requests_records'
+                $$ref: '#/components/schemas/Requests'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getRequestStatusByAccountId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+    post:
+      tags:
+      - provisioning
+      summary: Create A Provisioning Request
+      description: "Create a provisioning request for an account <br /> \nNote: New provisioning endpoints have been created, one endpoint per action, to simplify provisioning SIMs. The current endpoint will continue to work.  \n- [Activate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/activate)\n- [Change Plan for a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/plan-feature-change)\n- [Deactivate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/deactivate)\n- [Reactivate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/reactivate)\n- [Suspend a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/suspend)\n- [Terminate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/terminate)\n"
+      operationId: CreateProvisioningRequest
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: create request body
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+                properties:
+                  suspend:
+                    type: object
+                    required:
+                    - subscriptions
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                              description: The subscription-id of the SIM
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                          $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest_suspend_subscriptions'
+                        description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                      mail-to:
+                        type: string
+                        description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                    description: Suspend a SIM.
+                    $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest_suspend'
+                $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest'
+              - type: object
+                properties:
+                  activate:
+                    required:
+                    - activation-state
+                    - subscriptions
+                    type: object
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                              description: The subscription-id of the SIM
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                            imei:
+                              type: string
+                              description: IMEI is mandatory for VZW non SKU and APEX activation
+                          $$ref: '#/components/schemas/CommonInputActivateProvisioningRequest_activate_subscriptions'
+                        description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                      mail-to:
+                        type: string
+                        description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                      activation-state:
+                        type: string
+                        enum:
+                        - active
+                        - test
+                        - ready
+                      activation-profile-id:
+                        type: string
+                      sku:
+                        type: string
+                        description: SKU is mandatory for VZW SKU activation
+                      service-type-info:
+                        properties:
+                          aus-ipnd-info:
+                            type: object
+                            description: IPND information is mandatory for KORE TELS2 Activation
+                            properties:
+                              title:
+                                type: string
+                              first-name:
+                                type: string
+                              last-name:
+                                type: string
+                              address:
+                                type: string
+                    description: activate a sim
+                    example: null
+                    $$ref: '#/components/schemas/CommonInputActivateProvisioningRequest_activate'
+                $$ref: '#/components/schemas/CommonInputActivateProvisioningRequest'
+              - type: object
+                properties:
+                  deactivate:
+                    required:
+                    - subscriptions
+                    type: object
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                              description: The subscription-id of the SIM
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                          $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest_suspend_subscriptions'
+                        description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                      mail-to:
+                        type: string
+                        description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                    description: deactivate a sim
+                    example: null
+                    $$ref: '#/components/schemas/CommonInputDeactivateProvisioningRequest_deactivate'
+                $$ref: '#/components/schemas/CommonInputDeactivateProvisioningRequest'
+              - type: object
+                properties:
+                  plan-feature-change:
+                    required:
+                    - activation-profile-id
+                    - subscriptions
+                    type: object
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                              description: The subscription-id of the SIM
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                          $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest_suspend_subscriptions'
+                        description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                      activation-profile-id:
+                        type: string
+                      mail-to:
+                        type: string
+                        description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                    example: null
+                    $$ref: '#/components/schemas/CommonPlanChangeProvisioningRequest_planfeaturechange'
+                $$ref: '#/components/schemas/CommonPlanChangeProvisioningRequest'
+              - type: object
+                properties:
+                  reactivate:
+                    required:
+                    - subscriptions
+                    type: object
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                              description: The subscription-id of the SIM
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                          $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest_suspend_subscriptions'
+                        description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                      mail-to:
+                        type: string
+                        description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                    example: null
+                    $$ref: '#/components/schemas/CommonReactivateProvisioningRequest_reactivate'
+                $$ref: '#/components/schemas/CommonReactivateProvisioningRequest'
+              - type: object
+                properties:
+                  terminate:
+                    required:
+                    - subscriptions
+                    type: object
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                              description: The subscription-id of the SIM
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                          $$ref: '#/components/schemas/CommonInputSuspendProvisioningRequest_suspend_subscriptions'
+                        description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                      mail-to:
+                        type: string
+                        description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                      force-enabled-esim-profile-termination:
+                        type: boolean
+                        description: Force termination when eSIM subscription is enabled (on an EID with many ICCIDs)
+                        example: false
+                    example: null
+                    $$ref: '#/components/schemas/CommonTerminateProvisioningRequest_terminate'
+                $$ref: '#/components/schemas/CommonTerminateProvisioningRequest'
+              $$ref: '#/components/schemas/accountid_provisioningrequests_body'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"suspend\": {\n    \"subscriptions\": [\n      {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\":  \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"suspend\": {\n         \"subscriptions\": [\n          {\n            \"subscription-id\": \"<string>\",\n            \"iccid\": \"<string>\"\n          }\n         ],\n         \"mail-to\": \"<string>\"\n      }\n   })\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"suspend\\\": {\\n    \\\"subscriptions\\\": [\\n       {\\n        \\\"subscription-id\\\":  \\\"<string>\\\",\\n        \\\"iccid\\\":  \\\"<string>\\\"\\n            }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"suspend\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"       {\" + \"\\n\" +\n@\"        \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\",\" + \"\\n\" +\n@\"        \"\"iccid\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\"          }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"suspend\": {\n    \"subscriptions\": [\n       {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\":  \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend\"\n\npayload = json.dumps({\n   \"suspend\": {\n      \"subscriptions\": [\n         {\n            \"subscription-id\":  \"<string>\",\n            \"iccid\":  \"<string>\"\n         }\n      ],\n      \"mail-to\": \"<string>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: CreateProvisioningRequest
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/suspend:
+    post:
+      tags:
+      - provisioning
+      summary: Suspend a SIM
+      description: Suspend a SIM for an account
+      operationId: SuspendASim
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                suspend:
+                  type: object
+                  required:
+                  - subscriptions
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        properties:
+                          subscription-id:
+                            type: string
+                            description: The subscription-id of the SIM
+                          iccid:
+                            type: string
+                            description: The ICCID of the subscription
+                        $$ref: '#/components/schemas/InputSuspendProvisioningRequest_suspend_subscriptions'
+                      description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                    mail-to:
+                      type: string
+                      description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                  description: Suspend a SIM.
+                  $$ref: '#/components/schemas/InputSuspendProvisioningRequest_suspend'
+              $$ref: '#/components/schemas/InputSuspendProvisioningRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"suspend\": {\n    \"subscriptions\": [\n      {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\":  \"<string>\"\n       }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"suspend\": {\n         \"subscriptions\": [\n          {\n               \"subscription-id\":  \"<string>\",\n               \"iccid\": \"<string>\"\n           }\n         ],\n         \"mail-to\": \"<string>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"suspend\\\": {\\n    \\\"subscriptions\\\": [\\n       {\\n        \\\"subscription-id\\\":  \\\"<string>\\\",\\n        \\\"iccid\\\":  \\\"<string>\\\"\\n           }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"suspend\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"       {\" + \"\\n\" +\n@\"        \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\",\" + \"\\n\" +\n@\"        \"\"iccid\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\"         }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"suspend\": {\n    \"subscriptions\": [\n       {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\":  \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/suspend\"\n\npayload = json.dumps({\n   \"suspend\": {\n      \"subscriptions\": [\n         {\n            \"subscription-id\":  \"<string>\",\n            \"iccid\":  \"<string>\"\n         }\n      ],\n      \"mail-to\": \"<string>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: SuspendASim
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/activate:
+    post:
+      tags:
+      - provisioning
+      summary: Activate a SIM
+      description: Activate a SIM for an account
+      operationId: ActivateASim
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                activate:
+                  required:
+                  - activation-state
+                  - subscriptions
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        properties:
+                          subscription-id:
+                            type: string
+                            description: The subscription-id of the SIM
+                          iccid:
+                            type: string
+                            description: The ICCID of the subscription
+                          imei:
+                            type: string
+                            description: IMEI is mandatory for VZW non SKU and APEX activation
+                        $$ref: '#/components/schemas/InputActivateProvisioningRequest_activate_subscriptions'
+                      description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                    mail-to:
+                      type: string
+                      description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                    activation-state:
+                      type: string
+                      enum:
+                      - active
+                      - test
+                      - ready
+                    activation-profile-id:
+                      type: string
+                    sku:
+                      type: string
+                      description: SKU is mandatory for VZW SKU activation
+                    service-type-info:
+                      properties:
+                        aus-ipnd-info:
+                          type: object
+                          description: IPND information is mandatory for KORE TELS2 Activation
+                          properties:
+                            title:
+                              type: string
+                            first-name:
+                              type: string
+                            last-name:
+                              type: string
+                            address:
+                              type: string
+                  description: activate a sim
+                  example: null
+                  $$ref: '#/components/schemas/InputActivateProvisioningRequest_activate'
+              $$ref: '#/components/schemas/InputActivateProvisioningRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/activate' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"activate\": {\n    \"activation-state\": \"<string>\",\n    \"subscriptions\": [\n      {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\": \"<string>\",\n        \"imei\": \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\",\n    \"activation-profile-id\": \"<string>\",\n    \"sku\": \"<string>\",\n    \"service-type-info\": {\n      \"aus-ipnd-info\": {\n        \"title\": \"<string>\",\n        \"first-name\": \"<string>\",\n        \"last-name\": \"<string>\",\n        \"address\": \"<string>\"\n      }\n    }\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/activate',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"activate\": {\n         \"activation-state\": \"<string>\",\n         \"subscriptions\": [\n              {\n               \"subscription-id\": \"<string>\",\n               \"iccid\":\"<string>\",\n               \"imei\":  \"<string>\"\n            }\n         ],\n         \"mail-to\": \"<string>\",\n         \"activation-profile-id\": \"<string>\",\n         \"sku\": \"<string>\",\n         \"service-type-info\": {\n            \"aus-ipnd-info\": {\n               \"title\": \"<string>\",\n               \"first-name\": \"<string>\",\n               \"last-name\": \"<string>\",\n               \"address\": \"<string>\"\n            }\n         }\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"activate\\\": {\\n    \\\"activation-state\\\": \\\"<string>\\\",\\n    \\\"subscriptions\\\": [\\n          {\\n        \\\"subscription-id\\\":  \\\"<string>\\\",\\n        \\\"iccid\\\":  \\\"<string>\\\"\\n ,\\n        \\\"imei\\\":  \\\"<string>\\\"\\n   \\n      }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\",\\n    \\\"activation-profile-id\\\": \\\"<string>\\\",\\n    \\\"sku\\\": \\\"<string>\\\",\\n    \\\"service-type-info\\\": {\\n      \\\"aus-ipnd-info\\\": {\\n        \\\"title\\\": \\\"<string>\\\",\\n        \\\"first-name\\\": \\\"<string>\\\",\\n        \\\"last-name\\\": \\\"<string>\\\",\\n        \\\"address\\\": \\\"<string>\\\"\\n      }\\n    }\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/activate\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/activate\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"activate\"\": {\" + \"\\n\" +\n@\"    \"\"activation-state\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"      \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\",\" + \"\\n\" +\n@\"        \"\"iccid\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  ,\" + \"\\n\" +\n@\"        \"\"imei\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\" \" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"activation-profile-id\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"sku\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"service-type-info\"\": {\" + \"\\n\" +\n@\"      \"\"aus-ipnd-info\"\": {\" + \"\\n\" +\n@\"        \"\"title\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"first-name\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"last-name\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"address\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    }\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/activate',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"activate\": {\n    \"activation-state\": \"<string>\",\n    \"subscriptions\": [\n      {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\":  \"<string>\",\n        \"imei\": \"<string>\" \n      }\n    ],\n    \"mail-to\": \"<string>\",\n    \"activation-profile-id\": \"<string>\",\n    \"sku\": \"<string>\",\n    \"service-type-info\": {\n      \"aus-ipnd-info\": {\n        \"title\": \"<string>\",\n        \"first-name\": \"<string>\",\n        \"last-name\": \"<string>\",\n        \"address\": \"<string>\"\n      }\n    }\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/activate\"\n\npayload = json.dumps({\n   \"activate\": {\n      \"activation-state\": \"<string>\",\n      \"subscriptions\": [\n         {\n            \"subscription-id\":\"<string>\",\n            \"iccid\":  \"<string>\",\n             \"imei\":  \"<string>\"    \n         } \n ],\n      \"mail-to\": \"<string>\",\n      \"activation-profile-id\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"service-type-info\": {\n         \"aus-ipnd-info\": {\n            \"title\": \"<string>\",\n            \"first-name\": \"<string>\",\n            \"last-name\": \"<string>\",\n            \"address\": \"<string>\"\n         }\n      }\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: ActivateASim
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/deactivate:
+    post:
+      tags:
+      - provisioning
+      summary: Deactivate a SIM
+      description: Deactivate a SIM for an account
+      operationId: DeactivateASim
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deactivate:
+                  required:
+                  - subscriptions
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        properties:
+                          subscription-id:
+                            type: string
+                            description: The subscription-id of the SIM
+                          iccid:
+                            type: string
+                            description: The ICCID of the subscription
+                        $$ref: '#/components/schemas/InputSuspendProvisioningRequest_suspend_subscriptions'
+                      description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                    mail-to:
+                      type: string
+                      description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                  description: deactivate a sim
+                  example: null
+                  $$ref: '#/components/schemas/InputDeactivateProvisioningRequest_deactivate'
+              $$ref: '#/components/schemas/InputDeactivateProvisioningRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/deactivate' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"deactivate\": {\n    \"subscriptions\": [\n        {\n        \"subscription-id\": \"<string>\",\n        \"iccid\":  \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/deactivate',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"deactivate\": {\n         \"subscriptions\": [\n       {\n               \"subscription-id\":  \"<string>\",\n               \"iccid\":  \"<string>\"\n            }\n         ],\n         \"mail-to\": \"<string>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"deactivate\\\": {\\n    \\\"subscriptions\\\": [\\n       {\\n        \\\"subscription-id\\\":\\\"<string>\\\"\\n ,\\n        \\\"iccid\\\":  \\\"<string>\\\"\\n        \\n      }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/deactivate\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/deactivate\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"deactivate\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"       {\" + \"\\n\" +\n@\"        \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\"     ,\" + \"\\n\" +\n@\"        \"\"iccid\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  \" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/deactivate',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"deactivate\": {\n    \"subscriptions\": [\n      {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\": \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/deactivate\"\n\npayload = json.dumps({\n   \"deactivate\": {\n      \"subscriptions\": [\n        {\n            \"subscription-id\": \"<string>\",\n            \"iccid\":  \"<string>\"\n         }\n      ],\n      \"mail-to\": \"<string>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: DeactivateASim
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/plan-feature-change:
+    post:
+      tags:
+      - provisioning
+      summary: Change Plan for a SIM
+      description: Change plan for a SIM of an account
+      operationId: PlanChangeForASim
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                plan-feature-change:
+                  required:
+                  - activation-profile-id
+                  - subscriptions
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        properties:
+                          subscription-id:
+                            type: string
+                            description: The subscription-id of the SIM
+                          iccid:
+                            type: string
+                            description: The ICCID of the subscription
+                        $$ref: '#/components/schemas/InputSuspendProvisioningRequest_suspend_subscriptions'
+                      description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                    activation-profile-id:
+                      type: string
+                    mail-to:
+                      type: string
+                      description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                  example: null
+                  $$ref: '#/components/schemas/PlanChangeProvisioningRequest_planfeaturechange'
+              $$ref: '#/components/schemas/PlanChangeProvisioningRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/plan-feature-change' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"plan-feature-change\": {\n    \"activation-profile-id\": \"<string>\",\n    \"subscriptions\": [\n       {\n        \"subscription-id\": \"<string>\",\n        \"iccid\":  \"<string>\"\n       }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/plan-feature-change',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"plan-feature-change\": {\n         \"activation-profile-id\": \"<string>\",\n         \"subscriptions\": [\n              {\n               \"subscription-id\":\"<string>\",\n               \"iccid\":  \"<string>\"\n            }\n         ],\n         \"mail-to\": \"<string>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"plan-feature-change\\\": {\\n    \\\"activation-profile-id\\\": \\\"<string>\\\",\\n    \\\"subscriptions\\\": [\\n      {\\n        \\\"subscription-id\\\": \\\"<string>\\\",\\n        \\\"iccid\\\": \\\"<string>\\\"\\n   }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/plan-feature-change\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/plan-feature-change\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"plan-feature-change\"\": {\" + \"\\n\" +\n@\"    \"\"activation-profile-id\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"         {\" + \"\\n\" +\n@\"        \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\",\" + \"\\n\" +\n@\"        \"\"iccid\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\"    }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/plan-feature-change',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"plan-feature-change\": {\n    \"activation-profile-id\": \"<string>\",\n    \"subscriptions\": [\n       {\n        \"subscription-id\": \"<string>\",\n        \"iccid\": \"<string>\"       \n      }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/plan-feature-change\"\n\npayload = json.dumps({\n   \"plan-feature-change\": {\n      \"activation-profile-id\": \"<string>\",\n      \"subscriptions\": [\n         {\n            \"subscription-id\": \"<string>\",\n            \"iccid\": \"<string>\"\n         }\n      ],\n      \"mail-to\": \"<string>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: PlanChangeForASim
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/reactivate:
+    post:
+      tags:
+      - provisioning
+      summary: Reactivate a SIM
+      description: Reactivate a SIM for an account
+      operationId: ReactivateASim
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reactivate:
+                  required:
+                  - subscriptions
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        properties:
+                          subscription-id:
+                            type: string
+                            description: The subscription-id of the SIM
+                          iccid:
+                            type: string
+                            description: The ICCID of the subscription
+                        $$ref: '#/components/schemas/InputSuspendProvisioningRequest_suspend_subscriptions'
+                      description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                    mail-to:
+                      type: string
+                      description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                  example: null
+                  $$ref: '#/components/schemas/ReactivateProvisioningRequest_reactivate'
+              $$ref: '#/components/schemas/ReactivateProvisioningRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/reactivate' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"reactivate\": {\n    \"subscriptions\": [\n        {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\":  \"<string>\"\n        }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/reactivate',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"reactivate\": {\n         \"subscriptions\": [\n             {\n               \"subscription-id\":  \"<string>\",\n               \"iccid\":  \"<string>\"\n            }\n         ],\n         \"mail-to\": \"<string>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"reactivate\\\": {\\n    \\\"subscriptions\\\": [\\n        {\\n        \\\"subscription-id\\\":  \\\"<string>\\\",\\n        \\\"iccid\\\": \\\"<string>\\\"\\n        }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/reactivate\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/reactivate\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"reactivate\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"       {\" + \"\\n\" +\n@\"        \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\",\" + \"\\n\" +\n@\"        \"\"iccid\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\"        }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/reactivate',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"reactivate\": {\n    \"subscriptions\": [\n        {\n        \"subscription-id\": \"<string>\",\n        \"iccid\":  \"<string>\"        \n       }\n    ],\n    \"mail-to\": \"<string>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/reactivate\"\n\npayload = json.dumps({\n   \"reactivate\": {\n      \"subscriptions\": [\n         {\n            \"subscription-id\":  \"<string>\",\n            \"iccid\": \"<string>\"\n         }\n      ],\n      \"mail-to\": \"<string>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: ReactivateASim
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/terminate:
+    post:
+      tags:
+      - provisioning
+      summary: Terminate a SIM
+      description: Terminate a SIM for an account
+      operationId: TerminateASim
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                terminate:
+                  required:
+                  - subscriptions
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        properties:
+                          subscription-id:
+                            type: string
+                            description: The subscription-id of the SIM
+                          iccid:
+                            type: string
+                            description: The ICCID of the subscription
+                        $$ref: '#/components/schemas/InputSuspendProvisioningRequest_suspend_subscriptions'
+                      description: Either __'subscription-id'__ or __'iccid'__ is required in the request
+                    mail-to:
+                      type: string
+                      description: Optional field that provides email notifications of all status changes for this request. To send to multiple addresses (20 maximum), add a comma (,) between each email address.
+                    force-enabled-esim-profile-termination:
+                      type: boolean
+                      description: Force termination when eSIM subscription is enabled (on an EID with many ICCIDs)
+                      example: false
+                  example: null
+                  $$ref: '#/components/schemas/TerminateProvisioningRequest_terminate'
+              $$ref: '#/components/schemas/TerminateProvisioningRequest'
+        required: true
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      provisioning-request-id:
+                        type: string
+                      message:
+                        type: string
+                    example: null
+                    $$ref: '#/components/schemas/CreateRequest_data'
+                $$ref: '#/components/schemas/CreateRequest'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/terminate' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"terminate\": {\n    \"subscriptions\": [\n        {\n        \"subscription-id\": \"<string>\",\n        \"iccid\":  \"<string>\"\n        }\n    ],\n    \"mail-to\": \"<string>\",\n    \"force-enabled-esim-profile-termination\": \"<boolean>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/terminate',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"terminate\": {\n         \"subscriptions\": [\n              {\n               \"subscription-id\": \"<string>\",\n               \"iccid\":  \"<string>\"\n             }\n         ],\n         \"mail-to\": \"<string>\",\n         \"force-enabled-esim-profile-termination\": \"<boolean>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"terminate\\\": {\\n    \\\"subscriptions\\\": [\\n    {\\n        \\\"subscription-id\\\":  \\\"<string>\\\",\\n        \\\"iccid\\\":  \\\"<string>\\\"\\n           }\\n    ],\\n    \\\"mail-to\\\": \\\"<string>\\\",\\n    \\\"force-enabled-esim-profile-termination\\\": \\\"<boolean>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/terminate\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/terminate\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"terminate\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"     {\" + \"\\n\" +\n@\"        \"\"subscription-id\"\":  \"\"<string>\"\"\" + \"\\n\",\" + \"\\n\" +\n@\"        \"\"iccid\"\":  \"\"<string>\"\"\" + \"\\n\" +\n@\"             }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"mail-to\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"force-enabled-esim-profile-termination\"\": \"\"<boolean>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/terminate',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"terminate\": {\n    \"subscriptions\": [\n        {\n        \"subscription-id\":  \"<string>\",\n        \"iccid\": \"<string>\"\n      }\n    ],\n    \"mail-to\": \"<string>\",\n    \"force-enabled-esim-profile-termination\": \"<boolean>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/terminate\"\n\npayload = json.dumps({\n   \"terminate\": {\n      \"subscriptions\": [\n        {\n            \"subscription-id\":  \"<string>\",\n            \"iccid\":  \"<string>\"\n         }\n      ],\n      \"mail-to\": \"<string>\",\n      \"force-enabled-esim-profile-termination\": \"<boolean>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: TerminateASim
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}:
+    get:
+      tags:
+      - provisioning
+      summary: Finds Request Status By ProvisioningRequestId
+      description: Get details of a specific request made
+      operationId: getRequestStatusByProvisioningRequestId
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: provisioning-request-id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  request-type:
+                    type: object
+                    properties:
+                      subscriptions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subscription-id:
+                              type: string
+                            iccid:
+                              type: string
+                              description: The ICCID of the subscription
+                            completion-status:
+                              type: string
+                            error-message:
+                              type: string
+                          example: null
+                          $$ref: '#/components/schemas/RequestStatus_requesttype_subscriptions'
+                      status:
+                        type: string
+                        description: '
+
+                          submitted    -- Request is submitted via api and got the acknowledgement back,
+
+
+                          failed -- Request creation failed,
+
+
+                          pending     -- Request is created,
+
+
+                          completed  -- Request is completed
+
+                          '
+                        enum:
+                        - submitted
+                        - failed
+                        - pending
+                        - completed
+                      provisioning-request-id:
+                        type: string
+                      date-completed:
+                        type: string
+                        description: YYY:MM:DD:HH:MM:SS
+                        format: dateTime
+                        example: '2022-10-24T00:00:00'
+                      service-type:
+                        type: string
+                      number-of-subscriptions:
+                        type: integer
+                      date-created:
+                        type: string
+                        description: YYYY-MM-DD:HH:MM:SS
+                        format: dateTime
+                        example: '2022-10-24T00:00:00'
+                      request-type:
+                        type: string
+                      provisioned-by:
+                        type: string
+                      account-id:
+                        type: string
+                      activation-profile-id:
+                        type: string
+                    description: __Allowed:__ Activation | StateChange | Deactivation | Reactivation | PlanChange | ProfileChange
+                    example: null
+                    $$ref: '#/components/schemas/RequestStatus_requesttype'
+                $$ref: '#/components/schemas/RequestStatus'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getRequestStatusByProvisioningRequestId
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+    Auth:
+      type: oauth2
+      description: token expiry is given in seconds
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/Api/api/token
+          scopes: {}

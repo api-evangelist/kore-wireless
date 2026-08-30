@@ -1,0 +1,489 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Network Access Profile API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1NetworkAccessProfile
+paths:
+  /v1/NetworkAccessProfiles:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: ''
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - unique_name
+      - fleets_count
+      dependentProperties:
+        networks:
+          mapping:
+            network_access_profile_sid: sid
+          resource_url: /v1/NetworkAccessProfiles/{network_access_profile_sid}/Networks
+      pathType: list
+    post:
+      description: Create a new Network Access Profile
+      tags:
+      - SupersimV1NetworkAccessProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -X POST "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>" --data-urlencode "UniqueName=<UNIQUE_NAME>" --data-urlencode "Networks=<NETWORK_SID>" --data-urlencode "Networks=<NETWORK_SID>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams();\ndata.append(\"UniqueName\", \"<UNIQUE_NAME>\");\ndata.append('Networks', '<NETWORK_SID>');\ndata.append('Networks', '<NETWORK_SID>');\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/NetworkAccessProfiles', {\n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.post(\n    \"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles\",\n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n        },\n    data={\n            \"UniqueName\":\"<UNIQUE_NAME>\",\n            \"Networks\": [\"<NETWORK_SID>\",\"<NETWORK_SID>\"]\n        }\n)\nresp = response.json()\nprint(resp)\n"
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.network_access_profile'
+              examples:
+                createMinimal:
+                  value:
+                    unique_name: null
+                    sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    date_created: '2020-05-01T20:00:00Z'
+                    date_updated: '2020-05-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    links:
+                      networks: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks
+                createWithNameAndNetworks:
+                  value:
+                    unique_name: My Network Access Profile
+                    sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    date_created: '2020-05-01T20:00:00Z'
+                    date_updated: '2020-05-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    links:
+                      networks: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: Created
+      security:
+      - OAuth: []
+      operationId: CreateNetworkAccessProfile
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateNetworkAccessProfileRequest
+              properties:
+                UniqueName:
+                  type: string
+                  description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+                Networks:
+                  type: array
+                  items:
+                    type: string
+                  description: List of Network SIDs that this Network Access Profile will allow connections to.
+            examples:
+              createMinimal:
+                value: {}
+              createWithNameAndNetworks:
+                value:
+                  UniqueName: My Network Access Profile
+                  Networks:
+                  - HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  - HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+    get:
+      description: Retrieve a list of Network Access Profiles from your account.
+      tags:
+      - SupersimV1NetworkAccessProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles?Page=1&PageSize=1" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles\";\nconst params = new URLSearchParams({ Page: \"1\", PageSize: \"1\" });\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles\", \n  headers={\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n  params={\n    \"Page\": \"1\", \n    \"PageSize\": \"1\"\n    }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  network_access_profiles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.network_access_profile'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListNetworkAccessProfileResponse
+              examples:
+                readEmpty:
+                  value:
+                    network_access_profiles: []
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles?PageSize=50&Page=0
+                      key: network_access_profiles
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles?PageSize=50&Page=0
+                readFull:
+                  value:
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles?PageSize=50&Page=0
+                      key: network_access_profiles
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles?PageSize=50&Page=0
+                    network_access_profiles:
+                    - unique_name: My Network Access Profile
+                      sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      date_created: '2020-05-01T20:00:00Z'
+                      date_updated: '2020-05-01T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      links:
+                        networks: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListNetworkAccessProfile
+  /v1/NetworkAccessProfiles/{Sid}:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: ''
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - unique_name
+      - fleets_count
+      dependentProperties:
+        networks:
+          mapping:
+            network_access_profile_sid: sid
+          resource_url: /v1/NetworkAccessProfiles/{network_access_profile_sid}/Networks
+      pathType: instance
+    get:
+      description: Fetch a Network Access Profile instance from your account.
+      tags:
+      - SupersimV1NetworkAccessProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: "curl -L \"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/<Sid>\" --header \"Authorization: Bearer <YOUR_AUTH_TOKEN>\" \n"
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/<Sid>', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/<Sid>\", \n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n            }\n    )\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the Network Access Profile resource to fetch.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.network_access_profile'
+              examples:
+                fetch:
+                  value:
+                    unique_name: My Network Access Profile
+                    sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    date_created: '2020-05-01T20:00:00Z'
+                    date_updated: '2020-05-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    links:
+                      networks: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: FetchNetworkAccessProfile
+    post:
+      description: Updates the given properties of a Network Access Profile in your account.
+      tags:
+      - SupersimV1NetworkAccessProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -X POST "https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/<Sid>" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>" --data-urlencode "UniqueName=<NEW_UNIQUE_NAME>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams({\n    \"UniqueName\": \"<NEW_UNIQUE_NAME>\",\n  });\n  \nconst response = await fetch(\"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/<Sid>\", {    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.post(\n    \"https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/<Sid>\",\n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n        },\n    data={\n            \"UniqueName\":\"<NEW_UNIQUE_NAME>\"\n        }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the Network Access Profile to update.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.network_access_profile'
+              examples:
+                updateUniqueName:
+                  value:
+                    unique_name: My Network Access Profile
+                    sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    date_created: '2020-05-01T20:00:00Z'
+                    date_updated: '2020-05-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    links:
+                      networks: https://supersim.api.korewireless.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: UpdateNetworkAccessProfile
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: UpdateNetworkAccessProfileRequest
+              properties:
+                UniqueName:
+                  type: string
+                  description: The new unique name of the Network Access Profile.
+            examples:
+              updateUniqueName:
+                value:
+                  UniqueName: My Network Access Profile
+components:
+  schemas:
+    supersim.v1.network_access_profile:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HA[0-9a-fA-F]{32}$
+          description: The unique string that identifies the Network Access Profile resource.
+        unique_name:
+          type:
+          - string
+          - 'null'
+          description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) that the Network Access Profile belongs to.
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the Network Access Profile resource.
+        links:
+          type:
+          - object
+          - 'null'
+          format: uri-map
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

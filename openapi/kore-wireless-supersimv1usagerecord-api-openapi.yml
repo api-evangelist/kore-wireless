@@ -1,0 +1,769 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Usage Record API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1UsageRecord
+paths:
+  /v1/UsageRecords:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Usage information for Sim resources
+    x-kore:
+      defaultOutputProperties:
+      - account_sid
+      - period
+      pathType: list
+    get:
+      description: List UsageRecords
+      tags:
+      - SupersimV1UsageRecord
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/UsageRecords?Page=1&PageSize=10" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/UsageRecords\";\nconst params = new URLSearchParams({ Page: \"1\", PageSize: \"10\" });\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/UsageRecords\", \n    headers={\n        \"Content-Type\":\"application/x-www-form-urlencoded\",\n        \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n        },\n    params={\n        \"Page\": \"1\", \n        \"PageSize\": \"10\"\n        }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sim
+        in: query
+        description: SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.
+        schema:
+          type: string
+        examples:
+          readDaySimFilter:
+            value: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: Fleet
+        in: query
+        description: SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super SIMs belonging to this Fleet resource at the time the usage occurred.
+        schema:
+          type: string
+        examples:
+          readDayFleetFilter:
+            value: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: Network
+        in: query
+        description: SID of a Network resource. Only show UsageRecords representing usage on this network.
+        schema:
+          type: string
+          minLength: 34
+          maxLength: 34
+          pattern: ^HW[0-9a-fA-F]{32}$
+        examples:
+          readDayNetworkFilter:
+            value: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: IsoCountry
+        in: query
+        description: Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country.
+        schema:
+          type: string
+          format: iso-country-code
+        examples:
+          readDayCountryFilter:
+            value: FR
+          readDayGroupBySimAndFilterByCountry:
+            value: FR
+      - name: Group
+        in: query
+        description: 'Dimension over which to aggregate usage records. Can be: `sim`, `fleet`, `network`, `isoCountry`. Default is to not aggregate across any of these dimensions, UsageRecords will be aggregated into the time buckets described by the `Granularity` parameter.'
+        schema:
+          $ref: '#/components/schemas/usage_record_enum_group'
+        examples:
+          readDayGroupBySim:
+            value: sim
+          readDayGroupByFleet:
+            value: fleet
+          readDayGroupByNetwork:
+            value: network
+          readDayGroupByIsoCountry:
+            value: isoCountry
+          readDayGroupBySimAndFilterByCountry:
+            value: sim
+      - name: Granularity
+        in: query
+        description: 'Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or `all`. Default is `all`. `all` returns one UsageRecord that describes the usage for the entire period.'
+        schema:
+          $ref: '#/components/schemas/usage_record_enum_granularity'
+        examples:
+          readAllDay:
+            value: day
+          readAllHour:
+            value: hour
+          readDaySimFilter:
+            value: day
+          readDayNetworkFilter:
+            value: day
+          readDayCountryFilter:
+            value: day
+          readDayFleetFilter:
+            value: day
+      - name: StartTime
+        in: query
+        description: Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`.
+        schema:
+          type: string
+          format: date-time
+      - name: EndTime
+        in: query
+        description: Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time.
+        schema:
+          type: string
+          format: date-time
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 249.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 249
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  usage_records:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.usage_record'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListUsageRecordResponse
+              examples:
+                readAll:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2015-05-01T20:00:00Z'
+                        end_time: '2015-06-01T20:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?PageSize=50&Page=0
+                readAllDay:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-02T00:00:00Z'
+                        end_time: '2019-05-03T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Granularity=day&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Granularity=day&PageSize=50&Page=0
+                readAllHour:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-01T01:00:00Z'
+                        end_time: '2019-05-01T02:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-01T00:00:00Z'
+                        end_time: '2019-05-01T01:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Granularity=hour&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Granularity=hour&PageSize=50&Page=0
+                readDaySimFilter:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-02T00:00:00Z'
+                        end_time: '2019-05-03T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Granularity=day&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Granularity=day&PageSize=50&Page=0
+                readDayNetworkFilter:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-02T00:00:00Z'
+                        end_time: '2019-05-03T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Network=HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Granularity=day&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Network=HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Granularity=day&PageSize=50&Page=0
+                readDayCountryFilter:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: FR
+                    - period:
+                        start_time: '2019-05-02T00:00:00Z'
+                        end_time: '2019-05-03T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: FR
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?IsoCountry=FR&Granularity=day&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?IsoCountry=FR&Granularity=day&PageSize=50&Page=0
+                readDayFleetFilter:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      network_sid: null
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-02T00:00:00Z'
+                        end_time: '2019-05-03T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Granularity=day&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Fleet=HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&Granularity=day&PageSize=50&Page=0
+                readDayGroupBySim:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: HSbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=sim&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=sim&PageSize=50&Page=0
+                readDayGroupByFleet:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      network_sid: null
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: HFbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=fleet&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=fleet&PageSize=50&Page=0
+                readDayGroupByNetwork:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iso_country: null
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: HWbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=network&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=network&PageSize=50&Page=0
+                readDayGroupByIsoCountry:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: FR
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: US
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=isoCountry&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?Group=isoCountry&PageSize=50&Page=0
+                readDayGroupBySimAndFilterByCountry:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: FR
+                    - period:
+                        start_time: '2019-05-03T00:00:00Z'
+                        end_time: '2019-05-04T00:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 150000
+                      data_download: 150000
+                      data_total: 300000
+                      data_total_billed: '0.03'
+                      billed_unit: USD
+                      sim_sid: HSbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: FR
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?IsoCountry=FR&Group=sim&PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?IsoCountry=FR&Group=sim&PageSize=50&Page=0
+                readAllNoBilling:
+                  value:
+                    usage_records:
+                    - period:
+                        start_time: '2015-05-01T20:00:00Z'
+                        end_time: '2015-06-01T20:00:00Z'
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      data_upload: 1000
+                      data_download: 1000
+                      data_total: 2000
+                      data_total_billed: '0'
+                      billed_unit: null
+                      sim_sid: null
+                      fleet_sid: null
+                      network_sid: null
+                      iso_country: null
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/UsageRecords?PageSize=50&Page=0
+                      key: usage_records
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/UsageRecords?PageSize=50&Page=0
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListUsageRecord
+components:
+  schemas:
+    usage_record_enum_granularity:
+      type: string
+      enum:
+      - hour
+      - day
+      - all
+    usage_record_enum_group:
+      type: string
+      enum:
+      - sim
+      - fleet
+      - network
+      - isoCountry
+    supersim.v1.usage_record:
+      type: object
+      properties:
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) that incurred the usage.
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HS[0-9a-fA-F]{32}$
+          description: SID of a Sim resource to which the UsageRecord belongs. Value will only be present when either a value for the `Sim` query parameter is provided or when UsageRecords are grouped by `sim`. Otherwise, the value will be `null`.
+        network_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HW[0-9a-fA-F]{32}$
+          description: SID of the Network resource the usage occurred on. Value will only be present when either a value for the `Network` query parameter is provided or when UsageRecords are grouped by `network`. Otherwise, the value will be `null`.
+        fleet_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HF[0-9a-fA-F]{32}$
+          description: SID of the Fleet resource the usage occurred on. Value will only be present when either a value for the `Fleet` query parameter is provided or when UsageRecords are grouped by `fleet`. Otherwise, the value will be `null`.
+        iso_country:
+          type:
+          - string
+          - 'null'
+          format: iso-country-code
+          description: Alpha-2 ISO Country Code that the usage occurred in. Value will only be present when either a value for the `IsoCountry` query parameter is provided or when UsageRecords are grouped by `isoCountry`. Otherwise, the value will be `null`.
+        period:
+          description: The time period for which the usage is reported. The period is represented as a pair of `start_time` and `end_time` timestamps specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        data_upload:
+          type:
+          - integer
+          - 'null'
+          format: int64
+          description: Total data uploaded in bytes, aggregated by the query parameters.
+        data_download:
+          type:
+          - integer
+          - 'null'
+          format: int64
+          description: Total data downloaded in bytes, aggregated by the query parameters.
+        data_total:
+          type:
+          - integer
+          - 'null'
+          format: int64
+          description: Total of data_upload and data_download.
+        data_total_billed:
+          type:
+          - number
+          - 'null'
+          description: Total amount in the `billed_unit` that was charged for the data uploaded or downloaded. Will return 0 for usage prior to February 1, 2022. Value may be 0 despite `data_total` being greater than 0 if the data usage is still being processed by KORE's billing system. Refer to [Data Usage Processing](https://docs.korewireless.com/en-us/v/api/products/supersim/usage-record-resource#data-usage-processing) for more details.
+        billed_unit:
+          type:
+          - string
+          - 'null'
+          format: currency
+          description: The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`). This can be null when data_toal_billed is 0 and we do not yet have billing information for the corresponding data usage. Refer to [Data Usage Processing](https://docs.korewireless.com/en-us/v/api/products/supersim/usage-record-resource#data-usage-processing) for more details.
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

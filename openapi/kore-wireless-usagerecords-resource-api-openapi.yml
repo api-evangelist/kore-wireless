@@ -1,0 +1,803 @@
+openapi: 3.2.0
+info:
+  title: Programmable Wireless UsageRecords Resource API
+  description: The KORE Programmable Wireless REST API
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://programmable-wireless.api.korewireless.com
+security:
+- {}
+- Auth: []
+tags:
+- name: UsageRecords Resource
+paths:
+  /v1/UsageRecords:
+    get:
+      summary: List Data Usage records for an account
+      tags:
+      - UsageRecords Resource
+      operationId: listDataUsage
+      parameters:
+      - name: Start
+        in: query
+        required: false
+        description: Only include usage that has occurred on or after this date. Format is ISO 8601
+        schema:
+          type: string
+          x-jvm-type: java.time.Instant
+      - name: End
+        in: query
+        required: false
+        description: Only include usage that has occurred on or before this date. Format is ISO 8601.
+        schema:
+          type: string
+          x-jvm-type: java.time.Instant
+      - name: Granularity
+        in: query
+        required: false
+        description: How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.
+        schema:
+          $ref: '#/components/schemas/Granularity'
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: How many resources to return in each list page. The default is 50, and the maximum is 1000. Minimum= 1 Maximum=1000
+      - name: Page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The page index. This value is simply for client state.
+      - name: PageToken
+        description: The page token. This is provided by the API.
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageList'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '409':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&Page=<string>&PageToken=<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&Page=<string>&PageToken=<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&Page=<string>&PageToken=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_BEARER_TOKEN>\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&Page=<string>&PageToken=<string>\") {\n   MaxTimeout = -1,    \n}; var client = new RestClient(options); var request = new RestRequest(\"\", Method.Get); request.AddHeader(\"Authorization\", \"Bearer <YOUR_BEARER_TOKEN>\"); request.AddHeader(\"Accept\", \"application/json\"); RestResponse response = await client.ExecuteAsync(request); Console.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n$curl = curl_init();\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&Page=<string>&PageToken=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n$response = curl_exec($curl);\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nurl = \"https://programmable-wireless.api.korewireless.com/v1/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&Page=<string>&PageToken=<string>\"\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_BEARER_TOKEN>',\n   'Accept': 'application/json'\n}\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\nprint(response.text)\n"
+  /v1/Sims/{Sid}/UsageRecords:
+    parameters:
+    - name: Sid
+      in: path
+      description: The SID of the Sim resource to read the usage from.
+      schema:
+        type: string
+      required: true
+    get:
+      summary: List Data Usage records for a sim
+      tags:
+      - UsageRecords Resource
+      operationId: listDataUsageForSim
+      parameters:
+      - name: Start
+        in: query
+        required: false
+        description: Only include usage that has occurred on or after this date. Format is ISO 8601
+        schema:
+          type: string
+          x-jvm-type: java.time.Instant
+      - name: End
+        in: query
+        required: false
+        description: Only include usage that has occurred on or before this date. Format is ISO 8601.
+        schema:
+          type: string
+          x-jvm-type: java.time.Instant
+      - name: Granularity
+        in: query
+        required: false
+        description: How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.
+        schema:
+          $ref: '#/components/schemas/Granularity'
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+          description: How many resources to return in each list page. The default is 50, and the maximum is 1000. Minimum= 1 Maximum=1000
+      - name: Page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The page index. This value is simply for client state.
+      - name: PageToken
+        description: The page token. This is provided by the API.
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SIMUsageList'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>\")\n{\n   MaxTimeout = -1, \n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+components:
+  schemas:
+    DataUsageCounts:
+      type: object
+      properties:
+        download:
+          type: integer
+          format: int64
+        upload:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        units:
+          type: string
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - download
+      - upload
+      - total
+      - units
+      - billed
+      - billing_units
+    TimePeriod:
+      type: object
+      description: The time period for which usage is reported. Contains start and end properties that describe the period using GMT date-time values specified in ISO 8601 format.
+      properties:
+        start:
+          type: string
+          x-jvm-type: java.time.Instant
+        end:
+          type: string
+          x-jvm-type: java.time.Instant
+      required:
+      - start
+      - end
+    CommandsUsageDetails:
+      type: object
+      description: An object that describes the aggregated Commands usage for all SIMs during the specified period.
+      properties:
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        home:
+          $ref: '#/components/schemas/CommandsUsageCounts'
+        national_roaming:
+          $ref: '#/components/schemas/CommandsUsageCounts'
+        international_roaming:
+          type: array
+          items:
+            $ref: '#/components/schemas/InternationalCommandsUsageCounts'
+        billing_units:
+          type: string
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
+    UsageList:
+      type: object
+      properties:
+        usage_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRecord'
+        meta:
+          $ref: '#/components/schemas/ListMeta'
+    ListMeta:
+      type: object
+      required:
+      - list_key
+      - page_size
+      - direct_token
+      properties:
+        page_size:
+          type: integer
+          default: 0
+          format: int32
+        page:
+          type: integer
+          default: 0
+        first_page_url:
+          type: string
+        previous_page_url:
+          type: string
+        url:
+          type: string
+        key:
+          type: string
+        next_page_url:
+          type: string
+    DataUsageDetails:
+      type: object
+      description: An object that describes the aggregated Data usage for all SIMs over the period.
+      properties:
+        download:
+          type: integer
+          format: int64
+        upload:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        units:
+          type: string
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        home:
+          $ref: '#/components/schemas/DataUsageCounts'
+        national_roaming:
+          $ref: '#/components/schemas/DataUsageCounts'
+        international_roaming:
+          type: array
+          items:
+            $ref: '#/components/schemas/InternationalDataUsageCounts'
+        billing_units:
+          type: string
+    SIMUsageRecord:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/UsageRecord'
+      - type: object
+        properties:
+          sim_sid:
+            type: string
+    InternationalDataUsageCounts:
+      type: object
+      properties:
+        country_code:
+          type: string
+        download:
+          type: integer
+          format: int64
+        upload:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        units:
+          type: string
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - country_code
+      - download
+      - upload
+      - total
+      - units
+      - billed
+      - billing_units
+    SIMUsageList:
+      type: object
+      properties:
+        usage_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/SIMUsageRecord'
+        meta:
+          $ref: '#/components/schemas/ListMeta'
+    InternationalCommandsUsageCounts:
+      type: object
+      properties:
+        country_code:
+          type: string
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - country_code
+      - from_sim
+      - to_sim
+      - total
+      - billed
+      - billing_units
+    UsageRecord:
+      type: object
+      properties:
+        period:
+          $ref: '#/components/schemas/TimePeriod'
+        account_sid:
+          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
+          type: string
+          x-jvm-type: AccountSid
+        commands:
+          $ref: '#/components/schemas/CommandsUsageDetails'
+        data:
+          $ref: '#/components/schemas/DataUsageDetails'
+    Granularity:
+      type: string
+      enum:
+      - all
+      - daily
+      - hourly
+    CommandsUsageCounts:
+      type: object
+      properties:
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - from_sim
+      - to_sim
+      - total
+      - billed
+      - billing_units
+  securitySchemes:
+    Auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-amazon-apigateway-api-key-source: AUTHORIZER
+x-hideTryItPanel: true

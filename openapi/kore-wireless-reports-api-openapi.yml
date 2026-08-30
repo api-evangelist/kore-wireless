@@ -1,0 +1,287 @@
+openapi: 3.2.0
+info:
+  title: Connectivity Reports API
+  description: Connectivity APIs help users manage their connectivity through APIs.
+  version: 1.0.0
+servers:
+- url: https://api.korewireless.com/connectivity
+  description: Production
+security:
+- {}
+- Auth: []
+- api_key: []
+tags:
+- name: Reports
+  description: Customers of KORE who pre-configure report schedules have reports automatically generated and securely stored at the scheduled times — when accessed via API, they receive data in the agreed format, with internal integrity checks to guarantee authenticity.
+paths:
+  /v1/accounts/{account-id}/scheduled-reports/daily-subscriptions:
+    get:
+      tags:
+      - Reports
+      summary: Get The Scheduled Report Details
+      description: Get a previously configured scheduled report.
+      operationId: getScheduledReportDownloadUrl
+      parameters:
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: 'The date for which the scheduled report is requested. Eg: 2023-02-23'
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  file-details:
+                    type: object
+                    properties:
+                      file-name:
+                        type: string
+                      file-type:
+                        type: string
+                      file-generation-date:
+                        type: string
+                        format: date-time
+                      checksum:
+                        type: object
+                        properties:
+                          type:
+                            type: string
+                          value:
+                            type: string
+                      signed-url:
+                        type: string
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/scheduled-reports/daily-subscriptions?date=<dateTime>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/scheduled-reports/daily-subscriptions?date=<dateTime>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/scheduled-reports/daily-subscriptions?date=<dateTime>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/scheduled-reports/daily-subscriptions?date=<dateTime>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/scheduled-reports/daily-subscriptions?date=<dateTime>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/scheduled-reports/daily-subscriptions?date=<dateTime>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      __originalOperationId: getScheduledReportDownloadUrl
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+    Auth:
+      type: oauth2
+      description: token expiry is given in seconds
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/Api/api/token
+          scopes: {}

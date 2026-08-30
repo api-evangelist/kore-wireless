@@ -1,0 +1,646 @@
+openapi: 3.2.0
+info:
+  title: Connectivity Session API
+  description: Connectivity APIs help users manage their connectivity through APIs.
+  version: 1.0.0
+servers:
+- url: https://api.korewireless.com/connectivity
+  description: Production
+security:
+- {}
+- Auth: []
+- api_key: []
+tags:
+- name: Session
+  description: Customers of KORE having Radius Accounting integrated at carrier level will have session events collected at KORE. Session START and STOP events are correlated, and data is exposed as Session API for consumption. This API also provides the session count for any duration within the last 7 days.Typical use cases would be 1) UI showing recent sessions against a subscription-id or iccid or msisdn in a paginated fashion. 2) Fetch session count so to generate alarms when a defined threshold is crossed.
+paths:
+  /v1/accounts/{account-id}/sessions:
+    get:
+      tags:
+      - Session
+      summary: Get Session Details
+      description: Session details API queried by subscription-id or msisdn or iccid will return list of session details for a subscription. API will return an empty array in response if there are no RADIUS session details available for that subscription.
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    subscription-urn:
+                      type: string
+                      description: 'Subscription URN of the device '
+                    session-data:
+                      type: object
+                      properties:
+                        sessions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              stop-time:
+                                type: string
+                                description: Session Stop Time
+                              start-time:
+                                type: string
+                                description: Session Start Time
+                              apn:
+                                type: string
+                                description: APN
+                              session-id:
+                                type: string
+                                description: Session ID
+                          description: List of sessions
+                        sort:
+                          type: array
+                          items:
+                            type: string
+                          description: Denotes the sorting order of the results (Ascending or Descending)
+                        page:
+                          type: object
+                          properties:
+                            size:
+                              type: integer
+                              description: The result is paginated, the value denotes the page size
+                            number:
+                              type: integer
+                              description: The result is paginated, the value denotes the page number
+                          description: Response Data pagination details
+                      description: Session Details
+                    iccid:
+                      type: string
+                      description: 'ICCID of the device '
+                    msisdn:
+                      type: string
+                      description: MSISDN of the device
+                    session-count:
+                      type: integer
+                      description: Number of sessions within the given time period ( default 7 days)
+                $$ref: '#/components/schemas/200GetSessionDetails0'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Error Messages
+                  error:
+                    type: string
+                    description: HTTP Reason-Phrase
+                  timestamp:
+                    type: string
+                    format: date-time
+                    description: Response Timestamp
+                $$ref: '#/components/schemas/400GetSessionDetails0'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Error Messages
+                  error:
+                    type: string
+                    description: HTTP Reason-Phrase
+                  timestamp:
+                    type: string
+                    format: date-time
+                    description: Response Timestamp
+                $$ref: '#/components/schemas/404GetSessionDetails0'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path:
+                    type: string
+                    description: API endpoint
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Error Messages
+                  error:
+                    type: string
+                    description: HTTP Reason-Phrase
+                  timestamp:
+                    type: string
+                    format: date-time
+                    description: Response Timestamp
+                  status:
+                    type: integer
+                    description: HTTP response status code
+                $$ref: '#/components/schemas/500GetSessionDetails0'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: query-by-field
+        description: This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - subscription-id
+          - ' msisdn'
+          - ' iccid'
+      - name: query-by-values
+        description: This field expects one or more values up to 100 for the field selected in the query-by-field.
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: include-active-sessions
+        description: Include details of the active/open session in the response. Default value is false.
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: date-range-start
+        description: Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date-range-end
+        description: Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page-number
+        description: Session data is paginated, and this field defines the page number to be queried.
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 1
+      - name: page-size
+        description: Session data is paginated, and this field defines the page size to be queried.
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 1
+      - name: sort-by
+        description: Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC
+        in: query
+        required: false
+        schema:
+          type: string
+      - required: true
+        name: account-id
+        in: path
+        description: Unique identifier for an account
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/sessions?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/sessions?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/sessions?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/sessions?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/sessions?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/sessions?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/in-session:
+    get:
+      tags:
+      - Session
+      summary: Get Session Status
+      description: 'Get in-session status, that can be queried by subscription-id or msisdn or iccid. This API will return in session True/False based on the latest RADIUS event available. API will return an empty array in response if there are no RADIUS session events available for that subscription. '
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    subscription-id:
+                      type: string
+                      description: 'subscription-id of the device '
+                    msisdn:
+                      type: string
+                      description: msisdn of the device
+                    iccid:
+                      type: string
+                      description: 'iccid of the device '
+                    in-session:
+                      type: boolean
+                      description: Current Session status of  the device
+                    last-updated-time:
+                      type: string
+                      description: Timestamp of the most recent Session recorded
+                $$ref: '#/components/schemas/200GetSessionStatus0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Error Messages
+                  error:
+                    type: string
+                    description: HTTP Reason-Phrase
+                  timestamp:
+                    type: string
+                    format: date-time
+                    description: Response Timestamp
+                $$ref: '#/components/schemas/400GetSessionDetails0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path:
+                    type: string
+                    description: API endpoint
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Error Messages
+                  error:
+                    type: string
+                    description: HTTP Reason-Phrase
+                  timestamp:
+                    type: string
+                    format: date-time
+                    description: Response Timestamp
+                  status:
+                    type: integer
+                    description: HTTP response status code
+                $$ref: '#/components/schemas/404GetSessionStatus0'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path:
+                    type: string
+                    description: API endpoint
+                  messages:
+                    type: array
+                    items:
+                      type: string
+                    description: Error Messages
+                  error:
+                    type: string
+                    description: HTTP Reason-Phrase
+                  timestamp:
+                    type: string
+                    format: date-time
+                    description: Response Timestamp
+                  status:
+                    type: integer
+                    description: HTTP response status code
+                $$ref: '#/components/schemas/500GetSessionStatus0'
+      parameters:
+      - name: query-by-field
+        description: This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - subscription-id
+          - ' msisdn'
+          - ' iccid'
+      - name: account-id
+        in: path
+        description: The unique identifier of your account
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: query-by-values
+        description: This field expects one or more values up to 100 for the field selected in the query-by-field.
+        in: query
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+      - name: include-session-timestamp
+        description: Indicates whether the response should include the timestamp of the last updated session
+        in: query
+        required: false
+        schema:
+          type: boolean
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/in-session?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/in-session?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/in-session?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/in-session?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/in-session?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/in-session?query-by-field=<string>&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+    Auth:
+      type: oauth2
+      description: token expiry is given in seconds
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/Api/api/token
+          scopes: {}

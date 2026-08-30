@@ -1,0 +1,629 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Fleet API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1Fleet
+paths:
+  /v1/Fleets:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Configure shared settings inherited by all Super SIMs assigned to the Fleet
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - unique_name
+      - data_metering
+      pathType: list
+    post:
+      description: Create a Fleet
+      tags:
+      - SupersimV1Fleet
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -X POST "https://supersim.api.korewireless.com/v1/Fleets" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>" --data-urlencode "UniqueName=<NEW_FLEET_NAME>" --data-urlencode "DataEnabled=true" --data-urlencode "DataLimit=500" --data-urlencode "SmsCommandsEnabled=true" --data-urlencode "SmsCommandsMethod=<GET_OR_POST>" --data-urlencode "SmsCommandsUrl=<YOUR_CALLBACK_URL>" --data-urlencode "IpCommandsMethod=<GET_OR_POST>" --data-urlencode "IpCommandsUrl=<YOUR_CALLBACK_URL>" --data-urlencode "NetworkAccessProfile=<NETWORK_ACCESS_PROFILE_SID_OR_UNIQUENAME>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams({\n    \"UniqueName\": \"<NEW_FLEET_NAME>\",\n    \"DataEnabled\": \"true\",\n    \"DataLimit\": \"500\",\n    \"SmsCommandsEnabled\": \"true\",\n    \"SmsCommandsMethod\": \"<GET_OR_POST>\",\n    \"SmsCommandsUrl\": \"<YOUR_CALLBACK_URL>\",\n    \"IpCommandsMethod\": \"<GET_OR_POST>\",\n    \"IpCommandsUrl\": \"<YOUR_CALLBACK_URL>\",\n    \"NetworkAccessProfile\": \"<NETWORK_ACCESS_PROFILE_SID_OR_UNIQUENAME>\"\n  });\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/Fleets', {\n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.post(\n    \"https://supersim.api.korewireless.com/v1/Fleets\",\n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n        },\n    data={\n            \"UniqueName\":\"<NEW_FLEET_NAME>\",\n            \"DataEnabled\":\"true\",\n            \"DataLimit\":\"500\",\n            \"SmsCommandsEnabled\":\"true\",\n            \"SmsCommandsMethod\":\"<GET_OR_POST>\",\n            \"SmsCommandsUrl\":\"<YOUR_CALLBACK_URL>\",\n            \"IpCommandsMethod\":\"<GET_OR_POST>\",\n            \"IpCommandsUrl\":\"<YOUR_CALLBACK_URL>\",\n            \"NetworkAccessProfile\":\"<NETWORK_ACCESS_PROFILE_SID_OR_UNIQUENAME>\"\n        }\n)\nresp = response.json()\nprint(resp)\n"
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.fleet'
+              examples:
+                create:
+                  value:
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    unique_name: unique_name
+                    data_enabled: true
+                    data_limit: 500
+                    data_metering: payg
+                    date_created: '2019-07-30T20:00:00Z'
+                    date_updated: '2019-07-30T20:00:00Z'
+                    sms_commands_enabled: true
+                    sms_commands_method: GET
+                    sms_commands_url: https://google.com
+                    ip_commands_method: GET
+                    ip_commands_url: https://google.com
+                    network_access_profile_sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    url: https://supersim.api.korewireless.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: Created
+      security:
+      - OAuth: []
+      operationId: CreateFleet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateFleetRequest
+              properties:
+                NetworkAccessProfile:
+                  type: string
+                  description: The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.
+                UniqueName:
+                  type: string
+                  description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+                DataEnabled:
+                  type: boolean
+                  description: Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.
+                DataLimit:
+                  type: integer
+                  description: The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).
+                IpCommandsUrl:
+                  type: string
+                  format: uri
+                  description: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+                IpCommandsMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+                SmsCommandsEnabled:
+                  type: boolean
+                  description: Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`.
+                SmsCommandsUrl:
+                  type: string
+                  format: uri
+                  description: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+                SmsCommandsMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+              required:
+              - NetworkAccessProfile
+            examples:
+              create:
+                value:
+                  UniqueName: unique_name
+                  DataEnabled: true
+                  DataLimit: 500
+                  SmsCommandsEnabled: true
+                  SmsCommandsMethod: GET
+                  SmsCommandsUrl: https://google.com
+                  IpCommandsMethod: GET
+                  IpCommandsUrl: https://google.com
+                  NetworkAccessProfile: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    get:
+      description: Retrieve a list of Fleets from your account.
+      tags:
+      - SupersimV1Fleet
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/Fleets?Page=1&PageSize=1" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/Fleets\";\nconst params = new URLSearchParams({ Page: \"1\", PageSize: \"1\" });\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n  \"https://supersim.api.korewireless.com/v1/Fleets\", \n  headers={\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\nparams={\"Page\": \"1\", \"PageSize\": \"1\"})\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: NetworkAccessProfile
+        in: query
+        description: The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.
+        schema:
+          type: string
+        examples:
+          readEmpty:
+            value: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          readFull:
+            value: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fleets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.fleet'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListFleetResponse
+              examples:
+                readEmpty:
+                  value:
+                    fleets: []
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: fleets
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                readFull:
+                  value:
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: fleets
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                    fleets:
+                    - account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      unique_name: Pilot Fleet
+                      data_enabled: true
+                      data_limit: 1000
+                      data_metering: payg
+                      date_created: '2019-10-15T20:00:00Z'
+                      date_updated: '2019-10-15T20:00:00Z'
+                      sms_commands_enabled: true
+                      sms_commands_method: POST
+                      sms_commands_url: null
+                      ip_commands_method: POST
+                      ip_commands_url: null
+                      network_access_profile_sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      url: https://supersim.api.korewireless.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListFleet
+  /v1/Fleets/{Sid}:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Configure shared settings inherited by all Super SIMs assigned to the Fleet
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - unique_name
+      - data_metering
+      pathType: instance
+    get:
+      description: Fetch a Fleet instance from your account.
+      tags:
+      - SupersimV1Fleet
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/Fleets/<Sid>" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/Fleets/<Sid>', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/Fleets/<Sid>\", \n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n            }\n    )\nresp = response.json()\nprint(resp)  \n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the Fleet resource to fetch.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.fleet'
+              examples:
+                fetch:
+                  value:
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    unique_name: unique_name
+                    data_enabled: true
+                    data_limit: 1000
+                    data_metering: payg
+                    date_created: '2019-07-30T20:00:00Z'
+                    date_updated: '2019-07-30T20:00:00Z'
+                    sms_commands_enabled: true
+                    sms_commands_method: POST
+                    sms_commands_url: null
+                    ip_commands_method: POST
+                    ip_commands_url: null
+                    network_access_profile_sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    url: https://supersim.api.korewireless.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: FetchFleet
+    post:
+      description: Updates the given properties of a Super SIM Fleet instance from your account.
+      tags:
+      - SupersimV1Fleet
+      x-codeSamples:
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams({\n    \"UniqueName\": \"<NEW_UNIQUE_NAME>\",\n    \"DataLimit\": \"<NEW_DATA_LIMIT>\",\n    \"SmsCommandsMethod\": \"<GET_OR_POST>\",\n    \"SmsCommandsUrl\": \"<NEW_CALLBACK_URL>\",\n    \"IpCommandsMethod\": \"<GET_OR_POST>\",\n    \"IpCommandsUrl\": \"<NEW_CALLBACK_URL>\"\n  });\n  \nconst response = await fetch(\"https://supersim.api.korewireless.com/v1/Fleets/<Sid>\", {    \n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams({\n    \"UniqueName\": \"<NEW_UNIQUE_NAME>\",\n    \"DataLimit\": \"<NEW_DATA_LIMIT>\",\n    \"SmsCommandsMethod\": \"<GET_OR_POST>\",\n    \"SmsCommandsUrl\": \"<NEW_CALLBACK_URL>\",\n    \"IpCommandsMethod\": \"<GET_OR_POST>\",\n    \"IpCommandsUrl\": \"<NEW_CALLBACK_URL>\"\n  });\n  \nconst response = await fetch(\"https://supersim.api.korewireless.com/v1/Fleets/<Sid>\", {    \n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);  \n"
+      - lang: cURL
+        label: cURL
+        source: "curl -X POST \"https://supersim.api.korewireless.com/v1/Fleets/<Sid>\" -H \"Content-Type: application/x-www-form-urlencoded\" -H \"Authorization: Bearer <YOUR_AUTH_TOKEN>\" --data-urlencode \"UniqueName=<NEW_UNIQUE_NAME>\" --data-urlencode \"DataLimit=<NEW_DATA_LIMIT>\" --data-urlencode \"SmsCommandsMethod=<GET_OR_POST>\" --data-urlencode \"SmsCommandsUrl=<NEW_CALLBACK_URL>\" --data-urlencode \"IpCommandsMethod=<GET_OR_POST>\" --data-urlencode \"IpCommandsUrl=<NEW_CALLBACK_URL>\" \n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the Fleet resource to update.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.fleet'
+              examples:
+                updateUniqueNameAndDataLimit:
+                  value:
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    unique_name: GPS Trackers Fleet 5GB
+                    data_enabled: true
+                    data_limit: 5000
+                    data_metering: payg
+                    date_created: '2019-10-15T20:00:00Z'
+                    date_updated: '2019-10-15T20:00:00Z'
+                    sms_commands_enabled: true
+                    sms_commands_method: POST
+                    sms_commands_url: null
+                    ip_commands_method: POST
+                    ip_commands_url: null
+                    network_access_profile_sid: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sid: HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    url: https://supersim.api.korewireless.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: UpdateFleet
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: UpdateFleetRequest
+              properties:
+                UniqueName:
+                  type: string
+                  description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+                NetworkAccessProfile:
+                  type: string
+                  description: The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.
+                IpCommandsUrl:
+                  type: string
+                  format: uri
+                  description: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+                IpCommandsMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+                SmsCommandsUrl:
+                  type: string
+                  format: uri
+                  description: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+                SmsCommandsMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+                DataLimit:
+                  type: integer
+                  description: The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).
+            examples:
+              updateUniqueNameAndDataLimit:
+                value:
+                  UniqueName: GPS Trackers Fleet 5GB
+                  NetworkAccessProfile: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  DataLimit: 5000
+components:
+  schemas:
+    fleet_enum_data_metering:
+      type:
+      - string
+      - 'null'
+      description: The model by which a SIMs usage is metered and billed. Defaults to `payg`.
+      enum:
+      - payg
+    supersim.v1.fleet:
+      type: object
+      properties:
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) that created the Fleet resource.
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HF[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the Fleet resource.
+        unique_name:
+          type:
+          - string
+          - 'null'
+          description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the Fleet resource.
+        data_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.
+        data_limit:
+          type:
+          - integer
+          - 'null'
+          default: 0
+          description: The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 250MB.
+        data_metering:
+          $ref: '#/components/schemas/fleet_enum_data_metering'
+        sms_commands_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `false`.
+        sms_commands_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+        sms_commands_method:
+          type:
+          - string
+          - 'null'
+          format: http-method
+          enum:
+          - GET
+          - POST
+          description: A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+        network_access_profile_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HA[0-9a-fA-F]{32}$
+          description: The SID of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.
+        ip_commands_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+        ip_commands_method:
+          type:
+          - string
+          - 'null'
+          format: http-method
+          enum:
+          - GET
+          - POST
+          description: A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

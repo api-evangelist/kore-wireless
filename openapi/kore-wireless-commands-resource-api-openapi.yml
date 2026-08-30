@@ -1,0 +1,1088 @@
+openapi: 3.2.0
+info:
+  title: Programmable Wireless Commands Resource API
+  description: The KORE Programmable Wireless REST API
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://programmable-wireless.api.korewireless.com
+security:
+- {}
+- Auth: []
+tags:
+- name: Commands Resource
+paths:
+  /v1/Commands:
+    get:
+      summary: List Commands
+      tags:
+      - Commands Resource
+      operationId: listCommands
+      parameters:
+      - name: Sim
+        in: query
+        description: The `sid` or `unique_name` of the Sim resources to read.
+        schema:
+          type: string
+        examples:
+          readEmpty:
+            value: sim
+          readFull:
+            value: sim
+          readIp:
+            value: sim
+      - name: Status
+        in: query
+        description: 'The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.'
+        schema:
+          $ref: '#/components/schemas/CommandStatus'
+        examples:
+          readEmpty:
+            value: queued
+          readFull:
+            value: queued
+          readIp:
+            value: queued
+      - name: Direction
+        in: query
+        description: Only return Commands with this direction value.
+        schema:
+          $ref: '#/components/schemas/CommandDirection'
+        examples:
+          readEmpty:
+            value: from_sim
+          readFull:
+            value: from_sim
+          readIp:
+            value: to_sim
+      - name: Transport
+        in: query
+        description: 'Only return Commands with this transport value. Can be: `sms` or `ip`.'
+        schema:
+          $ref: '#/components/schemas/CommandTransport'
+        examples:
+          readIp:
+            value: ip
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commands:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Command'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListCommandResponse
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>\")\n{\n   MaxTimeout = -1,    \n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+    post:
+      summary: Send a Command to a Sim.
+      tags:
+      - Commands Resource
+      operationId: sendCommand
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateCommandRequest
+              properties:
+                Command:
+                  type: string
+                  description: The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.
+                Sim:
+                  type: string
+                  description: The `sid` or `unique_name` of the SIM to send the Command to.
+                CallbackMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: 'The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.'
+                CallbackUrl:
+                  type: string
+                  format: uri
+                  description: The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.
+                CommandMode:
+                  $ref: '#/components/schemas/CommandMode'
+                IncludeSid:
+                  type: string
+                  description: 'Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.'
+                DeliveryReceiptRequested:
+                  type: boolean
+                  description: Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.
+              required:
+              - Command
+      responses:
+        '201':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Command'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '202':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Command'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/Commands'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>''
+
+          --header ''Content-Type: application/x-www-form-urlencoded'' \
+
+          --header ''Accept: application/json'' \
+
+          --data-urlencode ''Command=<string>'' \
+
+          --data-urlencode ''Sim=<string>'' \
+
+          --data-urlencode ''CallbackMethod=<http-method>'' \
+
+          --data-urlencode ''CallbackUrl=<uri>'' \
+
+          --data-urlencode ''CommandMode=text'' \
+
+          --data-urlencode ''IncludeSid=<string>'' \
+
+          --data-urlencode ''DeliveryReceiptRequested=<boolean>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/Commands',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',   \n      'Content-Type': 'application/x-www-form-urlencoded',\n      'Accept': 'application/json'\n   },\n   form: {\n      'Command': '<string>',\n      'Sim': '<string>',\n      'CallbackMethod': '<http-method>',\n      'CallbackUrl': '<uri>',\n      'CommandMode': 'text',\n      'IncludeSid': '<string>',\n      'DeliveryReceiptRequested': '<boolean>'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/x-www-form-urlencoded\");\nRequestBody body = RequestBody.create(mediaType, \"Command=<string>&Sim=<string>&CallbackMethod=<http-method>&CallbackUrl=<uri>&CommandMode=text&IncludeSid=<string>&DeliveryReceiptRequested=<boolean>\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/Commands\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Content-Type\", \"application/x-www-form-urlencoded\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/Commands\")\n{\n   MaxTimeout = -1,    \n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Content-Type\", \"application/x-www-form-urlencoded\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nrequest.AddParameter(\"Command\", \"<string>\");\nrequest.AddParameter(\"Sim\", \"<string>\");\nrequest.AddParameter(\"CallbackMethod\", \"<http-method>\");\nrequest.AddParameter(\"CallbackUrl\", \"<uri>\");\nrequest.AddParameter(\"CommandMode\", \"text\");\nrequest.AddParameter(\"IncludeSid\", \"<string>\");\nrequest.AddParameter(\"DeliveryReceiptRequested\", \"<boolean>\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/Commands',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>',\n   CURLOPT_POSTFIELDS => 'Command=<string>&Sim=<string>&CallbackMethod=<http-method>&CallbackUrl=<uri>&CommandMode=text&IncludeSid=<string>&DeliveryReceiptRequested=<boolean>',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/x-www-form-urlencoded',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands\"\n\npayload = 'Command=<string>&Sim=<string>&CallbackMethod=<http-method>&CallbackUrl=<uri>&CommandMode=text&IncludeSid=<string>&DeliveryReceiptRequested=<boolean>'\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Content-Type': 'application/x-www-form-urlencoded',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+  /v1/Commands/{Sid}:
+    parameters:
+    - name: Sid
+      in: path
+      description: The SID of the RatePlan resource to fetch.
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Fetch a Command instance from your account.
+      tags:
+      - Commands Resource
+      operationId: getCommand
+      responses:
+        '200':
+          description: Get Command
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Command'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/Commands/<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/Commands/<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\")\n{\n   MaxTimeout = -1,    \n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/Commands/<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+    delete:
+      summary: Delete a Command instance from your account.
+      tags:
+      - Commands Resource
+      operationId: deleteCommand
+      responses:
+        '202':
+          description: The resource was deleted successfully.
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff --request DELETE ''https://programmable-wireless.api.korewireless.com/v1/Commands/<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'DELETE',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/Commands/<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>', \n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\")\n   .method(\"DELETE\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\")\n{\n   MaxTimeout = -1,    \n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Delete);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/Commands/<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'DELETE',\n   CURLOPT_HTTPHEADER => array(\n      'Authorization: Bearer <YOUR_AUTH_TOKEN>',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>', \n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+components:
+  schemas:
+    CommandMode:
+      type: string
+      description: 'The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.'
+      enum:
+      - text
+      - binary
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
+    CommandTransport:
+      type:
+      - string
+      - 'null'
+      enum:
+      - sms
+      - ip
+      description: 'The type of transport used. Can be: `sms` or `ip`.'
+    CommandStatus:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the Command. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. See Status Values for a description of each state.'
+      enum:
+      - queued
+      - sent
+      - delivered
+      - received
+      - failed
+    Command:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^DC[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the Command resource.
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the Account that created the Command resource.
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^DE[0-9a-fA-F]{32}$
+          description: The SID of the Sim resource that the Command was sent to or from.
+        command:
+          type:
+          - string
+          - 'null'
+          description: The message being sent to or from the SIM. For text mode messages, this can be up to 160 characters. For binary mode messages, this is a series of up to 140 bytes of data encoded using base64.
+        command_mode:
+          $ref: '#/components/schemas/CommandMode'
+        transport:
+          $ref: '#/components/schemas/CommandTransport'
+        delivery_receipt_requested:
+          type:
+          - boolean
+          - 'null'
+          description: Whether to request a delivery receipt.
+        status:
+          $ref: '#/components/schemas/CommandStatus'
+        direction:
+          $ref: '#/components/schemas/CommandDirection'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in ISO 8601 format.
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in ISO 8601 format.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the resource.
+    CommandDirection:
+      type:
+      - string
+      - 'null'
+      enum:
+      - from_sim
+      - to_sim
+      description: The direction of the Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
+  securitySchemes:
+    Auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-amazon-apigateway-api-key-source: AUTHORIZER
+x-hideTryItPanel: true

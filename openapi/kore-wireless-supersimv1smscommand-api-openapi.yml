@@ -1,0 +1,474 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Sms Command API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1SmsCommand
+paths:
+  /v1/SmsCommands:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Machine-to-machine SMS Commands sent to/from SIMs
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - status
+      - date_created
+      pathType: list
+    post:
+      description: Send SMS Command to a Sim.
+      tags:
+      - SupersimV1SmsCommand
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -X POST "https://supersim.api.korewireless.com/v1/SmsCommands" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>" --data-urlencode "Sim=<Sid>" --data-urlencode "Payload=<SMS_PAYLOAD>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst data = new URLSearchParams({\n  \"Sim\": \"<Sid>\",\n  \"Payload\": \"<SMS_PAYLOAD>\"\n});\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/SmsCommands', {\n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.post(\n    \"https://supersim.api.korewireless.com/v1/SmsCommands\",\n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n        },\n    data={\n            \"Sim\":\"<Sid>\",\n            \"Payload\": \"<SMS_PAYLOAD>\"\n        }\n)\nresp = response.json()\nprint(resp)\n"
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.sms_command'
+              examples:
+                createCommandMinimal:
+                  value:
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    payload: 'checkin: firmware update'
+                    date_created: '2015-07-30T20:00:00Z'
+                    date_updated: '2015-07-30T20:00:00Z'
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sid: HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    status: queued
+                    direction: to_sim
+                    url: https://supersim.api.korewireless.com/v1/SmsCommands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                createCommandFull:
+                  value:
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    payload: 'Report location: (52.520008, 13.404954)'
+                    date_created: '2015-07-30T20:00:00Z'
+                    date_updated: '2015-07-30T20:00:00Z'
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    sid: HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    status: queued
+                    direction: to_sim
+                    url: https://supersim.api.korewireless.com/v1/SmsCommands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: Created
+      security:
+      - OAuth: []
+      operationId: CreateSmsCommand
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateSmsCommandRequest
+              properties:
+                Sim:
+                  type: string
+                  description: The `sid` or `unique_name` of the [SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) to send the SMS Command to.
+                Payload:
+                  type: string
+                  description: The message body of the SMS Command.
+                CallbackMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: 'The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.'
+                CallbackUrl:
+                  type: string
+                  format: uri
+                  description: The URL we should call using the `callback_method` after we have sent the command.
+              required:
+              - Sim
+              - Payload
+            examples:
+              createCommandMinimal:
+                value:
+                  Payload: 'checkin: firmware update'
+                  Sim: SimSidOrUniqueName
+              createCommandFull:
+                value:
+                  Payload: 'Report location: (52.520008, 13.404954)'
+                  Sim: SimSidOrUniqueName
+                  CallbackMethod: POST
+                  CallbackUrl: http://blahblah.com/go
+    get:
+      description: Retrieve a list of SMS Commands from your account.
+      tags:
+      - SupersimV1SmsCommand
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/SmsCommands?Sim=<Sid>&Page=1&PageSize=10" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/SmsCommands\";\nconst params = new URLSearchParams(\n    { \n      Sim: \"<Sid>\", \n      Page: \"1\", \n      PageSize: \"1\" \n    }\n);\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/SmsCommands\", \n    headers={\n        \"Content-Type\":\"application/x-www-form-urlencoded\",\n        \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    params={\n        \"Sim\": \"<Sid>\",\n        \"Page\": \"1\", \n        \"PageSize\": \"1\"\n    }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sim
+        in: query
+        description: The SID or unique name of the Sim resource that SMS Command was sent to or from.
+        schema:
+          type: string
+        examples:
+          readEmpty:
+            value: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          readFull:
+            value: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: Status
+        in: query
+        description: 'The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each.'
+        schema:
+          $ref: '#/components/schemas/sms_command_enum_status'
+        examples:
+          readEmpty:
+            value: received
+          readFull:
+            value: received
+      - name: Direction
+        in: query
+        description: The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
+        schema:
+          $ref: '#/components/schemas/sms_command_enum_direction'
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sms_commands:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.sms_command'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListSmsCommandResponse
+              examples:
+                readEmpty:
+                  value:
+                    sms_commands: []
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/SmsCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: sms_commands
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/SmsCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                readFull:
+                  value:
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/SmsCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: sms_commands
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/SmsCommands?Status=received&Sim=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                    sms_commands:
+                    - sid: HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      payload: content of the command
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      status: received
+                      direction: from_sim
+                      date_created: '2015-07-30T20:00:00Z'
+                      date_updated: '2015-07-30T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/SmsCommands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListSmsCommand
+  /v1/SmsCommands/{Sid}:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Machine-to-machine SMS Commands sent to/from SIMs
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - status
+      - date_created
+      pathType: instance
+    get:
+      description: Fetch SMS Command instance from your account.
+      tags:
+      - SupersimV1SmsCommand
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/SmsCommands/<SMS_COMMAND_SID>" -H "Content-Type: application/x-www-form-urlencoded" -H "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/SmsCommands/<SMS_COMMAND_SID>', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/SmsCommands/<SMS_COMMAND_SID>\", \n    headers={\n        \"Content-Type\":\"application/x-www-form-urlencoded\",\n        \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n)\nresp = response.json()\nprint(resp)  \n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the SMS Command resource to fetch.
+        schema:
+          type: string
+          minLength: 34
+          maxLength: 34
+          pattern: ^HC[0-9a-fA-F]{32}$
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.sms_command'
+              examples:
+                fetch:
+                  value:
+                    sid: HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    payload: content of the command
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    status: queued
+                    direction: to_sim
+                    date_created: '2015-07-30T20:00:00Z'
+                    date_updated: '2015-07-30T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/SmsCommands/HCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: FetchSmsCommand
+components:
+  schemas:
+    sms_command_enum_direction:
+      type:
+      - string
+      - 'null'
+      description: The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
+      enum:
+      - to_sim
+      - from_sim
+    supersim.v1.sms_command:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HC[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the SMS Command resource.
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) that created the SMS Command resource.
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HS[0-9a-fA-F]{32}$
+          description: The SID of the [SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) that this SMS Command was sent to or from.
+        payload:
+          type:
+          - string
+          - 'null'
+          description: The message body of the SMS Command sent to or from the SIM. For text mode messages, this can be up to 160 characters.
+          x-kore:
+            pii:
+              handling: standard
+              deleteSla: 30
+        status:
+          $ref: '#/components/schemas/sms_command_enum_status'
+        direction:
+          $ref: '#/components/schemas/sms_command_enum_direction'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the SMS Command resource.
+    sms_command_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each.'
+      enum:
+      - queued
+      - sent
+      - delivered
+      - received
+      - failed
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

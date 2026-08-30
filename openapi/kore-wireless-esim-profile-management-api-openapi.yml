@@ -1,0 +1,2575 @@
+openapi: 3.2.0
+info:
+  title: Connectivity eSIM Profile Management API
+  description: Connectivity APIs help users manage their connectivity through APIs.
+  version: 1.0.0
+servers:
+- url: https://api.korewireless.com/connectivity
+  description: Production
+security:
+- {}
+- Auth: []
+- api_key: []
+tags:
+- name: eSIM Profile Management
+  description: API to manage eSIM Switch related activities for a given account <br> Refer to the <a href="https://korewireless.service-now.com/csm?sys_kb_id=ec87a82f976ee110d038301e6253afa3&id=kb_article_view&sysparm_rank=2&sysparm_tsqueryId=5a20dce247b7e59018007f7a516d4392" style="text-decoration:none" target="_blank">  eSIM switch</a> article on the KORE Help Center for additional information
+paths:
+  /v1/accounts/{account-id}/esim-profile-switch-requests/{esim-profile-switch-request-id}:
+    get:
+      tags:
+      - eSIM Profile Management
+      summary: Finds Switch Request By eSIM Profile Switch Request ID
+      description: Get details of a specific switch request by eSIM Profile Switch Request ID
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  esim-profile-switch-request-id:
+                    type: string
+                    example: cmp-cpro-request-00000
+                    description: Unique identifier of the switch request
+                  activation-profile-id:
+                    type: string
+                    example: cmp-cpro-request-00000
+                    description: Unique identifier of the activation profile
+                  switch-request-type:
+                    type: string
+                    enum:
+                    - SwitchProfile
+                    - DownloadProfile
+                    - EnableProfile
+                    - DeleteProfile
+                    description: The type of eSim operation requested
+                  switch-request-date:
+                    type: string
+                    example: '2022-11-16T07:43:02.428Z'
+                    description: Date of switch request creation
+                  switch-request-status:
+                    type: string
+                    example: Completed
+                    description: 'Current status of the switch request '
+                  total-switch-processing:
+                    type: integer
+                    description: eSIM switches in progress
+                  total-switch-failed:
+                    type: integer
+                    description: eSIMs that failed to switch
+                  total-switch-completed:
+                    type: integer
+                    description: 'Switches completed '
+                  total-switch-pending-network-connection:
+                    type: integer
+                    description: 'eSIMs in the request waiting for the device to come online '
+                  total-switch-requested:
+                    type: integer
+                    description: eSIMs in the request
+                  eids:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        eid:
+                          type: string
+                          example: '000000000000000000000000000'
+                          description: Unique identifier of the eSIM
+                        new-subscription-id:
+                          type: string
+                          example: cmp-k1-subscription-0000000000
+                          description: Unique identifier of the subscription that has been allocated to the eSIM as part of switching
+                        old-subscription-id:
+                          type: string
+                          example: cmp-k1-subscription-0000000000
+                          description: Unique identifier of the subscription that has previously been active on the eSIM
+                        switch-status:
+                          type: string
+                          example: Completed
+                          description: Switch status of the eSIM
+                        switch-error-message:
+                          type: string
+                          example: Error Message
+                          description: Reason for switch failure of the eSIM
+                $$ref: '#/components/schemas/200FindsSwitchRequestByeSIMProfileSwitchRequestID0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error-message:
+                    type: string
+                    description: Reason for failure
+                    example: error
+                  status:
+                    type: string
+                    description: Status of the response
+                    example: No records found / Invalid input
+                $$ref: '#/components/schemas/400FindsSwitchRequestByeSIMProfileSwitchRequestID0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: esim-profile-switch-request-id
+        description: The unique identifier of the switch request
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/<string>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/<string>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/<string>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/esim-profile-switch-requests:
+    get:
+      tags:
+      - eSIM Profile Management
+      summary: Lists All Switch Requests
+      description: Get details of all switch requests by EID
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total-pages:
+                    type: integer
+                    description: Total number of pages
+                  page:
+                    type: integer
+                    description: Page number
+                  total-records:
+                    type: integer
+                    description: Total number of records
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        switch-request-type:
+                          type: string
+                          enum:
+                          - SwitchProfile
+                          - DownloadProfile
+                          - EnableProfile
+                          - DeleteProfile
+                          description: The type of eSim operation requested
+                        switch-request-date:
+                          type: string
+                          example: '2022-11-16T07:43:02.428Z'
+                          format: dateTime
+                          description: Date of switch request creation
+                        switch-request-status:
+                          type: string
+                          example: Pending
+                          description: Current status of switch request
+                        total-switch-processing:
+                          type: integer
+                          description: eSIM switches in progress
+                        total-switch-failed:
+                          type: integer
+                          description: eSIMs that failed to switch
+                        esim-profile-switch-request-id:
+                          type: string
+                          example: cmp-cpro-request-00000
+                          description: Unique identifier of the switch request
+                        total-switch-completed:
+                          type: integer
+                          example: '2022-11-17T13:12:39.469Z'
+                          description: Switches completed
+                        total-switch-pending-network-connection:
+                          type: integer
+                          description: eSIMs in the request waiting for the device to come online
+                        total-switch-requested:
+                          type: integer
+                          description: eSIMs in this request
+                        activation-profile-id:
+                          type: string
+                          example: cmp-prov-ap-000000
+                          description: Unique identifier of the activation profile
+                $$ref: '#/components/schemas/200ListsAllSwitchRequests0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Status of the response
+                    example: error
+                  error-message:
+                    type: string
+                    description: Reason for request failure
+                    example: No records found / Invalid input
+                $$ref: '#/components/schemas/400ListsAllSwitchRequests0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: eid
+        description: The unique identifier of the eSIM
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: page
+        description: Page number
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: take
+        description: Number of records
+        in: query
+        required: false
+        schema:
+          type: number
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests?eid=<string>&page=<number>&take=<number>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests?eid=<string>&page=<number>&take=<number>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests?eid=<string>&page=<number>&take=<number>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests?eid=<string>&page=<number>&take=<number>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests?eid=<string>&page=<number>&take=<number>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests?eid=<string>&page=<number>&take=<number>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+    post:
+      tags:
+      - eSIM Profile Management
+      summary: Create A Switch Request
+      description: Create a switch profile request for an account. Downloads a new profile to the eSIM, activates the new subscription, enables the new profile in the eSIM, and deactivates or suspends the old subscription, or (optionally) the old subscription remains active and is subject to MRC
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                activation-profile-id:
+                  type: string
+                  example: cmp-pp-ap-000000
+                  description: Unique identifier of the activation profile
+                exclude-deactivation:
+                  type: boolean
+                  example: false
+                  description: This can be set as true to keep the old subscription active
+                skip-session-check:
+                  type: boolean
+                  example: false
+                  description: Used to skip the initial in-session check for an eSIM
+                disable-autoretry:
+                  type: boolean
+                  example: false
+                  description: Disables retry of RSP steps based on in-session event when set to true, when set to false the RSP step will be retried max 5 times
+                suspend-old-subscription:
+                  type: boolean
+                  example: false
+                  description: This can be set as true to suspend the old subscription if the suspend state is eligible
+                sku:
+                  type: string
+                  description: The Stock Keeping Unit (SKU) number of a device type with an embedded SIM which is required for switching to VZW profile if IMEI is not provided
+                  example: VZW00000000
+                subscriptions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      eid:
+                        type: string
+                        example: '0000000000000000000000000'
+                        description: Unique identifier of the eSIM
+                      imei:
+                        type: string
+                        example: '12121212121212'
+                        description: IMEI is a 14 - 16 digit identifier of the device which is required for switching to VZW profile
+                  required:
+                  - eid
+                  description: Devices to be switched
+                service-type-info:
+                  type: object
+                  properties:
+                    aus-ipnd-info:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                          description: Address of the user
+                          example: uniqueStr
+                        title:
+                          type: string
+                          description: Title of the user (Mr/Mrs/Ms)
+                          example: Mr/Mrs/Ms
+                        first-name:
+                          type: string
+                          description: First Name of the user
+                          example: uniqueStr
+                        last-name:
+                          type: string
+                          description: Last Name of the user
+                          example: uniqueStr
+                      description: IPND information is mandatory for activating a KORE TELS2 subscription
+                  description: Carrier specific information required for activating a subscription
+              required:
+              - activation-profile-id
+              - subscriptions
+              $$ref: '#/components/schemas/CreateASwitchRequest0'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                    description: Status of request submission
+                  data:
+                    type: object
+                    properties:
+                      esim-profile-switch-request-id:
+                        type: string
+                        example: cmp-cpro-request-00000
+                        description: Unique identifier of the request created
+                      message:
+                        type: string
+                        example: Your request has been acknowledged
+                        description: Acknowledgement message
+                $$ref: '#/components/schemas/200CreateASwitchRequest0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                    description: Status of request submission
+                  error-message:
+                    type: string
+                    example: Invalid eIds / Imei
+                    description: Reason for request failure
+                  validation-error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        eid:
+                          type: string
+                          example: '00000000000000000000000000000'
+                          description: Unique identifier of the rejected eSIM
+                        error-message:
+                          type: string
+                          example: Cannot be switched to the requested profile
+                          description: Reason for the rejection of the EID
+                $$ref: '#/components/schemas/400CreateASwitchRequest0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"activation-profile-id\": \"<string>\",\n  \"subscriptions\": [\n    {\n      \"eid\": \"<string>\",\n      \"imei\": \"<string>\"\n    },\n    {\n      \"eid\": \"<string>\",\n      \"imei\": \"<string>\"\n    }\n  ],\n  \"exclude-deactivation\": \"<boolean>\",\n  \"skip-session-check\": \"<boolean>\",\n  \"disable-autoretry\": \"<boolean>\",\n  \"suspend-old-subscription\": \"<boolean>\",\n  \"sku\": \"<string>\",\n  \"service-type-info\": {\n    \"aus-ipnd-info\": {\n      \"address\": \"<string>\",\n      \"title\": \"<string>\",\n      \"first-name\": \"<string>\",\n      \"last-name\": \"<string>\"\n    }\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"activation-profile-id\": \"<string>\",\n      \"subscriptions\": [\n         {\n            \"eid\": \"<string>\",\n            \"imei\": \"<string>\"\n         },\n         {\n            \"eid\": \"<string>\",\n            \"imei\": \"<string>\"\n         }\n      ],\n      \"exclude-deactivation\": \"<boolean>\",\n      \"skip-session-check\": \"<boolean>\",\n      \"disable-autoretry\": \"<boolean>\",\n      \"suspend-old-subscription\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"service-type-info\": {\n         \"aus-ipnd-info\": {\n            \"address\": \"<string>\",\n            \"title\": \"<string>\",\n            \"first-name\": \"<string>\",\n            \"last-name\": \"<string>\"\n         }\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"activation-profile-id\\\": \\\"<string>\\\",\\n  \\\"subscriptions\\\": [\\n    {\\n      \\\"eid\\\": \\\"<string>\\\",\\n      \\\"imei\\\": \\\"<string>\\\"\\n    },\\n    {\\n      \\\"eid\\\": \\\"<string>\\\",\\n      \\\"imei\\\": \\\"<string>\\\"\\n    }\\n  ],\\n  \\\"exclude-deactivation\\\": \\\"<boolean>\\\",\\n  \\\"skip-session-check\\\": \\\"<boolean>\\\",\\n  \\\"disable-autoretry\\\": \\\"<boolean>\\\",\\n  \\\"suspend-old-subscription\\\": \\\"<boolean>\\\",\\n  \\\"sku\\\": \\\"<string>\\\",\\n  \\\"service-type-info\\\": {\\n    \\\"aus-ipnd-info\\\": {\\n      \\\"address\\\": \\\"<string>\\\",\\n      \\\"title\\\": \\\"<string>\\\",\\n      \\\"first-name\\\": \\\"<string>\\\",\\n      \\\"last-name\\\": \\\"<string>\\\"\\n    }\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"activation-profile-id\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"  \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"    {\" + \"\\n\" +\n@\"      \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"      \"\"imei\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"    },\" + \"\\n\" +\n@\"    {\" + \"\\n\" +\n@\"      \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"      \"\"imei\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"    }\" + \"\\n\" +\n@\"  ],\" + \"\\n\" +\n@\"  \"\"exclude-deactivation\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"  \"\"skip-session-check\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"  \"\"disable-autoretry\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"  \"\"suspend-old-subscription\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"  \"\"sku\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"  \"\"service-type-info\"\": {\" + \"\\n\" +\n@\"    \"\"aus-ipnd-info\"\": {\" + \"\\n\" +\n@\"      \"\"address\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"      \"\"title\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"      \"\"first-name\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"      \"\"last-name\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"    }\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"activation-profile-id\": \"<string>\",\n  \"subscriptions\": [\n    {\n      \"eid\": \"<string>\",\n      \"imei\": \"<string>\"\n    },\n    {\n      \"eid\": \"<string>\",\n      \"imei\": \"<string>\"\n    }\n  ],\n  \"exclude-deactivation\": \"<boolean>\",\n  \"skip-session-check\": \"<boolean>\",\n  \"disable-autoretry\": \"<boolean>\",\n  \"suspend-old-subscription\": \"<boolean>\",\n  \"sku\": \"<string>\",\n  \"service-type-info\": {\n    \"aus-ipnd-info\": {\n      \"address\": \"<string>\",\n      \"title\": \"<string>\",\n      \"first-name\": \"<string>\",\n      \"last-name\": \"<string>\"\n    }\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests\"\n\npayload = json.dumps({\n   \"activation-profile-id\": \"<string>\",\n   \"subscriptions\": [\n      {\n         \"eid\": \"<string>\",\n         \"imei\": \"<string>\"\n      },\n      {\n         \"eid\": \"<string>\",\n         \"imei\": \"<string>\"\n      }\n   ],\n   \"exclude-deactivation\": \"<boolean>\",\n   \"skip-session-check\": \"<boolean>\",\n   \"disable-autoretry\": \"<boolean>\",\n   \"suspend-old-subscription\": \"<boolean>\",\n   \"sku\": \"<string>\",\n   \"service-type-info\": {\n      \"aus-ipnd-info\": {\n         \"address\": \"<string>\",\n         \"title\": \"<string>\",\n         \"first-name\": \"<string>\",\n         \"last-name\": \"<string>\"\n      }\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/esim-profile-switch-requests/retry:
+    post:
+      tags:
+      - eSIM Profile Management
+      summary: Retry Switch Request
+      description: 'Retry a failed switch request or skip failed step of a switch request.<br> Note: The only step that can be skipped for a switch request is the session check step. If the device is not online the request may fail at the next step.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                esim-profile-switch-request-id:
+                  type: string
+                  description: Unique identifier of the switch request
+                  example: cmp-cpro-request-0000000
+                eids:
+                  type: array
+                  items:
+                    type: string
+                    example: '235543656577454322'
+                  description: The array of unique identifiers of the eSIM
+                skip-session-check:
+                  type: boolean
+                  description: Used to skip in-session check for an eSIM
+                  default: 'false'
+              required:
+              - esim-profile-switch-request-id
+              - eids
+              - skip-session-check
+              $$ref: '#/components/schemas/RetrySwitchRequest0'
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Response status
+                    example: success
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Acknowledgement message
+                        example: Request requeued successfully!
+                      retry-response:
+                        type: object
+                        properties:
+                          accepted-eids:
+                            type: array
+                            items:
+                              type: string
+                              example: '235543656577454322'
+                            description: EIDs accepted for retry
+                          rejected-eids:
+                            type: array
+                            items:
+                              type: string
+                              example: '235543656577454322'
+                            description: EIDs rejected for retry
+                        description: Details of EIDs
+                    description: Response data
+                $$ref: '#/components/schemas/200RetrySwitchRequest0'
+        '400':
+          description: Bad Request
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Response status
+                    example: error
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Error message
+                        example: Request cannot be requeued!
+                      retry-response:
+                        type: object
+                        properties:
+                          rejected-eids:
+                            type: array
+                            items:
+                              type: string
+                              example: '235543656577454322'
+                            description: EIDs rejected for retry
+                        description: Details of EIDs
+                    description: Response data
+                $$ref: '#/components/schemas/400RetrySwitchRequest0'
+        '401':
+          description: Unauthorised User
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/retry' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"esim-profile-switch-request-id\": \"<string>\",\n  \"eids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip-session-check\": \"false\"\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/retry',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"esim-profile-switch-request-id\": \"<string>\",\n      \"eids\": [\n         \"<string>\",\n         \"<string>\"\n      ],\n      \"skip-session-check\": \"false\"\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"esim-profile-switch-request-id\\\": \\\"<string>\\\",\\n  \\\"eids\\\": [\\n    \\\"<string>\\\",\\n    \\\"<string>\\\"\\n  ],\\n  \\\"skip-session-check\\\": \\\"false\\\"\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/retry\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/retry\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"esim-profile-switch-request-id\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"  \"\"eids\"\": [\" + \"\\n\" +\n@\"    \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"<string>\"\"\" + \"\\n\" +\n@\"  ],\" + \"\\n\" +\n@\"  \"\"skip-session-check\"\": \"\"false\"\"\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/retry',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"esim-profile-switch-request-id\": \"<string>\",\n  \"eids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"skip-session-check\": \"false\"\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/retry\"\n\npayload = json.dumps({\n   \"esim-profile-switch-request-id\": \"<string>\",\n   \"eids\": [\n      \"<string>\",\n      \"<string>\"\n   ],\n   \"skip-session-check\": \"false\"\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/esim-profile-enable-requests:
+    post:
+      tags:
+      - eSIM Profile Management
+      summary: Create An Enable Profile Request
+      description: Create an enable profile request for an account. Enables a specified profile on the eSIM.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enable:
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          eid:
+                            type: string
+                            description: The unique identifier of the eSIM
+                            example: '000000000000000000000'
+                          iccid:
+                            type: string
+                            description: Unique identifier of the profile to be enabled
+                            example: '0000000000000000'
+                        required:
+                        - eid
+                        - iccid
+                      description: ' '
+                    skip-session-check:
+                      type: boolean
+                      example: false
+                      description: Used to skip the initial in-session check for an eSIM
+                    disable-autoretry:
+                      type: boolean
+                      example: false
+                      description: Disables retry of RSP steps based on in-session event when set to true, when set to false the RSP step will be retried max 5 times
+                  required:
+                  - subscriptions
+                  description: Enable profile request
+              required:
+              - enable
+              $$ref: '#/components/schemas/CreateAnEnableProfileRequest0'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      request-id:
+                        type: string
+                        description: The unique identifier of the request created
+                        example: cmp-cpro-request-11111
+                      message:
+                        type: string
+                        description: Acknowledgement message
+                        example: Your request has been acknowledged
+                    description: Response object
+                  status:
+                    type: string
+                    description: The status of request submission
+                    example: success
+                $$ref: '#/components/schemas/200CreateAnEnableProfileRequest0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error-message:
+                    type: string
+                    description: Reason for request failure
+                    example: Invalid EIDs
+                  validation-error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error-message:
+                          type: string
+                          description: Reason for the rejection of the EID
+                          example: EID not found
+                        eid:
+                          type: string
+                          description: The unique identifier of the rejected eSIM
+                          example: '000000000000000000000'
+                    description: Error response object
+                  status:
+                    type: string
+                    description: The status of request submission
+                    example: error
+                $$ref: '#/components/schemas/400CreateAnEnableProfileRequest0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        example: cmp-pp-org-000
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-enable-requests' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"enable\": {\n    \"subscriptions\": [\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      },\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      }\n    ],\n    \"skip-session-check\": \"<boolean>\",\n    \"disable-autoretry\": \"<boolean>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-enable-requests',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"enable\": {\n         \"subscriptions\": [\n            {\n               \"eid\": \"<string>\",\n               \"iccid\": \"<string>\"\n            },\n            {\n               \"eid\": \"<string>\",\n               \"iccid\": \"<string>\"\n            }\n         ],\n         \"skip-session-check\": \"<boolean>\",\n         \"disable-autoretry\": \"<boolean>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"enable\\\": {\\n    \\\"subscriptions\\\": [\\n      {\\n        \\\"eid\\\": \\\"<string>\\\",\\n        \\\"iccid\\\": \\\"<string>\\\"\\n      },\\n      {\\n        \\\"eid\\\": \\\"<string>\\\",\\n        \\\"iccid\\\": \\\"<string>\\\"\\n      }\\n    ],\\n    \\\"skip-session-check\\\": \\\"<boolean>\\\",\\n    \\\"disable-autoretry\\\": \\\"<boolean>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-enable-requests\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-enable-requests\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"enable\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"        \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"iccid\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      },\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"        \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"iccid\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"skip-session-check\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"    \"\"disable-autoretry\"\": \"\"<boolean>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-enable-requests',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"enable\": {\n    \"subscriptions\": [\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      },\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      }\n    ],\n    \"skip-session-check\": \"<boolean>\",\n    \"disable-autoretry\": \"<boolean>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-enable-requests\"\n\npayload = json.dumps({\n   \"enable\": {\n      \"subscriptions\": [\n         {\n            \"eid\": \"<string>\",\n            \"iccid\": \"<string>\"\n         },\n         {\n            \"eid\": \"<string>\",\n            \"iccid\": \"<string>\"\n         }\n      ],\n      \"skip-session-check\": \"<boolean>\",\n      \"disable-autoretry\": \"<boolean>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/esim-profile-download-requests:
+    post:
+      tags:
+      - eSIM Profile Management
+      summary: Create A Download Profile Request
+      description: Create a download profile request for an account. Downloads a new profile to the eSIM and activates the subscription. 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                download:
+                  type: object
+                  properties:
+                    activation-profile-id:
+                      type: string
+                      description: The unique identifier of the activation profile
+                      example: cmp-prov-ap-11111
+                    skip-session-check:
+                      type: boolean
+                      example: false
+                      description: Used to skip the initial in-session check for an eSIM
+                    disable-autoretry:
+                      type: boolean
+                      example: false
+                      description: Disables retry of RSP steps based on in-session event when set to true, when set to false the RSP step will be retried max 5 times
+                    sku:
+                      type: string
+                      description: The Stock Keeping Unit (SKU) number of a device type with an embedded SIM which is required for switching to VZW profile if IMEI is not provided
+                      example: VZW00000000
+                    subscriptions:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          eid:
+                            type: string
+                            description: The unique identifier of the eSIM
+                            example: uniqueStr
+                          imei:
+                            type: string
+                            description: IMEI is a 14 - 16 digit identifier of the device which is required for activating a KORE VZW subscription
+                            example: '111111111111111'
+                        required:
+                        - eid
+                      description: ' '
+                    service-type-info:
+                      type: object
+                      properties:
+                        aus-ipnd-info:
+                          type: object
+                          properties:
+                            address:
+                              type: string
+                              description: Address of the user
+                              example: uniqueStr
+                            title:
+                              type: string
+                              description: Title of the user (Mr/Mrs/Ms)
+                              example: Mr/Mrs/Ms
+                            first-name:
+                              type: string
+                              description: First Name of the user
+                              example: uniqueStr
+                            last-name:
+                              type: string
+                              description: Last Name of the user
+                              example: uniqueStr
+                          description: IPND information is mandatory for activating a KORE TELS2 subscription
+                      description: Carrier specific information required for activating a subscription
+                  required:
+                  - activation-profile-id
+                  - subscriptions
+                  description: Download profile request
+              required:
+              - download
+              $$ref: '#/components/schemas/CreateADownloadProfileRequest0'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      request-id:
+                        type: string
+                        description: The unique identifier of the request created
+                        example: cmp-cpro-request-11111
+                      message:
+                        type: string
+                        description: Acknowledgement message
+                        example: Your request has been acknowledged
+                    description: Response object
+                  status:
+                    type: string
+                    description: The status of request submission
+                    example: success
+                $$ref: '#/components/schemas/200CreateADownloadProfileRequest0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error-message:
+                    type: string
+                    description: Reason for request failure
+                    example: Invalid EIDs
+                  validation-error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error-message:
+                          type: string
+                          description: Reason for the rejection of the EID
+                          example: uniqueStr
+                        eid:
+                          type: string
+                          description: The unique identifier of the rejected eSIM
+                          example: uniqueStr
+                    description: Error response object
+                  status:
+                    type: string
+                    description: The status of request submission
+                    example: error
+                $$ref: '#/components/schemas/400CreateADownloadProfileRequest0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        example: cmp-pp-org-000
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-download-requests' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"download\": {\n    \"activation-profile-id\": \"<string>\",\n    \"subscriptions\": [\n      {\n        \"eid\": \"<string>\",\n        \"imei\": \"<string>\"\n      },\n      {\n        \"eid\": \"<string>\",\n        \"imei\": \"<string>\"\n      }\n    ],\n    \"skip-session-check\": \"<boolean>\",\n    \"disable-autoretry\": \"<boolean>\",\n    \"sku\": \"<string>\",\n    \"service-type-info\": {\n      \"aus-ipnd-info\": {\n        \"address\": \"<string>\",\n        \"title\": \"<string>\",\n        \"first-name\": \"<string>\",\n        \"last-name\": \"<string>\"\n      }\n    }\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-download-requests',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"download\": {\n         \"activation-profile-id\": \"<string>\",\n         \"subscriptions\": [\n            {\n               \"eid\": \"<string>\",\n               \"imei\": \"<string>\"\n            },\n            {\n               \"eid\": \"<string>\",\n               \"imei\": \"<string>\"\n            }\n         ],\n         \"skip-session-check\": \"<boolean>\",\n         \"disable-autoretry\": \"<boolean>\",\n         \"sku\": \"<string>\",\n         \"service-type-info\": {\n            \"aus-ipnd-info\": {\n               \"address\": \"<string>\",\n               \"title\": \"<string>\",\n               \"first-name\": \"<string>\",\n               \"last-name\": \"<string>\"\n            }\n         }\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"download\\\": {\\n    \\\"activation-profile-id\\\": \\\"<string>\\\",\\n    \\\"subscriptions\\\": [\\n      {\\n        \\\"eid\\\": \\\"<string>\\\",\\n        \\\"imei\\\": \\\"<string>\\\"\\n      },\\n      {\\n        \\\"eid\\\": \\\"<string>\\\",\\n        \\\"imei\\\": \\\"<string>\\\"\\n      }\\n    ],\\n    \\\"skip-session-check\\\": \\\"<boolean>\\\",\\n    \\\"disable-autoretry\\\": \\\"<boolean>\\\",\\n    \\\"sku\\\": \\\"<string>\\\",\\n    \\\"service-type-info\\\": {\\n      \\\"aus-ipnd-info\\\": {\\n        \\\"address\\\": \\\"<string>\\\",\\n        \\\"title\\\": \\\"<string>\\\",\\n        \\\"first-name\\\": \\\"<string>\\\",\\n        \\\"last-name\\\": \\\"<string>\\\"\\n      }\\n    }\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-download-requests\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-download-requests\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"download\"\": {\" + \"\\n\" +\n@\"    \"\"activation-profile-id\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"        \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"imei\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      },\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"        \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"imei\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"skip-session-check\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"    \"\"disable-autoretry\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"    \"\"sku\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"service-type-info\"\": {\" + \"\\n\" +\n@\"      \"\"aus-ipnd-info\"\": {\" + \"\\n\" +\n@\"        \"\"address\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"title\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"first-name\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"last-name\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    }\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-download-requests',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"download\": {\n    \"activation-profile-id\": \"<string>\",\n    \"subscriptions\": [\n      {\n        \"eid\": \"<string>\",\n        \"imei\": \"<string>\"\n      },\n      {\n        \"eid\": \"<string>\",\n        \"imei\": \"<string>\"\n      }\n    ],\n    \"skip-session-check\": \"<boolean>\",\n    \"disable-autoretry\": \"<boolean>\",\n    \"sku\": \"<string>\",\n    \"service-type-info\": {\n      \"aus-ipnd-info\": {\n        \"address\": \"<string>\",\n        \"title\": \"<string>\",\n        \"first-name\": \"<string>\",\n        \"last-name\": \"<string>\"\n      }\n    }\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-download-requests\"\n\npayload = json.dumps({\n   \"download\": {\n      \"activation-profile-id\": \"<string>\",\n      \"subscriptions\": [\n         {\n            \"eid\": \"<string>\",\n            \"imei\": \"<string>\"\n         },\n         {\n            \"eid\": \"<string>\",\n            \"imei\": \"<string>\"\n         }\n      ],\n      \"skip-session-check\": \"<boolean>\",\n      \"disable-autoretry\": \"<boolean>\",\n      \"sku\": \"<string>\",\n      \"service-type-info\": {\n         \"aus-ipnd-info\": {\n            \"address\": \"<string>\",\n            \"title\": \"<string>\",\n            \"first-name\": \"<string>\",\n            \"last-name\": \"<string>\"\n         }\n      }\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/esim-profile-delete-requests:
+    post:
+      tags:
+      - eSIM Profile Management
+      summary: Create A Delete Profile Request
+      description: Create a delete profile request for an account. Deletes a specified profile from the eSIM.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delete:
+                  type: object
+                  properties:
+                    subscriptions:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          eid:
+                            type: string
+                            description: The unique identifier of the eSIM
+                            example: '0000000000000000000000000'
+                          iccid:
+                            type: string
+                            description: The unique identifier of the profile to be deleted
+                            example: '0000000000000000'
+                        required:
+                        - eid
+                        - iccid
+                      description: ' '
+                    skip-session-check:
+                      type: boolean
+                      example: false
+                      description: Used to skip the initial in-session check for an eSIM
+                    disable-autoretry:
+                      type: boolean
+                      example: false
+                      description: Disables retry of RSP steps based on in-session event when set to true, when set to false the RSP step will be retried max 5 times
+                  required:
+                  - subscriptions
+                  description: Delete profile request
+              required:
+              - delete
+              $$ref: '#/components/schemas/CreateADeleteProfileRequest0'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      request-id:
+                        type: string
+                        description: The unique identifier of the request created
+                        example: cmp-cpro-request-11111
+                      message:
+                        type: string
+                        description: Acknowledgement message
+                        example: Your request has been acknowledged
+                    description: Response object
+                  status:
+                    type: string
+                    description: The status of request submission
+                    example: success
+                $$ref: '#/components/schemas/200CreateADeleteProfileRequest0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error-message:
+                    type: string
+                    description: Reason for request failure
+                    example: Invalid EIDs
+                  validation-error:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        error-message:
+                          type: string
+                          description: Reason for the rejection of the EID
+                          example: EID not found
+                        eid:
+                          type: string
+                          description: The unique identifier of the rejected eSIM
+                          example: '0000000000000000'
+                    description: Error response object
+                  status:
+                    type: string
+                    description: The status of request submission
+                    example: error
+                $$ref: '#/components/schemas/400CreateADeleteProfileRequest0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        example: cmp-pp-org-000
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-delete-requests' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"delete\": {\n    \"subscriptions\": [\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      },\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      }\n    ],\n    \"skip-session-check\": \"<boolean>\",\n    \"disable-autoretry\": \"<boolean>\"\n  }\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-delete-requests',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"delete\": {\n         \"subscriptions\": [\n            {\n               \"eid\": \"<string>\",\n               \"iccid\": \"<string>\"\n            },\n            {\n               \"eid\": \"<string>\",\n               \"iccid\": \"<string>\"\n            }\n         ],\n         \"skip-session-check\": \"<boolean>\",\n         \"disable-autoretry\": \"<boolean>\"\n      }\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"delete\\\": {\\n    \\\"subscriptions\\\": [\\n      {\\n        \\\"eid\\\": \\\"<string>\\\",\\n        \\\"iccid\\\": \\\"<string>\\\"\\n      },\\n      {\\n        \\\"eid\\\": \\\"<string>\\\",\\n        \\\"iccid\\\": \\\"<string>\\\"\\n      }\\n    ],\\n    \\\"skip-session-check\\\": \\\"<boolean>\\\",\\n    \\\"disable-autoretry\\\": \\\"<boolean>\\\"\\n  }\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-delete-requests\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-delete-requests\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"delete\"\": {\" + \"\\n\" +\n@\"    \"\"subscriptions\"\": [\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"        \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"iccid\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      },\" + \"\\n\" +\n@\"      {\" + \"\\n\" +\n@\"        \"\"eid\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"        \"\"iccid\"\": \"\"<string>\"\"\" + \"\\n\" +\n@\"      }\" + \"\\n\" +\n@\"    ],\" + \"\\n\" +\n@\"    \"\"skip-session-check\"\": \"\"<boolean>\"\",\" + \"\\n\" +\n@\"    \"\"disable-autoretry\"\": \"\"<boolean>\"\"\" + \"\\n\" +\n@\"  }\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-delete-requests',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"delete\": {\n    \"subscriptions\": [\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      },\n      {\n        \"eid\": \"<string>\",\n        \"iccid\": \"<string>\"\n      }\n    ],\n    \"skip-session-check\": \"<boolean>\",\n    \"disable-autoretry\": \"<boolean>\"\n  }\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-delete-requests\"\n\npayload = json.dumps({\n   \"delete\": {\n      \"subscriptions\": [\n         {\n            \"eid\": \"<string>\",\n            \"iccid\": \"<string>\"\n         },\n         {\n            \"eid\": \"<string>\",\n            \"iccid\": \"<string>\"\n         }\n      ],\n      \"skip-session-check\": \"<boolean>\",\n      \"disable-autoretry\": \"<boolean>\"\n   }\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/accounts/{account-id}/esim-profile-switch-requests/cancel:
+    post:
+      tags:
+      - eSIM Profile Management
+      summary: Cancel Switch Request
+      description: Cancel all type of switch requests (switch/ enable/ download/ delete) Or cancel the pending auto retries
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                request-id:
+                  type: string
+                  description: Unique identifier of the request
+                  example: cmp-cpro-request-0000000
+                eids:
+                  type: array
+                  items:
+                    type: string
+                  description: Array of unique identifiers of the eSIM
+                cancel-autoretry:
+                  type: boolean
+                  example: false
+                  description: Cancel any pending autoretry of RSP steps for the eSIM. Does not cancel the request
+              required:
+              - request-id
+              $$ref: '#/components/schemas/CancelSwitchRequest0'
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Acknowledgement message
+                        example: Request cancelled successfully!
+                      cancel-response:
+                        type: object
+                        properties:
+                          accepted-eids:
+                            type: array
+                            items:
+                              type: string
+                            description: EIDs accepted for cancel
+                          rejected-eids:
+                            type: array
+                            items:
+                              type: string
+                            description: EIDs rejected for cancel
+                        description: Details of EIDs
+                    description: Response data
+                  status:
+                    type: string
+                    description: Response status
+                    example: success
+                $$ref: '#/components/schemas/200CancelSwitchRequest0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: Error message
+                        example: Request is not eligible for cancellation
+                      cancel-response:
+                        type: object
+                        properties:
+                          accepted-eids:
+                            type: array
+                            items:
+                              type: string
+                            description: EIDs accepted for cancel
+                          rejected-eids:
+                            type: array
+                            items:
+                              type: string
+                            description: EIDs rejected for cancel
+                        description: Details of EIDs
+                    description: Response data
+                  status:
+                    type: string
+                    description: Response status
+                    example: error
+                $$ref: '#/components/schemas/400CancelSwitchRequest0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                required:
+                - error
+                - message
+                type: object
+                properties:
+                  error:
+                    type: integer
+                    format: int32
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '404':
+          description: The Specified Resource Was Not Found
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  INFO:
+                    type: string
+                $$ref: '#/components/schemas/NotFound_Error'
+        '409':
+          description: Request Conflict
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  errorMessage:
+                    type: string
+                $$ref: '#/components/schemas/400_Error'
+        '500':
+          description: Server Error
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '502':
+          description: Bad Gateway
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '503':
+          description: Service Unavailable
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+        '504':
+          description: Gateway Timeout
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              style: simple
+              explode: false
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/xxx_Error'
+      parameters:
+      - name: account-id
+        description: The unique identifier of your account
+        in: path
+        required: true
+        example: cmp-pp-org-000
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: "curl --location --globoff '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/cancel' \\\n--header 'Content-Type: application/json'\n--header 'Authorization: Bearer <YOUR BEARER TOKEN>' \n--header 'x-api-key: <YOUR API KEY>'\n--header 'Accept: application/json' \\\n--data '{\n  \"request-id\": \"<string>\",\n  \"eids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancel-autoretry\": \"<boolean>\"\n}'"
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/cancel',\n   'headers': {\n      'Content-Type': 'application/json',\n      'Accept': 'application/json'\n   },\n   body: JSON.stringify({\n      \"request-id\": \"<string>\",\n      \"eids\": [\n         \"<string>\",\n         \"<string>\"\n      ],\n      \"cancel-autoretry\": \"<boolean>\"\n   })\n\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/json\");\nRequestBody body = RequestBody.create(mediaType, \"{\\n  \\\"request-id\\\": \\\"<string>\\\",\\n  \\\"eids\\\": [\\n    \\\"<string>\\\",\\n    \\\"<string>\\\"\\n  ],\\n  \\\"cancel-autoretry\\\": \\\"<boolean>\\\"\\n}\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/cancel\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR BEARER TOKEN>\")\n   .addHeader(\"x-api-key\", \"<YOUR API KEY>\")\n   .addHeader(\"Content-Type\", \"application/json\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/cancel\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Content-Type\", \"application/json\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nvar body = @\"{\" + \"\\n\" +\n@\"  \"\"request-id\"\": \"\"<string>\"\",\" + \"\\n\" +\n@\"  \"\"eids\"\": [\" + \"\\n\" +\n@\"    \"\"<string>\"\",\" + \"\\n\" +\n@\"    \"\"<string>\"\"\" + \"\\n\" +\n@\"  ],\" + \"\\n\" +\n@\"  \"\"cancel-autoretry\"\": \"\"<boolean>\"\"\" + \"\\n\" +\n@\"}\";\nrequest.AddStringBody(body, DataFormat.Json);\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/cancel',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>'),\n   CURLOPT_POSTFIELDS =>'{\n  \"request-id\": \"<string>\",\n  \"eids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"cancel-autoretry\": \"<boolean>\"\n}',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/json',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\nimport json\n\nurl = \"{{baseUrl}}/v1/accounts/{account-id}/esim-profile-switch-requests/cancel\"\n\npayload = json.dumps({\n   \"request-id\": \"<string>\",\n   \"eids\": [\n      \"<string>\",\n      \"<string>\"\n   ],\n   \"cancel-autoretry\": \"<boolean>\"\n})\nheaders = {\n   'Content-Type': 'application/json',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+  /v1/esim/profile-status:
+    get:
+      tags:
+      - eSIM Profile Management
+      summary: Get eSIM profile status
+      description: Get the RSP profile status for all subscriptions associated with the EID. Profile status is not returned for profiles that are not downloaded or were deleted.
+      responses:
+        '200':
+          description: 200 response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subscriptions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        iccid:
+                          type: string
+                          description: The ICCID of the subscription
+                        product-offer:
+                          type: string
+                          description: Combination of plans, features and sim format types
+                        state:
+                          type: string
+                          description: 'The state of the subscription. Allowed: Stock|Active|Suspend|Suspend With. Charge|Deactivated|Pending Scrap|Scrapped|Barred'
+                        profile-status:
+                          type: string
+                          description: 'Status of the eSIM profile in RSP. Allowed: ENABLED|DISABLED|CREATED'
+                        subscription-id:
+                          type: string
+                          description: Unique identifier of the subscription
+                        is-fallback:
+                          type: boolean
+                          description: True if this is the fallback profile
+                    description: List of eSIM profiles associated with the EID
+                $$ref: '#/components/schemas/200GeteSIMprofilestatus0'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error-message:
+                    type: string
+                    description: Reason for request failure
+                  status:
+                    type: string
+                    description: ' Status of the response'
+                $$ref: '#/components/schemas/400GeteSIMprofilestatus0'
+        '401':
+          description: Unauthorised User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/401GeteSIMprofilestatus0'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/403GeteSIMprofilestatus0'
+        '404':
+          description: The Specified Resource Was Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/404GeteSIMprofilestatus0'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  message:
+                    type: string
+                $$ref: '#/components/schemas/500GeteSIMprofilestatus0'
+      parameters:
+      - name: eid
+        description: Unique identifier of the eSIM
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: iccid
+        description: The ICCID of the subscription
+        in: query
+        required: false
+        schema:
+          type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''{{baseUrl}}/v1/esim/profile-status?eid=<string>&iccid=<string>'' \
+
+          --header ''Accept: application/json'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': '{{baseUrl}}/v1/esim/profile-status?eid=<string>&iccid=<string>',\n   'headers': {\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"{{baseUrl}}/v1/esim/profile-status?eid=<string>&iccid=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"{{baseUrl}}/v1/esim/profile-status?eid=<string>&iccid=<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => '{{baseUrl}}/v1/esim/profile-status?eid=<string>&iccid=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR BEARER TOKEN>',\n   'x-api-key: <YOUR API KEY>')\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"{{baseUrl}}/v1/esim/profile-status?eid=<string>&iccid=<string>\"\n\npayload = {}\nheaders = {\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+      security:
+      - {}
+      - Auth: []
+      - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: x-api-key
+      in: header
+    Auth:
+      type: oauth2
+      description: token expiry is given in seconds
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/Api/api/token
+          scopes: {}

@@ -1,0 +1,183 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Sim Ip Address API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1SimIpAddress
+paths:
+  /v1/Sims/{SimSid}/IpAddresses:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: IP Addresses for a Super SIM configured to use a VPN connection
+    x-kore:
+      defaultOutputProperties:
+      - ip_address
+      - ip_address_version
+      parent: /Sims/{Sid}
+      mountName: sim_ip_addresses
+      pathType: list
+    get:
+      description: Retrieve a list of IP Addresses for the given Super SIM.
+      tags:
+      - SupersimV1SimIpAddress
+      parameters:
+      - name: SimSid
+        in: path
+        description: The SID of the Super SIM to list IP Addresses for.
+        schema:
+          type: string
+        required: true
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ip_addresses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.sim.sim_ip_address'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListSimIpAddressResponse
+              examples:
+                readEmpty:
+                  value:
+                    meta:
+                      key: ip_addresses
+                      first_page_url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses?PageSize=50&Page=0
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses?PageSize=50&Page=0
+                    ip_addresses: []
+                readNonEmpty:
+                  value:
+                    meta:
+                      key: ip_addresses
+                      first_page_url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses?PageSize=50&Page=0
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAddresses?PageSize=50&Page=0
+                    ip_addresses:
+                    - ip_address: 8.8.8.8
+                      ip_address_version: IPv4
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListSimIpAddress
+components:
+  schemas:
+    sim_ip_address_enum_ip_address_version:
+      type:
+      - string
+      - 'null'
+      description: IP address version of the corresponding IP address
+      enum:
+      - IPv4
+      - IPv6
+    supersim.v1.sim.sim_ip_address:
+      type: object
+      properties:
+        ip_address:
+          type:
+          - string
+          - 'null'
+          description: IP address assigned to the given Super SIM
+        ip_address_version:
+          $ref: '#/components/schemas/sim_ip_address_enum_ip_address_version'
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

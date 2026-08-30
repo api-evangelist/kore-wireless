@@ -1,0 +1,1255 @@
+openapi: 3.2.0
+info:
+  title: Programmable Wireless RatePlans Resource API
+  description: The KORE Programmable Wireless REST API
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://programmable-wireless.api.korewireless.com
+security:
+- {}
+- Auth: []
+tags:
+- name: RatePlans Resource
+paths:
+  /v1/RatePlans:
+    get:
+      summary: List Data Rate Plans
+      tags:
+      - RatePlans Resource
+      operationId: listRatePlans
+      x-scala-package: v1.usage
+      x-tracing-label: ProgrammableWirelessUsageApi:list-data-usage
+      parameters:
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rate_plans:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RatePlan'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListRatePlanResponse
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/RatePlans?PageSize=<integer>&Page=<integer>&PageToken=<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/RatePlans?PageSize=<integer>&Page=<integer>&PageToken=<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',              \n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans?PageSize=<integer>&Page=<integer>&PageToken=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")        \n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans?PageSize=<integer>&Page=<integer>&PageToken=<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/RatePlans?PageSize=<integer>&Page=<integer>&PageToken=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(                                \n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/RatePlans?PageSize=<integer>&Page=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',  \n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+    post:
+      summary: Create Data Rate Plans
+      tags:
+      - RatePlans Resource
+      operationId: createRatePlans
+      x-scala-package: v1.usage
+      x-tracing-label: ProgrammableWirelessUsageApi:list-data-usage
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateRatePlanRequest
+              properties:
+                UniqueName:
+                  type: string
+                  description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+                FriendlyName:
+                  type: string
+                  description: A descriptive string that you create to describe the resource. It does not have to be unique.
+                DataEnabled:
+                  type: boolean
+                  description: Whether SIMs can use GPRS/3G/4G/LTE data connectivity.
+                DataLimit:
+                  type: integer
+                  description: The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB and the default value is `1000`.
+                DataMetering:
+                  type: string
+                  description: 'The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available data metering models'
+                MessagingEnabled:
+                  type: boolean
+                  description: Whether SIMs can make, send, and receive SMS using Commands.
+                VoiceEnabled:
+                  type: boolean
+                  description: Deprecated.
+                NationalRoamingEnabled:
+                  type: boolean
+                  description: Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States.
+                InternationalRoaming:
+                  type: array
+                  items:
+                    type: string
+                  description: 'The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`.'
+                NationalRoamingDataLimit:
+                  type: integer
+                  description: The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB.
+                InternationalRoamingDataLimit:
+                  type: integer
+                  description: The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.
+      responses:
+        '200':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatePlan'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '202':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatePlan'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/RatePlans'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>''
+
+          --header ''Content-Type: application/x-www-form-urlencoded'' \
+
+          --header ''Accept: application/json'' \
+
+          --data-urlencode ''UniqueName=<string>'' \
+
+          --data-urlencode ''FriendlyName=<string>'' \
+
+          --data-urlencode ''DataEnabled=<boolean>'' \
+
+          --data-urlencode ''DataLimit=<integer>'' \
+
+          --data-urlencode ''DataMetering=<string>'' \
+
+          --data-urlencode ''MessagingEnabled=<boolean>'' \
+
+          --data-urlencode ''VoiceEnabled=<boolean>'' \
+
+          --data-urlencode ''NationalRoamingEnabled=<boolean>'' \
+
+          --data-urlencode ''InternationalRoaming=<string>'' \
+
+          --data-urlencode ''InternationalRoaming=<string>'' \
+
+          --data-urlencode ''NationalRoamingDataLimit=<integer>'' \
+
+          --data-urlencode ''InternationalRoamingDataLimit=<integer>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/RatePlans',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',        \n      'Content-Type': 'application/x-www-form-urlencoded',\n      'Accept': 'application/json'\n   },\n   form: {\n      'UniqueName': '<string>',\n      'FriendlyName': '<string>',\n      'DataEnabled': '<boolean>',\n      'DataLimit': '<integer>',\n      'DataMetering': '<string>',\n      'MessagingEnabled': '<boolean>',\n      'VoiceEnabled': '<boolean>',\n      'NationalRoamingEnabled': '<boolean>',\n      'InternationalRoaming': '<string>',\n      'InternationalRoaming': '<string>',\n      'NationalRoamingDataLimit': '<integer>',\n      'InternationalRoamingDataLimit': '<integer>'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/x-www-form-urlencoded\");\nRequestBody body = RequestBody.create(mediaType, \"UniqueName=<string>&FriendlyName=<string>&DataEnabled=<boolean>&DataLimit=<integer>&DataMetering=<string>&MessagingEnabled=<boolean>&VoiceEnabled=<boolean>&NationalRoamingEnabled=<boolean>&InternationalRoaming=<string>&InternationalRoaming=<string>&NationalRoamingDataLimit=<integer>&InternationalRoamingDataLimit=<integer>\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Content-Type\", \"application/x-www-form-urlencoded\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Authorization\", \"<string>\");\nrequest.AddHeader(\"Content-Type\", \"application/x-www-form-urlencoded\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nrequest.AddParameter(\"UniqueName\", \"<string>\");\nrequest.AddParameter(\"FriendlyName\", \"<string>\");\nrequest.AddParameter(\"DataEnabled\", \"<boolean>\");\nrequest.AddParameter(\"DataLimit\", \"<integer>\");\nrequest.AddParameter(\"DataMetering\", \"<string>\");\nrequest.AddParameter(\"MessagingEnabled\", \"<boolean>\");\nrequest.AddParameter(\"VoiceEnabled\", \"<boolean>\");\nrequest.AddParameter(\"NationalRoamingEnabled\", \"<boolean>\");\nrequest.AddParameter(\"InternationalRoaming\", \"<string>\");\nrequest.AddParameter(\"InternationalRoaming\", \"<string>\");\nrequest.AddParameter(\"NationalRoamingDataLimit\", \"<integer>\");\nrequest.AddParameter(\"InternationalRoamingDataLimit\", \"<integer>\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/RatePlans',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>',\n   CURLOPT_POSTFIELDS => 'UniqueName=<string>&FriendlyName=<string>&DataEnabled=<boolean>&DataLimit=<integer>&DataMetering=<string>&MessagingEnabled=<boolean>&VoiceEnabled=<boolean>&NationalRoamingEnabled=<boolean>&InternationalRoaming=<string>&InternationalRoaming=<string>&NationalRoamingDataLimit=<integer>&InternationalRoamingDataLimit=<integer>',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/x-www-form-urlencoded',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/RatePlans\"\n\npayload = 'UniqueName=<string>&FriendlyName=<string>&DataEnabled=<boolean>&DataLimit=<integer>&DataMetering=<string>&MessagingEnabled=<boolean>&VoiceEnabled=<boolean>&NationalRoamingEnabled=<boolean>&InternationalRoaming=<string>&InternationalRoaming=<string>&NationalRoamingDataLimit=<integer>&InternationalRoamingDataLimit=<integer>'\nheaders = {\n   'Authorization': '<string>',\n   'Content-Type': 'application/x-www-form-urlencoded',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+  /v1/RatePlans/{Sid}:
+    parameters:
+    - name: Sid
+      in: path
+      description: The SID of the RatePlan resource to fetch.
+      schema:
+        type: string
+      required: true
+    get:
+      summary: Get Data Rate Plan
+      tags:
+      - RatePlans Resource
+      operationId: getRatePlan
+      responses:
+        '200':
+          description: Get Rate Plan
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatePlan'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',                \n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")        \n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',    \n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+    post:
+      summary: Update Rate Plan
+      tags:
+      - RatePlans Resource
+      operationId: updateRatePlan
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: UpdateRatePlanRequest
+              properties:
+                UniqueName:
+                  type: string
+                  description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+                FriendlyName:
+                  type: string
+                  description: A descriptive string that you create to describe the resource. It does not have to be unique.
+      responses:
+        '200':
+          description: Data Usage Update
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatePlan'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>''
+
+          --header ''Content-Type: application/x-www-form-urlencoded'' \
+
+          --header ''Accept: application/json'' \
+
+          --data-urlencode ''UniqueName=<string>'' \
+
+          --data-urlencode ''FriendlyName=<string>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'POST',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',            \n      'Content-Type': 'application/x-www-form-urlencoded',\n      'Accept': 'application/json'\n   },\n   form: {\n      'UniqueName': '<string>',\n      'FriendlyName': '<string>'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"application/x-www-form-urlencoded\");\nRequestBody body = RequestBody.create(mediaType, \"UniqueName=<string>&FriendlyName=<string>\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\")\n   .method(\"POST\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Content-Type\", \"application/x-www-form-urlencoded\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Post);\nrequest.AddHeader(\"Authorization\", \"<string>\");\nrequest.AddHeader(\"Content-Type\", \"application/x-www-form-urlencoded\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nrequest.AddParameter(\"UniqueName\", \"<string>\");\nrequest.AddParameter(\"FriendlyName\", \"<string>\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'POST',\n   CURLOPT_HTTPHEADER => array(\n   'Content-Type: application/json',\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>',\n   CURLOPT_POSTFIELDS => 'UniqueName=<string>&FriendlyName=<string>',\n   CURLOPT_HTTPHEADER => array(\n      'Content-Type: application/x-www-form-urlencoded',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\"\n\npayload = 'UniqueName=<string>&FriendlyName=<string>'\nheaders = {\n   'Authorization': '<string>',\n   'Content-Type': 'application/x-www-form-urlencoded',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"POST\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+    delete:
+      summary: Delete Data Rate Plan
+      tags:
+      - RatePlans Resource
+      operationId: deleteRatePlan
+      responses:
+        '204':
+          description: The resource was deleted successfully.
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '409':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff --request DELETE ''https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'DELETE',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\")\n   .method(\"DELETE\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")\n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Delete);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'DELETE',\n   CURLOPT_HTTPHEADER => array(\n      'Authorization: Bearer <YOUR_AUTH_TOKEN>',\n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/RatePlans/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+components:
+  schemas:
+    RatePlan:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^WP[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the RatePlan resource.
+        unique_name:
+          type:
+          - string
+          - 'null'
+          description: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the Account that created the RatePlan resource.
+        friendly_name:
+          type:
+          - string
+          - 'null'
+          description: The string that you assigned to describe the resource.
+        data_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether SIMs can use GPRS/3G/4G/LTE data connectivity.
+        data_metering:
+          type:
+          - string
+          - 'null'
+          description: 'The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available data metering models'
+        data_limit:
+          type:
+          - integer
+          - 'null'
+          description: The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB.
+        messaging_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether SIMs can make, send, and receive SMS using Commands.
+        voice_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Deprecated. Whether SIMs can make and receive voice calls.
+        national_roaming_enabled:
+          type:
+          - boolean
+          - 'null'
+          description: Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States.
+        national_roaming_data_limit:
+          type:
+          - integer
+          - 'null'
+          description: The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB.
+        international_roaming:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: 'The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`.'
+        international_roaming_data_limit:
+          type:
+          - integer
+          - 'null'
+          description: The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in ISO 8601 format.
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in ISO 8601 format.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the resource.
+        usage_notification_url:
+          type: string
+        usage_notification_method:
+          type: string
+        data_limit_strategy:
+          type: string
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
+  securitySchemes:
+    Auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-amazon-apigateway-api-key-source: AUTHORIZER
+x-hideTryItPanel: true

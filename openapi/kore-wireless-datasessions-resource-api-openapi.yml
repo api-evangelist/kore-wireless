@@ -1,0 +1,403 @@
+openapi: 3.2.0
+info:
+  title: Programmable Wireless DataSessions Resource API
+  description: The KORE Programmable Wireless REST API
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://programmable-wireless.api.korewireless.com
+security:
+- {}
+- Auth: []
+tags:
+- name: DataSessions Resource
+paths:
+  /v1/Sims/{Sid}/DataSessions:
+    parameters:
+    - name: Sid
+      in: path
+      description: The SID of the Sim resource to read the usage from.
+      schema:
+        type: string
+      required: true
+    get:
+      summary: List Data Usage records for a sim
+      tags:
+      - DataSessions Resource
+      operationId: getDataSession
+      parameters:
+      - name: PageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          description: How many resources to return in each list page. The default is 50, and the maximum is 1000. Minimum= 1 Maximum=1000
+      - name: Page
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: The page index. This value is simply for client state.
+      - name: PageToken
+        description: The page token. This is provided by the API.
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Data Usage List
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data_sessions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DataSession'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListDataSessionResponse
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '401':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '403':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '415':
+          description: Credentials were not provided and are required to access this resource
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '422':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+        '503':
+          description: Server is temporary not available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsageApiErrorResponse'
+          headers:
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              schema:
+                type: string
+            Access-Control-Allow-Credentials:
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+      x-code-samples:
+      - lang: cURL
+        label: cURL
+        source: 'curl --location --globoff ''https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>'' \
+
+          --header ''Authorization: Bearer <YOUR_AUTH_TOKEN>'''
+      - lang: js
+        label: NodeJs
+        source: "var request = require('request');\nvar options = {\n   'method': 'GET',\n   'url': 'https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>',\n   'headers': {\n      'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n      'Accept': 'application/json'\n   }\n};\nrequest(options, function (error, response) {\n   if (error) throw new Error(error);\n   console.log(response.body);\n});\n"
+      - lang: java
+        label: Java
+        source: "OkHttpClient client = new OkHttpClient().newBuilder()\n   .build();\nMediaType mediaType = MediaType.parse(\"text/plain\");\nRequestBody body = RequestBody.create(mediaType, \"\");\nRequest request = new Request.Builder()\n   .url(\"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>\")\n   .method(\"GET\", body)\n   .addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\")   \n   .addHeader(\"Accept\", \"application/json\")\n   .build();\nResponse response = client.newCall(request).execute();"
+      - lang: cs
+        label: C#
+        source: "var options = new RestClientOptions(\"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>\")\n{\n   MaxTimeout = -1,\n};\nvar client = new RestClient(options);\nvar request = new RestRequest(\"\", Method.Get);\nrequest.addHeader(\"Authorization\", \"Bearer <YOUR_AUTH_TOKEN>\");\nrequest.AddHeader(\"Accept\", \"application/json\");\nRestResponse response = await client.ExecuteAsync(request);\nConsole.WriteLine(response.Content);"
+      - lang: PHP
+        label: Php
+        source: "<?php\n\n$curl = curl_init();\n\ncurl_setopt_array($curl, array(\n   CURLOPT_URL => 'https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>',\n   CURLOPT_RETURNTRANSFER => true,\n   CURLOPT_ENCODING => '',\n   CURLOPT_MAXREDIRS => 10,\n   CURLOPT_TIMEOUT => 0,\n   CURLOPT_FOLLOWLOCATION => true,\n   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,\n   CURLOPT_CUSTOMREQUEST => 'GET',\n   CURLOPT_HTTPHEADER => array(\n   'Authorization: Bearer <YOUR_AUTH_TOKEN>'\n   CURLOPT_HTTPHEADER => array(\n      \n      \n      'Accept: application/json'\n   ),\n));\n\n$response = curl_exec($curl);\n\ncurl_close($curl);\necho $response;\n"
+      - lang: py
+        label: Python
+        source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',       \n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
+components:
+  schemas:
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
+    DataSession:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          description: The unique string that we created to identify the DataSession resource.
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          description: The SID of the Sim resource that the Data Session is for.
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the Account that created the DataSession resource.
+        radio_link:
+          type:
+          - string
+          - 'null'
+          description: The generation of wireless technology that the device was using.
+        operator_mcc:
+          type:
+          - string
+          - 'null'
+          description: The 'mobile country code' is the unique ID of the home country where the Data Session took place.
+        operator_mnc:
+          type:
+          - string
+          - 'null'
+          description: The 'mobile network code' is the unique ID specific to the mobile operator network where the Data Session took place.
+        operator_country:
+          type:
+          - string
+          - 'null'
+          description: The three letter country code representing where the device's Data Session took place. This is determined by looking up the `operator_mcc`.
+        operator_name:
+          type:
+          - string
+          - 'null'
+          description: The friendly name of the mobile operator network that the SIM -connected device is attached to. This is determined by looking up the `operator_mnc`.
+        cell_id:
+          type:
+          - string
+          - 'null'
+          description: The unique ID of the cellular tower that the device was attached to at the moment when the Data Session was last updated.
+        cell_location_estimate:
+          type:
+          - object
+          - 'null'
+          properties:
+            lat:
+              type: number
+            lon:
+              type: number
+          description: An object that describes the estimated location in latitude and longitude where the device's Data Session took place. The location is derived from the `cell_id` when the Data Session was last updated.
+        packets_uploaded:
+          type:
+          - integer
+          - 'null'
+          description: The number of packets uploaded by the device between the `start` time and when the Data Session was last updated.
+        packets_downloaded:
+          type:
+          - integer
+          - 'null'
+          description: The number of packets downloaded by the device between the `start` time and when the Data Session was last updated.
+        last_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date that the resource was last updated, given as GMT in ISO 8601 format.
+        start:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date that the Data Session started, given as GMT in ISO 8601 format.
+        end:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date that the record ended, given as GMT in [ISO 8601 format.
+        imei:
+          type:
+          - string
+          - 'null'
+          description: 'The ''international mobile equipment identity'' is the unique ID of the device using the SIM to connect. An IMEI is a 15-digit string: 14 digits for the device identifier plus a check digit calculated using the Luhn formula.'
+  securitySchemes:
+    Auth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-amazon-apigateway-api-key-source: AUTHORIZER
+x-hideTryItPanel: true

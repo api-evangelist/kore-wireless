@@ -1,0 +1,274 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Billing Period API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1BillingPeriod
+paths:
+  /v1/Sims/{SimSid}/BillingPeriods:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Billing Period for an IoT Super SIM
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - sim_sid
+      - start_time
+      - end_time
+      - period_type
+      parent: /Sims/{Sid}
+      pathType: list
+    get:
+      summary: Read multiple BillingPeriod resources
+      description: Retrieve a list of Billing Periods for a Super SIM.
+      tags:
+      - SupersimV1BillingPeriod
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/Sims/<Sid>/BillingPeriods" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\nconst response = await fetch('https://supersim.api.korewireless.com/v1/Sims/<Sid>/BillingPeriods', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n  \"https://supersim.api.korewireless.com/v1/Sims/<Sid>/BillingPeriods\", \n  headers={\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n  }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: SimSid
+        in: path
+        description: The SID of the Super SIM to list Billing Periods for.
+        schema:
+          type: string
+        required: true
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  billing_periods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.sim.billing_period'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListBillingPeriodResponse
+              examples:
+                readEmpty:
+                  value:
+                    billing_periods: []
+                    meta:
+                      page: 0
+                      page_size: 50
+                      first_page_url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods?PageSize=50&Page=0
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods?PageSize=50&Page=0
+                      next_page_url: null
+                      key: billing_periods
+                readFullActivePeriod:
+                  value:
+                    billing_periods:
+                    - sid: HBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      period_type: active
+                      start_time: '2021-06-09T13:18:15Z'
+                      end_time: '2021-07-09T13:18:15Z'
+                      date_created: '2021-06-09T13:18:16Z'
+                      date_updated: '2021-06-09T13:18:16Z'
+                    meta:
+                      page: 0
+                      page_size: 50
+                      first_page_url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods?PageSize=50&Page=0
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods?PageSize=50&Page=0
+                      next_page_url: null
+                      key: billing_periods
+                readFullReadyPeriod:
+                  value:
+                    billing_periods:
+                    - sid: HBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      period_type: ready
+                      start_time: '2021-06-09T13:18:15Z'
+                      end_time: '2021-07-09T13:18:15Z'
+                      date_created: '2021-06-09T13:18:16Z'
+                      date_updated: '2021-06-09T13:18:16Z'
+                    meta:
+                      page: 0
+                      page_size: 50
+                      first_page_url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods?PageSize=50&Page=0
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Sims/HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BillingPeriods?PageSize=50&Page=0
+                      next_page_url: null
+                      key: billing_periods
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListBillingPeriod
+components:
+  schemas:
+    supersim.v1.sim.billing_period:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HB[0-9a-fA-F]{32}$
+          description: The SID of the Billing Period.
+          example: HBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) the Super SIM belongs to.
+          example: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HS[0-9a-fA-F]{32}$
+          description: The SID of the Super SIM the Billing Period belongs to.
+          example: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        start_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The start time of the Billing Period specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+          example: '2021-06-09T13:18:15Z'
+        end_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The end time of the Billing Period specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+          example: '2021-07-09T13:18:15Z'
+        period_type:
+          $ref: '#/components/schemas/billing_period_enum_bp_type'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+          example: '2021-06-09T13:18:16Z'
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+          example: '2021-06-09T13:18:16Z'
+    billing_period_enum_bp_type:
+      type:
+      - string
+      - 'null'
+      description: The type of Billing Period. Can be `ready` or `active`.
+      example: active
+      enum:
+      - ready
+      - active
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

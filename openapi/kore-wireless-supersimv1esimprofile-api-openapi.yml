@@ -1,0 +1,621 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Esim Profile API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1EsimProfile
+paths:
+  /v1/ESimProfiles:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: eSIM Profiles that can be loaded onto consumer eUICC SIMs
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - status
+      mountName: esim_profiles
+      pathType: list
+    post:
+      summary: Create an ESimProfile resource to reserve a Super SIM profile
+      description: Order an eSIM Profile.
+      tags:
+      - SupersimV1EsimProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L -X POST "https://supersim.api.korewireless.com/v1/ESimProfiles" --data-urlencode "Eid=<YOUR_EID>" --header "Content-Type: application/x-www-form-urlencoded" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\nconst data = new URLSearchParams({\n    Eid: '<YOUR_EID>',\n  });\nconst response = await fetch('https://supersim.api.korewireless.com/v1/ESimProfiles', {\n    method: 'POST',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    },\n    body: data.toString()\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.post(\"https://supersim.api.korewireless.com/v1/ESimProfiles\",\n    headers={\"Content-Type\":\"application/x-www-form-urlencoded\",\"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"},\n    data={\"Eid\":\"<YOUR_EID>\"}\n)\nprint(response.text)\n"
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.esim_profile'
+              examples:
+                createDefaultSmdp:
+                  value:
+                    sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    iccid: null
+                    sim_sid: null
+                    status: new
+                    eid: 89049032005008882600033489aaaaaa
+                    smdp_plus_address: null
+                    matching_id: null
+                    activation_code: null
+                    error_code: null
+                    error_message: null
+                    date_created: '2020-09-01T20:00:00Z'
+                    date_updated: '2020-09-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                createActivationCode:
+                  value:
+                    sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    iccid: null
+                    sim_sid: null
+                    status: new
+                    eid: null
+                    smdp_plus_address: null
+                    matching_id: null
+                    activation_code: null
+                    error_code: null
+                    error_message: null
+                    date_created: '2020-09-01T20:00:00Z'
+                    date_updated: '2020-09-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                createWithCallback:
+                  value:
+                    sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    iccid: null
+                    sim_sid: null
+                    status: reserving
+                    eid: 89049032005008882600033489aaaaaa
+                    smdp_plus_address: null
+                    matching_id: null
+                    activation_code: null
+                    error_code: null
+                    error_message: null
+                    date_created: '2020-09-01T20:00:00Z'
+                    date_updated: '2020-09-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: Created
+      security:
+      - OAuth: []
+      operationId: CreateEsimProfile
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              title: CreateEsimProfileRequest
+              properties:
+                CallbackUrl:
+                  type: string
+                  description: The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.
+                CallbackMethod:
+                  type: string
+                  format: http-method
+                  enum:
+                  - GET
+                  - POST
+                  description: 'The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.'
+                GenerateMatchingId:
+                  type: boolean
+                  description: When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.
+                Eid:
+                  type: string
+                  description: Identifier of the eUICC that will claim the eSIM Profile.
+            examples:
+              createDefaultSmdp:
+                value:
+                  Eid: 89049032005008882600033489aaaaaa
+              createActivationCode:
+                value:
+                  GenerateMatchingId: true
+              createWithCallback:
+                value:
+                  Eid: 89049032005008882600033489aaaaaa
+                  CallbackUrl: http://callback.kore.com
+                  CallbackMethod: POST
+    get:
+      summary: Read all ESimProfile resources
+      description: Retrieve a list of eSIM Profiles.
+      tags:
+      - SupersimV1EsimProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/ESimProfiles?Status=installed" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/ESimProfiles\";\nconst params = new URLSearchParams({ Status: \"installed\" });\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n  \"https://supersim.api.korewireless.com/v1/ESimProfiles\", \n  headers={\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN\"},\n  params={\n    \"Status\": \"installed\"}\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Eid
+        in: query
+        description: List the eSIM Profiles that have been associated with an EId.
+        schema:
+          type: string
+        examples:
+          readByEid:
+            value: 89049032005008882600033489aaaaaa
+      - name: SimSid
+        in: query
+        description: Find the eSIM Profile resource related to a [Sim](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.
+        schema:
+          type: string
+        examples:
+          readBySimSid:
+            value: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      - name: Status
+        in: query
+        description: List the eSIM Profiles that are in a given status.
+        schema:
+          $ref: '#/components/schemas/esim_profile_enum_status'
+        examples:
+          readByStatus:
+            value: downloaded
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  esim_profiles:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.esim_profile'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListEsimProfileResponse
+              examples:
+                readAll:
+                  value:
+                    esim_profiles:
+                    - sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iccid: 8988307aaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      status: available
+                      eid: 89049032005008882600033489aaaaaa
+                      smdp_plus_address: sm-dp-plus.kore.com
+                      matching_id: null
+                      activation_code: null
+                      error_code: null
+                      error_message: null
+                      date_created: '2020-09-01T20:00:00Z'
+                      date_updated: '2020-09-01T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/ESimProfiles?PageSize=50&Page=0
+                      key: esim_profiles
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles?PageSize=50&Page=0
+                readByEid:
+                  value:
+                    esim_profiles:
+                    - sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iccid: 8988307aaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      status: available
+                      eid: 89049032005008882600033489aaaaaa
+                      smdp_plus_address: sm-dp-plus.kore.com
+                      matching_id: null
+                      activation_code: null
+                      error_code: null
+                      error_message: null
+                      date_created: '2020-09-01T20:00:00Z'
+                      date_updated: '2020-09-01T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/ESimProfiles?Eid=89049032005008882600033489aaaaaa&PageSize=50&Page=0
+                      key: esim_profiles
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles?Eid=89049032005008882600033489aaaaaa&PageSize=50&Page=0
+                readBySimSid:
+                  value:
+                    esim_profiles:
+                    - sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iccid: 8988307aaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      status: available
+                      eid: 89049032005008882600033489aaaaaa
+                      smdp_plus_address: sm-dp-plus.kore.com
+                      matching_id: null
+                      activation_code: null
+                      error_code: null
+                      error_message: null
+                      date_created: '2020-09-01T20:00:00Z'
+                      date_updated: '2020-09-01T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/ESimProfiles?SimSid=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                      key: esim_profiles
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles?SimSid=HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0
+                readByStatus:
+                  value:
+                    esim_profiles:
+                    - sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      iccid: 8988307aaaaaaaaaaaaa
+                      sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      status: downloaded
+                      eid: 89049032005008882600033489aaaaaa
+                      smdp_plus_address: sm-dp-plus.kore.com
+                      matching_id: null
+                      activation_code: null
+                      error_code: null
+                      error_message: null
+                      date_created: '2020-09-01T20:00:00Z'
+                      date_updated: '2020-09-01T20:00:00Z'
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/ESimProfiles?Status=downloaded&PageSize=50&Page=0
+                      key: esim_profiles
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/ESimProfiles?Status=downloaded&PageSize=50&Page=0
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListEsimProfile
+  /v1/ESimProfiles/{Sid}:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: eSIM Profiles that can be loaded onto consumer eUICC SIMs
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      - status
+      mountName: esim_profiles
+      pathType: instance
+    get:
+      summary: Fetch an ESimProfile resource
+      description: Fetch an eSIM Profile.
+      tags:
+      - SupersimV1EsimProfile
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/ESimProfiles/<Sid>" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\nconst response = await fetch('https://supersim.api.korewireless.com/v1/ESimProfiles/<Sid>', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n  \"https://supersim.api.korewireless.com/v1/ESimProfiles/<Sid>\", \n  headers={\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"}\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the eSIM Profile resource to fetch.
+        schema:
+          type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.esim_profile'
+              examples:
+                fetchDefaultSmdp:
+                  value:
+                    sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    iccid: 8988307aaaaaaaaaaaaa
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    status: available
+                    eid: 89049032005008882600033489aaaaaa
+                    smdp_plus_address: sm-dp-plus.kore.com
+                    matching_id: null
+                    activation_code: null
+                    error_code: null
+                    error_message: null
+                    date_created: '2020-09-01T20:00:00Z'
+                    date_updated: '2020-09-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                fetchActivationCode:
+                  value:
+                    sid: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    account_sid: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    iccid: 8988307aaaaaaaaaaaaa
+                    sim_sid: HSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    status: available
+                    eid: null
+                    smdp_plus_address: sm-dp-plus.kore.com
+                    matching_id: AAAAA-BBBBB-CCCCC-DDDDD-EEEEE
+                    activation_code: 1$SM-DP-PLUS.KORE.COM$AAAAA-BBBBB-CCCCC-DDDDD-EEEEE
+                    error_code: null
+                    error_message: null
+                    date_created: '2020-09-01T20:00:00Z'
+                    date_updated: '2020-09-01T20:00:00Z'
+                    url: https://supersim.api.korewireless.com/v1/ESimProfiles/HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: FetchEsimProfile
+components:
+  schemas:
+    esim_profile_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the eSIM Profile. Can be: `new`, `reserving`, `available`, `downloaded`, `installed` or `failed`. See the [eSIM Profile Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/esimprofile-resource#status-values) for a description of each.'
+      example: new
+      enum:
+      - new
+      - reserving
+      - available
+      - downloaded
+      - installed
+      - failed
+    supersim.v1.esim_profile:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HP[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the eSIM Profile resource.
+          example: HPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        account_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^AC[0-9a-fA-F]{32}$
+          description: The SID of the [Account](https://docs.korewireless.com/en-us/v/api/global-resources/iam/account) to which the eSIM Profile resource belongs.
+          example: ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        iccid:
+          type:
+          - string
+          - 'null'
+          description: The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with the Sim resource.
+          example: null
+          x-kore:
+            pii:
+              handling: standard
+              deleteSla: 30
+        sim_sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HS[0-9a-fA-F]{32}$
+          description: The SID of the [Sim](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) resource that this eSIM Profile controls.
+          example: null
+        status:
+          $ref: '#/components/schemas/esim_profile_enum_status'
+        eid:
+          type:
+          - string
+          - 'null'
+          description: Identifier of the eUICC that can claim the eSIM Profile.
+          example: ''
+        smdp_plus_address:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: Address of the SM-DP+ server from which the Profile will be downloaded. The URL will appear once the eSIM Profile reaches the status `available`.
+          example: null
+        matching_id:
+          type:
+          - string
+          - 'null'
+          description: Unique identifier of the eSIM profile that can be used to identify and download the eSIM profile from the SM-DP+ server. Populated if `generate_matching_id` is set to `true` when creating the eSIM profile reservation.
+          example: null
+        activation_code:
+          type:
+          - string
+          - 'null'
+          description: Combined machine-readable activation code for acquiring an eSIM Profile with the Activation Code download method. Can be used in a QR code to download an eSIM profile.
+          example: null
+        error_code:
+          type:
+          - string
+          - 'null'
+          description: Code indicating the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state.
+          example: null
+        error_message:
+          type:
+          - string
+          - 'null'
+          description: Error message describing the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state.
+          example: null
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+          example: '2020-09-01T20:00:00Z'
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+          example: '2020-09-01T20:00:00Z'
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the eSIM Profile resource.
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false

@@ -1,0 +1,314 @@
+openapi: 3.2.0
+info:
+  title: KORE - Supersim Supersim V1 Network API
+  description: This is the public KORE REST API.
+  termsOfService: https://pardot.korewireless.com/koremsa
+  contact:
+    name: KORE Support
+    url: https://korewireless.service-now.com/csm
+    email: support@korewireless.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://supersim.api.korewireless.com
+security:
+- OAuth: []
+tags:
+- name: SupersimV1Network
+paths:
+  /v1/Networks/{Sid}:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Mobile operator networks to which Super SIMs can connect
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      pathType: instance
+    get:
+      description: Fetch a Network resource.
+      tags:
+      - SupersimV1Network
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: 'curl -L "https://supersim.api.korewireless.com/v1/Networks/<NETWORK_SID>" --header "Authorization: Bearer <YOUR_AUTH_TOKEN>"
+
+          '
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst response = await fetch('https://supersim.api.korewireless.com/v1/Networks/<NETWORK_SID>', {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n    \"https://supersim.api.korewireless.com/v1/Networks/<NETWORK_SID>\", \n    headers={\n            \"Content-Type\":\"application/x-www-form-urlencoded\",\n            \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n            }\n    )\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: Sid
+        in: path
+        description: The SID of the Network resource to fetch.
+        schema:
+          type: string
+          minLength: 34
+          maxLength: 34
+          pattern: ^HW[0-9a-fA-F]{32}$
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/supersim.v1.network'
+              examples:
+                fetch:
+                  value:
+                    friendly_name: AT&T
+                    iso_country: US
+                    identifiers:
+                    - mcc: '310'
+                      mnc: '410'
+                    sid: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    url: https://supersim.api.korewireless.com/v1/Networks/HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: FetchNetwork
+  /v1/Networks:
+    servers:
+    - url: https://supersim.api.korewireless.com
+    description: Mobile operator networks to which Super SIMs can connect
+    x-kore:
+      defaultOutputProperties:
+      - sid
+      pathType: list
+    get:
+      description: Retrieve a list of Network resources.
+      tags:
+      - SupersimV1Network
+      x-codeSamples:
+      - lang: cURL
+        label: cURL
+        source: "curl -L \"https://supersim.api.korewireless.com/v1/Networks?Page=1&PageSize=10\" --header \"Authorization: Bearer <YOUR_AUTH_TOKEN>\" \n"
+      - lang: NodeJs
+        label: NodeJs
+        source: "import { URLSearchParams } from \"url\";\n\nconst url = \"https://supersim.api.korewireless.com/v1/Networks\";\nconst params = new URLSearchParams({ Page: \"1\", PageSize: \"1\" });\n\nconst response = await fetch(`${url}?${params.toString()}`, {\n    method: 'GET',\n    headers: {\n      \"Content-Type\": \"application/x-www-form-urlencoded\",\n      \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n    }\n});\nconst resp = await response.json();\nconsole.log(resp);\n"
+      - lang: Python
+        label: Python
+        source: "import requests\n\nresponse = requests.get(\n  \"https://supersim.api.korewireless.com/v1/Networks\", \n  headers={\n    \"Content-Type\":\"application/x-www-form-urlencoded\",\n    \"Authorization\": \"Bearer <YOUR_AUTH_TOKEN>\"\n  },\n  params={\n    \"Page\": \"1\", \n    \"PageSize\": \"1\"\n  }\n)\nresp = response.json()\nprint(resp)\n"
+      parameters:
+      - name: IsoCountry
+        in: query
+        description: The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resources to read.
+        schema:
+          type: string
+        examples:
+          readWithFilters:
+            value: US
+      - name: Mcc
+        in: query
+        description: The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read.
+        schema:
+          type: string
+        examples:
+          readWithFilters:
+            value: '310'
+      - name: Mnc
+        in: query
+        description: The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read.
+        schema:
+          type: string
+        examples:
+          readWithFilters:
+            value: '410'
+      - name: PageSize
+        in: query
+        description: How many resources to return in each list page. The default is 50, and the maximum is 1000.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 1000
+      - name: Page
+        in: query
+        description: The page index. This value is simply for client state.
+        schema:
+          type: integer
+          minimum: 0
+      - name: PageToken
+        in: query
+        description: The page token. This is provided by the API.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  networks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/supersim.v1.network'
+                  meta:
+                    properties:
+                      first_page_url:
+                        format: uri
+                        type: string
+                      key:
+                        type: string
+                      next_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      page:
+                        type: integer
+                      page_size:
+                        type: integer
+                      previous_page_url:
+                        format: uri
+                        type:
+                        - string
+                        - 'null'
+                      url:
+                        format: uri
+                        type: string
+                    type: object
+                title: ListNetworkResponse
+              examples:
+                read:
+                  value:
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/Networks?PageSize=50&Page=0
+                      key: networks
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Networks?PageSize=50&Page=0
+                    networks:
+                    - friendly_name: AT&T
+                      iso_country: US
+                      identifiers:
+                      - mcc: '310'
+                        mnc: '410'
+                      sid: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      url: https://supersim.api.korewireless.com/v1/Networks/HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                readWithFilters:
+                  value:
+                    meta:
+                      first_page_url: https://supersim.api.korewireless.com/v1/Networks?IsoCountry=US&Mnc=410&Mcc=310&PageSize=50&Page=0
+                      key: networks
+                      next_page_url: null
+                      page: 0
+                      page_size: 50
+                      previous_page_url: null
+                      url: https://supersim.api.korewireless.com/v1/Networks?IsoCountry=US&Mnc=410&Mcc=310&PageSize=50&Page=0
+                    networks:
+                    - friendly_name: AT&T
+                      iso_country: US
+                      identifiers:
+                      - mcc: '310'
+                        mnc: '410'
+                      sid: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                      url: https://supersim.api.korewireless.com/v1/Networks/HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          headers:
+            Access-Control-Allow-Origin:
+              description: Specify the origin(s) allowed to access the resource
+              schema:
+                type: string
+              example: '*'
+            Access-Control-Allow-Methods:
+              description: Specify the HTTP methods allowed when accessing the resource
+              schema:
+                type: string
+              example: POST, OPTIONS
+            Access-Control-Allow-Headers:
+              description: Specify the headers allowed when accessing the resource
+              schema:
+                type: string
+              example: Content-Type, Authorization
+            Access-Control-Allow-Credentials:
+              description: Indicates whether the browser should include credentials
+              schema:
+                type: boolean
+            Access-Control-Expose-Headers:
+              description: Headers exposed to the client
+              schema:
+                type: string
+                example: X-Custom-Header1, X-Custom-Header2
+          description: OK
+      security:
+      - OAuth: []
+      operationId: ListNetwork
+components:
+  schemas:
+    supersim.v1.network:
+      type: object
+      properties:
+        sid:
+          type:
+          - string
+          - 'null'
+          minLength: 34
+          maxLength: 34
+          pattern: ^HW[0-9a-fA-F]{32}$
+          description: The unique string that we created to identify the Network resource.
+        friendly_name:
+          type:
+          - string
+          - 'null'
+          description: A human readable identifier of this resource.
+        url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: The absolute URL of the Network resource.
+        iso_country:
+          type:
+          - string
+          - 'null'
+          description: The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resource.
+        identifiers:
+          type:
+          - array
+          - 'null'
+          items: {}
+          description: Array of objects identifying the [MCC-MNCs](https://en.wikipedia.org/wiki/Mobile_country_code) that are included in the Network resource.
+  securitySchemes:
+    accountSid_authToken:
+      scheme: basic
+      type: http
+    OAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.korewireless.com/api-services/v1/auth/token
+          scopes: {}
+x-hideTryItPanel: true
+x-codeSamples: false
