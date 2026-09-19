@@ -819,6 +819,8 @@ apis:
   humanURL: https://developer.korewireless.com/
   baseURL: https://api.korewireless.com/connectivity
   tags:
+  - Sessions
+  tags_raw:
   - Session
   properties:
   - type: OpenAPI
