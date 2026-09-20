@@ -1,0 +1,104 @@
+slug: kore-wireless
+provider: KORE Wireless
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 9
+edges:
+- tag: eSIM Profile Management
+  spec_file: kore-wireless-esim-profile-management-api-openapi.yml
+  capability_id: BC-2640.20
+  capability_id_l1: BC-2640
+  capability_name: SIM & eSIM Lifecycle Management
+  confidence: 0.95
+  evidence: Create An Enable Profile Request; Create A Download Profile Request; Create A Delete Profile
+    Request; Get eSIM profile status
+  reason: Operations directly perform eSIM profile download, enable, switch, delete and status — the canonical
+    SIM & eSIM lifecycle management surface for an MVNO. No other reading fits.
+- tag: Sims Resource
+  spec_file: kore-wireless-sims-resource-api-openapi.yml
+  capability_id: BC-2640.20
+  capability_id_l1: BC-2640
+  capability_name: SIM & eSIM Lifecycle Management
+  confidence: 0.9
+  evidence: 'GET /v1/Sims  listSims ... POST /v1/Sims/{Sid}  updateASim ... schemas: Sim, SimStatus, SimResetStatus'
+  reason: CRUD and status/reset control over SIM resources is exactly lifecycle management of SIM profiles
+    for an MVNO's IoT connections.
+- tag: SupersimV1EsimProfile
+  spec_file: kore-wireless-supersimv1esimprofile-api-openapi.yml
+  capability_id: BC-2640.20
+  capability_id_l1: BC-2640
+  capability_name: SIM & eSIM Lifecycle Management
+  confidence: 0.9
+  evidence: POST /v1/ESimProfiles CreateEsimProfile 'Create an ESimProfile resource to reserve a Super
+    SIM profile'; schema supersim.v1.esim_profile
+  reason: Operations create, reserve and read eSIM profiles for SIMs — squarely SIM & eSIM profile lifecycle
+    management for an MVNO's subscriber base.
+- tag: SupersimV1Sim
+  spec_file: kore-wireless-supersimv1sim-api-openapi.yml
+  capability_id: BC-2640.20
+  capability_id_l1: BC-2640
+  capability_name: SIM & eSIM Lifecycle Management
+  confidence: 0.9
+  evidence: POST /v1/Sims CreateSim 'Register a Super SIM'; POST /v1/Sims/{Sid} UpdateSim 'Update a SIM';
+    schema sim_enum_status_update
+  reason: Registration, listing and status update of SIMs is the core SIM lifecycle surface of this MVNO
+    connectivity platform.
+- tag: RatePlans Resource
+  spec_file: kore-wireless-rateplans-resource-api-openapi.yml
+  capability_id: BC-2650.20
+  capability_id_l1: BC-2650
+  capability_name: Tariff & Plan Management
+  confidence: 0.85
+  evidence: POST /v1/RatePlans  createRatePlans  Create Data Rate Plans
+  reason: Full CRUD lifecycle over data rate plans (schema 'RatePlan') is definition and lifecycle management
+    of tariffs/plans underpinning the connectivity offer.
+- tag: provisioning
+  spec_file: kore-wireless-provisioning-api-openapi.yml
+  capability_id: BC-2620.30
+  capability_id_l1: BC-2620
+  capability_name: Service Provisioning
+  confidence: 0.85
+  evidence: Create A Provisioning Request; Suspend a SIM; Activate a SIM; Deactivate a SIM; Change Plan
+    for a SIM; Terminate a SIM
+  reason: These operations orchestrate activation, suspension, plan change and termination of connectivity
+    on SIMs — telecom service provisioning within service fulfilment. Slight ambiguity between provisioning
+    (.30) and activation (.40) since both activate and lifecycle-state changes appear.
+- tag: SupersimV1BillingPeriod
+  spec_file: kore-wireless-supersimv1billingperiod-api-openapi.yml
+  capability_id: BC-2660.30
+  capability_id_l1: BC-2660
+  capability_name: Billing Operations Management
+  confidence: 0.7
+  evidence: GET /v1/Sims/{SimSid}/BillingPeriods  ListBillingPeriod  Read multiple BillingPeriod resources
+  reason: Exposes the billing periods (billing cycles) applied to a SIM subscription, which belongs to
+    execution and management of billing cycles.
+- tag: UsageRecords Resource
+  spec_file: kore-wireless-usagerecords-resource-api-openapi.yml
+  capability_id: BC-2660.10
+  capability_id_l1: BC-2660
+  capability_name: Usage Mediation Management
+  confidence: 0.7
+  evidence: GET /v1/UsageRecords listDataUsage 'List Data Usage records for an account'; schemas DataUsageCounts,
+    SIMUsageRecord, CommandsUsageDetails
+  reason: Retrieval of per-account and per-SIM data and command usage records is the usage-record collection/reporting
+    layer that feeds telecom charging and billing.
+- tag: eligibility
+  spec_file: kore-wireless-eligibility-api-openapi.yml
+  capability_id: BC-2650
+  capability_id_l1: BC-2650
+  capability_name: Telecom Product Catalogue Management
+  confidence: 0.7
+  evidence: Lists All Eligible Plans; Lists All Plan Types; Lists All Eligible Service Types; Lists All
+    Eligible Features
+  reason: Read-only exposure of the plans, plan types, service types and features an account is eligible
+    for is consumption of the telecom product/tariff catalogue. Whether this is catalogue publication
+    or tariff/plan definition is unclear, so L1 only.
