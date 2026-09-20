@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 9
+edge_count: 10
 edges:
 - tag: eSIM Profile Management
   spec_file: kore-wireless-esim-profile-management-api-openapi.yml
@@ -102,3 +102,16 @@ edges:
   reason: Read-only exposure of the plans, plan types, service types and features an account is eligible
     for is consumption of the telecom product/tariff catalogue. Whether this is catalogue publication
     or tariff/plan definition is unclear, so L1 only.
+- tag: usage
+  spec_file: kore-wireless-usage-api-openapi.yml
+  capability_id: BC-4250.10
+  capability_id_l1: BC-4250
+  capability_name: Usage Metering
+  confidence: 0.7
+  evidence: GET /v1/accounts/{account-id}/subscriptions/{subscription-id}/usage-records 'Finds Usage Records
+    By Sim Number And Date Range'; GET .../plans/{plan-id}/usage-records
+  reason: Exposes aggregated usage records per SIM subscription and per rate plan over a date range —
+    the consumption data that feeds rating, invoicing and usage analytics. Maps to usage metering. Confidence
+    moderate as the endpoints are read-only retrieval and the rating/invoicing steps themselves are not
+    present in this tag.
+  recovered_from: sweep-20260829T005356Z-edges.json
