@@ -11,13 +11,13 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: alerting
+- name: Alerting
   description: APIs that provides alerts on subscribed events
 paths:
   /v1/accounts/{account-id}/events:
     get:
       tags:
-      - alerting
+      - Alerting
       summary: Lists All Events
       description: Get all eligible events for an account
       operationId: getEventsByAccountId
@@ -284,7 +284,7 @@ paths:
   /v1/accounts/{account-id}/rules:
     get:
       tags:
-      - alerting
+      - Alerting
       summary: Lists All Rules
       description: Get all eligible rules for an account
       operationId: getRulesByAccountId
@@ -609,7 +609,7 @@ paths:
       - api_key: []
     post:
       tags:
-      - alerting
+      - Alerting
       summary: Add A New Rule
       description: adds a new rule for non usage alerting
       operationId: createRule
@@ -949,7 +949,7 @@ paths:
   /v1/accounts/{account-id}/rules/{rule-id}:
     put:
       tags:
-      - alerting
+      - Alerting
       summary: Update An Existing Rule
       description: modifies an existing rule upon providing the rule Id
       operationId: updateRuleByRuleId
@@ -1296,7 +1296,7 @@ paths:
   /v1/accounts/{account-id}/alerts:
     get:
       tags:
-      - alerting
+      - Alerting
       summary: Lists All Alert History
       description: Gets a list of alerts for an account in the last 15 days
       parameters:
@@ -1675,10 +1675,12 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdAlerts
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/alerts/{alert-id}:
     get:
       tags:
-      - alerting
+      - Alerting
       summary: Lists Alert History By ID
       description: Gets details of a specific alert for an account
       parameters:
@@ -2019,10 +2021,12 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdAlertsByAlertId
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/actions:
     get:
       tags:
-      - alerting
+      - Alerting
       summary: Lists All Actions
       description: Gets all supported actions for an account
       parameters:
@@ -2268,6 +2272,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdActions
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_key:

@@ -11,13 +11,13 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: eligibility
+- name: Eligibility
   description: Retrieve details about the eligibility of a given account
 paths:
   /v1/accounts/{account-id}/plans:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Lists All Eligible Plans
       description: Get all eligible plans for an account
       operationId: getPlanByAccountId
@@ -283,7 +283,7 @@ paths:
   /v1/accounts/{account-id}/plan-types:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Lists All Plan Types
       description: Get all plan types for an account
       operationId: getPlanTypeByAccountId
@@ -527,7 +527,7 @@ paths:
   /v1/accounts/{account-id}/plans/{plan-id}:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Finds Plan by PlanId
       description: Get details of a specific plan for an account
       operationId: getPlanByPlanId
@@ -795,7 +795,7 @@ paths:
   /v1/accounts/{account-id}/service-types:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Lists All Eligible Service Types
       description: Get all eligible service types for an account
       operationId: getServiceTypeByAccountId
@@ -1040,7 +1040,7 @@ paths:
   /v1/accounts/{account-id}/service-types/{service-type-id}:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Finds ServiceType by ServiceTypeId
       description: Get details of a specific service type for an account
       operationId: getServiceTypeByServiceTypeId
@@ -1287,7 +1287,7 @@ paths:
   /v1/accounts/{account-id}/features:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Lists All Eligible Features
       description: Get all eligible features for an account
       operationId: getFeatureByAccountId
@@ -1554,7 +1554,7 @@ paths:
   /v1/accounts/{account-id}/features/{feature-id}:
     get:
       tags:
-      - eligibility
+      - Eligibility
       summary: Finds Feature by FeatureId
       description: Get details of a specific feature for an account
       operationId: getFeatureByFeatureId

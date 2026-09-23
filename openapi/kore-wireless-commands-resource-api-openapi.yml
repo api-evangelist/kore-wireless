@@ -313,7 +313,7 @@ paths:
         label: Python
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands?Sim=<string>&Status=<string>&Direction=<string>&Transport=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
     post:
-      summary: Send a Command to a Sim.
+      summary: Send a Command to a Sim
       tags:
       - Commands Resource
       operationId: sendCommand
@@ -590,7 +590,7 @@ paths:
         type: string
       required: true
     get:
-      summary: Fetch a Command instance from your account.
+      summary: Fetch a Command instance from your account
       tags:
       - Commands Resource
       operationId: getCommand
@@ -788,7 +788,7 @@ paths:
         label: Python
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
     delete:
-      summary: Delete a Command instance from your account.
+      summary: Delete a Command instance from your account
       tags:
       - Commands Resource
       operationId: deleteCommand
@@ -966,46 +966,6 @@ components:
       enum:
       - text
       - binary
-    UsageApiErrorResponse:
-      type: object
-      properties:
-        code:
-          description: Error Code
-          type: integer
-          format: int32
-        status:
-          description: HTTP Status Code
-          type: integer
-          format: int32
-        message:
-          description: Error Message
-          type: string
-        more_info:
-          description: Internal Error Message
-          type: string
-      required:
-      - code
-      - status
-      - message
-    CommandTransport:
-      type:
-      - string
-      - 'null'
-      enum:
-      - sms
-      - ip
-      description: 'The type of transport used. Can be: `sms` or `ip`.'
-    CommandStatus:
-      type:
-      - string
-      - 'null'
-      description: 'The status of the Command. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. See Status Values for a description of each state.'
-      enum:
-      - queued
-      - sent
-      - delivered
-      - received
-      - failed
     Command:
       type: object
       properties:
@@ -1069,6 +1029,46 @@ components:
           - 'null'
           format: uri
           description: The absolute URL of the resource.
+    CommandTransport:
+      type:
+      - string
+      - 'null'
+      enum:
+      - sms
+      - ip
+      description: 'The type of transport used. Can be: `sms` or `ip`.'
+    CommandStatus:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the Command. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. See Status Values for a description of each state.'
+      enum:
+      - queued
+      - sent
+      - delivered
+      - received
+      - failed
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
     CommandDirection:
       type:
       - string

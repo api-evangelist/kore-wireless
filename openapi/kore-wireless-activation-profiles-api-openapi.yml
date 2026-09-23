@@ -12,7 +12,9 @@ security:
 - api_key: []
 tags:
 - name: Activation Profiles
-  description: API to manage activation profile related activities for a given account . <br> For more details please go to our help desk article [here](https://helpdesk.korewireless.com/hc/en-us/articles/360050144452-Activation-profiles)
+  description: 'API to manage activation profile related activities for a given account .
+
+    For more details please go to our help desk article here'
 paths:
   /v1/accounts/{account-id}/activation-profiles:
     get:

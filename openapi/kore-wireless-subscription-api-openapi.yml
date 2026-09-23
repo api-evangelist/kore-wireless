@@ -11,13 +11,13 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: subscription
+- name: Subscription
   description: API provides subscription enquiries made by the customer.
 paths:
   /v1/accounts/{account-id}/subscriptions:
     get:
       tags:
-      - subscription
+      - Subscription
       summary: Lists All Subscription Details
       description: Get details on all subscriptions for an account
       operationId: getSubscriptionsByAccountId
@@ -537,7 +537,7 @@ paths:
   /v1/accounts/{account-id}/subscription-requests:
     post:
       tags:
-      - subscription
+      - Subscription
       summary: Update Subscription Details
       description: Create a subscription request to update Subscriptions
       operationId: updateSubscriptionsBySubscriptionId
@@ -857,7 +857,7 @@ paths:
   /v1/accounts/{account-id}/subscription-requests/connected-hardware:
     post:
       tags:
-      - subscription
+      - Subscription
       summary: Update Connected Hardware Details
       description: Create a subscription request to update connected hardware details
       operationId: updateConnectedHardwareBySubscriptionId
@@ -1175,7 +1175,7 @@ paths:
   /v1/accounts/{account-id}/subscription-requests/sim-transfer:
     post:
       tags:
-      - subscription
+      - Subscription
       summary: Transfer a SIM
       description: Create a request to transfer "Stock" Subscriptions to another account using the "account-id" key
       parameters:
@@ -1482,10 +1482,12 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdSubscriptionRequestsSimTransfer
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/subscriptions/{subscription-id}:
     get:
       tags:
-      - subscription
+      - Subscription
       summary: Finds Subscription Details For Given SubscriptionId
       description: Get details for a specific subscription for an account
       operationId: getSubscriptionDetailsBySubscriptionId
@@ -1883,7 +1885,7 @@ paths:
   /v1/accounts/{account-id}/subscription-requests/{subscription-request-id}:
     get:
       tags:
-      - subscription
+      - Subscription
       summary: Finds Subscription Request For Given ID
       description: Get request details for a specific subscription for an account
       operationId: getSubscriptionRequestDetailsByID
@@ -2176,7 +2178,7 @@ paths:
   /v1/accounts/{account-id}/subscription-requests/cost-center:
     post:
       tags:
-      - subscription
+      - Subscription
       summary: Update Subscription Cost Center
       description: Create a request to update cost center for a subscription
       requestBody:
@@ -2438,10 +2440,12 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdSubscriptionRequestsCostCenter
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/profiles/{profile-id}:
     get:
       tags:
-      - subscription
+      - Subscription
       summary: Finds Profile Details By ProfileId
       description: Get details of a specific profile for an account
       operationId: getProfilesByAccountId

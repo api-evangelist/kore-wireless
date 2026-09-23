@@ -129,6 +129,8 @@ paths:
                   Networks:
                   - HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                   - HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab
+      summary: Create network access profile
+      x-summary-source: derived
     get:
       description: Retrieve a list of Network Access Profiles from your account.
       tags:
@@ -261,6 +263,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListNetworkAccessProfile
+      summary: List network access profile
+      x-summary-source: derived
   /v1/NetworkAccessProfiles/{Sid}:
     servers:
     - url: https://supersim.api.korewireless.com
@@ -343,6 +347,8 @@ paths:
       security:
       - OAuth: []
       operationId: FetchNetworkAccessProfile
+      summary: Fetch network access profile
+      x-summary-source: derived
     post:
       description: Updates the given properties of a Network Access Profile in your account.
       tags:
@@ -426,6 +432,8 @@ paths:
               updateUniqueName:
                 value:
                   UniqueName: My Network Access Profile
+      summary: Update network access profile
+      x-summary-source: derived
 components:
   schemas:
     supersim.v1.network_access_profile:

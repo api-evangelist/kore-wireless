@@ -495,19 +495,6 @@ paths:
       operationId: FetchEsimProfile
 components:
   schemas:
-    esim_profile_enum_status:
-      type:
-      - string
-      - 'null'
-      description: 'The status of the eSIM Profile. Can be: `new`, `reserving`, `available`, `downloaded`, `installed` or `failed`. See the [eSIM Profile Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/esimprofile-resource#status-values) for a description of each.'
-      example: new
-      enum:
-      - new
-      - reserving
-      - available
-      - downloaded
-      - installed
-      - failed
     supersim.v1.esim_profile:
       type: object
       properties:
@@ -607,6 +594,19 @@ components:
           - 'null'
           format: uri
           description: The absolute URL of the eSIM Profile resource.
+    esim_profile_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the eSIM Profile. Can be: `new`, `reserving`, `available`, `downloaded`, `installed` or `failed`. See the [eSIM Profile Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/esimprofile-resource#status-values) for a description of each.'
+      example: new
+      enum:
+      - new
+      - reserving
+      - available
+      - downloaded
+      - installed
+      - failed
   securitySchemes:
     accountSid_authToken:
       scheme: basic

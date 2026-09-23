@@ -97,6 +97,8 @@ paths:
       security:
       - OAuth: []
       operationId: FetchNetwork
+      summary: Fetch network
+      x-summary-source: derived
   /v1/Networks:
     servers:
     - url: https://supersim.api.korewireless.com
@@ -265,6 +267,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListNetwork
+      summary: List network
+      x-summary-source: derived
 components:
   schemas:
     supersim.v1.network:

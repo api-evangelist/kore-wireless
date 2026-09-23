@@ -578,23 +578,18 @@ paths:
               schema:
                 type: string
 components:
-  parameters:
-    ContentTypeHeader:
-      name: Content-Type
-      in: header
-      schema:
-        type: string
-    AuthorizationHeader:
-      name: Authorization
-      in: header
-      schema:
-        type: string
-    AcceptHeader:
-      name: Accept
-      in: header
-      schema:
-        type: string
   schemas:
+    AccountRequest:
+      type: object
+      properties:
+        friendly_name:
+          type: string
+          description: Friendly name of the account
+        description:
+          type: string
+          description: Brief description of the account
+      required:
+      - friendly_name
     AllAccounts:
       type: object
       properties:
@@ -602,6 +597,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Account'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Error code
+          example: 20404
+        message:
+          type: string
+          description: Error message
+          example: The requested resource was not found
+        more_info:
+          type: string
+          description: Error documentation link
+          example: https://docs.korewireless.com/errors/20404
+        status:
+          type: number
+          description: HTTP status code
+          example: 404
     Account:
       type: object
       properties:
@@ -639,17 +653,6 @@ components:
           enum:
           - twilio
           description: Platform Name
-    AccountRequest:
-      type: object
-      properties:
-        friendly_name:
-          type: string
-          description: Friendly name of the account
-        description:
-          type: string
-          description: Brief description of the account
-      required:
-      - friendly_name
     PlatformMapping:
       type: object
       properties:
@@ -657,25 +660,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Platform'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: number
-          description: Error code
-          example: 20404
-        message:
-          type: string
-          description: Error message
-          example: The requested resource was not found
-        more_info:
-          type: string
-          description: Error documentation link
-          example: https://docs.korewireless.com/errors/20404
-        status:
-          type: number
-          description: HTTP status code
-          example: 404
+  parameters:
+    ContentTypeHeader:
+      name: Content-Type
+      in: header
+      schema:
+        type: string
+    AcceptHeader:
+      name: Accept
+      in: header
+      schema:
+        type: string
+    AuthorizationHeader:
+      name: Authorization
+      in: header
+      schema:
+        type: string
   securitySchemes:
     Auth:
       type: oauth2

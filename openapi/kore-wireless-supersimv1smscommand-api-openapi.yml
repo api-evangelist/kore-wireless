@@ -140,6 +140,8 @@ paths:
                   Sim: SimSidOrUniqueName
                   CallbackMethod: POST
                   CallbackUrl: http://blahblah.com/go
+      summary: Create sms command
+      x-summary-source: derived
     get:
       description: Retrieve a list of SMS Commands from your account.
       tags:
@@ -298,6 +300,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListSmsCommand
+      summary: List sms command
+      x-summary-source: derived
   /v1/SmsCommands/{Sid}:
     servers:
     - url: https://supersim.api.korewireless.com
@@ -381,6 +385,8 @@ paths:
       security:
       - OAuth: []
       operationId: FetchSmsCommand
+      summary: Fetch sms command
+      x-summary-source: derived
 components:
   schemas:
     sms_command_enum_direction:

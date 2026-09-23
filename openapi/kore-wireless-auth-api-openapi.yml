@@ -101,6 +101,10 @@ paths:
                 $ref: '#/components/schemas/Error'
       tags:
       - Auth
+      summary: Create auth token
+      x-summary-source: derived
+      operationId: postV1AuthToken
+      x-operation-id-source: derived
     options:
       responses:
         '200':
@@ -121,6 +125,10 @@ paths:
           content: {}
       tags:
       - Auth
+      summary: Describe auth token
+      x-summary-source: derived
+      operationId: optionsV1AuthToken
+      x-operation-id-source: derived
 components:
   schemas:
     401Error:
@@ -134,17 +142,6 @@ components:
           type: string
           example: Invalid client or Invalid client credentials
           description: Details of the error
-    Error:
-      type: object
-      required:
-      - code
-      - message
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
     200GetToken:
       type: object
       properties:
@@ -164,4 +161,15 @@ components:
           type: string
           example: email
           description: Scope of the token
+    Error:
+      type: object
+      required:
+      - code
+      - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
 x-hideTryItPanel: true

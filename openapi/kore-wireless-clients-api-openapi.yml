@@ -608,6 +608,36 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    200GetClients:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            count:
+              type: number
+              example: 1
+              description: Total number of clients returned in the response.
+            page_number:
+              type: number
+              example: 1
+              description: Current page number of the returned client list.
+            page_size:
+              type: number
+              example: 10
+              description: Number of clients per page in the returned client list.
+            previous_page_url:
+              type: string
+              example: url
+              description: Previous page url in client list.
+            next_page_url:
+              type: string
+              example: url
+              description: Next page url in client list.
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
     Client:
       type: object
       properties:
@@ -642,6 +672,43 @@ components:
           type: string
           example: Fri, 05 Apr 2024 11:08:14 GMT
           description: Date and time when the client was created.
+    CreateClient:
+      type: object
+      properties:
+        account_id:
+          type: string
+          example: acct_012example
+          description: ID of the account the client belongs to. Defaults to the clientCred's account scope if not specified.
+        name:
+          type: string
+          description: Name of the client.
+        locked:
+          type: boolean
+          description: Specifies whether the client is locked or not. Can be true, false, or null.
+        scopes:
+          type: object
+          properties:
+            products:
+              type: array
+              items:
+                type: string
+                enum:
+                - SuperSIM
+                - ProgrammableWireless
+                description: Name of the product resource.
+                example: SuperSIM
+      required:
+      - name
+      - locked
+      - scopes
+      example:
+        account_id: acct_012example
+        name: Example Client
+        locked: false
+        scopes:
+          products:
+          - SuperSIM
+      additionalProperties: false
     Error:
       type: object
       properties:
@@ -655,36 +722,6 @@ components:
           format: int32
         info:
           type: string
-    200GetClients:
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            count:
-              type: number
-              example: 1
-              description: Total number of clients returned in the response.
-            page_number:
-              type: number
-              example: 1
-              description: Current page number of the returned client list.
-            page_size:
-              type: number
-              example: 10
-              description: Number of clients per page in the returned client list.
-            previous_page_url:
-              type: string
-              example: url
-              description: Previous page url in client list.
-            next_page_url:
-              type: string
-              example: url
-              description: Next page url in client list.
-        clients:
-          type: array
-          items:
-            $ref: '#/components/schemas/Client'
     200GetClient:
       type: object
       properties:
@@ -724,43 +761,6 @@ components:
         locked:
           type: boolean
           description: Specifies whether the client is locked or not.
-    CreateClient:
-      type: object
-      properties:
-        account_id:
-          type: string
-          example: acct_012example
-          description: ID of the account the client belongs to. Defaults to the clientCred's account scope if not specified.
-        name:
-          type: string
-          description: Name of the client.
-        locked:
-          type: boolean
-          description: Specifies whether the client is locked or not. Can be true, false, or null.
-        scopes:
-          type: object
-          properties:
-            products:
-              type: array
-              items:
-                type: string
-                enum:
-                - SuperSIM
-                - ProgrammableWireless
-                description: Name of the product resource.
-                example: SuperSIM
-      required:
-      - name
-      - locked
-      - scopes
-      example:
-        account_id: acct_012example
-        name: Example Client
-        locked: false
-        scopes:
-          products:
-          - SuperSIM
-      additionalProperties: false
   securitySchemes:
     Auth:
       type: oauth2

@@ -149,6 +149,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListSimIpAddress
+      summary: List sim ip address
+      x-summary-source: derived
 components:
   schemas:
     sim_ip_address_enum_ip_address_version:

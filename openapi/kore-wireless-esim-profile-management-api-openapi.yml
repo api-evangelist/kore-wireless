@@ -12,7 +12,9 @@ security:
 - api_key: []
 tags:
 - name: eSIM Profile Management
-  description: API to manage eSIM Switch related activities for a given account <br> Refer to the <a href="https://korewireless.service-now.com/csm?sys_kb_id=ec87a82f976ee110d038301e6253afa3&id=kb_article_view&sysparm_rank=2&sysparm_tsqueryId=5a20dce247b7e59018007f7a516d4392" style="text-decoration:none" target="_blank">  eSIM switch</a> article on the KORE Help Center for additional information
+  description: 'API to manage eSIM Switch related activities for a given account
+
+    Refer to the eSIM switch article on the KORE Help Center for additional information'
 paths:
   /v1/accounts/{account-id}/esim-profile-switch-requests/{esim-profile-switch-request-id}:
     get:
@@ -193,6 +195,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdEsimProfileSwitchRequestsByEsimProfileSwitchRequestId
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/esim-profile-switch-requests:
     get:
       tags:
@@ -375,6 +379,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdEsimProfileSwitchRequests
+      x-operation-id-source: derived
     post:
       tags:
       - eSIM Profile Management
@@ -583,12 +589,16 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdEsimProfileSwitchRequests
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/esim-profile-switch-requests/retry:
     post:
       tags:
       - eSIM Profile Management
       summary: Retry Switch Request
-      description: 'Retry a failed switch request or skip failed step of a switch request.<br> Note: The only step that can be skipped for a switch request is the session check step. If the device is not online the request may fail at the next step.'
+      description: 'Retry a failed switch request or skip failed step of a switch request.
+
+        Note: The only step that can be skipped for a switch request is the session check step. If the device is not online the request may fail at the next step.'
       requestBody:
         content:
           application/json:
@@ -1009,6 +1019,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdEsimProfileSwitchRequestsRetry
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/esim-profile-enable-requests:
     post:
       tags:
@@ -1355,12 +1367,14 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdEsimProfileEnableRequests
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/esim-profile-download-requests:
     post:
       tags:
       - eSIM Profile Management
       summary: Create A Download Profile Request
-      description: Create a download profile request for an account. Downloads a new profile to the eSIM and activates the subscription. 
+      description: Create a download profile request for an account. Downloads a new profile to the eSIM and activates the subscription.
       requestBody:
         content:
           application/json:
@@ -1733,6 +1747,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdEsimProfileDownloadRequests
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/esim-profile-delete-requests:
     post:
       tags:
@@ -2079,6 +2095,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdEsimProfileDeleteRequests
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/esim-profile-switch-requests/cancel:
     post:
       tags:
@@ -2421,6 +2439,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdEsimProfileSwitchRequestsCancel
+      x-operation-id-source: derived
   /v1/esim/profile-status:
     get:
       tags:
@@ -2560,6 +2580,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1EsimProfileStatus
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_key:

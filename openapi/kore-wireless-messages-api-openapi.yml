@@ -1,7 +1,9 @@
 openapi: 3.2.0
 info:
   title: SMS Messages API
-  description: SMS API allows you to programmatically exchange short messages (SMS) with your devices.<br> Please see the <a href="https://korewireless.service-now.com/kb_view.do?sysparm_article=KB0011208" style="text-decoration:none" target="_blank">SMS API Guide</a> for more details on how to use and supported Service Types.
+  description: 'SMS API allows you to programmatically exchange short messages (SMS) with your devices.
+
+    Please see the SMS API Guide for more details on how to use and supported Service Types.'
   version: 1.0.0
 servers:
 - url: https://api.korewireless.com/sms
@@ -214,6 +216,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1MessagesSend
+      x-operation-id-source: derived
   /v1/sms/messages:
     get:
       tags:
@@ -481,6 +485,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1SmsMessages
+      x-operation-id-source: derived
   /v1/messages:
     get:
       tags:
@@ -748,6 +754,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1Messages
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_key:

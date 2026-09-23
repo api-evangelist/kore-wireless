@@ -12,7 +12,7 @@ security:
 - api_key: []
 tags:
 - name: Session
-  description: Customers of KORE having Radius Accounting integrated at carrier level will have session events collected at KORE. Session START and STOP events are correlated, and data is exposed as Session API for consumption. This API also provides the session count for any duration within the last 7 days.Typical use cases would be 1) UI showing recent sessions against a subscription-id or iccid or msisdn in a paginated fashion. 2) Fetch session count so to generate alarms when a defined threshold is crossed.
+  description: Customers of KORE having Radius Accounting integrated at carrier level will have session events collected at KORE.
 paths:
   /v1/accounts/{account-id}/sessions:
     get:
@@ -449,12 +449,14 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdSessions
+      x-operation-id-source: derived
   /v1/accounts/{account-id}/in-session:
     get:
       tags:
       - Session
       summary: Get Session Status
-      description: 'Get in-session status, that can be queried by subscription-id or msisdn or iccid. This API will return in session True/False based on the latest RADIUS event available. API will return an empty array in response if there are no RADIUS session events available for that subscription. '
+      description: Get in-session status, that can be queried by subscription-id or msisdn or iccid. This API will return in session True/False based on the latest RADIUS event available. API will return an empty array in response if there are no RADIUS session events available for that subscription.
       responses:
         '200':
           description: 200 response
@@ -631,6 +633,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: getV1AccountsByAccountIdInSession
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_key:

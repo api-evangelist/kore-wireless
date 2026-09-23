@@ -1013,6 +1013,30 @@ paths:
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
 components:
   schemas:
+    SimResourceResetStatus:
+      type:
+      - string
+      - 'null'
+      enum:
+      - resetting
+      description: 'The connectivity reset status of the SIM. Can be: null or `resetting`. When a connectivity reset is initiated on a SIM, this property is `resetting`. After the reset completes, it is null.'
+    SimResetStatus:
+      type: string
+      description: Initiate a connectivity reset on the SIM. Set to `resetting` to initiate a connectivity reset on the SIM. No other value is valid.
+      enum:
+      - resetting
+    SimStatus:
+      type: string
+      description: 'The new status of the Sim resource. Can be: `ready`, `active`, `suspended`, or `deactivated`.'
+      enum:
+      - new
+      - ready
+      - active
+      - suspended
+      - deactivated
+      - canceled
+      - scheduled
+      - updating
     UsageApiErrorResponse:
       type: object
       properties:
@@ -1034,13 +1058,6 @@ components:
       - code
       - status
       - message
-    SimResourceResetStatus:
-      type:
-      - string
-      - 'null'
-      enum:
-      - resetting
-      description: 'The connectivity reset status of the SIM. Can be: null or `resetting`. When a connectivity reset is initiated on a SIM, this property is `resetting`. After the reset completes, it is null.'
     Sim:
       type: object
       properties:
@@ -1209,11 +1226,6 @@ components:
           - GET
           - POST
           description: Deprecated.
-    SimResetStatus:
-      type: string
-      description: Initiate a connectivity reset on the SIM. Set to `resetting` to initiate a connectivity reset on the SIM. No other value is valid.
-      enum:
-      - resetting
     SimResourceStatus:
       type: string
       enum:
@@ -1226,18 +1238,6 @@ components:
       - scheduled
       - canceled
       - new
-    SimStatus:
-      type: string
-      description: 'The new status of the Sim resource. Can be: `ready`, `active`, `suspended`, or `deactivated`.'
-      enum:
-      - new
-      - ready
-      - active
-      - suspended
-      - deactivated
-      - canceled
-      - scheduled
-      - updating
   securitySchemes:
     Auth:
       type: oauth2

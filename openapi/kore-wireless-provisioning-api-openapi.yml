@@ -11,13 +11,13 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: provisioning
+- name: Provisioning
   description: Status of requests made by the customer
 paths:
   /v1/accounts/{account-id}/provisioning-requests:
     get:
       tags:
-      - provisioning
+      - Provisioning
       summary: Lists All Requests
       description: Get all requests made for an account
       operationId: getRequestStatusByAccountId
@@ -441,9 +441,24 @@ paths:
       - api_key: []
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Create A Provisioning Request
-      description: "Create a provisioning request for an account <br /> \nNote: New provisioning endpoints have been created, one endpoint per action, to simplify provisioning SIMs. The current endpoint will continue to work.  \n- [Activate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/activate)\n- [Change Plan for a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/plan-feature-change)\n- [Deactivate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/deactivate)\n- [Reactivate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/reactivate)\n- [Suspend a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/suspend)\n- [Terminate a SIM](https://developer.korewireless.com/api?product=Connectivity#post-/v1/accounts/-account-id-/provisioning-requests/terminate)\n"
+      description: 'Create a provisioning request for an account
+
+
+        Note: New provisioning endpoints have been created, one endpoint per action, to simplify provisioning SIMs. The current endpoint will continue to work.
+
+        - Activate a SIM
+
+        - Change Plan for a SIM
+
+        - Deactivate a SIM
+
+        - Reactivate a SIM
+
+        - Suspend a SIM
+
+        - Terminate a SIM'
       operationId: CreateProvisioningRequest
       parameters:
       - name: account-id
@@ -1013,7 +1028,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/suspend:
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Suspend a SIM
       description: Suspend a SIM for an account
       operationId: SuspendASim
@@ -1413,7 +1428,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/activate:
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Activate a SIM
       description: Activate a SIM for an account
       operationId: ActivateASim
@@ -1843,7 +1858,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/deactivate:
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Deactivate a SIM
       description: Deactivate a SIM for an account
       operationId: DeactivateASim
@@ -2244,7 +2259,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/plan-feature-change:
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Change Plan for a SIM
       description: Change plan for a SIM of an account
       operationId: PlanChangeForASim
@@ -2647,7 +2662,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/reactivate:
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Reactivate a SIM
       description: Reactivate a SIM for an account
       operationId: ReactivateASim
@@ -3047,7 +3062,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/terminate:
     post:
       tags:
-      - provisioning
+      - Provisioning
       summary: Terminate a SIM
       description: Terminate a SIM for an account
       operationId: TerminateASim
@@ -3451,7 +3466,7 @@ paths:
   /v1/accounts/{account-id}/provisioning-requests/{provisioning-request-id}:
     get:
       tags:
-      - provisioning
+      - Provisioning
       summary: Finds Request Status By ProvisioningRequestId
       description: Get details of a specific request made
       operationId: getRequestStatusByProvisioningRequestId

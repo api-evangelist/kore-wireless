@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: KORE - Supersim Supersim V1 Network Access Profile Network API
+  title: KORE - Supersim Supersim V1 Network Access Profile Network…
   description: This is the public KORE REST API.
   termsOfService: https://pardot.korewireless.com/koremsa
   contact:
@@ -155,6 +155,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListNetworkAccessProfileNetwork
+      summary: List network access profile network
+      x-summary-source: derived
     post:
       description: Add a Network resource to the Network Access Profile resource.
       tags:
@@ -243,6 +245,8 @@ paths:
               create:
                 value:
                   Network: HWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      summary: Create network access profile network
+      x-summary-source: derived
   /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}:
     servers:
     - url: https://supersim.api.korewireless.com
@@ -294,6 +298,8 @@ paths:
       security:
       - OAuth: []
       operationId: DeleteNetworkAccessProfileNetwork
+      summary: Delete network access profile network
+      x-summary-source: derived
     get:
       description: Fetch a Network Access Profile resource's Network resource.
       tags:
@@ -372,6 +378,8 @@ paths:
       security:
       - OAuth: []
       operationId: FetchNetworkAccessProfileNetwork
+      summary: Fetch network access profile network
+      x-summary-source: derived
 components:
   schemas:
     supersim.v1.network_access_profile.network_access_profile_network:

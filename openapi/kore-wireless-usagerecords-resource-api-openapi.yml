@@ -525,46 +525,38 @@ paths:
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
 components:
   schemas:
-    DataUsageCounts:
+    ListMeta:
       type: object
-      properties:
-        download:
-          type: integer
-          format: int64
-        upload:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        units:
-          type: string
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        billing_units:
-          type: string
       required:
-      - download
-      - upload
-      - total
-      - units
-      - billed
-      - billing_units
-    TimePeriod:
+      - list_key
+      - page_size
+      - direct_token
+      properties:
+        page_size:
+          type: integer
+          default: 0
+          format: int32
+        page:
+          type: integer
+          default: 0
+        first_page_url:
+          type: string
+        previous_page_url:
+          type: string
+        url:
+          type: string
+        key:
+          type: string
+        next_page_url:
+          type: string
+    SIMUsageRecord:
       type: object
-      description: The time period for which usage is reported. Contains start and end properties that describe the period using GMT date-time values specified in ISO 8601 format.
-      properties:
-        start:
-          type: string
-          x-jvm-type: java.time.Instant
-        end:
-          type: string
-          x-jvm-type: java.time.Instant
-      required:
-      - start
-      - end
+      allOf:
+      - $ref: '#/components/schemas/UsageRecord'
+      - type: object
+        properties:
+          sim_sid:
+            type: string
     CommandsUsageDetails:
       type: object
       description: An object that describes the aggregated Commands usage for all SIMs during the specified period.
@@ -592,60 +584,41 @@ components:
             $ref: '#/components/schemas/InternationalCommandsUsageCounts'
         billing_units:
           type: string
-    UsageApiErrorResponse:
+    UsageRecord:
       type: object
       properties:
-        code:
-          description: Error Code
-          type: integer
-          format: int32
-        status:
-          description: HTTP Status Code
-          type: integer
-          format: int32
-        message:
-          description: Error Message
+        period:
+          $ref: '#/components/schemas/TimePeriod'
+        account_sid:
+          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
           type: string
-        more_info:
-          description: Internal Error Message
-          type: string
-      required:
-      - code
-      - status
-      - message
-    UsageList:
+          x-jvm-type: AccountSid
+        commands:
+          $ref: '#/components/schemas/CommandsUsageDetails'
+        data:
+          $ref: '#/components/schemas/DataUsageDetails'
+    SIMUsageList:
       type: object
       properties:
         usage_records:
           type: array
           items:
-            $ref: '#/components/schemas/UsageRecord'
+            $ref: '#/components/schemas/SIMUsageRecord'
         meta:
           $ref: '#/components/schemas/ListMeta'
-    ListMeta:
+    TimePeriod:
       type: object
-      required:
-      - list_key
-      - page_size
-      - direct_token
+      description: The time period for which usage is reported. Contains start and end properties that describe the period using GMT date-time values specified in ISO 8601 format.
       properties:
-        page_size:
-          type: integer
-          default: 0
-          format: int32
-        page:
-          type: integer
-          default: 0
-        first_page_url:
+        start:
           type: string
-        previous_page_url:
+          x-jvm-type: java.time.Instant
+        end:
           type: string
-        url:
-          type: string
-        key:
-          type: string
-        next_page_url:
-          type: string
+          x-jvm-type: java.time.Instant
+      required:
+      - start
+      - end
     DataUsageDetails:
       type: object
       description: An object that describes the aggregated Data usage for all SIMs over the period.
@@ -675,14 +648,6 @@ components:
             $ref: '#/components/schemas/InternationalDataUsageCounts'
         billing_units:
           type: string
-    SIMUsageRecord:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/UsageRecord'
-      - type: object
-        properties:
-          sim_sid:
-            type: string
     InternationalDataUsageCounts:
       type: object
       properties:
@@ -713,13 +678,40 @@ components:
       - units
       - billed
       - billing_units
-    SIMUsageList:
+    DataUsageCounts:
+      type: object
+      properties:
+        download:
+          type: integer
+          format: int64
+        upload:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        units:
+          type: string
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - download
+      - upload
+      - total
+      - units
+      - billed
+      - billing_units
+    UsageList:
       type: object
       properties:
         usage_records:
           type: array
           items:
-            $ref: '#/components/schemas/SIMUsageRecord'
+            $ref: '#/components/schemas/UsageRecord'
         meta:
           $ref: '#/components/schemas/ListMeta'
     InternationalCommandsUsageCounts:
@@ -749,25 +741,6 @@ components:
       - total
       - billed
       - billing_units
-    UsageRecord:
-      type: object
-      properties:
-        period:
-          $ref: '#/components/schemas/TimePeriod'
-        account_sid:
-          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
-          type: string
-          x-jvm-type: AccountSid
-        commands:
-          $ref: '#/components/schemas/CommandsUsageDetails'
-        data:
-          $ref: '#/components/schemas/DataUsageDetails'
-    Granularity:
-      type: string
-      enum:
-      - all
-      - daily
-      - hourly
     CommandsUsageCounts:
       type: object
       properties:
@@ -792,6 +765,33 @@ components:
       - total
       - billed
       - billing_units
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
+    Granularity:
+      type: string
+      enum:
+      - all
+      - daily
+      - hourly
   securitySchemes:
     Auth:
       type: oauth2

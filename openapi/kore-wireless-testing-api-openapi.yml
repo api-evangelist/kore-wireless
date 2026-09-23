@@ -11,13 +11,13 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: testing
+- name: Testing
   description: APIs that are currently under testing
 paths:
   /v1/ping:
     get:
       tags:
-      - testing
+      - Testing
       summary: Get Online Connection Status
       description: Test API integration
       operationId: getConnectionStatus

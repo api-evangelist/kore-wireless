@@ -157,6 +157,8 @@ paths:
                   Sim: sim
                   Payload: 'checkin: firmware update'
                   DevicePort: 100
+      summary: Create ip command
+      x-summary-source: derived
     get:
       description: Retrieve a list of IP Commands from your account.
       tags:
@@ -324,6 +326,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListIpCommand
+      summary: List ip command
+      x-summary-source: derived
   /v1/IpCommands/{Sid}:
     servers:
     - url: https://supersim.api.korewireless.com
@@ -411,8 +415,20 @@ paths:
       security:
       - OAuth: []
       operationId: FetchIpCommand
+      summary: Fetch ip command
+      x-summary-source: derived
 components:
   schemas:
+    ip_command_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The delivery status of the IP Command. This is one of the following: “queued”, “sent”, “failed” or “received”.'
+      enum:
+      - queued
+      - sent
+      - received
+      - failed
     ip_command_enum_direction:
       type:
       - string
@@ -429,16 +445,6 @@ components:
       enum:
       - text
       - binary
-    ip_command_enum_status:
-      type:
-      - string
-      - 'null'
-      description: 'The delivery status of the IP Command. This is one of the following: “queued”, “sent”, “failed” or “received”.'
-      enum:
-      - queued
-      - sent
-      - received
-      - failed
     supersim.v1.ip_command:
       type: object
       properties:

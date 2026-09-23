@@ -651,13 +651,6 @@ paths:
                   Fleet: My Fleet
 components:
   schemas:
-    sim_enum_status_update:
-      type: string
-      description: 'The new status of the resource. Can be: `ready`, `active`, or `inactive`. See the [Super SIM Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource#status-values) for more info.'
-      enum:
-      - ready
-      - active
-      - inactive
     sim_enum_status:
       type:
       - string
@@ -670,6 +663,13 @@ components:
       - active
       - inactive
       - scheduled
+    sim_enum_status_update:
+      type: string
+      description: 'The new status of the resource. Can be: `ready`, `active`, or `inactive`. See the [Super SIM Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource#status-values) for more info.'
+      enum:
+      - ready
+      - active
+      - inactive
     supersim.v1.sim:
       type: object
       properties:

@@ -226,18 +226,10 @@ paths:
       security:
       - OAuth: []
       operationId: ListSettingsUpdate
+      summary: List settings update
+      x-summary-source: derived
 components:
   schemas:
-    settings_update_enum_status:
-      type:
-      - string
-      - 'null'
-      description: The Status of this Settings Update. One of `scheduled`, `in-progress`, `successful` or `failed`.
-      enum:
-      - scheduled
-      - in-progress
-      - successful
-      - failed
     supersim.v1.settings_update:
       type: object
       properties:
@@ -288,6 +280,16 @@ components:
           - 'null'
           format: date-time
           description: The date that this Settings Update was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    settings_update_enum_status:
+      type:
+      - string
+      - 'null'
+      description: The Status of this Settings Update. One of `scheduled`, `in-progress`, `successful` or `failed`.
+      enum:
+      - scheduled
+      - in-progress
+      - successful
+      - failed
   securitySchemes:
     accountSid_authToken:
       scheme: basic

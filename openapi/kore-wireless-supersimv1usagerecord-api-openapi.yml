@@ -668,21 +668,10 @@ paths:
       security:
       - OAuth: []
       operationId: ListUsageRecord
+      summary: List usage record
+      x-summary-source: derived
 components:
   schemas:
-    usage_record_enum_granularity:
-      type: string
-      enum:
-      - hour
-      - day
-      - all
-    usage_record_enum_group:
-      type: string
-      enum:
-      - sim
-      - fleet
-      - network
-      - isoCountry
     supersim.v1.usage_record:
       type: object
       properties:
@@ -755,6 +744,19 @@ components:
           - 'null'
           format: currency
           description: The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`). This can be null when data_toal_billed is 0 and we do not yet have billing information for the corresponding data usage. Refer to [Data Usage Processing](https://docs.korewireless.com/en-us/v/api/products/supersim/usage-record-resource#data-usage-processing) for more details.
+    usage_record_enum_granularity:
+      type: string
+      enum:
+      - hour
+      - day
+      - all
+    usage_record_enum_group:
+      type: string
+      enum:
+      - sim
+      - fleet
+      - network
+      - isoCountry
   securitySchemes:
     accountSid_authToken:
       scheme: basic

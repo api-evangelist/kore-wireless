@@ -11,15 +11,14 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: account
+- name: Account
   description: Account details of customer
 paths:
   /v1/accounts:
     get:
       tags:
-      - account
+      - Account
       summary: Get All Accounts
-      description: Get All Accounts
       operationId: GetAccountsByEmail
       parameters:
       - name: email
@@ -263,7 +262,7 @@ paths:
   /v1/accounts/{account-id}/cost-centers:
     get:
       tags:
-      - account
+      - Account
       summary: Lists All Cost Centers
       description: Get all cost centers for an account
       operationId: getCostCenterByAccountId
@@ -507,7 +506,7 @@ paths:
       - api_key: []
     post:
       tags:
-      - account
+      - Account
       summary: Create Cost Center
       description: Create new cost center for an account
       requestBody:
@@ -798,11 +797,13 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: postV1AccountsByAccountIdCostCenters
+      x-operation-id-source: derived
     put:
       tags:
-      - account
+      - Account
       summary: Update Cost Center
-      description: Update existing  cost center for an account
+      description: Update existing cost center for an account
       requestBody:
         content:
           application/json:
@@ -1095,6 +1096,8 @@ paths:
       - {}
       - Auth: []
       - api_key: []
+      operationId: putV1AccountsByAccountIdCostCenters
+      x-operation-id-source: derived
 components:
   securitySchemes:
     api_key:

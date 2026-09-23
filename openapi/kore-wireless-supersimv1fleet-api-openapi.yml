@@ -155,6 +155,8 @@ paths:
                   IpCommandsMethod: GET
                   IpCommandsUrl: https://google.com
                   NetworkAccessProfile: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      summary: Create fleet
+      x-summary-source: derived
     get:
       description: Retrieve a list of Fleets from your account.
       tags:
@@ -304,6 +306,8 @@ paths:
       security:
       - OAuth: []
       operationId: ListFleet
+      summary: List fleet
+      x-summary-source: derived
   /v1/Fleets/{Sid}:
     servers:
     - url: https://supersim.api.korewireless.com
@@ -390,6 +394,8 @@ paths:
       security:
       - OAuth: []
       operationId: FetchFleet
+      summary: Fetch fleet
+      x-summary-source: derived
     post:
       description: Updates the given properties of a Super SIM Fleet instance from your account.
       tags:
@@ -508,15 +514,10 @@ paths:
                   UniqueName: GPS Trackers Fleet 5GB
                   NetworkAccessProfile: HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                   DataLimit: 5000
+      summary: Update fleet
+      x-summary-source: derived
 components:
   schemas:
-    fleet_enum_data_metering:
-      type:
-      - string
-      - 'null'
-      description: The model by which a SIMs usage is metered and billed. Defaults to `payg`.
-      enum:
-      - payg
     supersim.v1.fleet:
       type: object
       properties:
@@ -615,6 +616,13 @@ components:
           - GET
           - POST
           description: A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+    fleet_enum_data_metering:
+      type:
+      - string
+      - 'null'
+      description: The model by which a SIMs usage is metered and billed. Defaults to `payg`.
+      enum:
+      - payg
   securitySchemes:
     accountSid_authToken:
       scheme: basic

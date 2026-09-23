@@ -11,13 +11,13 @@ security:
 - Auth: []
 - api_key: []
 tags:
-- name: usage
+- name: Usage
   description: A user can retrieve usage records for a given subscription or plan
 paths:
   /v1/accounts/{account-id}/subscriptions/{subscription-id}/usage-records:
     get:
       tags:
-      - usage
+      - Usage
       summary: Finds Usage Records By Sim Number And Date Range
       description: Get usage records for a subscription
       operationId: getUsageRecordBySimNumberandDateRange
@@ -384,7 +384,7 @@ paths:
   /v1/accounts/{account-id}/plans/{plan-id}/usage-records:
     get:
       tags:
-      - usage
+      - Usage
       summary: Finds Usage Records By PlanId
       description: Get usage records for a plan
       operationId: getUsageRecordByPlanId
