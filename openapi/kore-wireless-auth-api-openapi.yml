@@ -131,17 +131,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    401Error:
-      type: object
-      properties:
-        error:
-          type: string
-          example: invalid_client
-          description: Error message.
-        error_description:
-          type: string
-          example: Invalid client or Invalid client credentials
-          description: Details of the error
     200GetToken:
       type: object
       properties:
@@ -172,4 +161,15 @@ components:
           format: int32
         message:
           type: string
+    401Error:
+      type: object
+      properties:
+        error:
+          type: string
+          example: invalid_client
+          description: Error message.
+        error_description:
+          type: string
+          example: Invalid client or Invalid client credentials
+          description: Details of the error
 x-hideTryItPanel: true

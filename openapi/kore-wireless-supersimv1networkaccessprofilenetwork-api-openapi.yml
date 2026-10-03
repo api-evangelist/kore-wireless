@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: KORE - Supersim Supersim V1 Network Access Profile Network…
+  title: KORE - Supersim Supersim V1Network Access Profile Network…
   description: This is the public KORE REST API.
   termsOfService: https://pardot.korewireless.com/koremsa
   contact:

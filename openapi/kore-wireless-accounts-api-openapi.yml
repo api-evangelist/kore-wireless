@@ -579,17 +579,13 @@ paths:
                 type: string
 components:
   schemas:
-    AccountRequest:
+    PlatformMapping:
       type: object
       properties:
-        friendly_name:
-          type: string
-          description: Friendly name of the account
-        description:
-          type: string
-          description: Brief description of the account
-      required:
-      - friendly_name
+        platforms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
     AllAccounts:
       type: object
       properties:
@@ -616,6 +612,31 @@ components:
           type: number
           description: HTTP status code
           example: 404
+    AccountRequest:
+      type: object
+      properties:
+        friendly_name:
+          type: string
+          description: Friendly name of the account
+        description:
+          type: string
+          description: Brief description of the account
+      required:
+      - friendly_name
+    Platform:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the account
+        legacy_account_id:
+          type: string
+          description: Platform ID
+        platform:
+          type: string
+          enum:
+          - twilio
+          description: Platform Name
     Account:
       type: object
       properties:
@@ -639,35 +660,14 @@ components:
           - DEACTIVATED
           - SUSPENDED
           description: Status of the account
-    Platform:
-      type: object
-      properties:
-        id:
-          type: string
-          description: ID of the account
-        legacy_account_id:
-          type: string
-          description: Platform ID
-        platform:
-          type: string
-          enum:
-          - twilio
-          description: Platform Name
-    PlatformMapping:
-      type: object
-      properties:
-        platforms:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
   parameters:
-    ContentTypeHeader:
-      name: Content-Type
+    AcceptHeader:
+      name: Accept
       in: header
       schema:
         type: string
-    AcceptHeader:
-      name: Accept
+    ContentTypeHeader:
+      name: Content-Type
       in: header
       schema:
         type: string

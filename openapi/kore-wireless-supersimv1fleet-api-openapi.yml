@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: KORE - Supersim Supersim V1 Fleet API
+  title: KORE - Supersim Supersim V1Fleet API
   description: This is the public KORE REST API.
   termsOfService: https://pardot.korewireless.com/koremsa
   contact:
@@ -518,6 +518,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    fleet_enum_data_metering:
+      type:
+      - string
+      - 'null'
+      description: The model by which a SIMs usage is metered and billed. Defaults to `payg`.
+      enum:
+      - payg
     supersim.v1.fleet:
       type: object
       properties:
@@ -616,13 +623,6 @@ components:
           - GET
           - POST
           description: A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
-    fleet_enum_data_metering:
-      type:
-      - string
-      - 'null'
-      description: The model by which a SIMs usage is metered and billed. Defaults to `payg`.
-      enum:
-      - payg
   securitySchemes:
     accountSid_authToken:
       scheme: basic

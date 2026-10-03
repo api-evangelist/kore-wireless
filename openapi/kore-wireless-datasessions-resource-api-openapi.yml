@@ -277,27 +277,6 @@ paths:
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',       \n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
 components:
   schemas:
-    UsageApiErrorResponse:
-      type: object
-      properties:
-        code:
-          description: Error Code
-          type: integer
-          format: int32
-        status:
-          description: HTTP Status Code
-          type: integer
-          format: int32
-        message:
-          description: Error Message
-          type: string
-        more_info:
-          description: Internal Error Message
-          type: string
-      required:
-      - code
-      - status
-      - message
     DataSession:
       type: object
       properties:
@@ -392,6 +371,27 @@ components:
           - string
           - 'null'
           description: 'The ''international mobile equipment identity'' is the unique ID of the device using the SIM to connect. An IMEI is a 15-digit string: 14 digits for the device identifier plus a check digit calculated using the Luhn formula.'
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
   securitySchemes:
     Auth:
       type: oauth2
