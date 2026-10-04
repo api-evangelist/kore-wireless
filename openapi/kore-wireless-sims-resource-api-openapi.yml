@@ -1025,27 +1025,6 @@ components:
       enum:
       - resetting
       description: 'The connectivity reset status of the SIM. Can be: null or `resetting`. When a connectivity reset is initiated on a SIM, this property is `resetting`. After the reset completes, it is null.'
-    UsageApiErrorResponse:
-      type: object
-      properties:
-        code:
-          description: Error Code
-          type: integer
-          format: int32
-        status:
-          description: HTTP Status Code
-          type: integer
-          format: int32
-        message:
-          description: Error Message
-          type: string
-        more_info:
-          description: Internal Error Message
-          type: string
-      required:
-      - code
-      - status
-      - message
     Sim:
       type: object
       properties:
@@ -1214,6 +1193,27 @@ components:
           - GET
           - POST
           description: Deprecated.
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
     SimStatus:
       type: string
       description: 'The new status of the Sim resource. Can be: `ready`, `active`, `suspended`, or `deactivated`.'

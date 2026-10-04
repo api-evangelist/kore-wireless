@@ -960,6 +960,60 @@ paths:
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Commands/<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>', \n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"DELETE\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
 components:
   schemas:
+    UsageApiErrorResponse:
+      type: object
+      properties:
+        code:
+          description: Error Code
+          type: integer
+          format: int32
+        status:
+          description: HTTP Status Code
+          type: integer
+          format: int32
+        message:
+          description: Error Message
+          type: string
+        more_info:
+          description: Internal Error Message
+          type: string
+      required:
+      - code
+      - status
+      - message
+    CommandMode:
+      type: string
+      description: 'The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.'
+      enum:
+      - text
+      - binary
+    CommandTransport:
+      type:
+      - string
+      - 'null'
+      enum:
+      - sms
+      - ip
+      description: 'The type of transport used. Can be: `sms` or `ip`.'
+    CommandDirection:
+      type:
+      - string
+      - 'null'
+      enum:
+      - from_sim
+      - to_sim
+      description: The direction of the Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
+    CommandStatus:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the Command. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. See Status Values for a description of each state.'
+      enum:
+      - queued
+      - sent
+      - delivered
+      - received
+      - failed
     Command:
       type: object
       properties:
@@ -1023,60 +1077,6 @@ components:
           - 'null'
           format: uri
           description: The absolute URL of the resource.
-    CommandDirection:
-      type:
-      - string
-      - 'null'
-      enum:
-      - from_sim
-      - to_sim
-      description: The direction of the Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
-    UsageApiErrorResponse:
-      type: object
-      properties:
-        code:
-          description: Error Code
-          type: integer
-          format: int32
-        status:
-          description: HTTP Status Code
-          type: integer
-          format: int32
-        message:
-          description: Error Message
-          type: string
-        more_info:
-          description: Internal Error Message
-          type: string
-      required:
-      - code
-      - status
-      - message
-    CommandTransport:
-      type:
-      - string
-      - 'null'
-      enum:
-      - sms
-      - ip
-      description: 'The type of transport used. Can be: `sms` or `ip`.'
-    CommandStatus:
-      type:
-      - string
-      - 'null'
-      description: 'The status of the Command. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`. See Status Values for a description of each state.'
-      enum:
-      - queued
-      - sent
-      - delivered
-      - received
-      - failed
-    CommandMode:
-      type: string
-      description: 'The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.'
-      enum:
-      - text
-      - binary
   securitySchemes:
     Auth:
       type: oauth2

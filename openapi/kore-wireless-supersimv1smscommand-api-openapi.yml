@@ -389,14 +389,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    sms_command_enum_direction:
-      type:
-      - string
-      - 'null'
-      description: The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
-      enum:
-      - to_sim
-      - from_sim
     supersim.v1.sms_command:
       type: object
       properties:
@@ -455,6 +447,14 @@ components:
           - 'null'
           format: uri
           description: The absolute URL of the SMS Command resource.
+    sms_command_enum_direction:
+      type:
+      - string
+      - 'null'
+      description: The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
+      enum:
+      - to_sim
+      - from_sim
     sms_command_enum_status:
       type:
       - string

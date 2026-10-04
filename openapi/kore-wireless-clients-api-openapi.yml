@@ -608,95 +608,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    200GetClient:
-      type: object
-      properties:
-        client:
-          $ref: '#/components/schemas/Client'
-    201CreateClient:
-      type: object
-      properties:
-        message:
-          type: string
-          description: A message indicating the status of the client creation process.
-        client_id:
-          type: string
-          description: The unique identifier assigned to the newly created client.
-        client_secret:
-          type: string
-          description: The unique identifier secret assigned to the newly created client.
-        client_type:
-          type: string
-          enum:
-          - standard
-          description: Type of the client. This will always be 'standard'.
-        account_id:
-          type: string
-          example: acct_012example
-          description: ID of the account the client is for.
-        name:
-          type: string
-          description: Name of the client.
-        date_created:
-          type: string
-          format: date-time
-          description: Date and time when the client was created.
-        client_owner:
-          type: string
-          description: Email of the user who is the client owner.
-        locked:
-          type: boolean
-          description: Specifies whether the client is locked or not.
-    Error:
-      type: object
-      properties:
-        status:
-          type: integer
-          format: int32
-        message:
-          type: string
-        code:
-          type: integer
-          format: int32
-        info:
-          type: string
-    CreateClient:
-      type: object
-      properties:
-        account_id:
-          type: string
-          example: acct_012example
-          description: ID of the account the client belongs to. Defaults to the clientCred's account scope if not specified.
-        name:
-          type: string
-          description: Name of the client.
-        locked:
-          type: boolean
-          description: Specifies whether the client is locked or not. Can be true, false, or null.
-        scopes:
-          type: object
-          properties:
-            products:
-              type: array
-              items:
-                type: string
-                enum:
-                - SuperSIM
-                - ProgrammableWireless
-                description: Name of the product resource.
-                example: SuperSIM
-      required:
-      - name
-      - locked
-      - scopes
-      example:
-        account_id: acct_012example
-        name: Example Client
-        locked: false
-        scopes:
-          products:
-          - SuperSIM
-      additionalProperties: false
     Client:
       type: object
       properties:
@@ -761,6 +672,95 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Client'
+    201CreateClient:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message indicating the status of the client creation process.
+        client_id:
+          type: string
+          description: The unique identifier assigned to the newly created client.
+        client_secret:
+          type: string
+          description: The unique identifier secret assigned to the newly created client.
+        client_type:
+          type: string
+          enum:
+          - standard
+          description: Type of the client. This will always be 'standard'.
+        account_id:
+          type: string
+          example: acct_012example
+          description: ID of the account the client is for.
+        name:
+          type: string
+          description: Name of the client.
+        date_created:
+          type: string
+          format: date-time
+          description: Date and time when the client was created.
+        client_owner:
+          type: string
+          description: Email of the user who is the client owner.
+        locked:
+          type: boolean
+          description: Specifies whether the client is locked or not.
+    200GetClient:
+      type: object
+      properties:
+        client:
+          $ref: '#/components/schemas/Client'
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        message:
+          type: string
+        code:
+          type: integer
+          format: int32
+        info:
+          type: string
+    CreateClient:
+      type: object
+      properties:
+        account_id:
+          type: string
+          example: acct_012example
+          description: ID of the account the client belongs to. Defaults to the clientCred's account scope if not specified.
+        name:
+          type: string
+          description: Name of the client.
+        locked:
+          type: boolean
+          description: Specifies whether the client is locked or not. Can be true, false, or null.
+        scopes:
+          type: object
+          properties:
+            products:
+              type: array
+              items:
+                type: string
+                enum:
+                - SuperSIM
+                - ProgrammableWireless
+                description: Name of the product resource.
+                example: SuperSIM
+      required:
+      - name
+      - locked
+      - scopes
+      example:
+        account_id: acct_012example
+        name: Example Client
+        locked: false
+        scopes:
+          products:
+          - SuperSIM
+      additionalProperties: false
   securitySchemes:
     Auth:
       type: oauth2

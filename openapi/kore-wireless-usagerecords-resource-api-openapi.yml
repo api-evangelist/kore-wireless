@@ -525,12 +525,42 @@ paths:
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
 components:
   schemas:
-    Granularity:
-      type: string
-      enum:
-      - all
-      - daily
-      - hourly
+    DataUsageCounts:
+      type: object
+      properties:
+        download:
+          type: integer
+          format: int64
+        upload:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        units:
+          type: string
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - download
+      - upload
+      - total
+      - units
+      - billed
+      - billing_units
+    UsageList:
+      type: object
+      properties:
+        usage_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRecord'
+        meta:
+          $ref: '#/components/schemas/ListMeta'
     ListMeta:
       type: object
       required:
@@ -555,30 +585,20 @@ components:
           type: string
         next_page_url:
           type: string
-    CommandsUsageCounts:
+    SIMUsageRecord:
       type: object
-      properties:
-        from_sim:
-          type: integer
-          format: int64
-        to_sim:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        billing_units:
-          type: string
-      required:
-      - from_sim
-      - to_sim
-      - total
-      - billed
-      - billing_units
+      allOf:
+      - $ref: '#/components/schemas/UsageRecord'
+      - type: object
+        properties:
+          sim_sid:
+            type: string
+    Granularity:
+      type: string
+      enum:
+      - all
+      - daily
+      - hourly
     CommandsUsageDetails:
       type: object
       description: An object that describes the aggregated Commands usage for all SIMs during the specified period.
@@ -606,36 +626,46 @@ components:
             $ref: '#/components/schemas/InternationalCommandsUsageCounts'
         billing_units:
           type: string
-    UsageList:
+    InternationalCommandsUsageCounts:
       type: object
       properties:
-        usage_records:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageRecord'
-        meta:
-          $ref: '#/components/schemas/ListMeta'
-    TimePeriod:
-      type: object
-      description: The time period for which usage is reported. Contains start and end properties that describe the period using GMT date-time values specified in ISO 8601 format.
-      properties:
-        start:
+        country_code:
           type: string
-          x-jvm-type: java.time.Instant
-        end:
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
           type: string
-          x-jvm-type: java.time.Instant
       required:
-      - start
-      - end
-    SIMUsageRecord:
+      - country_code
+      - from_sim
+      - to_sim
+      - total
+      - billed
+      - billing_units
+    UsageRecord:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/UsageRecord'
-      - type: object
-        properties:
-          sim_sid:
-            type: string
+      properties:
+        period:
+          $ref: '#/components/schemas/TimePeriod'
+        account_sid:
+          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
+          type: string
+          x-jvm-type: AccountSid
+        commands:
+          $ref: '#/components/schemas/CommandsUsageDetails'
+        data:
+          $ref: '#/components/schemas/DataUsageDetails'
     DataUsageDetails:
       type: object
       description: An object that describes the aggregated Data usage for all SIMs over the period.
@@ -665,6 +695,28 @@ components:
             $ref: '#/components/schemas/InternationalDataUsageCounts'
         billing_units:
           type: string
+    SIMUsageList:
+      type: object
+      properties:
+        usage_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/SIMUsageRecord'
+        meta:
+          $ref: '#/components/schemas/ListMeta'
+    TimePeriod:
+      type: object
+      description: The time period for which usage is reported. Contains start and end properties that describe the period using GMT date-time values specified in ISO 8601 format.
+      properties:
+        start:
+          type: string
+          x-jvm-type: java.time.Instant
+        end:
+          type: string
+          x-jvm-type: java.time.Instant
+      required:
+      - start
+      - end
     UsageApiErrorResponse:
       type: object
       properties:
@@ -686,19 +738,30 @@ components:
       - code
       - status
       - message
-    UsageRecord:
+    CommandsUsageCounts:
       type: object
       properties:
-        period:
-          $ref: '#/components/schemas/TimePeriod'
-        account_sid:
-          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
           type: string
-          x-jvm-type: AccountSid
-        commands:
-          $ref: '#/components/schemas/CommandsUsageDetails'
-        data:
-          $ref: '#/components/schemas/DataUsageDetails'
+      required:
+      - from_sim
+      - to_sim
+      - total
+      - billed
+      - billing_units
     InternationalDataUsageCounts:
       type: object
       properties:
@@ -723,69 +786,6 @@ components:
           type: string
       required:
       - country_code
-      - download
-      - upload
-      - total
-      - units
-      - billed
-      - billing_units
-    SIMUsageList:
-      type: object
-      properties:
-        usage_records:
-          type: array
-          items:
-            $ref: '#/components/schemas/SIMUsageRecord'
-        meta:
-          $ref: '#/components/schemas/ListMeta'
-    InternationalCommandsUsageCounts:
-      type: object
-      properties:
-        country_code:
-          type: string
-        from_sim:
-          type: integer
-          format: int64
-        to_sim:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        billing_units:
-          type: string
-      required:
-      - country_code
-      - from_sim
-      - to_sim
-      - total
-      - billed
-      - billing_units
-    DataUsageCounts:
-      type: object
-      properties:
-        download:
-          type: integer
-          format: int64
-        upload:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        units:
-          type: string
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        billing_units:
-          type: string
-      required:
       - download
       - upload
       - total

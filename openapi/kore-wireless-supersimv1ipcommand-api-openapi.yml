@@ -419,32 +419,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ip_command_enum_direction:
-      type:
-      - string
-      - 'null'
-      description: Either `to_sim` or `from_sim`. Indicates whether the IP Command resource was sent from or to the Super SIM.
-      enum:
-      - to_sim
-      - from_sim
-    ip_command_enum_payload_type:
-      type:
-      - string
-      - 'null'
-      description: Indicates how the payload is encoded. Either “text” or “binary”. For an IP Command sent to a Super SIM, `payload_type` is configurable. For an IP Command sent from a Super SIM, `payload_type` is always “binary”.
-      enum:
-      - text
-      - binary
-    ip_command_enum_status:
-      type:
-      - string
-      - 'null'
-      description: 'The delivery status of the IP Command. This is one of the following: “queued”, “sent”, “failed” or “received”.'
-      enum:
-      - queued
-      - sent
-      - received
-      - failed
     supersim.v1.ip_command:
       type: object
       properties:
@@ -527,6 +501,32 @@ components:
           - 'null'
           format: uri
           description: The absolute URL of the IP Command resource.
+    ip_command_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The delivery status of the IP Command. This is one of the following: “queued”, “sent”, “failed” or “received”.'
+      enum:
+      - queued
+      - sent
+      - received
+      - failed
+    ip_command_enum_direction:
+      type:
+      - string
+      - 'null'
+      description: Either `to_sim` or `from_sim`. Indicates whether the IP Command resource was sent from or to the Super SIM.
+      enum:
+      - to_sim
+      - from_sim
+    ip_command_enum_payload_type:
+      type:
+      - string
+      - 'null'
+      description: Indicates how the payload is encoded. Either “text” or “binary”. For an IP Command sent to a Super SIM, `payload_type` is configurable. For an IP Command sent from a Super SIM, `payload_type` is always “binary”.
+      enum:
+      - text
+      - binary
   securitySchemes:
     accountSid_authToken:
       scheme: basic

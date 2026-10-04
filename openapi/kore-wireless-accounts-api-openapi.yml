@@ -579,13 +579,6 @@ paths:
                 type: string
 components:
   schemas:
-    PlatformMapping:
-      type: object
-      properties:
-        platforms:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
     AllAccounts:
       type: object
       properties:
@@ -593,25 +586,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Account'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: number
-          description: Error code
-          example: 20404
-        message:
-          type: string
-          description: Error message
-          example: The requested resource was not found
-        more_info:
-          type: string
-          description: Error documentation link
-          example: https://docs.korewireless.com/errors/20404
-        status:
-          type: number
-          description: HTTP status code
-          example: 404
     AccountRequest:
       type: object
       properties:
@@ -623,20 +597,13 @@ components:
           description: Brief description of the account
       required:
       - friendly_name
-    Platform:
+    PlatformMapping:
       type: object
       properties:
-        id:
-          type: string
-          description: ID of the account
-        legacy_account_id:
-          type: string
-          description: Platform ID
-        platform:
-          type: string
-          enum:
-          - twilio
-          description: Platform Name
+        platforms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
     Account:
       type: object
       properties:
@@ -660,19 +627,52 @@ components:
           - DEACTIVATED
           - SUSPENDED
           description: Status of the account
+    Platform:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the account
+        legacy_account_id:
+          type: string
+          description: Platform ID
+        platform:
+          type: string
+          enum:
+          - twilio
+          description: Platform Name
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: number
+          description: Error code
+          example: 20404
+        message:
+          type: string
+          description: Error message
+          example: The requested resource was not found
+        more_info:
+          type: string
+          description: Error documentation link
+          example: https://docs.korewireless.com/errors/20404
+        status:
+          type: number
+          description: HTTP status code
+          example: 404
   parameters:
     AcceptHeader:
       name: Accept
       in: header
       schema:
         type: string
-    ContentTypeHeader:
-      name: Content-Type
+    AuthorizationHeader:
+      name: Authorization
       in: header
       schema:
         type: string
-    AuthorizationHeader:
-      name: Authorization
+    ContentTypeHeader:
+      name: Content-Type
       in: header
       schema:
         type: string
