@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/programmable-wireless/yaml/kore-programmable-wireless-v1.yaml",
+ "requested_url": "https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/programmable-wireless/yaml/kore-programmable-wireless-v1.yaml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 195058,
+ "sha256": "72a93c981bbb28e651d5b6233900211af1e196bcaaa0a72631c894b255ed2fbd",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
