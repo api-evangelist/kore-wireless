@@ -579,54 +579,6 @@ paths:
                 type: string
 components:
   schemas:
-    AllAccounts:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-    AccountRequest:
-      type: object
-      properties:
-        friendly_name:
-          type: string
-          description: Friendly name of the account
-        description:
-          type: string
-          description: Brief description of the account
-      required:
-      - friendly_name
-    PlatformMapping:
-      type: object
-      properties:
-        platforms:
-          type: array
-          items:
-            $ref: '#/components/schemas/Platform'
-    Account:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Account ID of the child account, which begins with acct_
-        parent_id:
-          type: string
-          description: Account ID of the parent account, which begins with acct_
-        date_created:
-          type: string
-          description: Date and time when the account was created
-        friendly_name:
-          type: string
-          description: Friendly name of the account
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - PENDING
-          - DEACTIVATED
-          - SUSPENDED
-          description: Status of the account
     Platform:
       type: object
       properties:
@@ -660,12 +612,55 @@ components:
           type: number
           description: HTTP status code
           example: 404
+    PlatformMapping:
+      type: object
+      properties:
+        platforms:
+          type: array
+          items:
+            $ref: '#/components/schemas/Platform'
+    AllAccounts:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Account ID of the child account, which begins with acct_
+        parent_id:
+          type: string
+          description: Account ID of the parent account, which begins with acct_
+        date_created:
+          type: string
+          description: Date and time when the account was created
+        friendly_name:
+          type: string
+          description: Friendly name of the account
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - PENDING
+          - DEACTIVATED
+          - SUSPENDED
+          description: Status of the account
+    AccountRequest:
+      type: object
+      properties:
+        friendly_name:
+          type: string
+          description: Friendly name of the account
+        description:
+          type: string
+          description: Brief description of the account
+      required:
+      - friendly_name
   parameters:
-    AcceptHeader:
-      name: Accept
-      in: header
-      schema:
-        type: string
     AuthorizationHeader:
       name: Authorization
       in: header
@@ -673,6 +668,11 @@ components:
         type: string
     ContentTypeHeader:
       name: Content-Type
+      in: header
+      schema:
+        type: string
+    AcceptHeader:
+      name: Accept
       in: header
       schema:
         type: string

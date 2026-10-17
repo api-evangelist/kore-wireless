@@ -987,22 +987,6 @@ components:
       enum:
       - text
       - binary
-    CommandTransport:
-      type:
-      - string
-      - 'null'
-      enum:
-      - sms
-      - ip
-      description: 'The type of transport used. Can be: `sms` or `ip`.'
-    CommandDirection:
-      type:
-      - string
-      - 'null'
-      enum:
-      - from_sim
-      - to_sim
-      description: The direction of the Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
     CommandStatus:
       type:
       - string
@@ -1014,6 +998,14 @@ components:
       - delivered
       - received
       - failed
+    CommandTransport:
+      type:
+      - string
+      - 'null'
+      enum:
+      - sms
+      - ip
+      description: 'The type of transport used. Can be: `sms` or `ip`.'
     Command:
       type: object
       properties:
@@ -1077,6 +1069,14 @@ components:
           - 'null'
           format: uri
           description: The absolute URL of the resource.
+    CommandDirection:
+      type:
+      - string
+      - 'null'
+      enum:
+      - from_sim
+      - to_sim
+      description: The direction of the Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.
   securitySchemes:
     Auth:
       type: oauth2

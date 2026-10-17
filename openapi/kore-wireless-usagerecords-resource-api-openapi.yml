@@ -525,147 +525,6 @@ paths:
         source: "import requests\n\nurl = \"https://programmable-wireless.api.korewireless.com/v1/Sims/<string>/UsageRecords?Start=<string>&End=<string>&Granularity=<string>&PageSize=<integer>&PageToken=<string>\"\n\npayload = {}\nheaders = {\n   'Authorization': 'Bearer <YOUR_AUTH_TOKEN>',\n   'Accept': 'application/json'\n}\n\nresponse = requests.request(\"GET\", url, headers=headers, data=payload)\n\nprint(response.text)\n"
 components:
   schemas:
-    DataUsageCounts:
-      type: object
-      properties:
-        download:
-          type: integer
-          format: int64
-        upload:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        units:
-          type: string
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        billing_units:
-          type: string
-      required:
-      - download
-      - upload
-      - total
-      - units
-      - billed
-      - billing_units
-    UsageList:
-      type: object
-      properties:
-        usage_records:
-          type: array
-          items:
-            $ref: '#/components/schemas/UsageRecord'
-        meta:
-          $ref: '#/components/schemas/ListMeta'
-    ListMeta:
-      type: object
-      required:
-      - list_key
-      - page_size
-      - direct_token
-      properties:
-        page_size:
-          type: integer
-          default: 0
-          format: int32
-        page:
-          type: integer
-          default: 0
-        first_page_url:
-          type: string
-        previous_page_url:
-          type: string
-        url:
-          type: string
-        key:
-          type: string
-        next_page_url:
-          type: string
-    SIMUsageRecord:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/UsageRecord'
-      - type: object
-        properties:
-          sim_sid:
-            type: string
-    Granularity:
-      type: string
-      enum:
-      - all
-      - daily
-      - hourly
-    CommandsUsageDetails:
-      type: object
-      description: An object that describes the aggregated Commands usage for all SIMs during the specified period.
-      properties:
-        from_sim:
-          type: integer
-          format: int64
-        to_sim:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        home:
-          $ref: '#/components/schemas/CommandsUsageCounts'
-        national_roaming:
-          $ref: '#/components/schemas/CommandsUsageCounts'
-        international_roaming:
-          type: array
-          items:
-            $ref: '#/components/schemas/InternationalCommandsUsageCounts'
-        billing_units:
-          type: string
-    InternationalCommandsUsageCounts:
-      type: object
-      properties:
-        country_code:
-          type: string
-        from_sim:
-          type: integer
-          format: int64
-        to_sim:
-          type: integer
-          format: int64
-        total:
-          type: integer
-          format: int64
-        billed:
-          type: number
-          format: double
-          x-jvm-type: BigDecimal
-        billing_units:
-          type: string
-      required:
-      - country_code
-      - from_sim
-      - to_sim
-      - total
-      - billed
-      - billing_units
-    UsageRecord:
-      type: object
-      properties:
-        period:
-          $ref: '#/components/schemas/TimePeriod'
-        account_sid:
-          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
-          type: string
-          x-jvm-type: AccountSid
-        commands:
-          $ref: '#/components/schemas/CommandsUsageDetails'
-        data:
-          $ref: '#/components/schemas/DataUsageDetails'
     DataUsageDetails:
       type: object
       description: An object that describes the aggregated Data usage for all SIMs over the period.
@@ -695,15 +554,6 @@ components:
             $ref: '#/components/schemas/InternationalDataUsageCounts'
         billing_units:
           type: string
-    SIMUsageList:
-      type: object
-      properties:
-        usage_records:
-          type: array
-          items:
-            $ref: '#/components/schemas/SIMUsageRecord'
-        meta:
-          $ref: '#/components/schemas/ListMeta'
     TimePeriod:
       type: object
       description: The time period for which usage is reported. Contains start and end properties that describe the period using GMT date-time values specified in ISO 8601 format.
@@ -717,6 +567,15 @@ components:
       required:
       - start
       - end
+    UsageList:
+      type: object
+      properties:
+        usage_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/UsageRecord'
+        meta:
+          $ref: '#/components/schemas/ListMeta'
     UsageApiErrorResponse:
       type: object
       properties:
@@ -738,6 +597,55 @@ components:
       - code
       - status
       - message
+    DataUsageCounts:
+      type: object
+      properties:
+        download:
+          type: integer
+          format: int64
+        upload:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        units:
+          type: string
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - download
+      - upload
+      - total
+      - units
+      - billed
+      - billing_units
+    UsageRecord:
+      type: object
+      properties:
+        period:
+          $ref: '#/components/schemas/TimePeriod'
+        account_sid:
+          description: The SID of the Account that created the AccountUsageRecord resource.Pattern:^AC[0-9a-fA-F]{32}$, Min length=34, Max length=34
+          type: string
+          x-jvm-type: AccountSid
+        commands:
+          $ref: '#/components/schemas/CommandsUsageDetails'
+        data:
+          $ref: '#/components/schemas/DataUsageDetails'
+    SIMUsageList:
+      type: object
+      properties:
+        usage_records:
+          type: array
+          items:
+            $ref: '#/components/schemas/SIMUsageRecord'
+        meta:
+          $ref: '#/components/schemas/ListMeta'
     CommandsUsageCounts:
       type: object
       properties:
@@ -762,6 +670,71 @@ components:
       - total
       - billed
       - billing_units
+    CommandsUsageDetails:
+      type: object
+      description: An object that describes the aggregated Commands usage for all SIMs during the specified period.
+      properties:
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        home:
+          $ref: '#/components/schemas/CommandsUsageCounts'
+        national_roaming:
+          $ref: '#/components/schemas/CommandsUsageCounts'
+        international_roaming:
+          type: array
+          items:
+            $ref: '#/components/schemas/InternationalCommandsUsageCounts'
+        billing_units:
+          type: string
+    ListMeta:
+      type: object
+      required:
+      - list_key
+      - page_size
+      - direct_token
+      properties:
+        page_size:
+          type: integer
+          default: 0
+          format: int32
+        page:
+          type: integer
+          default: 0
+        first_page_url:
+          type: string
+        previous_page_url:
+          type: string
+        url:
+          type: string
+        key:
+          type: string
+        next_page_url:
+          type: string
+    Granularity:
+      type: string
+      enum:
+      - all
+      - daily
+      - hourly
+    SIMUsageRecord:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/UsageRecord'
+      - type: object
+        properties:
+          sim_sid:
+            type: string
     InternationalDataUsageCounts:
       type: object
       properties:
@@ -790,6 +763,33 @@ components:
       - upload
       - total
       - units
+      - billed
+      - billing_units
+    InternationalCommandsUsageCounts:
+      type: object
+      properties:
+        country_code:
+          type: string
+        from_sim:
+          type: integer
+          format: int64
+        to_sim:
+          type: integer
+          format: int64
+        total:
+          type: integer
+          format: int64
+        billed:
+          type: number
+          format: double
+          x-jvm-type: BigDecimal
+        billing_units:
+          type: string
+      required:
+      - country_code
+      - from_sim
+      - to_sim
+      - total
       - billed
       - billing_units
   securitySchemes:

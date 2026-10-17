@@ -389,6 +389,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    sms_command_enum_status:
+      type:
+      - string
+      - 'null'
+      description: 'The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each.'
+      enum:
+      - queued
+      - sent
+      - delivered
+      - received
+      - failed
     supersim.v1.sms_command:
       type: object
       properties:
@@ -455,17 +466,6 @@ components:
       enum:
       - to_sim
       - from_sim
-    sms_command_enum_status:
-      type:
-      - string
-      - 'null'
-      description: 'The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each.'
-      enum:
-      - queued
-      - sent
-      - delivered
-      - received
-      - failed
   securitySchemes:
     accountSid_authToken:
       scheme: basic

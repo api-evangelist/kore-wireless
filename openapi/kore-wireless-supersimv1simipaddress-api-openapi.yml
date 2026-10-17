@@ -153,14 +153,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    sim_ip_address_enum_ip_address_version:
-      type:
-      - string
-      - 'null'
-      description: IP address version of the corresponding IP address
-      enum:
-      - IPv4
-      - IPv6
     supersim.v1.sim.sim_ip_address:
       type: object
       properties:
@@ -171,6 +163,14 @@ components:
           description: IP address assigned to the given Super SIM
         ip_address_version:
           $ref: '#/components/schemas/sim_ip_address_enum_ip_address_version'
+    sim_ip_address_enum_ip_address_version:
+      type:
+      - string
+      - 'null'
+      description: IP address version of the corresponding IP address
+      enum:
+      - IPv4
+      - IPv6
   securitySchemes:
     accountSid_authToken:
       scheme: basic
