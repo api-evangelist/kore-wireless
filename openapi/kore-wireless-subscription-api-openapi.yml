@@ -2735,3 +2735,9 @@ components:
         clientCredentials:
           tokenUrl: https://api.korewireless.com/Api/api/token
           scopes: {}
+x-provenance:
+  method: harvested
+  publisher: KORE Wireless
+  source: https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

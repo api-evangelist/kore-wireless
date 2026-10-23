@@ -173,3 +173,9 @@ components:
           example: email
           description: Scope of the token
 x-hideTryItPanel: true
+x-provenance:
+  method: harvested
+  publisher: KORE Wireless
+  source: https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/api-clients/yaml/kore_token_api_v1.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)

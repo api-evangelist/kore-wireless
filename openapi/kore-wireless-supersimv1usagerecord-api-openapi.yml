@@ -769,3 +769,9 @@ components:
           scopes: {}
 x-hideTryItPanel: true
 x-codeSamples: false
+x-provenance:
+  method: harvested
+  publisher: KORE Wireless
+  source: https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/programmable-wireless/yaml/kore-programmable-wireless-v1.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
