@@ -1590,6 +1590,8 @@ apis:
     url: >-
       https://github.com/korewireless/kore-openapi/blob/main/specs/api-clients/yaml/kore_token_api_v1.yaml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/kore-wireless/overview
 - type: CapabilityMap
   url: capabilities/kore-wireless-capability-edges.yml
   name: KORE Wireless Business Capability Map
