@@ -1,0 +1,1718 @@
+{
+  "info": {
+    "_postman_id": "818fbe56-82bc-4952-b8cb-aff2c179f2c7",
+    "name": "Connectivity Session API",
+    "description": "Connectivity APIs help users manage their connectivity through APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:41:32.000Z",
+    "updatedAt": "2026-10-22T01:41:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-818fbe56-82bc-4952-b8cb-aff2c179f2c7"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account-id}",
+              "item": [
+                {
+                  "name": "sessions",
+                  "item": [
+                    {
+                      "name": "Get Session Details",
+                      "id": "b78b698a-9403-448b-9378-296afe712f46",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "sessions"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                              "key": "query-by-field",
+                              "value": " iccid"
+                            },
+                            {
+                              "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                              "key": "query-by-values",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                              "key": "query-by-values",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Include details of the active/open session in the response. Default value is false.",
+                              "key": "include-active-sessions",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                              "key": "date-range-start",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                              "key": "date-range-end",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Session data is paginated, and this field defines the page number to be queried.",
+                              "key": "page-number",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Session data is paginated, and this field defines the page size to be queried.",
+                              "key": "page-size",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                              "key": "sort-by",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "8241d930-5b51-4331-987a-9276e5b67b2e",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for an account"
+                            }
+                          ]
+                        },
+                        "description": "Session details API queried by subscription-id or msisdn or iccid will return list of session details for a subscription. API will return an empty array in response if there are no RADIUS session details available for that subscription."
+                      },
+                      "response": [
+                        {
+                          "id": "a533c905-cc73-47ad-ae21-4a90e9cc28af",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"subscription-urn\": \"<string>\",\n    \"session-data\": {\n      \"sessions\": [\n        {\n          \"stop-time\": \"<string>\",\n          \"start-time\": \"<string>\",\n          \"apn\": \"<string>\",\n          \"session-id\": \"<string>\"\n        },\n        {\n          \"stop-time\": \"<string>\",\n          \"start-time\": \"<string>\",\n          \"apn\": \"<string>\",\n          \"session-id\": \"<string>\"\n        }\n      ],\n      \"sort\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page\": {\n        \"size\": \"<integer>\",\n        \"number\": \"<integer>\"\n      }\n    },\n    \"iccid\": \"<string>\",\n    \"msisdn\": \"<string>\",\n    \"session-count\": \"<integer>\"\n  },\n  {\n    \"subscription-urn\": \"<string>\",\n    \"session-data\": {\n      \"sessions\": [\n        {\n          \"stop-time\": \"<string>\",\n          \"start-time\": \"<string>\",\n          \"apn\": \"<string>\",\n          \"session-id\": \"<string>\"\n        },\n        {\n          \"stop-time\": \"<string>\",\n          \"start-time\": \"<string>\",\n          \"apn\": \"<string>\",\n          \"session-id\": \"<string>\"\n        }\n      ],\n      \"sort\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"page\": {\n        \"size\": \"<integer>\",\n        \"number\": \"<integer>\"\n      }\n    },\n    \"iccid\": \"<string>\",\n    \"msisdn\": \"<string>\",\n    \"session-count\": \"<integer>\"\n  }\n]",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-a533c905-cc73-47ad-ae21-4a90e9cc28af"
+                        },
+                        {
+                          "id": "6ce986a5-189d-4893-967b-6222d0712b35",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"error\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-6ce986a5-189d-4893-967b-6222d0712b35"
+                        },
+                        {
+                          "id": "48be5af1-0984-4ad4-b046-a9e0340d1cf0",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-48be5af1-0984-4ad4-b046-a9e0340d1cf0"
+                        },
+                        {
+                          "id": "e58d1308-48ba-48a3-b485-8824a4c559ee",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-e58d1308-48ba-48a3-b485-8824a4c559ee"
+                        },
+                        {
+                          "id": "83df7db3-e506-4cbc-b5a3-75b78c53c5c5",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"error\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-83df7db3-e506-4cbc-b5a3-75b78c53c5c5"
+                        },
+                        {
+                          "id": "967df512-34fa-4caf-8006-b234d2bd9552",
+                          "name": "Request Conflict",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-967df512-34fa-4caf-8006-b234d2bd9552"
+                        },
+                        {
+                          "id": "f11f9306-66a7-4f6f-a85c-6fcc0793e5a8",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"path\": \"<string>\",\n  \"messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"error\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-f11f9306-66a7-4f6f-a85c-6fcc0793e5a8"
+                        },
+                        {
+                          "id": "4e31f161-7c62-4f8d-bda5-b39b8e1f173e",
+                          "name": "Bad Gateway",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Gateway",
+                          "code": 502,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-4e31f161-7c62-4f8d-bda5-b39b8e1f173e"
+                        },
+                        {
+                          "id": "1507aa6c-035b-4ab8-b77a-1ec9380bf356",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-1507aa6c-035b-4ab8-b77a-1ec9380bf356"
+                        },
+                        {
+                          "id": "b6efd479-81c0-4edc-8157-c920f4a7667c",
+                          "name": "Gateway Timeout",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/sessions?query-by-field= iccid&query-by-values=<string>&include-active-sessions=<boolean>&date-range-start=<string>&date-range-end=<string>&page-number=1&page-size=1&sort-by=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "sessions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include details of the active/open session in the response. Default value is false.",
+                                  "key": "include-active-sessions",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the start of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T22:38:23.085Z.",
+                                  "key": "date-range-start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session count and session data can be queried for any duration within the last 7 days, and this field defines the end of duration. Value format should be ISO-8601 having milliseconds precision, e.g. 2020-05-30T23:38:00.000Z.",
+                                  "key": "date-range-end",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page number to be queried.",
+                                  "key": "page-number",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data is paginated, and this field defines the page size to be queried.",
+                                  "key": "page-size",
+                                  "value": "1"
+                                },
+                                {
+                                  "description": "Session data can be sorted by startTime in ASC or DESC order. Value format should be field:order and default supported is startTime:DESC",
+                                  "key": "sort-by",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Gateway Timeout",
+                          "code": 504,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-b6efd479-81c0-4edc-8157-c920f4a7667c"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:41:32.000Z",
+                      "updatedAt": "2026-10-22T01:41:32.000Z",
+                      "uid": "35240-b78b698a-9403-448b-9378-296afe712f46"
+                    }
+                  ],
+                  "id": "ff3ff8d0-8eb8-4687-955c-b0f380e08ad7",
+                  "createdAt": "2026-10-22T01:41:32.000Z",
+                  "updatedAt": "2026-10-22T01:41:32.000Z",
+                  "uid": "35240-ff3ff8d0-8eb8-4687-955c-b0f380e08ad7"
+                },
+                {
+                  "name": "in-session",
+                  "item": [
+                    {
+                      "name": "Get Session Status",
+                      "id": "79f23fbe-113a-4274-856d-84bc73e97cc8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&query-by-values=<string>&include-session-timestamp=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "in-session"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                              "key": "query-by-field",
+                              "value": " iccid"
+                            },
+                            {
+                              "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                              "key": "query-by-values",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                              "key": "query-by-values",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Indicates whether the response should include the timestamp of the last updated session",
+                              "key": "include-session-timestamp",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "787592dc-248b-4e7c-bf58-53c2f0eb272d",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Get in-session status, that can be queried by subscription-id or msisdn or iccid. This API will return in session True/False based on the latest RADIUS event available. API will return an empty array in response if there are no RADIUS session events available for that subscription."
+                      },
+                      "response": [
+                        {
+                          "id": "42377440-4cb7-4037-8c4f-98f50cbc205e",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&include-session-timestamp=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "in-session"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Indicates whether the response should include the timestamp of the last updated session",
+                                  "key": "include-session-timestamp",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"subscription-id\": \"<string>\",\n    \"msisdn\": \"<string>\",\n    \"iccid\": \"<string>\",\n    \"in-session\": \"<boolean>\",\n    \"last-updated-time\": \"<string>\"\n  },\n  {\n    \"subscription-id\": \"<string>\",\n    \"msisdn\": \"<string>\",\n    \"iccid\": \"<string>\",\n    \"in-session\": \"<boolean>\",\n    \"last-updated-time\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-42377440-4cb7-4037-8c4f-98f50cbc205e"
+                        },
+                        {
+                          "id": "d1e0a652-6df0-47bd-805c-0ac2a6d6c5c4",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&include-session-timestamp=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "in-session"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Indicates whether the response should include the timestamp of the last updated session",
+                                  "key": "include-session-timestamp",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"error\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-d1e0a652-6df0-47bd-805c-0ac2a6d6c5c4"
+                        },
+                        {
+                          "id": "7795a31b-ec03-40e5-8844-98c92abc0874",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&include-session-timestamp=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "in-session"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Indicates whether the response should include the timestamp of the last updated session",
+                                  "key": "include-session-timestamp",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-7795a31b-ec03-40e5-8844-98c92abc0874"
+                        },
+                        {
+                          "id": "e623f520-ebc3-4051-a64d-d2ea84108cfb",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&include-session-timestamp=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "in-session"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Indicates whether the response should include the timestamp of the last updated session",
+                                  "key": "include-session-timestamp",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-e623f520-ebc3-4051-a64d-d2ea84108cfb"
+                        },
+                        {
+                          "id": "7a5eabde-98d4-4462-9afa-97615c46e7a9",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&include-session-timestamp=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "in-session"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Indicates whether the response should include the timestamp of the last updated session",
+                                  "key": "include-session-timestamp",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"path\": \"<string>\",\n  \"messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"error\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-7a5eabde-98d4-4462-9afa-97615c46e7a9"
+                        },
+                        {
+                          "id": "b04de967-380a-40b0-a5b8-82f48a56178b",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/in-session?query-by-field= iccid&query-by-values=<string>&include-session-timestamp=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "in-session"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) This field determines by which attribute session data to be queried. Session data can be queried by subscription-id or msisdn or iccid.",
+                                  "key": "query-by-field",
+                                  "value": " iccid"
+                                },
+                                {
+                                  "description": "(Required) This field expects one or more values up to 100 for the field selected in the query-by-field.",
+                                  "key": "query-by-values",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Indicates whether the response should include the timestamp of the last updated session",
+                                  "key": "include-session-timestamp",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"path\": \"<string>\",\n  \"messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"error\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"status\": \"<integer>\"\n}",
+                          "createdAt": "2026-10-22T01:41:32.000Z",
+                          "updatedAt": "2026-10-22T01:41:32.000Z",
+                          "uid": "35240-b04de967-380a-40b0-a5b8-82f48a56178b"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:41:32.000Z",
+                      "updatedAt": "2026-10-22T01:41:32.000Z",
+                      "uid": "35240-79f23fbe-113a-4274-856d-84bc73e97cc8"
+                    }
+                  ],
+                  "id": "0ab6cb2f-5739-472a-89d0-9e4506d0e6e0",
+                  "createdAt": "2026-10-22T01:41:32.000Z",
+                  "updatedAt": "2026-10-22T01:41:32.000Z",
+                  "uid": "35240-0ab6cb2f-5739-472a-89d0-9e4506d0e6e0"
+                }
+              ],
+              "id": "2a418e7e-4690-4873-b1a6-fa5c082d64ab",
+              "createdAt": "2026-10-22T01:41:32.000Z",
+              "updatedAt": "2026-10-22T01:41:32.000Z",
+              "uid": "35240-2a418e7e-4690-4873-b1a6-fa5c082d64ab"
+            }
+          ],
+          "id": "6b198407-bc43-4e88-843c-9b55a7a62ebc",
+          "createdAt": "2026-10-22T01:41:32.000Z",
+          "updatedAt": "2026-10-22T01:41:32.000Z",
+          "uid": "35240-6b198407-bc43-4e88-843c-9b55a7a62ebc"
+        }
+      ],
+      "id": "9edf8880-8bd7-4a68-8648-034972f352b8",
+      "createdAt": "2026-10-22T01:41:32.000Z",
+      "updatedAt": "2026-10-22T01:41:32.000Z",
+      "uid": "35240-9edf8880-8bd7-4a68-8648-034972f352b8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.korewireless.com/connectivity"
+    }
+  ]
+}

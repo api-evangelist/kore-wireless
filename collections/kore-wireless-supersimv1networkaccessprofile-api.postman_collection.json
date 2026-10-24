@@ -1,0 +1,742 @@
+{
+  "info": {
+    "_postman_id": "fcf55aa9-4c82-4ef8-81da-0c9de890824e",
+    "name": "KORE - Supersim Supersim V1Network Access Profile API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:23.000Z",
+    "updatedAt": "2026-10-22T01:42:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fcf55aa9-4c82-4ef8-81da-0c9de890824e"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "NetworkAccessProfiles",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch network access profile",
+                  "id": "ffa26509-0cd3-45de-9166-2675d125b8f9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/NetworkAccessProfiles/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "NetworkAccessProfiles",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e9291425-b0a9-47cf-a4fd-f6703149f19e",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the Network Access Profile resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch a Network Access Profile instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "196b42a7-26ad-44f7-9bb2-50b9390fba4d",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/NetworkAccessProfiles/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "NetworkAccessProfiles",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HABfa9dFafFa39ACbc0F6c6a1ebF9dC244\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACBD94dA0EBdd4ac18e2ba15dFDB3Fa83d\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                      "createdAt": "2026-10-22T01:42:23.000Z",
+                      "updatedAt": "2026-10-22T01:42:23.000Z",
+                      "uid": "35240-196b42a7-26ad-44f7-9bb2-50b9390fba4d"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:23.000Z",
+                  "updatedAt": "2026-10-22T01:42:23.000Z",
+                  "uid": "35240-ffa26509-0cd3-45de-9166-2675d125b8f9"
+                },
+                {
+                  "name": "Update network access profile",
+                  "id": "37981802-8e55-4d67-9198-059e5787f541",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The new unique name of the Network Access Profile.",
+                          "key": "UniqueName",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/NetworkAccessProfiles/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "NetworkAccessProfiles",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "06911a0e-a6b6-43c0-acb1-a50b3334347e",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the Network Access Profile to update."
+                        }
+                      ]
+                    },
+                    "description": "Updates the given properties of a Network Access Profile in your account."
+                  },
+                  "response": [
+                    {
+                      "id": "ecc0413a-de55-4cb5-85f9-5d76a9ba6840",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "The new unique name of the Network Access Profile.",
+                              "key": "UniqueName",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/NetworkAccessProfiles/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "NetworkAccessProfiles",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HABfa9dFafFa39ACbc0F6c6a1ebF9dC244\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACBD94dA0EBdd4ac18e2ba15dFDB3Fa83d\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                      "createdAt": "2026-10-22T01:42:23.000Z",
+                      "updatedAt": "2026-10-22T01:42:23.000Z",
+                      "uid": "35240-ecc0413a-de55-4cb5-85f9-5d76a9ba6840"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:23.000Z",
+                  "updatedAt": "2026-10-22T01:42:23.000Z",
+                  "uid": "35240-37981802-8e55-4d67-9198-059e5787f541"
+                }
+              ],
+              "id": "8e9c96c3-c7cd-4faa-add5-58358f02bbf3",
+              "createdAt": "2026-10-22T01:42:23.000Z",
+              "updatedAt": "2026-10-22T01:42:23.000Z",
+              "uid": "35240-8e9c96c3-c7cd-4faa-add5-58358f02bbf3"
+            },
+            {
+              "name": "Create network access profile",
+              "id": "3b48cdb9-8e4b-43b3-9f4d-8a4ad4005941",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                      "key": "UniqueName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "List of Network SIDs that this Network Access Profile will allow connections to.",
+                      "key": "Networks",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "List of Network SIDs that this Network Access Profile will allow connections to.",
+                      "key": "Networks",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/NetworkAccessProfiles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "NetworkAccessProfiles"
+                  ]
+                },
+                "description": "Create a new Network Access Profile"
+              },
+              "response": [
+                {
+                  "id": "28d93bb1-46bf-43bb-a823-aa60c611b664",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                          "key": "UniqueName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "List of Network SIDs that this Network Access Profile will allow connections to.",
+                          "key": "Networks",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "List of Network SIDs that this Network Access Profile will allow connections to.",
+                          "key": "Networks",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/NetworkAccessProfiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "NetworkAccessProfiles"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"HABfa9dFafFa39ACbc0F6c6a1ebF9dC244\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACBD94dA0EBdd4ac18e2ba15dFDB3Fa83d\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                  "createdAt": "2026-10-22T01:42:23.000Z",
+                  "updatedAt": "2026-10-22T01:42:23.000Z",
+                  "uid": "35240-28d93bb1-46bf-43bb-a823-aa60c611b664"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:23.000Z",
+              "updatedAt": "2026-10-22T01:42:23.000Z",
+              "uid": "35240-3b48cdb9-8e4b-43b3-9f4d-8a4ad4005941"
+            },
+            {
+              "name": "List network access profile",
+              "id": "46cab349-886e-4b69-93c1-0d4259dd5841",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/NetworkAccessProfiles?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "NetworkAccessProfiles"
+                  ],
+                  "query": [
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of Network Access Profiles from your account."
+              },
+              "response": [
+                {
+                  "id": "074591dd-d878-46bc-af45-d9447eb4b2bc",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/NetworkAccessProfiles?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "NetworkAccessProfiles"
+                      ],
+                      "query": [
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"network_access_profiles\": [\n    {\n      \"sid\": \"HA70273ed5de8eFE99D39B66cECd8f3acd\",\n      \"unique_name\": \"<string,null>\",\n      \"account_sid\": \"ACA3b79FF4E5cFaBc24822Cf4274f6Fbc3\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\",\n      \"links\": \"<object,null>\"\n    },\n    {\n      \"sid\": \"HA1F2Bf595F2c45F085a8531F03Ed01F0C\",\n      \"unique_name\": \"<string,null>\",\n      \"account_sid\": \"AC20aBe9AA68eb8675375f03Bed791BAc6\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\",\n      \"links\": \"<object,null>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:23.000Z",
+                  "updatedAt": "2026-10-22T01:42:23.000Z",
+                  "uid": "35240-074591dd-d878-46bc-af45-d9447eb4b2bc"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:23.000Z",
+              "updatedAt": "2026-10-22T01:42:23.000Z",
+              "uid": "35240-46cab349-886e-4b69-93c1-0d4259dd5841"
+            }
+          ],
+          "id": "9d4f1fd8-9062-4440-aa24-03d1388d7f5d",
+          "createdAt": "2026-10-22T01:42:23.000Z",
+          "updatedAt": "2026-10-22T01:42:23.000Z",
+          "uid": "35240-9d4f1fd8-9062-4440-aa24-03d1388d7f5d"
+        }
+      ],
+      "id": "0402fa38-42a9-4263-81cd-f2d9a05a7eb9",
+      "createdAt": "2026-10-22T01:42:23.000Z",
+      "updatedAt": "2026-10-22T01:42:23.000Z",
+      "uid": "35240-0402fa38-42a9-4263-81cd-f2d9a05a7eb9"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

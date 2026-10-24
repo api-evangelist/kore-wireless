@@ -1,0 +1,411 @@
+{
+  "info": {
+    "_postman_id": "8cc2edbc-e5fe-47ee-aee4-17b8a0790552",
+    "name": "KORE - Supersim Supersim V1Network API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:17.000Z",
+    "updatedAt": "2026-10-22T01:42:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8cc2edbc-e5fe-47ee-aee4-17b8a0790552"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Networks",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch network",
+                  "id": "90825a25-8d80-4c47-9899-0e8359de6511",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Networks/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Networks",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e0638df2-25d7-45fe-8e34-eb5623beec18",
+                          "key": "Sid",
+                          "value": "HW4cbf8ba8eeaF45ceFAc667fffEe8eFB1",
+                          "description": "(Required) The SID of the Network resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch a Network resource."
+                  },
+                  "response": [
+                    {
+                      "id": "19e019fd-8de1-4bf7-ace2-701e71292d0c",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Networks/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Networks",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HW378FB5fb99aB78ad77aB1bF4bdbd000c\",\n  \"friendly_name\": \"<string,null>\",\n  \"url\": \"<string,null-uri>\",\n  \"iso_country\": \"<string,null>\",\n  \"identifiers\": \"<array,null>\"\n}",
+                      "createdAt": "2026-10-22T01:42:18.000Z",
+                      "updatedAt": "2026-10-22T01:42:18.000Z",
+                      "uid": "35240-19e019fd-8de1-4bf7-ace2-701e71292d0c"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:18.000Z",
+                  "updatedAt": "2026-10-22T01:42:18.000Z",
+                  "uid": "35240-90825a25-8d80-4c47-9899-0e8359de6511"
+                }
+              ],
+              "id": "a078219a-3df6-4799-bb63-6e2078e7b30e",
+              "createdAt": "2026-10-22T01:42:18.000Z",
+              "updatedAt": "2026-10-22T01:42:18.000Z",
+              "uid": "35240-a078219a-3df6-4799-bb63-6e2078e7b30e"
+            },
+            {
+              "name": "List network",
+              "id": "24dcd89d-41e8-4d1e-a2dc-97087696252b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Networks?IsoCountry=<string>&Mcc=<string>&Mnc=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Networks"
+                  ],
+                  "query": [
+                    {
+                      "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resources to read.",
+                      "key": "IsoCountry",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read.",
+                      "key": "Mcc",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read.",
+                      "key": "Mnc",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of Network resources."
+              },
+              "response": [
+                {
+                  "id": "c65035f7-25cf-477b-ad48-d329103c88f3",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Networks?IsoCountry=<string>&Mcc=<string>&Mnc=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Networks"
+                      ],
+                      "query": [
+                        {
+                          "description": "The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resources to read.",
+                          "key": "IsoCountry",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The 'mobile country code' of a country. Network resources with this `mcc` in their `identifiers` will be read.",
+                          "key": "Mcc",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The 'mobile network code' of a mobile operator network. Network resources with this `mnc` in their `identifiers` will be read.",
+                          "key": "Mnc",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"networks\": [\n    {\n      \"sid\": \"HW54fD0bCfC4Aaf4Bf31B852EDc308b0b0\",\n      \"friendly_name\": \"<string,null>\",\n      \"url\": \"<string,null-uri>\",\n      \"iso_country\": \"<string,null>\",\n      \"identifiers\": \"<array,null>\"\n    },\n    {\n      \"sid\": \"HW59Fb4db72cd578e3DF745A2DfE7651c1\",\n      \"friendly_name\": \"<string,null>\",\n      \"url\": \"<string,null-uri>\",\n      \"iso_country\": \"<string,null>\",\n      \"identifiers\": \"<array,null>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:18.000Z",
+                  "updatedAt": "2026-10-22T01:42:18.000Z",
+                  "uid": "35240-c65035f7-25cf-477b-ad48-d329103c88f3"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:18.000Z",
+              "updatedAt": "2026-10-22T01:42:18.000Z",
+              "uid": "35240-24dcd89d-41e8-4d1e-a2dc-97087696252b"
+            }
+          ],
+          "id": "299e89f6-5e48-45d4-bdc3-72ce161d8b75",
+          "createdAt": "2026-10-22T01:42:18.000Z",
+          "updatedAt": "2026-10-22T01:42:18.000Z",
+          "uid": "35240-299e89f6-5e48-45d4-bdc3-72ce161d8b75"
+        }
+      ],
+      "id": "0013a564-9ad7-4399-98d6-c654225c931a",
+      "createdAt": "2026-10-22T01:42:18.000Z",
+      "updatedAt": "2026-10-22T01:42:18.000Z",
+      "uid": "35240-0013a564-9ad7-4399-98d6-c654225c931a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "246a208f-f2f4-46e8-85d3-f4bf3a468f50",
+    "name": "KORE - Supersim Supersim V1Settings Update API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:33.000Z",
+    "updatedAt": "2026-10-22T01:42:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-246a208f-f2f4-46e8-85d3-f4bf3a468f50"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "SettingsUpdates",
+          "item": [
+            {
+              "name": "List settings update",
+              "id": "614ce326-74e1-4307-8a87-d5dbdf2a86d6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/SettingsUpdates?Sim=<string>&Status=failed&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "SettingsUpdates"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter the Settings Updates by a Super SIM's SID or UniqueName.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`.",
+                      "key": "Status",
+                      "value": "failed"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of Settings Updates."
+              },
+              "response": [
+                {
+                  "id": "68c5be8c-37b2-4192-977e-6884d343543e",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/SettingsUpdates?Sim=<string>&Status=failed&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "SettingsUpdates"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter the Settings Updates by a Super SIM's SID or UniqueName.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter the Settings Updates by status. Can be `scheduled`, `in-progress`, `successful`, or `failed`.",
+                          "key": "Status",
+                          "value": "failed"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"settings_updates\": [\n    {\n      \"sid\": \"OBE4c026221CFC477D1fa7859832E5eBC3\",\n      \"iccid\": \"<string,null>\",\n      \"sim_sid\": \"HS8e73b37A319CcEbfF7afB7aAE91bcADD\",\n      \"status\": \"scheduled\",\n      \"packages\": \"<array,null>\",\n      \"date_completed\": \"<string,null-date-time>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\"\n    },\n    {\n      \"sid\": \"OBDCB6fbDAF4D2D4D09Bf8B2498FDD9AE5\",\n      \"iccid\": \"<string,null>\",\n      \"sim_sid\": \"HSb99b4cDc3B27a8FEB54BaFedCa0AA4C4\",\n      \"status\": \"scheduled\",\n      \"packages\": \"<array,null>\",\n      \"date_completed\": \"<string,null-date-time>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:34.000Z",
+                  "updatedAt": "2026-10-22T01:42:34.000Z",
+                  "uid": "35240-68c5be8c-37b2-4192-977e-6884d343543e"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:34.000Z",
+              "updatedAt": "2026-10-22T01:42:34.000Z",
+              "uid": "35240-614ce326-74e1-4307-8a87-d5dbdf2a86d6"
+            }
+          ],
+          "id": "d8df9ada-9ab9-4906-9092-dd23c3634503",
+          "createdAt": "2026-10-22T01:42:34.000Z",
+          "updatedAt": "2026-10-22T01:42:34.000Z",
+          "uid": "35240-d8df9ada-9ab9-4906-9092-dd23c3634503"
+        }
+      ],
+      "id": "131ce986-0d53-4f00-9947-78b059f1d9bb",
+      "createdAt": "2026-10-22T01:42:34.000Z",
+      "updatedAt": "2026-10-22T01:42:34.000Z",
+      "uid": "35240-131ce986-0d53-4f00-9947-78b059f1d9bb"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

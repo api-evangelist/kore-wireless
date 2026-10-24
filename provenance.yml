@@ -18,48 +18,153 @@ artifacts:
   changelog/kore-wireless-changelog.yml:
     method: searched
     evidence: declared in the artifact
+  collections/kore-wireless-account-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-account-api
+  collections/kore-wireless-accounts-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-accounts-api
+  collections/kore-wireless-activation-profiles-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-activation-profiles-api
+  collections/kore-wireless-alerting-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-alerting-api
   collections/kore-wireless-api-clients.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/kore-wireless-api-clients.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  collections/kore-wireless-auth-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-auth-api
+  collections/kore-wireless-clients-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-clients-api
+  collections/kore-wireless-commands-resource-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-commands-resource-api
   collections/kore-wireless-connectivity-pro.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/kore-wireless-connectivity-pro.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  collections/kore-wireless-datasessions-resource-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-datasessions-resource-api
+  collections/kore-wireless-diagnostics-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-diagnostics-api
+  collections/kore-wireless-eligibility-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-eligibility-api
+  collections/kore-wireless-esim-profile-management-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-esim-profile-management-api
+  collections/kore-wireless-health-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-health-api
   collections/kore-wireless-iam.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/kore-wireless-iam.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  collections/kore-wireless-messages-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-messages-api
   collections/kore-wireless-programmable-wireless.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/kore-wireless-programmable-wireless.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  collections/kore-wireless-provisioning-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-provisioning-api
+  collections/kore-wireless-rateplans-resource-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-rateplans-resource-api
+  collections/kore-wireless-reports-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-reports-api
+  collections/kore-wireless-secrets-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-secrets-api
+  collections/kore-wireless-session-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-session-api
+  collections/kore-wireless-sims-resource-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-sims-resource-api
   collections/kore-wireless-sms.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/kore-wireless-sms.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  collections/kore-wireless-subscription-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-subscription-api
   collections/kore-wireless-supersim.opencollection.json:
     method: derived
     evidence: openapi/kore-wireless-supersim
   collections/kore-wireless-supersim.postman_collection.json:
     method: derived
     evidence: openapi/kore-wireless-supersim
+  collections/kore-wireless-supersimv1billingperiod-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1billingperiod-api
+  collections/kore-wireless-supersimv1esimprofile-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1esimprofile-api
+  collections/kore-wireless-supersimv1fleet-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1fleet-api
+  collections/kore-wireless-supersimv1ipcommand-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1ipcommand-api
+  collections/kore-wireless-supersimv1network-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1network-api
+  collections/kore-wireless-supersimv1networkaccessprofile-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1networkaccessprofile-api
+  collections/kore-wireless-supersimv1networkaccessprofilenetwork-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1networkaccessprofilenetwork-api
+  collections/kore-wireless-supersimv1settingsupdate-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1settingsupdate-api
+  collections/kore-wireless-supersimv1sim-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1sim-api
+  collections/kore-wireless-supersimv1simipaddress-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1simipaddress-api
+  collections/kore-wireless-supersimv1smscommand-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1smscommand-api
+  collections/kore-wireless-supersimv1usagerecord-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-supersimv1usagerecord-api
+  collections/kore-wireless-testing-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-testing-api
   collections/kore-wireless-token.opencollection.json:
     method: unknown
     evidence: no authorship recorded
   collections/kore-wireless-token.postman_collection.json:
     method: unknown
     evidence: no authorship recorded
+  collections/kore-wireless-usage-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-usage-api
+  collections/kore-wireless-usagerecords-resource-api.postman_collection.json:
+    method: derived
+    evidence: openapi/kore-wireless-usagerecords-resource-api
   collections/kore-wireless-webhook.opencollection.json:
     method: unknown
     evidence: no authorship recorded
@@ -84,127 +189,7 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
-  kin/checks-2026-09-24T161608.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T125852.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T133943.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T143147.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-25T154045.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-26T215308.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T094438.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T103455.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T123021.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T132314.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-27T140727.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T213958.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-29T230545.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T203505.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-30T220315.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-31T223420.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T063623.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T210448.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-01T222808.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-02T224043.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T161828.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-03T174231.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T062714.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T212454.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-04T224856.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T055819.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T072335.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T144739.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T195450.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-05T211839.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T011047.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T211804.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-06T224210.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T200636.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-07T213054.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T214843.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-08T232836.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T204815.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-09-10T222408.yml:
+  kin/checks-2026-10-11T110117.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-12T062655.yml:
@@ -288,6 +273,21 @@ artifacts:
   kin/score-2026-09-24T161608.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T210408.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-25T232841.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T000835.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-03T024842.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-10-11T110117.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/kore-wireless-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -299,36 +299,36 @@ artifacts:
     evidence: declared in the artifact
   openapi/_original/kore-wireless-api-clients.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/api-clients/yaml/kore_client_v1.yaml
+      (sha256 5351982564ff, fetched 2026-10-04)
   openapi/_original/kore-wireless-connectivity-pro.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/connectivity-pro/yaml/kore-connectivity-pro-v1.yaml
+      (sha256 d33f7ee9a92d, fetched 2026-10-04)
   openapi/_original/kore-wireless-iam.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/iam/yaml/kore-iam-v1.yaml
+      (sha256 561392de1aa3, fetched 2026-10-04)
   openapi/_original/kore-wireless-programmable-wireless.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/programmable-wireless/yaml/kore-programmable-wireless-v1.yaml
+      (sha256 72a93c981bbb, fetched 2026-10-04)
   openapi/_original/kore-wireless-sms.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/sms/yaml/kore-sms-v1.yaml
+      (sha256 c02f8ace5328, fetched 2026-10-04)
   openapi/_original/kore-wireless-supersim.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/supersim/yaml/kore-supersim-v1.yaml
+      (sha256 7138a35558c9, fetched 2026-10-04)
   openapi/_original/kore-wireless-token.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/api-clients/yaml/kore_token_api_v1.yaml
+      (sha256 42f6d6721ae3, fetched 2026-10-04)
   openapi/_original/kore-wireless-webhook.yml:
     method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+    evidence: byte-identical to https://raw.githubusercontent.com/korewireless/kore-openapi/HEAD/specs/webhook/yaml/kore-webhook-v1.yaml
+      (sha256 0f194718a562, fetched 2026-10-04)
   openapi/kore-wireless-account-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
@@ -435,29 +435,29 @@ artifacts:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   overlays/kore-wireless-api-clients-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-connectivity-pro-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-iam-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-programmable-wireless-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-sms-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-supersim-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-token-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   overlays/kore-wireless-webhook-overlay.yaml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: an API Evangelist overlay (title) over the provider's contract
   packages/kore-wireless-packages.yml:
     method: searched
     evidence: declared in the artifact

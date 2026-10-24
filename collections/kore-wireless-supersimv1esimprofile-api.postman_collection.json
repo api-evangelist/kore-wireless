@@ -1,0 +1,604 @@
+{
+  "info": {
+    "_postman_id": "24e437bd-2854-4263-8846-bdee59f6a9f3",
+    "name": "KORE - Supersim Supersim V1Esim Profile API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:41:59.000Z",
+    "updatedAt": "2026-10-22T01:42:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-24e437bd-2854-4263-8846-bdee59f6a9f3"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "ESimProfiles",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch an ESimProfile resource",
+                  "id": "9658950a-e1ff-4e06-b991-e0bd25aa3094",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ESimProfiles/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ESimProfiles",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b3876d62-9595-4d1e-b27c-22d94431896f",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the eSIM Profile resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch an eSIM Profile."
+                  },
+                  "response": [
+                    {
+                      "id": "6952d042-ca68-4101-ba3b-3d37a2bfc50a",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/ESimProfiles/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "ESimProfiles",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HP7aEde780C9EeAf0a6e5CF71D9fcF5aF2\",\n  \"account_sid\": \"ACAaA5ad785D5b02df4eA6cf7eF5f051b2\",\n  \"iccid\": \"<string,null>\",\n  \"sim_sid\": \"HSc1d98eDafAE1Ff2d0dFDe418B3a8Dfb7\",\n  \"status\": \"installed\",\n  \"eid\": \"<string,null>\",\n  \"smdp_plus_address\": \"<string,null-uri>\",\n  \"matching_id\": \"<string,null>\",\n  \"activation_code\": \"<string,null>\",\n  \"error_code\": \"<string,null>\",\n  \"error_message\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                      "createdAt": "2026-10-22T01:42:00.000Z",
+                      "updatedAt": "2026-10-22T01:42:00.000Z",
+                      "uid": "35240-6952d042-ca68-4101-ba3b-3d37a2bfc50a"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:00.000Z",
+                  "updatedAt": "2026-10-22T01:42:00.000Z",
+                  "uid": "35240-9658950a-e1ff-4e06-b991-e0bd25aa3094"
+                }
+              ],
+              "id": "947f29f1-23c7-4543-aa8e-5c075aa4a1ef",
+              "createdAt": "2026-10-22T01:42:00.000Z",
+              "updatedAt": "2026-10-22T01:42:00.000Z",
+              "uid": "35240-947f29f1-23c7-4543-aa8e-5c075aa4a1ef"
+            },
+            {
+              "name": "Create an ESimProfile resource to reserve a Super SIM profile",
+              "id": "08bfc296-32d0-4fc4-ba01-1d6b765dd6bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.",
+                      "key": "CallbackUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                      "key": "CallbackMethod",
+                      "value": "GET"
+                    },
+                    {
+                      "description": "When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.",
+                      "key": "GenerateMatchingId",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "Identifier of the eUICC that will claim the eSIM Profile.",
+                      "key": "Eid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/ESimProfiles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "ESimProfiles"
+                  ]
+                },
+                "description": "Order an eSIM Profile."
+              },
+              "response": [
+                {
+                  "id": "3754e587-e483-46f5-b23a-f6dfec45893d",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "The URL we should call using the `callback_method` when the status of the eSIM Profile changes. At this stage of the eSIM Profile pilot, the a request to the URL will only be called when the ESimProfile resource changes from `reserving` to `available`.",
+                          "key": "CallbackUrl",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "When set to `true`, a value for `Eid` does not need to be provided. Instead, when the eSIM profile is reserved, a matching ID will be generated and returned via the `matching_id` property. This identifies the specific eSIM profile that can be used by any capable device to claim and download the profile.",
+                          "key": "GenerateMatchingId",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "Identifier of the eUICC that will claim the eSIM Profile.",
+                          "key": "Eid",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ESimProfiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ESimProfiles"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"HP7aEde780C9EeAf0a6e5CF71D9fcF5aF2\",\n  \"account_sid\": \"ACAaA5ad785D5b02df4eA6cf7eF5f051b2\",\n  \"iccid\": \"<string,null>\",\n  \"sim_sid\": \"HSc1d98eDafAE1Ff2d0dFDe418B3a8Dfb7\",\n  \"status\": \"installed\",\n  \"eid\": \"<string,null>\",\n  \"smdp_plus_address\": \"<string,null-uri>\",\n  \"matching_id\": \"<string,null>\",\n  \"activation_code\": \"<string,null>\",\n  \"error_code\": \"<string,null>\",\n  \"error_message\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                  "createdAt": "2026-10-22T01:42:00.000Z",
+                  "updatedAt": "2026-10-22T01:42:00.000Z",
+                  "uid": "35240-3754e587-e483-46f5-b23a-f6dfec45893d"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:00.000Z",
+              "updatedAt": "2026-10-22T01:42:00.000Z",
+              "uid": "35240-08bfc296-32d0-4fc4-ba01-1d6b765dd6bf"
+            },
+            {
+              "name": "Read all ESimProfile resources",
+              "id": "44317b19-5a12-41fc-b885-d2e3b5f4b478",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/ESimProfiles?Eid=<string>&SimSid=<string>&Status=failed&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "ESimProfiles"
+                  ],
+                  "query": [
+                    {
+                      "description": "List the eSIM Profiles that have been associated with an EId.",
+                      "key": "Eid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Find the eSIM Profile resource related to a [Sim](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.",
+                      "key": "SimSid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "List the eSIM Profiles that are in a given status.",
+                      "key": "Status",
+                      "value": "failed"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of eSIM Profiles."
+              },
+              "response": [
+                {
+                  "id": "b9d82e97-d95b-40cb-a193-c6854f27d535",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/ESimProfiles?Eid=<string>&SimSid=<string>&Status=failed&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "ESimProfiles"
+                      ],
+                      "query": [
+                        {
+                          "description": "List the eSIM Profiles that have been associated with an EId.",
+                          "key": "Eid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Find the eSIM Profile resource related to a [Sim](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) resource by providing the SIM SID. Will always return an array with either 1 or 0 records.",
+                          "key": "SimSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "List the eSIM Profiles that are in a given status.",
+                          "key": "Status",
+                          "value": "failed"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"esim_profiles\": [\n    {\n      \"sid\": \"HP1bbeDB47b03964dB4ce84ACAd6EE85dD\",\n      \"account_sid\": \"ACCD2f5862d96aaDA3bB68C9a39ccEBDC1\",\n      \"iccid\": \"<string,null>\",\n      \"sim_sid\": \"HSffCFDeeD26AD3FddD3dec1DEa8B99dFF\",\n      \"status\": \"failed\",\n      \"eid\": \"<string,null>\",\n      \"smdp_plus_address\": \"<string,null-uri>\",\n      \"matching_id\": \"<string,null>\",\n      \"activation_code\": \"<string,null>\",\n      \"error_code\": \"<string,null>\",\n      \"error_message\": \"<string,null>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    },\n    {\n      \"sid\": \"HP4eE24E6f78FA5E7e5ceaA80decAccf64\",\n      \"account_sid\": \"AC0f9c7cf9b9dbaF0AAF0ec9B9beBc1dA8\",\n      \"iccid\": \"<string,null>\",\n      \"sim_sid\": \"HSad085ccB692C3c4Ef8a090BaC08266b9\",\n      \"status\": \"downloaded\",\n      \"eid\": \"<string,null>\",\n      \"smdp_plus_address\": \"<string,null-uri>\",\n      \"matching_id\": \"<string,null>\",\n      \"activation_code\": \"<string,null>\",\n      \"error_code\": \"<string,null>\",\n      \"error_message\": \"<string,null>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:00.000Z",
+                  "updatedAt": "2026-10-22T01:42:00.000Z",
+                  "uid": "35240-b9d82e97-d95b-40cb-a193-c6854f27d535"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:00.000Z",
+              "updatedAt": "2026-10-22T01:42:00.000Z",
+              "uid": "35240-44317b19-5a12-41fc-b885-d2e3b5f4b478"
+            }
+          ],
+          "id": "5fbab325-46cc-415d-9af1-4a7f28290f1c",
+          "createdAt": "2026-10-22T01:42:00.000Z",
+          "updatedAt": "2026-10-22T01:42:00.000Z",
+          "uid": "35240-5fbab325-46cc-415d-9af1-4a7f28290f1c"
+        }
+      ],
+      "id": "64dfe98f-abf5-49aa-b53d-22bf72f08ea9",
+      "createdAt": "2026-10-22T01:42:00.000Z",
+      "updatedAt": "2026-10-22T01:42:00.000Z",
+      "uid": "35240-64dfe98f-abf5-49aa-b53d-22bf72f08ea9"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

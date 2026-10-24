@@ -1,0 +1,302 @@
+{
+  "info": {
+    "_postman_id": "2c788b30-b022-4915-a245-178ff54c8c48",
+    "name": "KORE - Supersim Supersim V1Usage Record API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:55.000Z",
+    "updatedAt": "2026-10-22T01:42:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c788b30-b022-4915-a245-178ff54c8c48"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "UsageRecords",
+          "item": [
+            {
+              "name": "List usage record",
+              "id": "dca51ac9-170b-4054-b99e-b4ba4dfd9ee1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/UsageRecords?Sim=<string>&Fleet=<string>&Network=HW9a6BFCDE8D4Ad449B02C2C6ffeB76922&IsoCountry=<string>&Group=fleet&Granularity=hour&StartTime=<dateTime>&EndTime=<dateTime>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "UsageRecords"
+                  ],
+                  "query": [
+                    {
+                      "description": "SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super SIMs belonging to this Fleet resource at the time the usage occurred.",
+                      "key": "Fleet",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "SID of a Network resource. Only show UsageRecords representing usage on this network.",
+                      "key": "Network",
+                      "value": "HW9a6BFCDE8D4Ad449B02C2C6ffeB76922"
+                    },
+                    {
+                      "description": "Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country.",
+                      "key": "IsoCountry",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Dimension over which to aggregate usage records. Can be: `sim`, `fleet`, `network`, `isoCountry`. Default is to not aggregate across any of these dimensions, UsageRecords will be aggregated into the time buckets described by the `Granularity` parameter.",
+                      "key": "Group",
+                      "value": "fleet"
+                    },
+                    {
+                      "description": "Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or `all`. Default is `all`. `all` returns one UsageRecord that describes the usage for the entire period.",
+                      "key": "Granularity",
+                      "value": "hour"
+                    },
+                    {
+                      "description": "Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`.",
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time.",
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 249.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "List UsageRecords"
+              },
+              "response": [
+                {
+                  "id": "7c42a18c-4dff-4fb2-9055-f3d5ffa4cd29",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Sim=<string>&Fleet=<string>&Network=HW9a6BFCDE8D4Ad449B02C2C6ffeB76922&IsoCountry=<string>&Group=fleet&Granularity=hour&StartTime=<dateTime>&EndTime=<dateTime>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super SIMs belonging to this Fleet resource at the time the usage occurred.",
+                          "key": "Fleet",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "SID of a Network resource. Only show UsageRecords representing usage on this network.",
+                          "key": "Network",
+                          "value": "HW9a6BFCDE8D4Ad449B02C2C6ffeB76922"
+                        },
+                        {
+                          "description": "Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country.",
+                          "key": "IsoCountry",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Dimension over which to aggregate usage records. Can be: `sim`, `fleet`, `network`, `isoCountry`. Default is to not aggregate across any of these dimensions, UsageRecords will be aggregated into the time buckets described by the `Granularity` parameter.",
+                          "key": "Group",
+                          "value": "fleet"
+                        },
+                        {
+                          "description": "Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or `all`. Default is `all`. `all` returns one UsageRecord that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "hour"
+                        },
+                        {
+                          "description": "Only include usage that occurred at or after this time, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is one month before the `end_time`.",
+                          "key": "StartTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Only include usage that occurred before this time (exclusive), specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Default is the current time.",
+                          "key": "EndTime",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 249.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"usage_records\": [\n    {\n      \"account_sid\": \"ACcb9adD4396a3962F69d8f4EE32c90ae2\",\n      \"sim_sid\": \"HSB93ff0aDd87D0BA803c091aEcB5D351E\",\n      \"network_sid\": \"HWAF06D56d1C913E946eb87CEB7eFa6AcB\",\n      \"fleet_sid\": \"HF4582e2dC23a545F676DEdB8C9e4e685B\",\n      \"iso_country\": \"<string,null>\",\n      \"period\": {\n        \"description\": \"The time period for which the usage is reported. The period is represented as a pair of `start_time` and `end_time` timestamps specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.\"\n      },\n      \"data_upload\": \"<integer,null-int64>\",\n      \"data_download\": \"<integer,null-int64>\",\n      \"data_total\": \"<integer,null-int64>\",\n      \"data_total_billed\": \"<number,null>\",\n      \"billed_unit\": \"<string,null>\"\n    },\n    {\n      \"account_sid\": \"AC4ddce9b1eaf4de2Adcd53FEcE8Ef31D4\",\n      \"sim_sid\": \"HSb3d3d01D7161EFbFB3a0D3D199511408\",\n      \"network_sid\": \"HWc24adbFbacCfA2BcCe25CE96CBCcEd8A\",\n      \"fleet_sid\": \"HF431f4a7CcDBFdFD8fbF125Fb613cbcf2\",\n      \"iso_country\": \"<string,null>\",\n      \"period\": {\n        \"description\": \"The time period for which the usage is reported. The period is represented as a pair of `start_time` and `end_time` timestamps specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.\"\n      },\n      \"data_upload\": \"<integer,null-int64>\",\n      \"data_download\": \"<integer,null-int64>\",\n      \"data_total\": \"<integer,null-int64>\",\n      \"data_total_billed\": \"<number,null>\",\n      \"billed_unit\": \"<string,null>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:56.000Z",
+                  "updatedAt": "2026-10-22T01:42:56.000Z",
+                  "uid": "35240-7c42a18c-4dff-4fb2-9055-f3d5ffa4cd29"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:56.000Z",
+              "updatedAt": "2026-10-22T01:42:56.000Z",
+              "uid": "35240-dca51ac9-170b-4054-b99e-b4ba4dfd9ee1"
+            }
+          ],
+          "id": "6b5621b0-1990-4c5f-8392-3f193975162a",
+          "createdAt": "2026-10-22T01:42:56.000Z",
+          "updatedAt": "2026-10-22T01:42:56.000Z",
+          "uid": "35240-6b5621b0-1990-4c5f-8392-3f193975162a"
+        }
+      ],
+      "id": "5c58d327-c09f-478b-896c-e1713f36038a",
+      "createdAt": "2026-10-22T01:42:56.000Z",
+      "updatedAt": "2026-10-22T01:42:56.000Z",
+      "uid": "35240-5c58d327-c09f-478b-896c-e1713f36038a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

@@ -1,0 +1,986 @@
+{
+  "info": {
+    "_postman_id": "10c06d96-75f4-4085-823d-47f5d6169c94",
+    "name": "Programmable Wireless DataSessions Resource API",
+    "description": "The KORE Programmable Wireless REST API\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:24.000Z",
+    "updatedAt": "2026-10-22T01:40:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-10c06d96-75f4-4085-823d-47f5d6169c94"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Sims",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "DataSessions",
+                  "item": [
+                    {
+                      "name": "List Data Usage records for a sim",
+                      "id": "22b82e3f-0eea-4496-9103-ec70755b67ba",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":Sid",
+                            "DataSessions"
+                          ],
+                          "query": [
+                            {
+                              "key": "PageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page index. This value is simply for client state.",
+                              "key": "Page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page token. This is provided by the API.",
+                              "key": "PageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "72b94489-25ff-4609-8b8f-0a23ccf477a3",
+                              "key": "Sid",
+                              "value": "<string>",
+                              "description": "(Required) The SID of the Sim resource to read the usage from."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "52262d33-066c-41a1-8e52-f9dd1860e4e8",
+                          "name": "Data Usage List",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"data_sessions\": [\n    {\n      \"sid\": \"<string,null>\",\n      \"sim_sid\": \"<string,null>\",\n      \"account_sid\": \"ACDD0DCD82CD080De9Db1E8d89Acb19baC\",\n      \"radio_link\": \"<string,null>\",\n      \"operator_mcc\": \"<string,null>\",\n      \"operator_mnc\": \"<string,null>\",\n      \"operator_country\": \"<string,null>\",\n      \"operator_name\": \"<string,null>\",\n      \"cell_id\": \"<string,null>\",\n      \"cell_location_estimate\": null,\n      \"packets_uploaded\": \"<integer,null>\",\n      \"packets_downloaded\": \"<integer,null>\",\n      \"last_updated\": \"<string,null-date-time>\",\n      \"start\": \"<string,null-date-time>\",\n      \"end\": \"<string,null-date-time>\",\n      \"imei\": \"<string,null>\"\n    },\n    {\n      \"sid\": \"<string,null>\",\n      \"sim_sid\": \"<string,null>\",\n      \"account_sid\": \"ACD06528BBDfe3FfcC305B97E7e8AEdA75\",\n      \"radio_link\": \"<string,null>\",\n      \"operator_mcc\": \"<string,null>\",\n      \"operator_mnc\": \"<string,null>\",\n      \"operator_country\": \"<string,null>\",\n      \"operator_name\": \"<string,null>\",\n      \"cell_id\": \"<string,null>\",\n      \"cell_location_estimate\": {\n        \"lat\": \"<number>\",\n        \"lon\": \"<number>\"\n      },\n      \"packets_uploaded\": \"<integer,null>\",\n      \"packets_downloaded\": \"<integer,null>\",\n      \"last_updated\": \"<string,null-date-time>\",\n      \"start\": \"<string,null-date-time>\",\n      \"end\": \"<string,null-date-time>\",\n      \"imei\": \"<string,null>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-52262d33-066c-41a1-8e52-f9dd1860e4e8"
+                        },
+                        {
+                          "id": "85703e17-6b9e-49a4-8ece-d59967298d24",
+                          "name": "Invalid request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-85703e17-6b9e-49a4-8ece-d59967298d24"
+                        },
+                        {
+                          "id": "40850fe5-fade-4772-a9ca-66a5962c4606",
+                          "name": "Credentials were not provided and are required to access this resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-40850fe5-fade-4772-a9ca-66a5962c4606"
+                        },
+                        {
+                          "id": "963815d1-4e03-4682-9b3a-5f5638e4fbf8",
+                          "name": "Credentials were not provided and are required to access this resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-963815d1-4e03-4682-9b3a-5f5638e4fbf8"
+                        },
+                        {
+                          "id": "b2d83bde-3279-49ce-9948-9281917a2a1c",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-b2d83bde-3279-49ce-9948-9281917a2a1c"
+                        },
+                        {
+                          "id": "95bc58c4-61cb-4d15-89c4-5b9a961c2488",
+                          "name": "Credentials were not provided and are required to access this resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unsupported Media Type",
+                          "code": 415,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-95bc58c4-61cb-4d15-89c4-5b9a961c2488"
+                        },
+                        {
+                          "id": "eec52139-9436-47fc-90d7-cc5f72a77f0d",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-eec52139-9436-47fc-90d7-cc5f72a77f0d"
+                        },
+                        {
+                          "id": "16684e96-e0bb-4afe-94bb-0c1b894426b3",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-16684e96-e0bb-4afe-94bb-0c1b894426b3"
+                        },
+                        {
+                          "id": "f1709da5-0696-43ec-a792-13ff72924922",
+                          "name": "Server is temporary not available",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/DataSessions?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "DataSessions"
+                              ],
+                              "query": [
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:25.000Z",
+                          "updatedAt": "2026-10-22T01:40:25.000Z",
+                          "uid": "35240-f1709da5-0696-43ec-a792-13ff72924922"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:25.000Z",
+                      "updatedAt": "2026-10-22T01:40:25.000Z",
+                      "uid": "35240-22b82e3f-0eea-4496-9103-ec70755b67ba"
+                    }
+                  ],
+                  "id": "2ffc3e78-656a-49a0-a0ab-7bb082bee6cf",
+                  "createdAt": "2026-10-22T01:40:25.000Z",
+                  "updatedAt": "2026-10-22T01:40:25.000Z",
+                  "uid": "35240-2ffc3e78-656a-49a0-a0ab-7bb082bee6cf"
+                }
+              ],
+              "id": "21047a49-6987-4346-a609-c357fb8d50f1",
+              "createdAt": "2026-10-22T01:40:25.000Z",
+              "updatedAt": "2026-10-22T01:40:25.000Z",
+              "uid": "35240-21047a49-6987-4346-a609-c357fb8d50f1"
+            }
+          ],
+          "id": "2a808a08-4b51-45d6-86b7-dd2a34052759",
+          "createdAt": "2026-10-22T01:40:25.000Z",
+          "updatedAt": "2026-10-22T01:40:25.000Z",
+          "uid": "35240-2a808a08-4b51-45d6-86b7-dd2a34052759"
+        }
+      ],
+      "id": "5e69728a-4f37-45c7-8be7-ec2b013b8aac",
+      "createdAt": "2026-10-22T01:40:25.000Z",
+      "updatedAt": "2026-10-22T01:40:25.000Z",
+      "uid": "35240-5e69728a-4f37-45c7-8be7-ec2b013b8aac"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://programmable-wireless.api.korewireless.com"
+    }
+  ]
+}

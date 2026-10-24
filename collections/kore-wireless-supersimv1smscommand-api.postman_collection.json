@@ -1,0 +1,604 @@
+{
+  "info": {
+    "_postman_id": "19158409-9ef5-426e-b708-d53d002e1345",
+    "name": "KORE - Supersim Supersim V1Sms Command API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:50.000Z",
+    "updatedAt": "2026-10-22T01:42:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-19158409-9ef5-426e-b708-d53d002e1345"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "SmsCommands",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch sms command",
+                  "id": "b278ca7e-b952-48aa-945d-adf716a02331",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/SmsCommands/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "SmsCommands",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b1197f7f-b74e-4c57-8c69-97332a4a384a",
+                          "key": "Sid",
+                          "value": "HC8F769aa4d9Eed43FB93ffF2f2dCEF617",
+                          "description": "(Required) The SID of the SMS Command resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch SMS Command instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "879be63d-37d0-404f-b6c3-9aabf8504c23",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/SmsCommands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "SmsCommands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HCDA55A71aDcdcAc63dc49fe1dfdfd8Db0\",\n  \"account_sid\": \"ACe838F9B2fEec74ba3Cc36E5ad40A0d8A\",\n  \"sim_sid\": \"HSc3D8Ca3FDeb97F2CB0BFaceA0FE992fb\",\n  \"payload\": \"<string,null>\",\n  \"status\": \"queued\",\n  \"direction\": \"from_sim\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                      "createdAt": "2026-10-22T01:42:50.000Z",
+                      "updatedAt": "2026-10-22T01:42:50.000Z",
+                      "uid": "35240-879be63d-37d0-404f-b6c3-9aabf8504c23"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:50.000Z",
+                  "updatedAt": "2026-10-22T01:42:50.000Z",
+                  "uid": "35240-b278ca7e-b952-48aa-945d-adf716a02331"
+                }
+              ],
+              "id": "1c9f6dab-b745-4b0d-8460-cedd2bab3bc2",
+              "createdAt": "2026-10-22T01:42:50.000Z",
+              "updatedAt": "2026-10-22T01:42:50.000Z",
+              "uid": "35240-1c9f6dab-b745-4b0d-8460-cedd2bab3bc2"
+            },
+            {
+              "name": "Create sms command",
+              "id": "0fbb50d5-d924-4d05-8c00-1cf7f494c5a5",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The `sid` or `unique_name` of the [SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) to send the SMS Command to.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The message body of the SMS Command.",
+                      "key": "Payload",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                      "key": "CallbackMethod",
+                      "value": "POST"
+                    },
+                    {
+                      "description": "The URL we should call using the `callback_method` after we have sent the command.",
+                      "key": "CallbackUrl",
+                      "value": "<uri>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/SmsCommands",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "SmsCommands"
+                  ]
+                },
+                "description": "Send SMS Command to a Sim."
+              },
+              "response": [
+                {
+                  "id": "00d0e4d5-86b7-4e7e-bd57-3a9ebd7be21d",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The `sid` or `unique_name` of the [SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) to send the SMS Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The message body of the SMS Command.",
+                          "key": "Payload",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                          "key": "CallbackMethod",
+                          "value": "POST"
+                        },
+                        {
+                          "description": "The URL we should call using the `callback_method` after we have sent the command.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/SmsCommands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "SmsCommands"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"HCDA55A71aDcdcAc63dc49fe1dfdfd8Db0\",\n  \"account_sid\": \"ACe838F9B2fEec74ba3Cc36E5ad40A0d8A\",\n  \"sim_sid\": \"HSc3D8Ca3FDeb97F2CB0BFaceA0FE992fb\",\n  \"payload\": \"<string,null>\",\n  \"status\": \"queued\",\n  \"direction\": \"from_sim\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                  "createdAt": "2026-10-22T01:42:50.000Z",
+                  "updatedAt": "2026-10-22T01:42:50.000Z",
+                  "uid": "35240-00d0e4d5-86b7-4e7e-bd57-3a9ebd7be21d"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:50.000Z",
+              "updatedAt": "2026-10-22T01:42:50.000Z",
+              "uid": "35240-0fbb50d5-d924-4d05-8c00-1cf7f494c5a5"
+            },
+            {
+              "name": "List sms command",
+              "id": "8bfcc365-da54-49c5-a1c8-7833f218e43d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/SmsCommands?Sim=<string>&Status=received&Direction=from_sim&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "SmsCommands"
+                  ],
+                  "query": [
+                    {
+                      "description": "The SID or unique name of the Sim resource that SMS Command was sent to or from.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each.",
+                      "key": "Status",
+                      "value": "received"
+                    },
+                    {
+                      "description": "The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.",
+                      "key": "Direction",
+                      "value": "from_sim"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of SMS Commands from your account."
+              },
+              "response": [
+                {
+                  "id": "e97f2c8b-690a-4c04-be78-31c1d0a510b7",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/SmsCommands?Sim=<string>&Status=received&Direction=from_sim&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "SmsCommands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The SID or unique name of the Sim resource that SMS Command was sent to or from.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the SMS Command. Can be: `queued`, `sent`, `delivered`, `received` or `failed`. See the [SMS Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/smscommand-resource#status-values) for a description of each.",
+                          "key": "Status",
+                          "value": "received"
+                        },
+                        {
+                          "description": "The direction of the SMS Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.",
+                          "key": "Direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sms_commands\": [\n    {\n      \"sid\": \"HCe6b3654308ba4b59D8db69a0Ea17Bc87\",\n      \"account_sid\": \"AC5C63D3f26013d1235E3c91dd9E2B4dE5\",\n      \"sim_sid\": \"HSbA1cE47750b7e1ee0384A38499AF93f6\",\n      \"payload\": \"<string,null>\",\n      \"status\": \"sent\",\n      \"direction\": \"to_sim\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    },\n    {\n      \"sid\": \"HCD67F5Bb80F782EF5A3EF46EA7959280a\",\n      \"account_sid\": \"AC0aCCaeb18fd67d4A69DC6F2e4Ce9b2C2\",\n      \"sim_sid\": \"HSb9F6fBDb2fe0Bd8a4c27Aceca0bd51bB\",\n      \"payload\": \"<string,null>\",\n      \"status\": \"received\",\n      \"direction\": \"to_sim\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:50.000Z",
+                  "updatedAt": "2026-10-22T01:42:50.000Z",
+                  "uid": "35240-e97f2c8b-690a-4c04-be78-31c1d0a510b7"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:50.000Z",
+              "updatedAt": "2026-10-22T01:42:50.000Z",
+              "uid": "35240-8bfcc365-da54-49c5-a1c8-7833f218e43d"
+            }
+          ],
+          "id": "bf4914af-2d89-4205-8736-2b7783e4a8d1",
+          "createdAt": "2026-10-22T01:42:50.000Z",
+          "updatedAt": "2026-10-22T01:42:50.000Z",
+          "uid": "35240-bf4914af-2d89-4205-8736-2b7783e4a8d1"
+        }
+      ],
+      "id": "61a5122a-df29-40de-9b92-981dda034c25",
+      "createdAt": "2026-10-22T01:42:50.000Z",
+      "updatedAt": "2026-10-22T01:42:50.000Z",
+      "uid": "35240-61a5122a-df29-40de-9b92-981dda034c25"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

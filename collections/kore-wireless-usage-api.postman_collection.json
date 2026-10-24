@@ -1,0 +1,1498 @@
+{
+  "info": {
+    "_postman_id": "9e8059b3-ee6b-4209-9df6-e9b8c8d1cbcb",
+    "name": "Connectivity Usage API",
+    "description": "Connectivity APIs help users manage their connectivity through APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:05.000Z",
+    "updatedAt": "2026-10-22T01:43:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9e8059b3-ee6b-4209-9df6-e9b8c8d1cbcb"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account-id}",
+              "item": [
+                {
+                  "name": "subscriptions",
+                  "item": [
+                    {
+                      "name": "{subscription-id}",
+                      "item": [
+                        {
+                          "name": "usage-records",
+                          "item": [
+                            {
+                              "name": "Finds Usage Records By Sim Number And Date Range",
+                              "id": "3bcd4a48-1484-4d02-b072-9e4ab87eb203",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "noauth"
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "subscriptions",
+                                    ":subscription-id",
+                                    "usage-records"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "start-date",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) Date range must fall in between 60 days",
+                                      "key": "end-date",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "source",
+                                      "value": "cdr"
+                                    },
+                                    {
+                                      "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                      "key": "include-plan-name",
+                                      "value": "<boolean>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "e71a88c0-c688-444b-92fa-f83d6014f4e4",
+                                      "key": "account-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier of your account"
+                                    },
+                                    {
+                                      "id": "09427e45-3bb3-43b9-b256-57a8c071473b",
+                                      "key": "subscription-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier for the SIM"
+                                    }
+                                  ]
+                                },
+                                "description": "Get usage records for a subscription"
+                              },
+                              "response": [
+                                {
+                                  "id": "20aa7eb2-bdac-49bf-a34f-0590710de58b",
+                                  "name": "200 response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "subscriptions",
+                                        ":subscription-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        },
+                                        {
+                                          "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                          "key": "include-plan-name",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "subscription-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"source\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"data\": {\n    \"total-usage\": \"<integer>\",\n    \"unit\": \"<string>\",\n    \"daily-usages\": [\n      {\n        \"date\": \"<string>\",\n        \"total-usage\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"date\": \"<string>\",\n        \"total-usage\": \"<integer>\",\n        \"unit\": \"<string>\"\n      }\n    ]\n  },\n  \"sms\": {\n    \"total-usage\": \"<integer>\",\n    \"unit\": \"<string>\",\n    \"daily-usages\": [\n      {\n        \"date\": \"<string>\",\n        \"total-usage\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"date\": \"<string>\",\n        \"total-usage\": \"<integer>\",\n        \"unit\": \"<string>\"\n      }\n    ]\n  },\n  \"voice\": {\n    \"total-usage\": \"<integer>\",\n    \"unit\": \"<string>\",\n    \"daily-usages\": [\n      {\n        \"date\": \"<string>\",\n        \"total-usage\": \"<integer>\",\n        \"unit\": \"<string>\"\n      },\n      {\n        \"date\": \"<string>\",\n        \"total-usage\": \"<integer>\",\n        \"unit\": \"<string>\"\n      }\n    ]\n  }\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-20aa7eb2-bdac-49bf-a34f-0590710de58b"
+                                },
+                                {
+                                  "id": "3b0bec4a-eff2-420c-9fe9-5331069123ac",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "subscriptions",
+                                        ":subscription-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        },
+                                        {
+                                          "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                          "key": "include-plan-name",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "subscription-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-3b0bec4a-eff2-420c-9fe9-5331069123ac"
+                                },
+                                {
+                                  "id": "cd58490a-954d-41b6-846e-d7b43f67d36d",
+                                  "name": "Unauthorised User",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "subscriptions",
+                                        ":subscription-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        },
+                                        {
+                                          "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                          "key": "include-plan-name",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "subscription-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-cd58490a-954d-41b6-846e-d7b43f67d36d"
+                                },
+                                {
+                                  "id": "25941820-1b89-4a63-8568-0214dffe2db5",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "subscriptions",
+                                        ":subscription-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        },
+                                        {
+                                          "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                          "key": "include-plan-name",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "subscription-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-25941820-1b89-4a63-8568-0214dffe2db5"
+                                },
+                                {
+                                  "id": "96544895-7b47-415b-8d2c-b47a0285ebd2",
+                                  "name": "The Specified Resource Was Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "subscriptions",
+                                        ":subscription-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        },
+                                        {
+                                          "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                          "key": "include-plan-name",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "subscription-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"INFO\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-96544895-7b47-415b-8d2c-b47a0285ebd2"
+                                },
+                                {
+                                  "id": "584e9277-48e7-4658-ae1b-1a67f348c7b5",
+                                  "name": "Server Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/subscriptions/:subscription-id/usage-records?start-date=<string>&end-date=<string>&source=cdr&include-plan-name=<boolean>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "subscriptions",
+                                        ":subscription-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        },
+                                        {
+                                          "description": "Indicates whether the Plan Name of which the device is in when the usages is incurred should be included in the Response.",
+                                          "key": "include-plan-name",
+                                          "value": "<boolean>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "subscription-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"StatusCode\": \"<integer>\",\n  \"Messages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"ErrorMessages\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-584e9277-48e7-4658-ae1b-1a67f348c7b5"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:43:05.000Z",
+                              "updatedAt": "2026-10-22T01:43:05.000Z",
+                              "uid": "35240-3bcd4a48-1484-4d02-b072-9e4ab87eb203"
+                            }
+                          ],
+                          "id": "59a12fe0-80aa-4feb-9bdf-f932c89c1807",
+                          "createdAt": "2026-10-22T01:43:05.000Z",
+                          "updatedAt": "2026-10-22T01:43:05.000Z",
+                          "uid": "35240-59a12fe0-80aa-4feb-9bdf-f932c89c1807"
+                        }
+                      ],
+                      "id": "3a822d88-4e2a-4281-8079-a6dea0a35d1c",
+                      "createdAt": "2026-10-22T01:43:05.000Z",
+                      "updatedAt": "2026-10-22T01:43:05.000Z",
+                      "uid": "35240-3a822d88-4e2a-4281-8079-a6dea0a35d1c"
+                    }
+                  ],
+                  "id": "44f2efc8-af63-4793-a3e0-ca2d9ea4a1d6",
+                  "createdAt": "2026-10-22T01:43:05.000Z",
+                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                  "uid": "35240-44f2efc8-af63-4793-a3e0-ca2d9ea4a1d6"
+                },
+                {
+                  "name": "plans",
+                  "item": [
+                    {
+                      "name": "{plan-id}",
+                      "item": [
+                        {
+                          "name": "usage-records",
+                          "item": [
+                            {
+                              "name": "Finds Usage Records By PlanId",
+                              "id": "725ec5c9-6ce6-4a38-8486-1defae528eef",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "noauth"
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id",
+                                    "usage-records"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) ",
+                                      "key": "start-date",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "description": "(Required) Date range must fall in between 60 days",
+                                      "key": "end-date",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "key": "source",
+                                      "value": "cdr"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "c77ea58e-917b-44de-804c-a81938b5112c",
+                                      "key": "account-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier of your account"
+                                    },
+                                    {
+                                      "id": "2b911d6f-b30f-4f2e-9690-ac788f202027",
+                                      "key": "plan-id",
+                                      "value": "<string>",
+                                      "description": "(Required) The unique identifier of your plan"
+                                    }
+                                  ]
+                                },
+                                "description": "Get usage records for a plan"
+                              },
+                              "response": [
+                                {
+                                  "id": "267cb93d-b366-4cf9-a057-214dc9910604",
+                                  "name": "200 response",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "plans",
+                                        ":plan-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "plan-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"source\": \"<string>\",\n  \"plan-id\": \"<string>\",\n  \"total-usage\": \"<integer>\",\n  \"unit\": \"<string>\",\n  \"daily-usages\": [\n    {\n      \"date\": \"<string>\",\n      \"total-usage\": \"<integer>\",\n      \"unit\": \"<string>\"\n    },\n    {\n      \"date\": \"<string>\",\n      \"total-usage\": \"<integer>\",\n      \"unit\": \"<string>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-267cb93d-b366-4cf9-a057-214dc9910604"
+                                },
+                                {
+                                  "id": "2ea3ee01-d05c-408b-825f-3319aa343e1f",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "plans",
+                                        ":plan-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "plan-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-2ea3ee01-d05c-408b-825f-3319aa343e1f"
+                                },
+                                {
+                                  "id": "7ccdd5ee-5f4a-4374-980a-1a0010feba0f",
+                                  "name": "Unauthorised User",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "plans",
+                                        ":plan-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "plan-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-7ccdd5ee-5f4a-4374-980a-1a0010feba0f"
+                                },
+                                {
+                                  "id": "53371c5f-e4c6-4886-821e-d3b926946ada",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "plans",
+                                        ":plan-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "plan-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-53371c5f-e4c6-4886-821e-d3b926946ada"
+                                },
+                                {
+                                  "id": "3356b1ce-2775-4903-b1d4-88fa8959ce76",
+                                  "name": "The Specified Resource Was Not Found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "plans",
+                                        ":plan-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "plan-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"INFO\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-3356b1ce-2775-4903-b1d4-88fa8959ce76"
+                                },
+                                {
+                                  "id": "caf7d270-5261-4842-9333-068aff1750a7",
+                                  "name": "Server Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id/usage-records?start-date=<string>&end-date=<string>&source=cdr",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "accounts",
+                                        ":account-id",
+                                        "plans",
+                                        ":plan-id",
+                                        "usage-records"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "(Required) ",
+                                          "key": "start-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "description": "(Required) Date range must fall in between 60 days",
+                                          "key": "end-date",
+                                          "value": "<string>"
+                                        },
+                                        {
+                                          "key": "source",
+                                          "value": "cdr"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "account-id"
+                                        },
+                                        {
+                                          "key": "plan-id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Origin",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Methods",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Credentials",
+                                      "value": "<string>"
+                                    },
+                                    {
+                                      "disabled": false,
+                                      "description": {
+                                        "content": "",
+                                        "type": "text/plain"
+                                      },
+                                      "key": "Access-Control-Allow-Headers",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\"\n}",
+                                  "createdAt": "2026-10-22T01:43:05.000Z",
+                                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                                  "uid": "35240-caf7d270-5261-4842-9333-068aff1750a7"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T01:43:05.000Z",
+                              "updatedAt": "2026-10-22T01:43:05.000Z",
+                              "uid": "35240-725ec5c9-6ce6-4a38-8486-1defae528eef"
+                            }
+                          ],
+                          "id": "978a0362-c887-4091-b877-146d2c1e29ff",
+                          "createdAt": "2026-10-22T01:43:05.000Z",
+                          "updatedAt": "2026-10-22T01:43:05.000Z",
+                          "uid": "35240-978a0362-c887-4091-b877-146d2c1e29ff"
+                        }
+                      ],
+                      "id": "29527422-9542-4be2-977a-5217de382337",
+                      "createdAt": "2026-10-22T01:43:05.000Z",
+                      "updatedAt": "2026-10-22T01:43:05.000Z",
+                      "uid": "35240-29527422-9542-4be2-977a-5217de382337"
+                    }
+                  ],
+                  "id": "97b4126a-0cbf-4a65-bac2-2d98672a8a1a",
+                  "createdAt": "2026-10-22T01:43:05.000Z",
+                  "updatedAt": "2026-10-22T01:43:05.000Z",
+                  "uid": "35240-97b4126a-0cbf-4a65-bac2-2d98672a8a1a"
+                }
+              ],
+              "id": "f09cb744-d917-4772-843a-35b0f7d565db",
+              "createdAt": "2026-10-22T01:43:05.000Z",
+              "updatedAt": "2026-10-22T01:43:05.000Z",
+              "uid": "35240-f09cb744-d917-4772-843a-35b0f7d565db"
+            }
+          ],
+          "id": "d4debd98-b77d-44c2-9b87-607804822bde",
+          "createdAt": "2026-10-22T01:43:05.000Z",
+          "updatedAt": "2026-10-22T01:43:05.000Z",
+          "uid": "35240-d4debd98-b77d-44c2-9b87-607804822bde"
+        }
+      ],
+      "id": "4015798c-df00-4d41-b167-ba75eaf9404d",
+      "createdAt": "2026-10-22T01:43:05.000Z",
+      "updatedAt": "2026-10-22T01:43:05.000Z",
+      "uid": "35240-4015798c-df00-4d41-b167-ba75eaf9404d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.korewireless.com/connectivity"
+    }
+  ]
+}

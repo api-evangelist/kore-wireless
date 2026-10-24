@@ -1,0 +1,257 @@
+{
+  "info": {
+    "_postman_id": "49008ea8-5802-4626-8d4c-b1dd5c63bf4d",
+    "name": "KORE - Supersim Supersim V1Sim Ip Address API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:44.000Z",
+    "updatedAt": "2026-10-22T01:42:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-49008ea8-5802-4626-8d4c-b1dd5c63bf4d"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Sims",
+          "item": [
+            {
+              "name": "{SimSid}",
+              "item": [
+                {
+                  "name": "IpAddresses",
+                  "item": [
+                    {
+                      "name": "List sim ip address",
+                      "id": "53415074-dfbc-464c-971f-8924e5a3b7cd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:SimSid/IpAddresses?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":SimSid",
+                            "IpAddresses"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                              "key": "PageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page index. This value is simply for client state.",
+                              "key": "Page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page token. This is provided by the API.",
+                              "key": "PageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "70634812-6efa-4a5d-9fb3-b5b4d89c367b",
+                              "key": "SimSid",
+                              "value": "<string>",
+                              "description": "(Required) The SID of the Super SIM to list IP Addresses for."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a list of IP Addresses for the given Super SIM."
+                      },
+                      "response": [
+                        {
+                          "id": "e9c90cbd-a884-49a1-9049-863fdce89dd6",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:SimSid/IpAddresses?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":SimSid",
+                                "IpAddresses"
+                              ],
+                              "query": [
+                                {
+                                  "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SimSid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Specify the origin(s) allowed to access the resource",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Specify the HTTP methods allowed when accessing the resource",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Specify the headers allowed when accessing the resource",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Indicates whether the browser should include credentials",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Headers exposed to the client",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Expose-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"ip_addresses\": [\n    {\n      \"ip_address\": \"<string,null>\",\n      \"ip_address_version\": \"IPv4\"\n    },\n    {\n      \"ip_address\": \"<string,null>\",\n      \"ip_address_version\": \"IPv4\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:42:45.000Z",
+                          "updatedAt": "2026-10-22T01:42:45.000Z",
+                          "uid": "35240-e9c90cbd-a884-49a1-9049-863fdce89dd6"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:42:45.000Z",
+                      "updatedAt": "2026-10-22T01:42:45.000Z",
+                      "uid": "35240-53415074-dfbc-464c-971f-8924e5a3b7cd"
+                    }
+                  ],
+                  "id": "e7d76e05-3706-478f-8ea8-9999fa3580fa",
+                  "createdAt": "2026-10-22T01:42:45.000Z",
+                  "updatedAt": "2026-10-22T01:42:45.000Z",
+                  "uid": "35240-e7d76e05-3706-478f-8ea8-9999fa3580fa"
+                }
+              ],
+              "id": "a6ef1975-6801-48da-8a7d-6f6b3721be29",
+              "createdAt": "2026-10-22T01:42:45.000Z",
+              "updatedAt": "2026-10-22T01:42:45.000Z",
+              "uid": "35240-a6ef1975-6801-48da-8a7d-6f6b3721be29"
+            }
+          ],
+          "id": "163b0a0a-f6cd-4731-aa57-54400241575a",
+          "createdAt": "2026-10-22T01:42:45.000Z",
+          "updatedAt": "2026-10-22T01:42:45.000Z",
+          "uid": "35240-163b0a0a-f6cd-4731-aa57-54400241575a"
+        }
+      ],
+      "id": "1bb36582-0fbf-490f-acd3-1d02b8717399",
+      "createdAt": "2026-10-22T01:42:45.000Z",
+      "updatedAt": "2026-10-22T01:42:45.000Z",
+      "uid": "35240-1bb36582-0fbf-490f-acd3-1d02b8717399"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

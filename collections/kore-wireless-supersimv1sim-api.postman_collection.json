@@ -1,0 +1,945 @@
+{
+  "info": {
+    "_postman_id": "8e0f62ec-711d-43a4-a8ef-5905c02fccff",
+    "name": "KORE - Supersim Supersim V1Sim API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:39.000Z",
+    "updatedAt": "2026-10-22T01:42:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8e0f62ec-711d-43a4-a8ef-5905c02fccff"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Sims",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch a Super SIM",
+                  "id": "f023523f-c5f6-4a4a-9625-7ad8a55cee90",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Sims/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Sims",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5d6abbc9-3c01-4ea1-ab24-74114f076dd1",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the Sim resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch a Super SIM instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "13547c9c-bfbb-4e78-8bee-fb9d39497fcd",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HSedbfA14edE6592C943bCfFC22334ff6D\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACcfc21cD203e1fEbc40Eaa16311dC7AE8\",\n  \"iccid\": \"<string,null>\",\n  \"status\": \"scheduled\",\n  \"fleet_sid\": \"HF1bD89A656A3eaE1c8A2b7F9eA99ba7Ce\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                      "createdAt": "2026-10-22T01:42:40.000Z",
+                      "updatedAt": "2026-10-22T01:42:40.000Z",
+                      "uid": "35240-13547c9c-bfbb-4e78-8bee-fb9d39497fcd"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:40.000Z",
+                  "updatedAt": "2026-10-22T01:42:40.000Z",
+                  "uid": "35240-f023523f-c5f6-4a4a-9625-7ad8a55cee90"
+                },
+                {
+                  "name": "Update a SIM",
+                  "id": "da0c4eae-ea07-466d-940d-39110b47de77",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                          "key": "UniqueName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The new status of the resource. Can be: `ready`, `active`, or `inactive`. See the [Super SIM Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource#status-values) for more info.",
+                          "key": "Status",
+                          "value": "active"
+                        },
+                        {
+                          "description": "The SID or unique name of the Fleet to which the SIM resource should be assigned.",
+                          "key": "Fleet",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The URL we should call using the `callback_method` after an asynchronous update has finished.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                          "key": "CallbackMethod",
+                          "value": "POST"
+                        },
+                        {
+                          "description": "The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.",
+                          "key": "AccountSid",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Sims/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Sims",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "81149ae4-2b41-4ca8-9c77-456eeca69f22",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the Sim resource to update."
+                        }
+                      ]
+                    },
+                    "description": "Updates the given properties of a Super SIM instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "a0de2bfb-4f58-43dd-8696-aaa4ac0bc4d9",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                              "key": "UniqueName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The new status of the resource. Can be: `ready`, `active`, or `inactive`. See the [Super SIM Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource#status-values) for more info.",
+                              "key": "Status",
+                              "value": "active"
+                            },
+                            {
+                              "description": "The SID or unique name of the Fleet to which the SIM resource should be assigned.",
+                              "key": "Fleet",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The URL we should call using the `callback_method` after an asynchronous update has finished.",
+                              "key": "CallbackUrl",
+                              "value": "<uri>"
+                            },
+                            {
+                              "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                              "key": "CallbackMethod",
+                              "value": "POST"
+                            },
+                            {
+                              "description": "The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.",
+                              "key": "AccountSid",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HSedbfA14edE6592C943bCfFC22334ff6D\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACcfc21cD203e1fEbc40Eaa16311dC7AE8\",\n  \"iccid\": \"<string,null>\",\n  \"status\": \"scheduled\",\n  \"fleet_sid\": \"HF1bD89A656A3eaE1c8A2b7F9eA99ba7Ce\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                      "createdAt": "2026-10-22T01:42:40.000Z",
+                      "updatedAt": "2026-10-22T01:42:40.000Z",
+                      "uid": "35240-a0de2bfb-4f58-43dd-8696-aaa4ac0bc4d9"
+                    },
+                    {
+                      "id": "5801d0b8-0ee4-45d3-b402-ba65a0a98811",
+                      "name": "Accepted",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                              "key": "UniqueName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The new status of the resource. Can be: `ready`, `active`, or `inactive`. See the [Super SIM Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource#status-values) for more info.",
+                              "key": "Status",
+                              "value": "active"
+                            },
+                            {
+                              "description": "The SID or unique name of the Fleet to which the SIM resource should be assigned.",
+                              "key": "Fleet",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The URL we should call using the `callback_method` after an asynchronous update has finished.",
+                              "key": "CallbackUrl",
+                              "value": "<uri>"
+                            },
+                            {
+                              "description": "The HTTP method we should use to call `callback_url`. Can be: `GET` or `POST` and the default is POST.",
+                              "key": "CallbackMethod",
+                              "value": "POST"
+                            },
+                            {
+                              "description": "The SID of the Account to which the Sim resource should belong. The Account SID can only be that of the requesting Account or that of a Subaccount of the requesting Account. Only valid when the Sim resource's status is new.",
+                              "key": "AccountSid",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HSedbfA14edE6592C943bCfFC22334ff6D\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACcfc21cD203e1fEbc40Eaa16311dC7AE8\",\n  \"iccid\": \"<string,null>\",\n  \"status\": \"scheduled\",\n  \"fleet_sid\": \"HF1bD89A656A3eaE1c8A2b7F9eA99ba7Ce\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                      "createdAt": "2026-10-22T01:42:40.000Z",
+                      "updatedAt": "2026-10-22T01:42:40.000Z",
+                      "uid": "35240-5801d0b8-0ee4-45d3-b402-ba65a0a98811"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:40.000Z",
+                  "updatedAt": "2026-10-22T01:42:40.000Z",
+                  "uid": "35240-da0c4eae-ea07-466d-940d-39110b47de77"
+                }
+              ],
+              "id": "49d86859-5b42-4395-bc27-51ec7fb61cd3",
+              "createdAt": "2026-10-22T01:42:40.000Z",
+              "updatedAt": "2026-10-22T01:42:40.000Z",
+              "uid": "35240-49d86859-5b42-4395-bc27-51ec7fb61cd3"
+            },
+            {
+              "name": "Register a Super SIM",
+              "id": "5c8c5f2e-3b74-4a85-83eb-91f5438818bb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account.",
+                      "key": "Iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The 10-digit code required to claim the Super SIM for your Account.",
+                      "key": "RegistrationCode",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Sims",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Sims"
+                  ]
+                },
+                "description": "Register a Super SIM to your Account"
+              },
+              "response": [
+                {
+                  "id": "9d58dd58-4bda-4fe5-a0ce-eddb0e4fbc16",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account.",
+                          "key": "Iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The 10-digit code required to claim the Super SIM for your Account.",
+                          "key": "RegistrationCode",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Sims",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Sims"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"HSedbfA14edE6592C943bCfFC22334ff6D\",\n  \"unique_name\": \"<string,null>\",\n  \"account_sid\": \"ACcfc21cD203e1fEbc40Eaa16311dC7AE8\",\n  \"iccid\": \"<string,null>\",\n  \"status\": \"scheduled\",\n  \"fleet_sid\": \"HF1bD89A656A3eaE1c8A2b7F9eA99ba7Ce\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"links\": \"<object,null>\"\n}",
+                  "createdAt": "2026-10-22T01:42:40.000Z",
+                  "updatedAt": "2026-10-22T01:42:40.000Z",
+                  "uid": "35240-9d58dd58-4bda-4fe5-a0ce-eddb0e4fbc16"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:40.000Z",
+              "updatedAt": "2026-10-22T01:42:40.000Z",
+              "uid": "35240-5c8c5f2e-3b74-4a85-83eb-91f5438818bb"
+            },
+            {
+              "name": "List Super SIMs",
+              "id": "ecb75f13-2d84-4dab-aa45-17e4f1048d55",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Sims?Status=new&Fleet=<string>&Iccid=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Sims"
+                  ],
+                  "query": [
+                    {
+                      "description": "The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.",
+                      "key": "Status",
+                      "value": "new"
+                    },
+                    {
+                      "description": "The SID or unique name of the Fleet to which a list of Sims are assigned.",
+                      "key": "Fleet",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs.",
+                      "key": "Iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of Super SIMs from your account."
+              },
+              "response": [
+                {
+                  "id": "d1670beb-2aa4-4e66-8ea1-a9f2f2635290",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Sims?Status=new&Fleet=<string>&Iccid=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Sims"
+                      ],
+                      "query": [
+                        {
+                          "description": "The status of the Sim resources to read. Can be `new`, `ready`, `active`, `inactive`, or `scheduled`.",
+                          "key": "Status",
+                          "value": "new"
+                        },
+                        {
+                          "description": "The SID or unique name of the Fleet to which a list of Sims are assigned.",
+                          "key": "Fleet",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with a Super SIM to filter the list by. Passing this parameter will always return a list containing zero or one SIMs.",
+                          "key": "Iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sims\": [\n    {\n      \"sid\": \"HS4b48F9e6bd6b23a42Ac8b15Ee31094Ca\",\n      \"unique_name\": \"<string,null>\",\n      \"account_sid\": \"ACAb8daCe6df0cFdDed7bfa51F44AFAA26\",\n      \"iccid\": \"<string,null>\",\n      \"status\": \"new\",\n      \"fleet_sid\": \"HFAd81cdE33fD53eb5C12ff63e114a5B17\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\",\n      \"links\": \"<object,null>\"\n    },\n    {\n      \"sid\": \"HSeA9D405B211D4eaEAe9c89aD929Feee8\",\n      \"unique_name\": \"<string,null>\",\n      \"account_sid\": \"ACbEd1AdE91c2cCCcbd69bD4A7FEcb6549\",\n      \"iccid\": \"<string,null>\",\n      \"status\": \"ready\",\n      \"fleet_sid\": \"HF28CAe520C88084edA0cDB4afeAEfaD14\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\",\n      \"links\": \"<object,null>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:40.000Z",
+                  "updatedAt": "2026-10-22T01:42:40.000Z",
+                  "uid": "35240-d1670beb-2aa4-4e66-8ea1-a9f2f2635290"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:40.000Z",
+              "updatedAt": "2026-10-22T01:42:40.000Z",
+              "uid": "35240-ecb75f13-2d84-4dab-aa45-17e4f1048d55"
+            }
+          ],
+          "id": "2dfa5a3a-38c0-424d-87fb-b9598674723a",
+          "createdAt": "2026-10-22T01:42:40.000Z",
+          "updatedAt": "2026-10-22T01:42:40.000Z",
+          "uid": "35240-2dfa5a3a-38c0-424d-87fb-b9598674723a"
+        }
+      ],
+      "id": "da5b87bd-b8ce-4f8c-bd4b-8cc445b413e4",
+      "createdAt": "2026-10-22T01:42:40.000Z",
+      "updatedAt": "2026-10-22T01:42:40.000Z",
+      "uid": "35240-da5b87bd-b8ce-4f8c-bd4b-8cc445b413e4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

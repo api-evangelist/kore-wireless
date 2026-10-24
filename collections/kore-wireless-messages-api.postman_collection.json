@@ -1,0 +1,1863 @@
+{
+  "info": {
+    "_postman_id": "c1903c7c-b943-4812-8d9b-31dcb3abe2de",
+    "name": "SMS Messages API",
+    "description": "SMS API allows you to programmatically exchange short messages (SMS) with your devices.\nPlease see the SMS API Guide for more details on how to use and supported Service Types.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:41:00.000Z",
+    "updatedAt": "2026-10-22T01:41:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c1903c7c-b943-4812-8d9b-31dcb3abe2de"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "messages",
+          "item": [
+            {
+              "name": "send",
+              "item": [
+                {
+                  "name": "Send new message",
+                  "id": "ac3a7f65-3a56-44d3-8920-b11b44ab701c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages",
+                        "send"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                          "key": "account-id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Customers can use this to send an SMS to their SIMs in ConnectivityPro."
+                  },
+                  "response": [
+                    {
+                      "id": "09078b53-609e-4448-aa51-96cecdc6f67c",
+                      "name": "Ok",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"mid\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-09078b53-609e-4448-aa51-96cecdc6f67c"
+                    },
+                    {
+                      "id": "23b245c4-ab95-4bb0-afec-15fdfeb49ef8",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-23b245c4-ab95-4bb0-afec-15fdfeb49ef8"
+                    },
+                    {
+                      "id": "a563b01a-09c7-492a-8279-136151e98ea0",
+                      "name": "Unauthorised User",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-a563b01a-09c7-492a-8279-136151e98ea0"
+                    },
+                    {
+                      "id": "e0bf503d-5eba-4dec-bb5e-9518453f3e26",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-e0bf503d-5eba-4dec-bb5e-9518453f3e26"
+                    },
+                    {
+                      "id": "864ca827-4294-47bb-8622-c8b1da60e255",
+                      "name": "The Specified Resource Was Not Found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-864ca827-4294-47bb-8622-c8b1da60e255"
+                    },
+                    {
+                      "id": "d0320eec-6747-45f7-b025-13c9a291fad2",
+                      "name": "Unprocessable content",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-d0320eec-6747-45f7-b025-13c9a291fad2"
+                    },
+                    {
+                      "id": "da466791-3bc4-4c04-a67f-770985efcac5",
+                      "name": "Too Many Requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-da466791-3bc4-4c04-a67f-770985efcac5"
+                    },
+                    {
+                      "id": "d00079f2-495c-47a2-95dd-130c255beb08",
+                      "name": "Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": \"<string>\",\n  \"from\": \"<string>\",\n  \"subscription-id\": \"<string>\",\n  \"iccid\": \"<string>\",\n  \"msisdn\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/messages/send?account-id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "messages",
+                            "send"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Account ID to which the SIM receiving the SMS belongs to.",
+                              "key": "account-id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-d00079f2-495c-47a2-95dd-130c255beb08"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-ac3a7f65-3a56-44d3-8920-b11b44ab701c"
+                }
+              ],
+              "id": "d569ccac-790b-4a00-b2b4-bd83858b58a7",
+              "createdAt": "2026-10-22T01:41:01.000Z",
+              "updatedAt": "2026-10-22T01:41:01.000Z",
+              "uid": "35240-d569ccac-790b-4a00-b2b4-bd83858b58a7"
+            },
+            {
+              "name": "Get Messages",
+              "id": "5aae87d7-e179-4990-8c6e-623011f533bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "messages"
+                  ],
+                  "query": [
+                    {
+                      "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                      "key": "account-id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                      "key": "msisdn",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                      "key": "iccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                      "key": "from-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                      "key": "to-date",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                      "key": "direction",
+                      "value": "from_sim"
+                    },
+                    {
+                      "description": "A unique identifier for the SMS message you want to retrieve",
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page-index",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "max-page-item",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                      "key": "sort-order",
+                      "value": "desc"
+                    }
+                  ]
+                },
+                "description": "To perform a \u2018Search\u2019 operation for specific messages"
+              },
+              "response": [
+                {
+                  "id": "bff94022-28ab-42f6-80c2-f90cde495730",
+                  "name": "200 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"messages\": [\n    {\n      \"short-code\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"account-id\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"mid\": \"<string>\",\n      \"action\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"msisdn\": \"<string>\",\n      \"service-type-id\": \"<integer>\",\n      \"date-created\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"short-code\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"account-id\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"mid\": \"<string>\",\n      \"action\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"msisdn\": \"<string>\",\n      \"service-type-id\": \"<integer>\",\n      \"date-created\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"page-info-result\": {\n    \"total-count\": \"<integer>\",\n    \"page-index\": \"<integer>\",\n    \"max-page-item\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-bff94022-28ab-42f6-80c2-f90cde495730"
+                },
+                {
+                  "id": "e158a54b-16c6-4099-9b18-dd6eab27d663",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-e158a54b-16c6-4099-9b18-dd6eab27d663"
+                },
+                {
+                  "id": "77eaf223-fc8a-4f1f-9b38-65d9da9224b6",
+                  "name": "Unauthorised User",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-77eaf223-fc8a-4f1f-9b38-65d9da9224b6"
+                },
+                {
+                  "id": "b6616022-92ab-47a1-9d86-93b2c2f91a97",
+                  "name": "Forbidden",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-b6616022-92ab-47a1-9d86-93b2c2f91a97"
+                },
+                {
+                  "id": "109c2070-496b-457b-bece-b79d3108c25f",
+                  "name": "response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-109c2070-496b-457b-bece-b79d3108c25f"
+                },
+                {
+                  "id": "4a7072a5-7438-4569-b0ba-b3f5ffefe55e",
+                  "name": "Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-4a7072a5-7438-4569-b0ba-b3f5ffefe55e"
+                }
+              ],
+              "createdAt": "2026-10-22T01:41:01.000Z",
+              "updatedAt": "2026-10-22T01:41:01.000Z",
+              "uid": "35240-5aae87d7-e179-4990-8c6e-623011f533bf"
+            }
+          ],
+          "id": "30c51ec2-4282-440b-bdfb-8d54922b3fca",
+          "createdAt": "2026-10-22T01:41:01.000Z",
+          "updatedAt": "2026-10-22T01:41:01.000Z",
+          "uid": "35240-30c51ec2-4282-440b-bdfb-8d54922b3fca"
+        },
+        {
+          "name": "sms",
+          "item": [
+            {
+              "name": "messages",
+              "item": [
+                {
+                  "name": "Get Messages (To be deprecated soon)",
+                  "id": "b41a8ff4-f054-4b56-8a83-a13528a597fe",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "noauth"
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "sms",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                          "key": "account-id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "msisdn",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                          "key": "iccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                          "key": "from-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                          "key": "to-date",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                          "key": "direction",
+                          "value": "from_sim"
+                        },
+                        {
+                          "description": "A unique identifier for the SMS message you want to retrieve",
+                          "key": "mid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination",
+                          "key": "page-index",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Number of results per page",
+                          "key": "max-page-item",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                          "key": "sort-order",
+                          "value": "desc"
+                        }
+                      ]
+                    },
+                    "description": "To perform a \u2018Search\u2019 operation for specific messages"
+                  },
+                  "response": [
+                    {
+                      "id": "57213d3d-f055-45b2-8ea2-8891cccd406d",
+                      "name": "200 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "sms",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                              "key": "account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                              "key": "from-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                              "key": "to-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                              "key": "direction",
+                              "value": "from_sim"
+                            },
+                            {
+                              "description": "A unique identifier for the SMS message you want to retrieve",
+                              "key": "mid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Page number for pagination",
+                              "key": "page-index",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page",
+                              "key": "max-page-item",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                              "key": "sort-order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"messages\": [\n    {\n      \"short-code\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"account-id\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"mid\": \"<string>\",\n      \"action\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"msisdn\": \"<string>\",\n      \"service-type-id\": \"<integer>\",\n      \"date-created\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"short-code\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"account-id\": \"<string>\",\n      \"organization\": \"<string>\",\n      \"mid\": \"<string>\",\n      \"action\": \"<string>\",\n      \"detail\": \"<string>\",\n      \"msisdn\": \"<string>\",\n      \"service-type-id\": \"<integer>\",\n      \"date-created\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ],\n  \"page-info-result\": {\n    \"total-count\": \"<integer>\",\n    \"page-index\": \"<integer>\",\n    \"max-page-item\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-57213d3d-f055-45b2-8ea2-8891cccd406d"
+                    },
+                    {
+                      "id": "e2f9025a-cf7f-4516-bef4-864f22a95987",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "sms",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                              "key": "account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                              "key": "from-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                              "key": "to-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                              "key": "direction",
+                              "value": "from_sim"
+                            },
+                            {
+                              "description": "A unique identifier for the SMS message you want to retrieve",
+                              "key": "mid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Page number for pagination",
+                              "key": "page-index",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page",
+                              "key": "max-page-item",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                              "key": "sort-order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-e2f9025a-cf7f-4516-bef4-864f22a95987"
+                    },
+                    {
+                      "id": "8ca56f86-4e61-4f37-881b-ae917b62f775",
+                      "name": "Unauthorised User",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "sms",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                              "key": "account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                              "key": "from-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                              "key": "to-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                              "key": "direction",
+                              "value": "from_sim"
+                            },
+                            {
+                              "description": "A unique identifier for the SMS message you want to retrieve",
+                              "key": "mid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Page number for pagination",
+                              "key": "page-index",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page",
+                              "key": "max-page-item",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                              "key": "sort-order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-8ca56f86-4e61-4f37-881b-ae917b62f775"
+                    },
+                    {
+                      "id": "0ec14831-9dc0-46e1-8800-bc52c6ae1cef",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "sms",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                              "key": "account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                              "key": "from-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                              "key": "to-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                              "key": "direction",
+                              "value": "from_sim"
+                            },
+                            {
+                              "description": "A unique identifier for the SMS message you want to retrieve",
+                              "key": "mid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Page number for pagination",
+                              "key": "page-index",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page",
+                              "key": "max-page-item",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                              "key": "sort-order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-0ec14831-9dc0-46e1-8800-bc52c6ae1cef"
+                    },
+                    {
+                      "id": "cb12e69d-7cdf-4bd9-86bd-95371bc46440",
+                      "name": "response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "sms",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                              "key": "account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                              "key": "from-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                              "key": "to-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                              "key": "direction",
+                              "value": "from_sim"
+                            },
+                            {
+                              "description": "A unique identifier for the SMS message you want to retrieve",
+                              "key": "mid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Page number for pagination",
+                              "key": "page-index",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page",
+                              "key": "max-page-item",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                              "key": "sort-order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-cb12e69d-7cdf-4bd9-86bd-95371bc46440"
+                    },
+                    {
+                      "id": "366b21a3-b5ab-48a4-9729-6152fd6ac7fb",
+                      "name": "Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/sms/messages?account-id=<string>&msisdn=<string>&iccid=<string>&from-date=<string>&to-date=<string>&direction=from_sim&mid=<string>&page-index=1&max-page-item=10&sort-order=desc",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "sms",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Unique identifier for the account associated with the messages you want to retrieve",
+                              "key": "account-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the MSISDN of the recipient to which the SMS is being sent. For Mobile Originated (MO) SMS, this is the device's MSISDN from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "For Mobile Terminated (MT) SMS, this is the ICCID of the recipient to which the SMS is being sent.\nFor Mobile Originated (MO) SMS, this is the device's ICCID from which the SMS has been received.\n\nPlease be noted that MSISDN and ICCID are mutually exclusive.User is supposed to provide either ICCID or MSISDN as input parameter. If both\nare provided as inputs, ICCID will be preferred to query the output.",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"from-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. The SMS API will return data for any SMS sent or received on or after this date.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date from the mobile network.",
+                              "key": "from-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The \"to-date\" should be in YYYY-MM-DD format and is in the 'UTC' time zone. Use this parameter to retrieve SMS data for a specific time interval. If no \"to-date\" is specified, the query will return all SMS data up to the current date and time.\nFor Mobile Terminated (MT) SMS, it represents the 'Sent' date. For Mobile Originated (MO) SMS, it represents the 'Received' date.",
+                              "key": "to-date",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specifies whether the message was sent by the device (Mobile Originated SMS) or received by the device (Mobile Terminated SMS). \"from_sim\" indicates a sent message (Mobile Originated), while \"to_sim\" indicates a received message (Mobile Terminated).",
+                              "key": "direction",
+                              "value": "from_sim"
+                            },
+                            {
+                              "description": "A unique identifier for the SMS message you want to retrieve",
+                              "key": "mid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Page number for pagination",
+                              "key": "page-index",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Number of results per page",
+                              "key": "max-page-item",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Sorting is applied based on the sent or received dates of SMS messages.",
+                              "key": "sort-order",
+                              "value": "desc"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\",\n  \"status\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:41:01.000Z",
+                      "updatedAt": "2026-10-22T01:41:01.000Z",
+                      "uid": "35240-366b21a3-b5ab-48a4-9729-6152fd6ac7fb"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:41:01.000Z",
+                  "updatedAt": "2026-10-22T01:41:01.000Z",
+                  "uid": "35240-b41a8ff4-f054-4b56-8a83-a13528a597fe"
+                }
+              ],
+              "id": "9c492407-275b-4b08-80ab-908a21dba385",
+              "createdAt": "2026-10-22T01:41:01.000Z",
+              "updatedAt": "2026-10-22T01:41:01.000Z",
+              "uid": "35240-9c492407-275b-4b08-80ab-908a21dba385"
+            }
+          ],
+          "id": "1e00c91f-7abe-45cb-8f4f-cc0d3c11299e",
+          "createdAt": "2026-10-22T01:41:01.000Z",
+          "updatedAt": "2026-10-22T01:41:01.000Z",
+          "uid": "35240-1e00c91f-7abe-45cb-8f4f-cc0d3c11299e"
+        }
+      ],
+      "id": "fc9f2a50-2e63-4dcb-8e17-d1b65c8b5888",
+      "createdAt": "2026-10-22T01:41:01.000Z",
+      "updatedAt": "2026-10-22T01:41:01.000Z",
+      "uid": "35240-fc9f2a50-2e63-4dcb-8e17-d1b65c8b5888"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.korewireless.com/sms"
+    }
+  ]
+}

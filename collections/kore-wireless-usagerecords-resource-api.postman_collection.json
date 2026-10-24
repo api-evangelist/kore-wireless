@@ -1,0 +1,2257 @@
+{
+  "info": {
+    "_postman_id": "4aa5352f-50b6-4681-bbe1-717c104bbee6",
+    "name": "Programmable Wireless UsageRecords Resource API",
+    "description": "The KORE Programmable Wireless REST API\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:43:10.000Z",
+    "updatedAt": "2026-10-22T01:43:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4aa5352f-50b6-4681-bbe1-717c104bbee6"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "UsageRecords",
+          "item": [
+            {
+              "name": "List Data Usage records for an account",
+              "id": "eea9dd49-609d-4704-a6d8-8f0112d89c53",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "UsageRecords"
+                  ],
+                  "query": [
+                    {
+                      "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                      "key": "Start",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                      "key": "End",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                      "key": "Granularity",
+                      "value": "daily"
+                    },
+                    {
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "3c230366-cd67-4d35-a7a4-a694748f83fe",
+                  "name": "Data Usage List",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"usage_records\": [\n    {\n      \"period\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      },\n      \"account_sid\": \"<string>\",\n      \"commands\": {\n        \"from_sim\": \"<long>\",\n        \"to_sim\": \"<long>\",\n        \"total\": \"<long>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      },\n      \"data\": {\n        \"download\": \"<long>\",\n        \"upload\": \"<long>\",\n        \"total\": \"<long>\",\n        \"units\": \"<string>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      }\n    },\n    {\n      \"period\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      },\n      \"account_sid\": \"<string>\",\n      \"commands\": {\n        \"from_sim\": \"<long>\",\n        \"to_sim\": \"<long>\",\n        \"total\": \"<long>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      },\n      \"data\": {\n        \"download\": \"<long>\",\n        \"upload\": \"<long>\",\n        \"total\": \"<long>\",\n        \"units\": \"<string>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      }\n    }\n  ],\n  \"meta\": {\n    \"page_size\": 0,\n    \"page\": 0,\n    \"first_page_url\": \"<string>\",\n    \"previous_page_url\": \"<string>\",\n    \"url\": \"<string>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-3c230366-cd67-4d35-a7a4-a694748f83fe"
+                },
+                {
+                  "id": "8b132fc7-37aa-4a54-a237-59d994753590",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-8b132fc7-37aa-4a54-a237-59d994753590"
+                },
+                {
+                  "id": "a7fda113-3e24-4bbd-bbd7-19038b4c7f3e",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-a7fda113-3e24-4bbd-bbd7-19038b4c7f3e"
+                },
+                {
+                  "id": "39aff601-4f36-4040-9edd-9bf995967c14",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-39aff601-4f36-4040-9edd-9bf995967c14"
+                },
+                {
+                  "id": "a340a289-b459-4f98-adbd-616a27b1fc9b",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-a340a289-b459-4f98-adbd-616a27b1fc9b"
+                },
+                {
+                  "id": "69b73868-3174-48e6-bf7a-46bbe4dcaf50",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-69b73868-3174-48e6-bf7a-46bbe4dcaf50"
+                },
+                {
+                  "id": "dac2250c-5d29-4c99-999e-2d69a998e3bd",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-dac2250c-5d29-4c99-999e-2d69a998e3bd"
+                },
+                {
+                  "id": "7f4501b7-5f06-4351-a3c1-91467fa90415",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-7f4501b7-5f06-4351-a3c1-91467fa90415"
+                },
+                {
+                  "id": "e9fb11fb-f0e3-4c22-99dc-c264b9d71e51",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-e9fb11fb-f0e3-4c22-99dc-c264b9d71e51"
+                },
+                {
+                  "id": "18bb27e1-8996-47c9-9d1b-25bbf7fa1d04",
+                  "name": "Server is temporary not available",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "UsageRecords"
+                      ],
+                      "query": [
+                        {
+                          "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                          "key": "Start",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                          "key": "End",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                          "key": "Granularity",
+                          "value": "daily"
+                        },
+                        {
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-18bb27e1-8996-47c9-9d1b-25bbf7fa1d04"
+                }
+              ],
+              "createdAt": "2026-10-22T01:43:11.000Z",
+              "updatedAt": "2026-10-22T01:43:11.000Z",
+              "uid": "35240-eea9dd49-609d-4704-a6d8-8f0112d89c53"
+            }
+          ],
+          "id": "18ccafc5-cc3c-4d43-8749-95954bcaf119",
+          "createdAt": "2026-10-22T01:43:11.000Z",
+          "updatedAt": "2026-10-22T01:43:11.000Z",
+          "uid": "35240-18ccafc5-cc3c-4d43-8749-95954bcaf119"
+        },
+        {
+          "name": "Sims",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "UsageRecords",
+                  "item": [
+                    {
+                      "name": "List Data Usage records for a sim",
+                      "id": "95771498-3e80-427b-8a60-e3ad289874a8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":Sid",
+                            "UsageRecords"
+                          ],
+                          "query": [
+                            {
+                              "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                              "key": "Start",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                              "key": "End",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                              "key": "Granularity",
+                              "value": "daily"
+                            },
+                            {
+                              "key": "PageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page index. This value is simply for client state.",
+                              "key": "Page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page token. This is provided by the API.",
+                              "key": "PageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "ad795c3c-1c38-4aef-b55a-76015f426cfd",
+                              "key": "Sid",
+                              "value": "<string>",
+                              "description": "(Required) The SID of the Sim resource to read the usage from."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e9363064-04dc-4da2-bac0-ece072de5bb5",
+                          "name": "Data Usage List",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"usage_records\": [\n    {\n      \"period\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      },\n      \"account_sid\": \"<string>\",\n      \"commands\": {\n        \"from_sim\": \"<long>\",\n        \"to_sim\": \"<long>\",\n        \"total\": \"<long>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      },\n      \"data\": {\n        \"download\": \"<long>\",\n        \"upload\": \"<long>\",\n        \"total\": \"<long>\",\n        \"units\": \"<string>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      },\n      \"sim_sid\": \"<string>\"\n    },\n    {\n      \"period\": {\n        \"start\": \"<string>\",\n        \"end\": \"<string>\"\n      },\n      \"account_sid\": \"<string>\",\n      \"commands\": {\n        \"from_sim\": \"<long>\",\n        \"to_sim\": \"<long>\",\n        \"total\": \"<long>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"from_sim\": \"<long>\",\n          \"to_sim\": \"<long>\",\n          \"total\": \"<long>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"from_sim\": \"<long>\",\n            \"to_sim\": \"<long>\",\n            \"total\": \"<long>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      },\n      \"data\": {\n        \"download\": \"<long>\",\n        \"upload\": \"<long>\",\n        \"total\": \"<long>\",\n        \"units\": \"<string>\",\n        \"billed\": \"<double>\",\n        \"home\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"national_roaming\": {\n          \"download\": \"<long>\",\n          \"upload\": \"<long>\",\n          \"total\": \"<long>\",\n          \"units\": \"<string>\",\n          \"billed\": \"<double>\",\n          \"billing_units\": \"<string>\"\n        },\n        \"international_roaming\": [\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          },\n          {\n            \"country_code\": \"<string>\",\n            \"download\": \"<long>\",\n            \"upload\": \"<long>\",\n            \"total\": \"<long>\",\n            \"units\": \"<string>\",\n            \"billed\": \"<double>\",\n            \"billing_units\": \"<string>\"\n          }\n        ],\n        \"billing_units\": \"<string>\"\n      },\n      \"sim_sid\": \"<string>\"\n    }\n  ],\n  \"meta\": {\n    \"page_size\": 0,\n    \"page\": 0,\n    \"first_page_url\": \"<string>\",\n    \"previous_page_url\": \"<string>\",\n    \"url\": \"<string>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-e9363064-04dc-4da2-bac0-ece072de5bb5"
+                        },
+                        {
+                          "id": "6f4a5795-4abb-4158-91cb-0c7e00705679",
+                          "name": "Invalid request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-6f4a5795-4abb-4158-91cb-0c7e00705679"
+                        },
+                        {
+                          "id": "cfcfef75-f1d1-44a2-8648-81d278f41fd8",
+                          "name": "Credentials were not provided and are required to access this resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-cfcfef75-f1d1-44a2-8648-81d278f41fd8"
+                        },
+                        {
+                          "id": "edc5a5f3-8466-49bb-b6f1-0701b61f1dff",
+                          "name": "Credentials were not provided and are required to access this resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-edc5a5f3-8466-49bb-b6f1-0701b61f1dff"
+                        },
+                        {
+                          "id": "85d5ca41-6b79-4dc5-af94-b77f0b8a50f5",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-85d5ca41-6b79-4dc5-af94-b77f0b8a50f5"
+                        },
+                        {
+                          "id": "01915950-8cad-4321-9e41-243803512f48",
+                          "name": "Credentials were not provided and are required to access this resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unsupported Media Type",
+                          "code": 415,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-01915950-8cad-4321-9e41-243803512f48"
+                        },
+                        {
+                          "id": "6d87ff48-b19b-4194-8e78-c6e135942cca",
+                          "name": "Resource not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-6d87ff48-b19b-4194-8e78-c6e135942cca"
+                        },
+                        {
+                          "id": "0933da7e-bf5b-443e-9d02-ced36e280db3",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-0933da7e-bf5b-443e-9d02-ced36e280db3"
+                        },
+                        {
+                          "id": "a5c02c38-82c9-4d9c-b4df-ef8cf650d00e",
+                          "name": "Server is temporary not available",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:Sid/UsageRecords?Start=<string>&End=<string>&Granularity=daily&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":Sid",
+                                "UsageRecords"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Only include usage that has occurred on or after this date. Format is ISO 8601",
+                                  "key": "Start",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Only include usage that has occurred on or before this date. Format is ISO 8601.",
+                                  "key": "End",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "How to summarize the usage by time. Can be - daily, hourly, or all. A value of all returns one Usage Record that describes the usage for the entire period.",
+                                  "key": "Granularity",
+                                  "value": "daily"
+                                },
+                                {
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "Sid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:43:11.000Z",
+                          "updatedAt": "2026-10-22T01:43:11.000Z",
+                          "uid": "35240-a5c02c38-82c9-4d9c-b4df-ef8cf650d00e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:43:11.000Z",
+                      "updatedAt": "2026-10-22T01:43:11.000Z",
+                      "uid": "35240-95771498-3e80-427b-8a60-e3ad289874a8"
+                    }
+                  ],
+                  "id": "526611a7-2053-4bdc-b50b-2183a6680b5a",
+                  "createdAt": "2026-10-22T01:43:11.000Z",
+                  "updatedAt": "2026-10-22T01:43:11.000Z",
+                  "uid": "35240-526611a7-2053-4bdc-b50b-2183a6680b5a"
+                }
+              ],
+              "id": "6a602305-96bb-43b2-8408-370577d8ca5a",
+              "createdAt": "2026-10-22T01:43:11.000Z",
+              "updatedAt": "2026-10-22T01:43:11.000Z",
+              "uid": "35240-6a602305-96bb-43b2-8408-370577d8ca5a"
+            }
+          ],
+          "id": "04ca374d-b3a9-40bc-bb82-77fddc87bbf7",
+          "createdAt": "2026-10-22T01:43:11.000Z",
+          "updatedAt": "2026-10-22T01:43:11.000Z",
+          "uid": "35240-04ca374d-b3a9-40bc-bb82-77fddc87bbf7"
+        }
+      ],
+      "id": "3b27aa30-50cf-410f-b918-0b21345f6a74",
+      "createdAt": "2026-10-22T01:43:11.000Z",
+      "updatedAt": "2026-10-22T01:43:11.000Z",
+      "uid": "35240-3b27aa30-50cf-410f-b918-0b21345f6a74"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://programmable-wireless.api.korewireless.com"
+    }
+  ]
+}

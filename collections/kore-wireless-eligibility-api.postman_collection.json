@@ -1,0 +1,3920 @@
+{
+  "info": {
+    "_postman_id": "d52129ae-bf1c-4869-bc8b-04e8190b85f1",
+    "name": "Connectivity Eligibility API",
+    "description": "Connectivity APIs help users manage their connectivity through APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:37.000Z",
+    "updatedAt": "2026-10-22T01:40:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d52129ae-bf1c-4869-bc8b-04e8190b85f1"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account-id}",
+              "item": [
+                {
+                  "name": "plans",
+                  "item": [
+                    {
+                      "name": "{plan-id}",
+                      "item": [
+                        {
+                          "name": "Finds Plan by PlanId",
+                          "id": "0218096a-a870-4f43-be55-c9ddf6d004b6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "noauth"
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans",
+                                ":plan-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "cbc982bb-005b-4bca-bda2-f4f7ccf42584",
+                                  "key": "account-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of your account"
+                                },
+                                {
+                                  "id": "7b09806f-cb65-4896-800d-588a71718052",
+                                  "key": "plan-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of your plan"
+                                }
+                              ]
+                            },
+                            "description": "Get details of a specific plan for an account"
+                          },
+                          "response": [
+                            {
+                              "id": "12fc3b6f-50eb-445c-86ba-70e42882bc78",
+                              "name": "200 response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "plan-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"plan\": {\n    \"plan-name\": \"<string>\",\n    \"plan-id\": \"<string>\",\n    \"plan-type-id\": \"<string>\",\n    \"usage-type\": \"VOICE\",\n    \"service-type-id\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-12fc3b6f-50eb-445c-86ba-70e42882bc78"
+                            },
+                            {
+                              "id": "68d715e0-4b45-4312-88ba-f0b26dcf728d",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "plan-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-68d715e0-4b45-4312-88ba-f0b26dcf728d"
+                            },
+                            {
+                              "id": "b2f6020c-4665-43c4-8db8-be5673f451f8",
+                              "name": "Unauthorised User",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "plan-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-b2f6020c-4665-43c4-8db8-be5673f451f8"
+                            },
+                            {
+                              "id": "efb4af6b-6567-4e7a-a106-6d9d9f9e0377",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "plan-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-efb4af6b-6567-4e7a-a106-6d9d9f9e0377"
+                            },
+                            {
+                              "id": "7b0a51fe-5526-4c94-a216-98994e88f153",
+                              "name": "The Specified Resource Was Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "plan-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"INFO\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-7b0a51fe-5526-4c94-a216-98994e88f153"
+                            },
+                            {
+                              "id": "890fb90d-da8a-4cf9-9a40-b9cf3fe0b1e6",
+                              "name": "Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/plans/:plan-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "plans",
+                                    ":plan-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "plan-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-890fb90d-da8a-4cf9-9a40-b9cf3fe0b1e6"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-0218096a-a870-4f43-be55-c9ddf6d004b6"
+                        }
+                      ],
+                      "id": "05277295-a267-4430-9a07-da277c5c0e10",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-05277295-a267-4430-9a07-da277c5c0e10"
+                    },
+                    {
+                      "name": "Lists All Eligible Plans",
+                      "id": "b9e9a544-200f-4ec5-8ea2-c69dde445349",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "plans"
+                          ],
+                          "variable": [
+                            {
+                              "id": "fd1ee3d1-52a5-4337-916d-e83f97cc7338",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Get all eligible plans for an account"
+                      },
+                      "response": [
+                        {
+                          "id": "1446f5a8-8989-4862-9a8e-3121099bb58a",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"plans\": [\n    {\n      \"plan\": {\n        \"plan-name\": \"<string>\",\n        \"plan-id\": \"<string>\",\n        \"plan-type-id\": \"<string>\",\n        \"usage-type\": \"SMS\",\n        \"service-type-id\": \"<string>\"\n      }\n    },\n    {\n      \"plan\": {\n        \"plan-name\": \"<string>\",\n        \"plan-id\": \"<string>\",\n        \"plan-type-id\": \"<string>\",\n        \"usage-type\": \"SMS\",\n        \"service-type-id\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-1446f5a8-8989-4862-9a8e-3121099bb58a"
+                        },
+                        {
+                          "id": "04d8f4eb-7ae5-4aff-ad82-17b4e72992ec",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-04d8f4eb-7ae5-4aff-ad82-17b4e72992ec"
+                        },
+                        {
+                          "id": "c43e7d57-932e-4d53-bf86-a4c21baa2f19",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-c43e7d57-932e-4d53-bf86-a4c21baa2f19"
+                        },
+                        {
+                          "id": "66b712d8-0f1d-4478-8b96-cf4d5424ee51",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-66b712d8-0f1d-4478-8b96-cf4d5424ee51"
+                        },
+                        {
+                          "id": "adccc00e-f44c-4893-86ab-7a6fac902bda",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"INFO\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-adccc00e-f44c-4893-86ab-7a6fac902bda"
+                        },
+                        {
+                          "id": "f4c372d7-b925-45ff-80fa-afecacd641a2",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plans",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plans"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-f4c372d7-b925-45ff-80fa-afecacd641a2"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-b9e9a544-200f-4ec5-8ea2-c69dde445349"
+                    }
+                  ],
+                  "id": "74076b4d-b775-4b6a-9766-c1b3e6ac8f3f",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-74076b4d-b775-4b6a-9766-c1b3e6ac8f3f"
+                },
+                {
+                  "name": "plan-types",
+                  "item": [
+                    {
+                      "name": "Lists All Plan Types",
+                      "id": "f06380e9-6eb8-43ce-8e9b-4c394aa7d05f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "plan-types"
+                          ],
+                          "variable": [
+                            {
+                              "id": "7987e069-f9be-4055-b7a3-8fd4e54cbf36",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Get all plan types for an account"
+                      },
+                      "response": [
+                        {
+                          "id": "9e637081-9d3d-4015-bb87-25ef1852cd48",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plan-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"plan-types\": [\n    {\n      \"plan-type-id\": \"<string>\",\n      \"plan-type-name\": \"<string>\"\n    },\n    {\n      \"plan-type-id\": \"<string>\",\n      \"plan-type-name\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-9e637081-9d3d-4015-bb87-25ef1852cd48"
+                        },
+                        {
+                          "id": "063ce205-b2f2-4210-80bc-c30ee9e4cd62",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plan-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-063ce205-b2f2-4210-80bc-c30ee9e4cd62"
+                        },
+                        {
+                          "id": "360c96d1-9385-40f4-a6ed-c6e95111f92c",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plan-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-360c96d1-9385-40f4-a6ed-c6e95111f92c"
+                        },
+                        {
+                          "id": "79c14d17-7532-48c7-8681-1eb3d35cac0f",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plan-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-79c14d17-7532-48c7-8681-1eb3d35cac0f"
+                        },
+                        {
+                          "id": "7caf1bcc-c865-49cc-8332-fed0129a15ce",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plan-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"INFO\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-7caf1bcc-c865-49cc-8332-fed0129a15ce"
+                        },
+                        {
+                          "id": "be5b68ba-a5cf-4a29-af99-b47b34654115",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/plan-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "plan-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-be5b68ba-a5cf-4a29-af99-b47b34654115"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-f06380e9-6eb8-43ce-8e9b-4c394aa7d05f"
+                    }
+                  ],
+                  "id": "1a547c41-b3fe-4ab5-949b-679b3e80a563",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-1a547c41-b3fe-4ab5-949b-679b3e80a563"
+                },
+                {
+                  "name": "service-types",
+                  "item": [
+                    {
+                      "name": "{service-type-id}",
+                      "item": [
+                        {
+                          "name": "Finds ServiceType by ServiceTypeId",
+                          "id": "b5308cdd-310e-415c-a702-1974844804ca",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "noauth"
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types",
+                                ":service-type-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "738ca0b5-a480-4941-b521-ba8162d8f100",
+                                  "key": "account-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of your account"
+                                },
+                                {
+                                  "id": "3590fd08-4668-4510-9eec-5191e0a2f13f",
+                                  "key": "service-type-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of the service type"
+                                }
+                              ]
+                            },
+                            "description": "Get details of a specific service type for an account"
+                          },
+                          "response": [
+                            {
+                              "id": "18b428c8-3c3e-45bb-9bfb-3844501bbc67",
+                              "name": "200 response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "service-types",
+                                    ":service-type-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "service-type-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"service-type-id\": \"<string>\",\n  \"service-type-name\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-18b428c8-3c3e-45bb-9bfb-3844501bbc67"
+                            },
+                            {
+                              "id": "c80f3328-ef4f-4649-8014-f695c8020273",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "service-types",
+                                    ":service-type-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "service-type-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-c80f3328-ef4f-4649-8014-f695c8020273"
+                            },
+                            {
+                              "id": "243719a3-b6a5-4dd2-b5c4-5c1ee8c251b8",
+                              "name": "Unauthorised User",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "service-types",
+                                    ":service-type-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "service-type-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-243719a3-b6a5-4dd2-b5c4-5c1ee8c251b8"
+                            },
+                            {
+                              "id": "ed55295b-a361-481d-9d67-0647e0d1b0a2",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "service-types",
+                                    ":service-type-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "service-type-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-ed55295b-a361-481d-9d67-0647e0d1b0a2"
+                            },
+                            {
+                              "id": "ee3f2462-9415-4cb5-9ef7-a71858dea28a",
+                              "name": "The Specified Resource Was Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "service-types",
+                                    ":service-type-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "service-type-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"INFO\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-ee3f2462-9415-4cb5-9ef7-a71858dea28a"
+                            },
+                            {
+                              "id": "0623144a-2ee0-4c5f-ad7e-b42fdbb64a4c",
+                              "name": "Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types/:service-type-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "service-types",
+                                    ":service-type-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "service-type-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-0623144a-2ee0-4c5f-ad7e-b42fdbb64a4c"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-b5308cdd-310e-415c-a702-1974844804ca"
+                        }
+                      ],
+                      "id": "6850d04b-9429-4e4c-873b-80d035f653d2",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-6850d04b-9429-4e4c-873b-80d035f653d2"
+                    },
+                    {
+                      "name": "Lists All Eligible Service Types",
+                      "id": "47bc295a-6eb6-4e72-9ea5-36b5b0120ce5",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "service-types"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1a822749-a669-40b3-a29d-370eba45eec1",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Get all eligible service types for an account"
+                      },
+                      "response": [
+                        {
+                          "id": "41b60640-e9bb-46f9-9ac4-82d2feb0899e",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"service-types\": [\n    {\n      \"service-type-id\": \"<string>\",\n      \"service-type-name\": \"<string>\"\n    },\n    {\n      \"service-type-id\": \"<string>\",\n      \"service-type-name\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-41b60640-e9bb-46f9-9ac4-82d2feb0899e"
+                        },
+                        {
+                          "id": "ecbca7bd-7909-4c13-974c-80d0766be701",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-ecbca7bd-7909-4c13-974c-80d0766be701"
+                        },
+                        {
+                          "id": "4fdcd43f-d2ae-49e3-978a-4e3c51cec568",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-4fdcd43f-d2ae-49e3-978a-4e3c51cec568"
+                        },
+                        {
+                          "id": "39e7ba91-1d14-401b-857e-cf73e84a11c5",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-39e7ba91-1d14-401b-857e-cf73e84a11c5"
+                        },
+                        {
+                          "id": "d11cc74d-111c-4091-8578-ca2b034b0ee1",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"INFO\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-d11cc74d-111c-4091-8578-ca2b034b0ee1"
+                        },
+                        {
+                          "id": "5b8aba12-cc8a-4ac1-95ba-1422a1f89882",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/service-types",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "service-types"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-5b8aba12-cc8a-4ac1-95ba-1422a1f89882"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-47bc295a-6eb6-4e72-9ea5-36b5b0120ce5"
+                    }
+                  ],
+                  "id": "16a2f77d-a6fc-4921-9a48-42a22a3fe9d1",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-16a2f77d-a6fc-4921-9a48-42a22a3fe9d1"
+                },
+                {
+                  "name": "features",
+                  "item": [
+                    {
+                      "name": "{feature-id}",
+                      "item": [
+                        {
+                          "name": "Finds Feature by FeatureId",
+                          "id": "81e18615-80ca-4ac5-b9f2-56c32a4b7800",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "noauth"
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features",
+                                ":feature-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "872c8226-715d-4d40-8637-21c3c65aba9e",
+                                  "key": "account-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of your account"
+                                },
+                                {
+                                  "id": "0c74519f-8f49-4c55-845e-4ed699557fd7",
+                                  "key": "feature-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of your feature"
+                                }
+                              ]
+                            },
+                            "description": "Get details of a specific feature for an account"
+                          },
+                          "response": [
+                            {
+                              "id": "e50e0a84-698d-4138-9afa-009b145dec1e",
+                              "name": "200 response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "features",
+                                    ":feature-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "feature-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"usage-type\": \"SMS\",\n  \"feature-name\": \"<string>\",\n  \"feature-id\": \"<string>\",\n  \"description\": \"<string>\",\n  \"service-type-id\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-e50e0a84-698d-4138-9afa-009b145dec1e"
+                            },
+                            {
+                              "id": "d0aa3be6-90b1-416c-901a-4fdbd1c93118",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "features",
+                                    ":feature-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "feature-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-d0aa3be6-90b1-416c-901a-4fdbd1c93118"
+                            },
+                            {
+                              "id": "39dccf18-3c9f-496e-b2d3-7127e03c1eb7",
+                              "name": "Unauthorised User",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "features",
+                                    ":feature-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "feature-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-39dccf18-3c9f-496e-b2d3-7127e03c1eb7"
+                            },
+                            {
+                              "id": "39b3292b-14f0-44b8-8477-5be87e638cf4",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "features",
+                                    ":feature-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "feature-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-39b3292b-14f0-44b8-8477-5be87e638cf4"
+                            },
+                            {
+                              "id": "32002ea8-aafa-4fdf-bb33-123dee54e489",
+                              "name": "The Specified Resource Was Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "features",
+                                    ":feature-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "feature-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"INFO\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-32002ea8-aafa-4fdf-bb33-123dee54e489"
+                            },
+                            {
+                              "id": "72aa06ba-c354-4c18-9a7f-ed9ab71aeb90",
+                              "name": "Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/features/:feature-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "features",
+                                    ":feature-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "feature-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:38.000Z",
+                              "updatedAt": "2026-10-22T01:40:38.000Z",
+                              "uid": "35240-72aa06ba-c354-4c18-9a7f-ed9ab71aeb90"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-81e18615-80ca-4ac5-b9f2-56c32a4b7800"
+                        }
+                      ],
+                      "id": "021eb9ea-364a-405b-a8a4-563f2b054811",
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-021eb9ea-364a-405b-a8a4-563f2b054811"
+                    },
+                    {
+                      "name": "Lists All Eligible Features",
+                      "id": "96dcc7f9-f6c8-41e1-8b50-d6b4c4f8fda8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "features"
+                          ],
+                          "variable": [
+                            {
+                              "id": "334e8730-16cd-46b5-b81c-cc82262ccba7",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Get all eligible features for an account"
+                      },
+                      "response": [
+                        {
+                          "id": "7c9fe224-493c-46e3-8590-24cc732c8546",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"features\": [\n    {\n      \"feature\": {\n        \"usage-type\": \"VOICE\",\n        \"feature-name\": \"<string>\",\n        \"feature-id\": \"<string>\",\n        \"description\": \"<string>\",\n        \"service-type-id\": \"<string>\"\n      }\n    },\n    {\n      \"feature\": {\n        \"usage-type\": \"VOICE\",\n        \"feature-name\": \"<string>\",\n        \"feature-id\": \"<string>\",\n        \"description\": \"<string>\",\n        \"service-type-id\": \"<string>\"\n      }\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-7c9fe224-493c-46e3-8590-24cc732c8546"
+                        },
+                        {
+                          "id": "d39093c9-5b10-4de2-b17e-36c1a710f70d",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-d39093c9-5b10-4de2-b17e-36c1a710f70d"
+                        },
+                        {
+                          "id": "cae49943-d6f8-4ef9-89de-b6fddbf53d86",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-cae49943-d6f8-4ef9-89de-b6fddbf53d86"
+                        },
+                        {
+                          "id": "afe5fa80-9276-4980-8e86-b3d11c146620",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-afe5fa80-9276-4980-8e86-b3d11c146620"
+                        },
+                        {
+                          "id": "b9cdc4b6-ac47-4e4b-9c6a-4b251002a566",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"INFO\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-b9cdc4b6-ac47-4e4b-9c6a-4b251002a566"
+                        },
+                        {
+                          "id": "21961b5e-15d5-4a4c-abd7-7341cfe73021",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/features",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "features"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:38.000Z",
+                          "updatedAt": "2026-10-22T01:40:38.000Z",
+                          "uid": "35240-21961b5e-15d5-4a4c-abd7-7341cfe73021"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:38.000Z",
+                      "updatedAt": "2026-10-22T01:40:38.000Z",
+                      "uid": "35240-96dcc7f9-f6c8-41e1-8b50-d6b4c4f8fda8"
+                    }
+                  ],
+                  "id": "6d4d49cd-36b1-438a-a387-753641b58149",
+                  "createdAt": "2026-10-22T01:40:38.000Z",
+                  "updatedAt": "2026-10-22T01:40:38.000Z",
+                  "uid": "35240-6d4d49cd-36b1-438a-a387-753641b58149"
+                }
+              ],
+              "id": "b8f14ae5-4c99-4ed8-8924-a3cb3306c4b5",
+              "createdAt": "2026-10-22T01:40:38.000Z",
+              "updatedAt": "2026-10-22T01:40:38.000Z",
+              "uid": "35240-b8f14ae5-4c99-4ed8-8924-a3cb3306c4b5"
+            }
+          ],
+          "id": "2670f5bc-46a9-4d33-8e6e-f9efd2297a61",
+          "createdAt": "2026-10-22T01:40:38.000Z",
+          "updatedAt": "2026-10-22T01:40:38.000Z",
+          "uid": "35240-2670f5bc-46a9-4d33-8e6e-f9efd2297a61"
+        }
+      ],
+      "id": "a3eaa90e-490e-4864-9939-d61d7fb8c378",
+      "createdAt": "2026-10-22T01:40:38.000Z",
+      "updatedAt": "2026-10-22T01:40:38.000Z",
+      "uid": "35240-a3eaa90e-490e-4864-9939-d61d7fb8c378"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.korewireless.com/connectivity"
+    }
+  ]
+}

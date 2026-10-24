@@ -1,0 +1,872 @@
+{
+  "info": {
+    "_postman_id": "236239a3-c61a-463f-82c9-080ceb088902",
+    "name": "KORE - Supersim Supersim V1Fleet API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:07.000Z",
+    "updatedAt": "2026-10-22T01:42:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-236239a3-c61a-463f-82c9-080ceb088902"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Fleets",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch fleet",
+                  "id": "01466f7d-c9e6-4def-bf05-d43fa2f24e11",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Fleets/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Fleets",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b3c35fd5-c216-4bde-9b9f-cd2d5744c146",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the Fleet resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch a Fleet instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "6ab86d0b-e40a-4200-b0cb-d29d58c3c788",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Fleets/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Fleets",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"account_sid\": \"AC6dbd67F14FfcD3dcfc43AFCE8Fd77c05\",\n  \"sid\": \"HFDD3AB2f275B113D8c53A2751d6DB0DB7\",\n  \"unique_name\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"data_enabled\": \"<boolean,null>\",\n  \"data_limit\": 0,\n  \"data_metering\": \"payg\",\n  \"sms_commands_enabled\": \"<boolean,null>\",\n  \"sms_commands_url\": \"<string,null-uri>\",\n  \"sms_commands_method\": \"POST\",\n  \"network_access_profile_sid\": \"HABbfCf2A22Fecf0EA7B28B4Fe3EBF9e76\",\n  \"ip_commands_url\": \"<string,null-uri>\",\n  \"ip_commands_method\": \"POST\"\n}",
+                      "createdAt": "2026-10-22T01:42:07.000Z",
+                      "updatedAt": "2026-10-22T01:42:07.000Z",
+                      "uid": "35240-6ab86d0b-e40a-4200-b0cb-d29d58c3c788"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:07.000Z",
+                  "updatedAt": "2026-10-22T01:42:07.000Z",
+                  "uid": "35240-01466f7d-c9e6-4def-bf05-d43fa2f24e11"
+                },
+                {
+                  "name": "Update fleet",
+                  "id": "d1cd94f3-cc4a-4a06-b263-46d640b0bf52",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                          "key": "UniqueName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.",
+                          "key": "NetworkAccessProfile",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                          "key": "IpCommandsUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                          "key": "IpCommandsMethod",
+                          "value": "POST"
+                        },
+                        {
+                          "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                          "key": "SmsCommandsUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                          "key": "SmsCommandsMethod",
+                          "value": "POST"
+                        },
+                        {
+                          "description": "The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).",
+                          "key": "DataLimit",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Fleets/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Fleets",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c6ee00cf-640d-4424-8cb1-09715dc4b67b",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the Fleet resource to update."
+                        }
+                      ]
+                    },
+                    "description": "Updates the given properties of a Super SIM Fleet instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "47521550-1785-4e69-bc03-7a218ec916fa",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                              "key": "UniqueName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.",
+                              "key": "NetworkAccessProfile",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                              "key": "IpCommandsUrl",
+                              "value": "<uri>"
+                            },
+                            {
+                              "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                              "key": "IpCommandsMethod",
+                              "value": "POST"
+                            },
+                            {
+                              "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                              "key": "SmsCommandsUrl",
+                              "value": "<uri>"
+                            },
+                            {
+                              "description": "A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                              "key": "SmsCommandsMethod",
+                              "value": "POST"
+                            },
+                            {
+                              "description": "The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).",
+                              "key": "DataLimit",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Fleets/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Fleets",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"account_sid\": \"AC6dbd67F14FfcD3dcfc43AFCE8Fd77c05\",\n  \"sid\": \"HFDD3AB2f275B113D8c53A2751d6DB0DB7\",\n  \"unique_name\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"data_enabled\": \"<boolean,null>\",\n  \"data_limit\": 0,\n  \"data_metering\": \"payg\",\n  \"sms_commands_enabled\": \"<boolean,null>\",\n  \"sms_commands_url\": \"<string,null-uri>\",\n  \"sms_commands_method\": \"POST\",\n  \"network_access_profile_sid\": \"HABbfCf2A22Fecf0EA7B28B4Fe3EBF9e76\",\n  \"ip_commands_url\": \"<string,null-uri>\",\n  \"ip_commands_method\": \"POST\"\n}",
+                      "createdAt": "2026-10-22T01:42:07.000Z",
+                      "updatedAt": "2026-10-22T01:42:07.000Z",
+                      "uid": "35240-47521550-1785-4e69-bc03-7a218ec916fa"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:07.000Z",
+                  "updatedAt": "2026-10-22T01:42:07.000Z",
+                  "uid": "35240-d1cd94f3-cc4a-4a06-b263-46d640b0bf52"
+                }
+              ],
+              "id": "bfd00777-2b8e-473a-9607-b3b171b846b7",
+              "createdAt": "2026-10-22T01:42:07.000Z",
+              "updatedAt": "2026-10-22T01:42:07.000Z",
+              "uid": "35240-bfd00777-2b8e-473a-9607-b3b171b846b7"
+            },
+            {
+              "name": "Create fleet",
+              "id": "dfaa4fd4-1281-438c-a263-62721fd2be41",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.",
+                      "key": "NetworkAccessProfile",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                      "key": "UniqueName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.",
+                      "key": "DataEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).",
+                      "key": "DataLimit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                      "key": "IpCommandsUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                      "key": "IpCommandsMethod",
+                      "value": "POST"
+                    },
+                    {
+                      "description": "Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`.",
+                      "key": "SmsCommandsEnabled",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                      "key": "SmsCommandsUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                      "key": "SmsCommandsMethod",
+                      "value": "GET"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Fleets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Fleets"
+                  ]
+                },
+                "description": "Create a Fleet"
+              },
+              "response": [
+                {
+                  "id": "132bbf24-3f72-45a2-92b8-e5e88fd2235b",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The SID or unique name of the Network Access Profile that will control which cellular networks the Fleet's SIMs can connect to.",
+                          "key": "NetworkAccessProfile",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.",
+                          "key": "UniqueName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.",
+                          "key": "DataEnabled",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 1GB (1,000).",
+                          "key": "DataLimit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                          "key": "IpCommandsUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                          "key": "IpCommandsMethod",
+                          "value": "POST"
+                        },
+                        {
+                          "description": "Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `true`.",
+                          "key": "SmsCommandsEnabled",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.",
+                          "key": "SmsCommandsUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.",
+                          "key": "SmsCommandsMethod",
+                          "value": "GET"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Fleets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Fleets"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"account_sid\": \"AC6dbd67F14FfcD3dcfc43AFCE8Fd77c05\",\n  \"sid\": \"HFDD3AB2f275B113D8c53A2751d6DB0DB7\",\n  \"unique_name\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\",\n  \"data_enabled\": \"<boolean,null>\",\n  \"data_limit\": 0,\n  \"data_metering\": \"payg\",\n  \"sms_commands_enabled\": \"<boolean,null>\",\n  \"sms_commands_url\": \"<string,null-uri>\",\n  \"sms_commands_method\": \"POST\",\n  \"network_access_profile_sid\": \"HABbfCf2A22Fecf0EA7B28B4Fe3EBF9e76\",\n  \"ip_commands_url\": \"<string,null-uri>\",\n  \"ip_commands_method\": \"POST\"\n}",
+                  "createdAt": "2026-10-22T01:42:07.000Z",
+                  "updatedAt": "2026-10-22T01:42:07.000Z",
+                  "uid": "35240-132bbf24-3f72-45a2-92b8-e5e88fd2235b"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:07.000Z",
+              "updatedAt": "2026-10-22T01:42:07.000Z",
+              "uid": "35240-dfaa4fd4-1281-438c-a263-62721fd2be41"
+            },
+            {
+              "name": "List fleet",
+              "id": "92f1448a-5546-4c61-883e-540549f40015",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Fleets?NetworkAccessProfile=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Fleets"
+                  ],
+                  "query": [
+                    {
+                      "description": "The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.",
+                      "key": "NetworkAccessProfile",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of Fleets from your account."
+              },
+              "response": [
+                {
+                  "id": "a2595080-e0ea-4ec8-bdb6-2d079470e141",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Fleets?NetworkAccessProfile=<string>&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Fleets"
+                      ],
+                      "query": [
+                        {
+                          "description": "The SID or unique name of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.",
+                          "key": "NetworkAccessProfile",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"fleets\": [\n    {\n      \"account_sid\": \"AC198C4bCbfC1019eEbABDeD901A368CD6\",\n      \"sid\": \"HFFA4137F440e63e0D8CBc15aFdb5930ab\",\n      \"unique_name\": \"<string,null>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\",\n      \"data_enabled\": \"<boolean,null>\",\n      \"data_limit\": 0,\n      \"data_metering\": \"payg\",\n      \"sms_commands_enabled\": \"<boolean,null>\",\n      \"sms_commands_url\": \"<string,null-uri>\",\n      \"sms_commands_method\": \"GET\",\n      \"network_access_profile_sid\": \"HA1e54986fe8D63d35975dDED7aC2dFDb8\",\n      \"ip_commands_url\": \"<string,null-uri>\",\n      \"ip_commands_method\": \"GET\"\n    },\n    {\n      \"account_sid\": \"ACd22B0aAc952Eaff2C995F43fb5f2edfc\",\n      \"sid\": \"HF4F3d1e6f68dF444eD6bc038bC7c76018\",\n      \"unique_name\": \"<string,null>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\",\n      \"data_enabled\": \"<boolean,null>\",\n      \"data_limit\": 0,\n      \"data_metering\": \"payg\",\n      \"sms_commands_enabled\": \"<boolean,null>\",\n      \"sms_commands_url\": \"<string,null-uri>\",\n      \"sms_commands_method\": \"GET\",\n      \"network_access_profile_sid\": \"HAaD0ba6bf0fDcEfE2F9eF4A8832A8cB6f\",\n      \"ip_commands_url\": \"<string,null-uri>\",\n      \"ip_commands_method\": \"GET\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:07.000Z",
+                  "updatedAt": "2026-10-22T01:42:07.000Z",
+                  "uid": "35240-a2595080-e0ea-4ec8-bdb6-2d079470e141"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:07.000Z",
+              "updatedAt": "2026-10-22T01:42:07.000Z",
+              "uid": "35240-92f1448a-5546-4c61-883e-540549f40015"
+            }
+          ],
+          "id": "d72cab18-e615-4be2-850a-da909362ce0f",
+          "createdAt": "2026-10-22T01:42:07.000Z",
+          "updatedAt": "2026-10-22T01:42:07.000Z",
+          "uid": "35240-d72cab18-e615-4be2-850a-da909362ce0f"
+        }
+      ],
+      "id": "eb5895d3-32ff-4972-8c7b-f99e1ab80d23",
+      "createdAt": "2026-10-22T01:42:07.000Z",
+      "updatedAt": "2026-10-22T01:42:07.000Z",
+      "uid": "35240-eb5895d3-32ff-4972-8c7b-f99e1ab80d23"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

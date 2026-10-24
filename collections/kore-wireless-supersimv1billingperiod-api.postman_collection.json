@@ -1,0 +1,257 @@
+{
+  "info": {
+    "_postman_id": "765b69fd-748f-46c2-bf86-bcd482bf599e",
+    "name": "KORE - Supersim Supersim V1Billing Period API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:41:51.000Z",
+    "updatedAt": "2026-10-22T01:41:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-765b69fd-748f-46c2-bf86-bcd482bf599e"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Sims",
+          "item": [
+            {
+              "name": "{SimSid}",
+              "item": [
+                {
+                  "name": "BillingPeriods",
+                  "item": [
+                    {
+                      "name": "Read multiple BillingPeriod resources",
+                      "id": "2de1c938-3229-4cd4-bf2d-b3649fc15f1e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Sims/:SimSid/BillingPeriods?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Sims",
+                            ":SimSid",
+                            "BillingPeriods"
+                          ],
+                          "query": [
+                            {
+                              "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                              "key": "PageSize",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page index. This value is simply for client state.",
+                              "key": "Page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The page token. This is provided by the API.",
+                              "key": "PageToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "743710bb-aa2b-4993-a580-9a71154a2b1e",
+                              "key": "SimSid",
+                              "value": "<string>",
+                              "description": "(Required) The SID of the Super SIM to list Billing Periods for."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a list of Billing Periods for a Super SIM."
+                      },
+                      "response": [
+                        {
+                          "id": "adcb114e-516f-474a-8d48-427c49b34f1b",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/Sims/:SimSid/BillingPeriods?PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "Sims",
+                                ":SimSid",
+                                "BillingPeriods"
+                              ],
+                              "query": [
+                                {
+                                  "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                                  "key": "PageSize",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page index. This value is simply for client state.",
+                                  "key": "Page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "The page token. This is provided by the API.",
+                                  "key": "PageToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "SimSid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Specify the origin(s) allowed to access the resource",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Specify the HTTP methods allowed when accessing the resource",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Specify the headers allowed when accessing the resource",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Indicates whether the browser should include credentials",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Headers exposed to the client",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Expose-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"billing_periods\": [\n    {\n      \"sid\": \"HB600bF5F878C05CC3A8A9319D0a04b78c\",\n      \"account_sid\": \"AC4fefFfCED80FEED26672456EA2a6c90D\",\n      \"sim_sid\": \"HSa8c8DffFc57ffDBA2F8C074eC7AD86e4\",\n      \"start_time\": \"<string,null-date-time>\",\n      \"end_time\": \"<string,null-date-time>\",\n      \"period_type\": \"active\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\"\n    },\n    {\n      \"sid\": \"HB623D2B0BBf675AAFE2e8F7BEA7bE83f4\",\n      \"account_sid\": \"ACCEaeA7b6f2ffb0305F3cC1FDE0e9B1F4\",\n      \"sim_sid\": \"HSccA1DF2FBB8fAb9B0BEFDD6E3D15207b\",\n      \"start_time\": \"<string,null-date-time>\",\n      \"end_time\": \"<string,null-date-time>\",\n      \"period_type\": \"active\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:41:51.000Z",
+                          "updatedAt": "2026-10-22T01:41:51.000Z",
+                          "uid": "35240-adcb114e-516f-474a-8d48-427c49b34f1b"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:41:51.000Z",
+                      "updatedAt": "2026-10-22T01:41:51.000Z",
+                      "uid": "35240-2de1c938-3229-4cd4-bf2d-b3649fc15f1e"
+                    }
+                  ],
+                  "id": "683634f5-b85c-4d1c-93a8-a7d7a5b326ea",
+                  "createdAt": "2026-10-22T01:41:51.000Z",
+                  "updatedAt": "2026-10-22T01:41:51.000Z",
+                  "uid": "35240-683634f5-b85c-4d1c-93a8-a7d7a5b326ea"
+                }
+              ],
+              "id": "29d4abfd-8311-4c90-9a98-42fe7124bd92",
+              "createdAt": "2026-10-22T01:41:51.000Z",
+              "updatedAt": "2026-10-22T01:41:51.000Z",
+              "uid": "35240-29d4abfd-8311-4c90-9a98-42fe7124bd92"
+            }
+          ],
+          "id": "458c09a0-64a2-443a-b146-27813fcad66b",
+          "createdAt": "2026-10-22T01:41:51.000Z",
+          "updatedAt": "2026-10-22T01:41:51.000Z",
+          "uid": "35240-458c09a0-64a2-443a-b146-27813fcad66b"
+        }
+      ],
+      "id": "e8d5549d-471d-4118-a33a-6c00c00deef7",
+      "createdAt": "2026-10-22T01:41:51.000Z",
+      "updatedAt": "2026-10-22T01:41:51.000Z",
+      "uid": "35240-e8d5549d-471d-4118-a33a-6c00c00deef7"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

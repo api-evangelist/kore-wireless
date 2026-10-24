@@ -1,0 +1,3117 @@
+{
+  "info": {
+    "_postman_id": "ee36576d-e684-4ffe-a795-79348b686aa9",
+    "name": "Connectivity Diagnostics API",
+    "description": "Connectivity APIs help users manage their connectivity through APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:31.000Z",
+    "updatedAt": "2026-10-22T01:40:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ee36576d-e684-4ffe-a795-79348b686aa9"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "{account-id}",
+              "item": [
+                {
+                  "name": "diagnostics",
+                  "item": [
+                    {
+                      "name": "{diagnostics-request-id}",
+                      "item": [
+                        {
+                          "name": "Finds Request Status By Diagnostics Request Id",
+                          "id": "8b93756e-1b97-4195-87fc-fb1d2165813a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "noauth"
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics",
+                                ":diagnostics-request-id"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e2fed888-e003-4e50-9930-ff7e45d6cce4",
+                                  "key": "account-id",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique identifier of your account"
+                                },
+                                {
+                                  "id": "2ba6d20e-0d57-465f-a6b9-2853fa956bd8",
+                                  "key": "diagnostics-request-id",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Get details of a specific request made"
+                          },
+                          "response": [
+                            {
+                              "id": "bf7b6bb4-4ab6-47b8-90bc-4c87ea76abcb",
+                              "name": "200 response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"request-type\": {\n    \"subscriptions\": [\n      {\n        \"subscription-id\": \"<string>\",\n        \"iccid\": \"<string>\",\n        \"completion-status\": \"<string>\"\n      },\n      {\n        \"subscription-id\": \"<string>\",\n        \"iccid\": \"<string>\",\n        \"completion-status\": \"<string>\"\n      }\n    ],\n    \"status\": \"failed\",\n    \"diagnostics-request-id\": \"<string>\",\n    \"number-of-subscriptions\": \"<integer>\",\n    \"service-type\": \"<string>\",\n    \"date-created\": \"<string>\",\n    \"request-type\": \"<string>\",\n    \"date-completed\": \"<string>\",\n    \"source\": \"<string>\",\n    \"requested-by\": \"<string>\",\n    \"account-id\": \"<string>\",\n    \"error-message\": \"<string>\"\n  }\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-bf7b6bb4-4ab6-47b8-90bc-4c87ea76abcb"
+                            },
+                            {
+                              "id": "c7f2d9c9-a04e-4742-b1d2-b046e45d2073",
+                              "name": "Bad Request",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-c7f2d9c9-a04e-4742-b1d2-b046e45d2073"
+                            },
+                            {
+                              "id": "91a21eaa-c722-4da8-801d-5bda095b8491",
+                              "name": "Unauthorised User",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-91a21eaa-c722-4da8-801d-5bda095b8491"
+                            },
+                            {
+                              "id": "c4c6f378-b5c8-4d6e-90c7-10237fa3f8cc",
+                              "name": "Forbidden",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-c4c6f378-b5c8-4d6e-90c7-10237fa3f8cc"
+                            },
+                            {
+                              "id": "256bb8c8-6388-4bac-b3c0-1ff4a7258fc4",
+                              "name": "The Specified Resource Was Not Found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"INFO\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-256bb8c8-6388-4bac-b3c0-1ff4a7258fc4"
+                            },
+                            {
+                              "id": "b47163ff-c7b5-4561-84db-8e45abadd8b0",
+                              "name": "Request Conflict",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Conflict",
+                              "code": 409,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"status\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-b47163ff-c7b5-4561-84db-8e45abadd8b0"
+                            },
+                            {
+                              "id": "d6ab56f3-f83b-4eda-b4c1-8be2cb5f58ae",
+                              "name": "Server Error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-d6ab56f3-f83b-4eda-b4c1-8be2cb5f58ae"
+                            },
+                            {
+                              "id": "9905d99e-d2e7-42c1-964b-0e8d0ee4b9e0",
+                              "name": "Bad Gateway",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Gateway",
+                              "code": 502,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-9905d99e-d2e7-42c1-964b-0e8d0ee4b9e0"
+                            },
+                            {
+                              "id": "1121a240-8247-4907-988a-7933c7b4c1e7",
+                              "name": "Service Unavailable",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Service Unavailable",
+                              "code": 503,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-1121a240-8247-4907-988a-7933c7b4c1e7"
+                            },
+                            {
+                              "id": "ce2cc347-f3b4-4337-8294-3217247c532a",
+                              "name": "Gateway Timeout",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics/:diagnostics-request-id",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "accounts",
+                                    ":account-id",
+                                    "diagnostics",
+                                    ":diagnostics-request-id"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "account-id"
+                                    },
+                                    {
+                                      "key": "diagnostics-request-id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Gateway Timeout",
+                              "code": 504,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Origin",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Methods",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Credentials",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Access-Control-Allow-Headers",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-10-22T01:40:31.000Z",
+                              "updatedAt": "2026-10-22T01:40:31.000Z",
+                              "uid": "35240-ce2cc347-f3b4-4337-8294-3217247c532a"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-8b93756e-1b97-4195-87fc-fb1d2165813a"
+                        }
+                      ],
+                      "id": "85852995-dd61-4e8e-9443-ae15c4db9f9a",
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-85852995-dd61-4e8e-9443-ae15c4db9f9a"
+                    },
+                    {
+                      "name": "Lists All Requests",
+                      "id": "2d277714-5e71-41b6-b91e-96669e6486fe",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "diagnostics"
+                          ],
+                          "query": [
+                            {
+                              "description": "page number",
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "number of records",
+                              "key": "take",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "subscription-id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The ICCID of the subscription",
+                              "key": "iccid",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The phone number attached to the subscription",
+                              "key": "msisdn",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "343cd8ff-051c-45fc-897e-5207dc8f5cf9",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Get all requests made for an account"
+                      },
+                      "response": [
+                        {
+                          "id": "036e5c2f-ff91-4d9e-9bb9-33a7f70f6a34",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"total-records\": \"<integer>\",\n  \"total-pages\": \"<integer>\",\n  \"page\": \"<integer>\",\n  \"records\": [\n    {\n      \"diagnostic-request-id\": \"<string>\",\n      \"number-of-subscriptions\": \"<integer>\",\n      \"service-type\": \"<string>\",\n      \"date-created\": \"<string>\",\n      \"request-type\": \"<string>\",\n      \"date-completed\": \"<string>\",\n      \"source\": \"<string>\",\n      \"requested-by\": \"<string>\",\n      \"account-id\": \"<string>\",\n      \"request-status\": \"<string>\"\n    },\n    {\n      \"diagnostic-request-id\": \"<string>\",\n      \"number-of-subscriptions\": \"<integer>\",\n      \"service-type\": \"<string>\",\n      \"date-created\": \"<string>\",\n      \"request-type\": \"<string>\",\n      \"date-completed\": \"<string>\",\n      \"source\": \"<string>\",\n      \"requested-by\": \"<string>\",\n      \"account-id\": \"<string>\",\n      \"request-status\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-036e5c2f-ff91-4d9e-9bb9-33a7f70f6a34"
+                        },
+                        {
+                          "id": "4ba358e8-6cc8-4a63-ae31-ce054e642459",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-4ba358e8-6cc8-4a63-ae31-ce054e642459"
+                        },
+                        {
+                          "id": "4a49613c-c634-4ddd-b8b9-accf88f60b33",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-4a49613c-c634-4ddd-b8b9-accf88f60b33"
+                        },
+                        {
+                          "id": "908118e4-1211-4142-afd4-2e25dfebfb7f",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-908118e4-1211-4142-afd4-2e25dfebfb7f"
+                        },
+                        {
+                          "id": "b437fdac-5aa0-4815-96ba-aa88627c697b",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"INFO\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-b437fdac-5aa0-4815-96ba-aa88627c697b"
+                        },
+                        {
+                          "id": "a083ab5f-b749-4745-9805-1eca54cd16ed",
+                          "name": "Request Conflict",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-a083ab5f-b749-4745-9805-1eca54cd16ed"
+                        },
+                        {
+                          "id": "4516ad40-2536-4e18-827b-1250dc4f10c0",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-4516ad40-2536-4e18-827b-1250dc4f10c0"
+                        },
+                        {
+                          "id": "6dd88d1a-e623-468a-a6d8-42292d5d90c0",
+                          "name": "Bad Gateway",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Gateway",
+                          "code": 502,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-6dd88d1a-e623-468a-a6d8-42292d5d90c0"
+                        },
+                        {
+                          "id": "7803a729-8b58-4469-ada3-abcea738550e",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-7803a729-8b58-4469-ada3-abcea738550e"
+                        },
+                        {
+                          "id": "6a1ca8cf-238f-4da5-b2f9-5f85172ecd26",
+                          "name": "Gateway Timeout",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics?page=<integer>&take=<integer>&subscription-id=<string>&iccid=<string>&msisdn=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "query": [
+                                {
+                                  "description": "page number",
+                                  "key": "page",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "number of records",
+                                  "key": "take",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "key": "subscription-id",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The ICCID of the subscription",
+                                  "key": "iccid",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "The phone number attached to the subscription",
+                                  "key": "msisdn",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Gateway Timeout",
+                          "code": 504,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-6a1ca8cf-238f-4da5-b2f9-5f85172ecd26"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-2d277714-5e71-41b6-b91e-96669e6486fe"
+                    },
+                    {
+                      "name": "Create A Diagnostic Request",
+                      "id": "4e99fd28-36d0-4b26-b8a5-cdccda71862f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "noauth"
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "accounts",
+                            ":account-id",
+                            "diagnostics"
+                          ],
+                          "variable": [
+                            {
+                              "id": "587db9b5-206b-4b37-8fa2-4b95cee539a6",
+                              "key": "account-id",
+                              "value": "<string>",
+                              "description": "(Required) The unique identifier of your account"
+                            }
+                          ]
+                        },
+                        "description": "Create a diagnostics request for an account"
+                      },
+                      "response": [
+                        {
+                          "id": "b7fa2747-4443-4b3d-bc9d-777ad2f14ea1",
+                          "name": "200 response",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\",\n  \"data\": {\n    \"diagnostics-request-id\": \"<string>\",\n    \"message\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-b7fa2747-4443-4b3d-bc9d-777ad2f14ea1"
+                        },
+                        {
+                          "id": "b7ead905-ddf6-49b4-9d5f-9769603d7264",
+                          "name": "Bad Request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-b7ead905-ddf6-49b4-9d5f-9769603d7264"
+                        },
+                        {
+                          "id": "3fbe1778-aa5a-4aa6-bb36-b56be502041a",
+                          "name": "Unauthorised User",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-3fbe1778-aa5a-4aa6-bb36-b56be502041a"
+                        },
+                        {
+                          "id": "9d79a849-e064-44a0-a1b9-88b587691957",
+                          "name": "Forbidden",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-9d79a849-e064-44a0-a1b9-88b587691957"
+                        },
+                        {
+                          "id": "8e993007-e24b-40c1-b1f6-3c74f80d3a89",
+                          "name": "The Specified Resource Was Not Found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"INFO\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-8e993007-e24b-40c1-b1f6-3c74f80d3a89"
+                        },
+                        {
+                          "id": "dca9547a-3f4a-4025-9e3f-1896d4dc6a81",
+                          "name": "Request Conflict",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"status\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-dca9547a-3f4a-4025-9e3f-1896d4dc6a81"
+                        },
+                        {
+                          "id": "44e272b5-0499-470d-82cf-c5b8eea31bf3",
+                          "name": "Server Error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-44e272b5-0499-470d-82cf-c5b8eea31bf3"
+                        },
+                        {
+                          "id": "4ad6e773-9521-41af-bd4a-c25ebdc94752",
+                          "name": "Bad Gateway",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Gateway",
+                          "code": 502,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-4ad6e773-9521-41af-bd4a-c25ebdc94752"
+                        },
+                        {
+                          "id": "f3d9c9c1-68c8-4716-81c5-7aaf7ed829b1",
+                          "name": "Service Unavailable",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Service Unavailable",
+                          "code": 503,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-f3d9c9c1-68c8-4716-81c5-7aaf7ed829b1"
+                        },
+                        {
+                          "id": "0a7fce9d-2942-4cd4-a935-3bf0597b0d5e",
+                          "name": "Gateway Timeout",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"cancel-device-location\": {\n    \"subscription\": {\n      \"subscription-id\": \"<string>\",\n      \"iccid\": \"<string>\",\n      \"msisdn\": \"<string>\"\n    }\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/accounts/:account-id/diagnostics",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "accounts",
+                                ":account-id",
+                                "diagnostics"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "account-id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Gateway Timeout",
+                          "code": 504,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Origin",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Methods",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Credentials",
+                              "value": "<string>"
+                            },
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "",
+                                "type": "text/plain"
+                              },
+                              "key": "Access-Control-Allow-Headers",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-10-22T01:40:31.000Z",
+                          "updatedAt": "2026-10-22T01:40:31.000Z",
+                          "uid": "35240-0a7fce9d-2942-4cd4-a935-3bf0597b0d5e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:40:31.000Z",
+                      "updatedAt": "2026-10-22T01:40:31.000Z",
+                      "uid": "35240-4e99fd28-36d0-4b26-b8a5-cdccda71862f"
+                    }
+                  ],
+                  "id": "849f3c91-a855-47e9-a514-ebc5239c2361",
+                  "createdAt": "2026-10-22T01:40:31.000Z",
+                  "updatedAt": "2026-10-22T01:40:31.000Z",
+                  "uid": "35240-849f3c91-a855-47e9-a514-ebc5239c2361"
+                }
+              ],
+              "id": "92bb8fd2-c717-4c6f-9513-e0c7fd589d6b",
+              "createdAt": "2026-10-22T01:40:31.000Z",
+              "updatedAt": "2026-10-22T01:40:31.000Z",
+              "uid": "35240-92bb8fd2-c717-4c6f-9513-e0c7fd589d6b"
+            }
+          ],
+          "id": "b2ad1596-ee54-4431-99dc-5bb538da6966",
+          "createdAt": "2026-10-22T01:40:31.000Z",
+          "updatedAt": "2026-10-22T01:40:31.000Z",
+          "uid": "35240-b2ad1596-ee54-4431-99dc-5bb538da6966"
+        }
+      ],
+      "id": "0ba2afcd-27b3-4e55-9c04-2a223e4e15a8",
+      "createdAt": "2026-10-22T01:40:31.000Z",
+      "updatedAt": "2026-10-22T01:40:31.000Z",
+      "uid": "35240-0ba2afcd-27b3-4e55-9c04-2a223e4e15a8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.korewireless.com/connectivity"
+    }
+  ]
+}

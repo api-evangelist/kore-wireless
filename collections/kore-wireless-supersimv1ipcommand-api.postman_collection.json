@@ -1,0 +1,634 @@
+{
+  "info": {
+    "_postman_id": "c9adf7ab-46e7-4add-aca0-268229917959",
+    "name": "KORE - Supersim Supersim V1Ip Command API",
+    "description": "This is the public KORE REST API.\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:42:12.000Z",
+    "updatedAt": "2026-10-22T01:42:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c9adf7ab-46e7-4add-aca0-268229917959"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "IpCommands",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch ip command",
+                  "id": "41673471-52af-4018-bd05-792b49c71cfb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/IpCommands/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "IpCommands",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3dc263dc-e153-45b3-b7e2-f932e766f89c",
+                          "key": "Sid",
+                          "value": "HG2d63D60cd579741Fe001D1bD68654Ebd",
+                          "description": "(Required) The SID of the IP Command resource to fetch."
+                        }
+                      ]
+                    },
+                    "description": "Fetch IP Command instance from your account."
+                  },
+                  "response": [
+                    {
+                      "id": "0d366f25-36c9-4ec0-85e3-065481c09759",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/IpCommands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "IpCommands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the origin(s) allowed to access the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the HTTP methods allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Specify the headers allowed when accessing the resource",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Indicates whether the browser should include credentials",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Headers exposed to the client",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Expose-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"HGAB09D8203A1fd87D240cdF1Bc3aFddbe\",\n  \"account_sid\": \"AC4A9d8A0Ac31E62AeDA0B5b04AE94EcB1\",\n  \"sim_sid\": \"HS9F73f6E88745E23EAc0283B33BaEfc68\",\n  \"sim_iccid\": \"<string,null>\",\n  \"status\": \"sent\",\n  \"direction\": \"to_sim\",\n  \"device_ip\": \"<string,null>\",\n  \"device_port\": 0,\n  \"payload_type\": \"binary\",\n  \"payload\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                      "createdAt": "2026-10-22T01:42:12.000Z",
+                      "updatedAt": "2026-10-22T01:42:12.000Z",
+                      "uid": "35240-0d366f25-36c9-4ec0-85e3-065481c09759"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:42:12.000Z",
+                  "updatedAt": "2026-10-22T01:42:12.000Z",
+                  "uid": "35240-41673471-52af-4018-bd05-792b49c71cfb"
+                }
+              ],
+              "id": "b9212111-98bf-4233-ae61-fcc7266fb26d",
+              "createdAt": "2026-10-22T01:42:12.000Z",
+              "updatedAt": "2026-10-22T01:42:12.000Z",
+              "uid": "35240-b9212111-98bf-4233-ae61-fcc7266fb26d"
+            },
+            {
+              "name": "Create ip command",
+              "id": "de26a9ee-ba64-44fd-9822-52e494b9767c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The `sid` or `unique_name` of the [Super SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) to send the IP Command to.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64.",
+                      "key": "Payload",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The device port to which the IP Command will be sent.",
+                      "key": "DevicePort",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Indicates how the payload is encoded. Either \u201ctext\u201d or \u201cbinary\u201d. For an IP Command sent to a Super SIM, `payload_type` is configurable. For an IP Command sent from a Super SIM, `payload_type` is always \u201cbinary\u201d.",
+                      "key": "PayloadType",
+                      "value": "text"
+                    },
+                    {
+                      "description": "The URL we should call using the `callback_method` after we have sent the IP Command.",
+                      "key": "CallbackUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`.",
+                      "key": "CallbackMethod",
+                      "value": "POST"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/IpCommands",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "IpCommands"
+                  ]
+                },
+                "description": "Send an IP Command to a Super SIM."
+              },
+              "response": [
+                {
+                  "id": "50f81a9d-acf2-44a3-8c0b-8109f99b2dd6",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The `sid` or `unique_name` of the [Super SIM](https://docs.korewireless.com/en-us/v/api/products/supersim/sim-resource) to send the IP Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The data that will be sent to the device. The payload cannot exceed 1300 bytes. If the PayloadType is set to text, the payload is encoded in UTF-8. If PayloadType is set to binary, the payload is encoded in Base64.",
+                          "key": "Payload",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The device port to which the IP Command will be sent.",
+                          "key": "DevicePort",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Indicates how the payload is encoded. Either \u201ctext\u201d or \u201cbinary\u201d. For an IP Command sent to a Super SIM, `payload_type` is configurable. For an IP Command sent from a Super SIM, `payload_type` is always \u201cbinary\u201d.",
+                          "key": "PayloadType",
+                          "value": "text"
+                        },
+                        {
+                          "description": "The URL we should call using the `callback_method` after we have sent the IP Command.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The HTTP method we should use to call `callback_url`. Can be `GET` or `POST`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "POST"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/IpCommands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "IpCommands"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"HGAB09D8203A1fd87D240cdF1Bc3aFddbe\",\n  \"account_sid\": \"AC4A9d8A0Ac31E62AeDA0B5b04AE94EcB1\",\n  \"sim_sid\": \"HS9F73f6E88745E23EAc0283B33BaEfc68\",\n  \"sim_iccid\": \"<string,null>\",\n  \"status\": \"sent\",\n  \"direction\": \"to_sim\",\n  \"device_ip\": \"<string,null>\",\n  \"device_port\": 0,\n  \"payload_type\": \"binary\",\n  \"payload\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                  "createdAt": "2026-10-22T01:42:12.000Z",
+                  "updatedAt": "2026-10-22T01:42:12.000Z",
+                  "uid": "35240-50f81a9d-acf2-44a3-8c0b-8109f99b2dd6"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:12.000Z",
+              "updatedAt": "2026-10-22T01:42:12.000Z",
+              "uid": "35240-de26a9ee-ba64-44fd-9822-52e494b9767c"
+            },
+            {
+              "name": "List ip command",
+              "id": "dc882fcd-cf3e-4e99-a46e-a17e47e29628",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.korewireless.com/api-services/v1/auth/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/IpCommands?Sim=<string>&SimIccid=<string>&Status=sent&Direction=to_sim&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "IpCommands"
+                  ],
+                  "query": [
+                    {
+                      "description": "The SID or unique name of the Sim resource that IP Command was sent to or from.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ICCID of the Sim resource that IP Command was sent to or from.",
+                      "key": "SimIccid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/ipcommand-resource#status-values) for a description of each.",
+                      "key": "Status",
+                      "value": "sent"
+                    },
+                    {
+                      "description": "The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.",
+                      "key": "Direction",
+                      "value": "to_sim"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieve a list of IP Commands from your account."
+              },
+              "response": [
+                {
+                  "id": "85bceb4d-97dc-4a72-a6c5-a347c4d5bc54",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/IpCommands?Sim=<string>&SimIccid=<string>&Status=sent&Direction=to_sim&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "IpCommands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The SID or unique name of the Sim resource that IP Command was sent to or from.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The ICCID of the Sim resource that IP Command was sent to or from.",
+                          "key": "SimIccid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the IP Command. Can be: `queued`, `sent`, `received` or `failed`. See the [IP Command Status Values](https://docs.korewireless.com/en-us/v/api/products/supersim/ipcommand-resource#status-values) for a description of each.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "The direction of the IP Command. Can be `to_sim` or `from_sim`. The value of `to_sim` is synonymous with the term `mobile terminated`, and `from_sim` is synonymous with the term `mobile originated`.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 100.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the origin(s) allowed to access the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the HTTP methods allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Specify the headers allowed when accessing the resource",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Indicates whether the browser should include credentials",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Headers exposed to the client",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Expose-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ip_commands\": [\n    {\n      \"sid\": \"HG3b9fe067d0EB5Faa610fE9F9b59cBe3D\",\n      \"account_sid\": \"AC7Ae0ef8cFE0dA317D4dE67EeaCD06655\",\n      \"sim_sid\": \"HS29bF1b9EDCFFb36b06CEf094a70edAD7\",\n      \"sim_iccid\": \"<string,null>\",\n      \"status\": \"queued\",\n      \"direction\": \"from_sim\",\n      \"device_ip\": \"<string,null>\",\n      \"device_port\": 0,\n      \"payload_type\": \"binary\",\n      \"payload\": \"<string,null>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    },\n    {\n      \"sid\": \"HGf097617aD23E101A07beeee6D1c88775\",\n      \"account_sid\": \"ACf5ca8D7eEaa5d8F7DcADCDa2efeF0906\",\n      \"sim_sid\": \"HSeB12E665E0bEf760CCA585F038BC1A66\",\n      \"sim_iccid\": \"<string,null>\",\n      \"status\": \"received\",\n      \"direction\": \"to_sim\",\n      \"device_ip\": \"<string,null>\",\n      \"device_port\": 0,\n      \"payload_type\": \"text\",\n      \"payload\": \"<string,null>\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:42:12.000Z",
+                  "updatedAt": "2026-10-22T01:42:12.000Z",
+                  "uid": "35240-85bceb4d-97dc-4a72-a6c5-a347c4d5bc54"
+                }
+              ],
+              "createdAt": "2026-10-22T01:42:12.000Z",
+              "updatedAt": "2026-10-22T01:42:12.000Z",
+              "uid": "35240-dc882fcd-cf3e-4e99-a46e-a17e47e29628"
+            }
+          ],
+          "id": "27275d27-de88-4b2f-baf7-e33ba21e31ae",
+          "createdAt": "2026-10-22T01:42:12.000Z",
+          "updatedAt": "2026-10-22T01:42:12.000Z",
+          "uid": "35240-27275d27-de88-4b2f-baf7-e33ba21e31ae"
+        }
+      ],
+      "id": "40f620f3-baa0-489c-befa-5a4ac4bb6c8c",
+      "createdAt": "2026-10-22T01:42:12.000Z",
+      "updatedAt": "2026-10-22T01:42:12.000Z",
+      "uid": "35240-40f620f3-baa0-489c-befa-5a4ac4bb6c8c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.korewireless.com/api-services/v1/auth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://supersim.api.korewireless.com"
+    }
+  ]
+}

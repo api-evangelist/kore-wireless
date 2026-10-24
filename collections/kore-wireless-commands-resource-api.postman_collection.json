@@ -1,0 +1,3791 @@
+{
+  "info": {
+    "_postman_id": "8177fbdf-363a-4531-9933-e322055384bd",
+    "name": "Programmable Wireless Commands Resource API",
+    "description": "The KORE Programmable Wireless REST API\n\nContact Support:\n Name: KORE Support\n Email: support@korewireless.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:40:18.000Z",
+    "updatedAt": "2026-10-22T01:40:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8177fbdf-363a-4531-9933-e322055384bd"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "Commands",
+          "item": [
+            {
+              "name": "{Sid}",
+              "item": [
+                {
+                  "name": "Fetch a Command instance from your account",
+                  "id": "6979c35d-cebb-4ace-a414-0b6659fb4cdd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "68788f48-a229-49a6-8d41-beb1e8537b3a",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the RatePlan resource to fetch."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5fe07315-e654-4872-80ae-1f0512444e22",
+                      "name": "Get Command",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"sid\": \"DCb0De8AdbD1ed93f6dF58E78bEbD25F41\",\n  \"account_sid\": \"AC1FCA667a4c2D13f4445F05beBd63cEF5\",\n  \"sim_sid\": \"DE375b7D6F2eb7c867E7E9BB115Aa42987\",\n  \"command\": \"<string,null>\",\n  \"command_mode\": \"text\",\n  \"transport\": \"sms\",\n  \"delivery_receipt_requested\": \"<boolean,null>\",\n  \"status\": \"delivered\",\n  \"direction\": \"to_sim\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-5fe07315-e654-4872-80ae-1f0512444e22"
+                    },
+                    {
+                      "id": "1438706d-1a3c-4951-9404-7f85fe38c618",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-1438706d-1a3c-4951-9404-7f85fe38c618"
+                    },
+                    {
+                      "id": "fa00993f-32ce-47d8-af17-12432372b43f",
+                      "name": "Credentials were not provided and are required to access this resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-fa00993f-32ce-47d8-af17-12432372b43f"
+                    },
+                    {
+                      "id": "b762235c-9228-4c56-a142-41d1629c405f",
+                      "name": "Credentials were not provided and are required to access this resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-b762235c-9228-4c56-a142-41d1629c405f"
+                    },
+                    {
+                      "id": "5dc4323b-648e-41ff-8402-24195e8f416b",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-5dc4323b-648e-41ff-8402-24195e8f416b"
+                    },
+                    {
+                      "id": "b2054954-e706-49ad-a4e4-58b1c4492665",
+                      "name": "Credentials were not provided and are required to access this resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-b2054954-e706-49ad-a4e4-58b1c4492665"
+                    },
+                    {
+                      "id": "00b4a678-d8a2-4632-b016-a8a70e56a12c",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-00b4a678-d8a2-4632-b016-a8a70e56a12c"
+                    },
+                    {
+                      "id": "d41c534a-1207-41a0-abaa-c96f6e7c7120",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-d41c534a-1207-41a0-abaa-c96f6e7c7120"
+                    },
+                    {
+                      "id": "1df86d62-8293-41ab-a749-2875b5781c37",
+                      "name": "Server is temporary not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-1df86d62-8293-41ab-a749-2875b5781c37"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-6979c35d-cebb-4ace-a414-0b6659fb4cdd"
+                },
+                {
+                  "name": "Delete a Command instance from your account",
+                  "id": "85c92000-1361-4e94-afe2-990890f43a6c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands",
+                        ":Sid"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0d00ffd2-3d16-49b9-a790-7fde56126f85",
+                          "key": "Sid",
+                          "value": "<string>",
+                          "description": "(Required) The SID of the RatePlan resource to fetch."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "61fbdfea-3f06-4119-9791-e2d814122509",
+                      "name": "The resource was deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-61fbdfea-3f06-4119-9791-e2d814122509"
+                    },
+                    {
+                      "id": "db6b4f6c-43f2-4fc6-8583-14023f53b76c",
+                      "name": "The resource was deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-db6b4f6c-43f2-4fc6-8583-14023f53b76c"
+                    },
+                    {
+                      "id": "9e7fad9c-4240-4023-aa2b-118f6f907cbe",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-9e7fad9c-4240-4023-aa2b-118f6f907cbe"
+                    },
+                    {
+                      "id": "b3492689-e86f-473a-8b70-f131ad3ccbab",
+                      "name": "Credentials were not provided and are required to access this resource",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-b3492689-e86f-473a-8b70-f131ad3ccbab"
+                    },
+                    {
+                      "id": "d819e8cf-2592-4bf1-adcc-195328c48a91",
+                      "name": "Credentials were not provided and are required to access this resource",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-d819e8cf-2592-4bf1-adcc-195328c48a91"
+                    },
+                    {
+                      "id": "64279c5f-3259-4aa9-8b52-44147fc89d50",
+                      "name": "Resource not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-64279c5f-3259-4aa9-8b52-44147fc89d50"
+                    },
+                    {
+                      "id": "85d7c111-0bcb-4424-a37b-443b4a907784",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-85d7c111-0bcb-4424-a37b-443b4a907784"
+                    },
+                    {
+                      "id": "a6ac52c9-e79e-4c94-be62-5fa91524780e",
+                      "name": "Server is temporary not available",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/Commands/:Sid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "Commands",
+                            ":Sid"
+                          ],
+                          "variable": [
+                            {
+                              "key": "Sid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Origin",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Methods",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Credentials",
+                          "value": "<string>"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Access-Control-Allow-Headers",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T01:40:18.000Z",
+                      "updatedAt": "2026-10-22T01:40:18.000Z",
+                      "uid": "35240-a6ac52c9-e79e-4c94-be62-5fa91524780e"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-85c92000-1361-4e94-afe2-990890f43a6c"
+                }
+              ],
+              "id": "75cd0756-2c0e-4753-931d-05a392949e38",
+              "createdAt": "2026-10-22T01:40:18.000Z",
+              "updatedAt": "2026-10-22T01:40:18.000Z",
+              "uid": "35240-75cd0756-2c0e-4753-931d-05a392949e38"
+            },
+            {
+              "name": "List Commands",
+              "id": "f96c6ce9-c768-4fdd-8859-2a82c5b5b716",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Commands"
+                  ],
+                  "query": [
+                    {
+                      "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                      "key": "Status",
+                      "value": "sent"
+                    },
+                    {
+                      "description": "Only return Commands with this direction value.",
+                      "key": "Direction",
+                      "value": "to_sim"
+                    },
+                    {
+                      "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                      "key": "Transport",
+                      "value": "sms"
+                    },
+                    {
+                      "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                      "key": "PageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page index. This value is simply for client state.",
+                      "key": "Page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The page token. This is provided by the API.",
+                      "key": "PageToken",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "d87438b8-613f-48b4-bbe4-e12ca3a391f2",
+                  "name": "Data Usage List",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"commands\": [\n    {\n      \"sid\": \"DCBEA07EA7f4842d8Af68F2fDe01F20F4c\",\n      \"account_sid\": \"AC2eE5Bb6a7bAA3C1abbE538dA8089a5a7\",\n      \"sim_sid\": \"DEBca03CD1F7b9d0E9d9f35C1eed3a1bC4\",\n      \"command\": \"<string,null>\",\n      \"command_mode\": \"binary\",\n      \"transport\": \"ip\",\n      \"delivery_receipt_requested\": \"<boolean,null>\",\n      \"status\": \"failed\",\n      \"direction\": \"to_sim\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    },\n    {\n      \"sid\": \"DC1F10AFC9918107eC35EF5c26c49CbC8E\",\n      \"account_sid\": \"AC4Cb77ba0a45F6e5bDbAE3aBCBeED8100\",\n      \"sim_sid\": \"DE59Ae2fA05c54EEba2Ec12252A5b98bfe\",\n      \"command\": \"<string,null>\",\n      \"command_mode\": \"binary\",\n      \"transport\": \"ip\",\n      \"delivery_receipt_requested\": \"<boolean,null>\",\n      \"status\": \"queued\",\n      \"direction\": \"from_sim\",\n      \"date_created\": \"<string,null-date-time>\",\n      \"date_updated\": \"<string,null-date-time>\",\n      \"url\": \"<string,null-uri>\"\n    }\n  ],\n  \"meta\": {\n    \"first_page_url\": \"<uri>\",\n    \"key\": \"<string>\",\n    \"next_page_url\": \"<string,null-uri>\",\n    \"page\": \"<integer>\",\n    \"page_size\": \"<integer>\",\n    \"previous_page_url\": \"<string,null-uri>\",\n    \"url\": \"<uri>\"\n  }\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-d87438b8-613f-48b4-bbe4-e12ca3a391f2"
+                },
+                {
+                  "id": "37726b41-bc55-4c47-b181-25fa84927661",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-37726b41-bc55-4c47-b181-25fa84927661"
+                },
+                {
+                  "id": "23cc27de-8c9f-42f1-baa2-3671a1b7b410",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-23cc27de-8c9f-42f1-baa2-3671a1b7b410"
+                },
+                {
+                  "id": "f4bd5de9-c901-4eff-922f-93119b6b4209",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-f4bd5de9-c901-4eff-922f-93119b6b4209"
+                },
+                {
+                  "id": "f80662f2-6e77-411b-bb49-86266574d592",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-f80662f2-6e77-411b-bb49-86266574d592"
+                },
+                {
+                  "id": "7c19c64b-a103-4845-b6d2-8a40d51ae81c",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-7c19c64b-a103-4845-b6d2-8a40d51ae81c"
+                },
+                {
+                  "id": "a65c6e3e-6e61-42f2-9dfa-0d1d67c31877",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-a65c6e3e-6e61-42f2-9dfa-0d1d67c31877"
+                },
+                {
+                  "id": "042c7d57-f3d0-481e-b676-2d0db30c3e8b",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-042c7d57-f3d0-481e-b676-2d0db30c3e8b"
+                },
+                {
+                  "id": "2872e224-8d25-4b9e-9231-4e2505f8c991",
+                  "name": "Server is temporary not available",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands?Sim=<string>&Status=sent&Direction=to_sim&Transport=sms&PageSize=<integer>&Page=<integer>&PageToken=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ],
+                      "query": [
+                        {
+                          "description": "The `sid` or `unique_name` of the Sim resources to read.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The status of the resources to read. Can be: `queued`, `sent`, `delivered`, `received`, or `failed`.",
+                          "key": "Status",
+                          "value": "sent"
+                        },
+                        {
+                          "description": "Only return Commands with this direction value.",
+                          "key": "Direction",
+                          "value": "to_sim"
+                        },
+                        {
+                          "description": "Only return Commands with this transport value. Can be: `sms` or `ip`.",
+                          "key": "Transport",
+                          "value": "sms"
+                        },
+                        {
+                          "description": "How many resources to return in each list page. The default is 50, and the maximum is 1000.",
+                          "key": "PageSize",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page index. This value is simply for client state.",
+                          "key": "Page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The page token. This is provided by the API.",
+                          "key": "PageToken",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-2872e224-8d25-4b9e-9231-4e2505f8c991"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:18.000Z",
+              "updatedAt": "2026-10-22T01:40:18.000Z",
+              "uid": "35240-f96c6ce9-c768-4fdd-8859-2a82c5b5b716"
+            },
+            {
+              "name": "Send a Command to a Sim",
+              "id": "d935a167-3637-4819-9d1d-9cc3086bdd3e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                      "key": "Command",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                      "key": "Sim",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                      "key": "CallbackMethod",
+                      "value": "GET"
+                    },
+                    {
+                      "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                      "key": "CallbackUrl",
+                      "value": "<uri>"
+                    },
+                    {
+                      "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                      "key": "CommandMode",
+                      "value": "binary"
+                    },
+                    {
+                      "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                      "key": "IncludeSid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                      "key": "DeliveryReceiptRequested",
+                      "value": "<boolean>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/Commands",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "Commands"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "3ec383b4-f913-417f-8159-891aa0463a01",
+                  "name": "Data Usage List",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"DCb0De8AdbD1ed93f6dF58E78bEbD25F41\",\n  \"account_sid\": \"AC1FCA667a4c2D13f4445F05beBd63cEF5\",\n  \"sim_sid\": \"DE375b7D6F2eb7c867E7E9BB115Aa42987\",\n  \"command\": \"<string,null>\",\n  \"command_mode\": \"text\",\n  \"transport\": \"sms\",\n  \"delivery_receipt_requested\": \"<boolean,null>\",\n  \"status\": \"delivered\",\n  \"direction\": \"to_sim\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-3ec383b4-f913-417f-8159-891aa0463a01"
+                },
+                {
+                  "id": "909f0eb3-df6c-409d-aaf5-d8f947ac364f",
+                  "name": "Data Usage List",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sid\": \"DCb0De8AdbD1ed93f6dF58E78bEbD25F41\",\n  \"account_sid\": \"AC1FCA667a4c2D13f4445F05beBd63cEF5\",\n  \"sim_sid\": \"DE375b7D6F2eb7c867E7E9BB115Aa42987\",\n  \"command\": \"<string,null>\",\n  \"command_mode\": \"text\",\n  \"transport\": \"sms\",\n  \"delivery_receipt_requested\": \"<boolean,null>\",\n  \"status\": \"delivered\",\n  \"direction\": \"to_sim\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_updated\": \"<string,null-date-time>\",\n  \"url\": \"<string,null-uri>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-909f0eb3-df6c-409d-aaf5-d8f947ac364f"
+                },
+                {
+                  "id": "e3cfea07-5879-4466-9e1f-3f651aaa4bb9",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-e3cfea07-5879-4466-9e1f-3f651aaa4bb9"
+                },
+                {
+                  "id": "20bba43d-be76-488b-8ec1-bb1451ac03c8",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-20bba43d-be76-488b-8ec1-bb1451ac03c8"
+                },
+                {
+                  "id": "cc8550d6-6528-4a9b-83c8-f7a1542c28c7",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-cc8550d6-6528-4a9b-83c8-f7a1542c28c7"
+                },
+                {
+                  "id": "b89f64f7-13aa-4862-bdf5-68f54e113d53",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-b89f64f7-13aa-4862-bdf5-68f54e113d53"
+                },
+                {
+                  "id": "7ced5cf9-290c-44d1-b70d-333a3f4858c5",
+                  "name": "Credentials were not provided and are required to access this resource",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-7ced5cf9-290c-44d1-b70d-333a3f4858c5"
+                },
+                {
+                  "id": "de57344d-727d-4092-870a-d35b9f832af7",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-de57344d-727d-4092-870a-d35b9f832af7"
+                },
+                {
+                  "id": "e3f43059-6deb-4536-ae91-9a74db74e4fa",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-e3f43059-6deb-4536-ae91-9a74db74e4fa"
+                },
+                {
+                  "id": "e8d7d805-c174-44c8-b774-6033ed27da6d",
+                  "name": "Server is temporary not available",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The message body of the Command. Can be plain text in text mode or a Base64 encoded byte string in binary mode.",
+                          "key": "Command",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The `sid` or `unique_name` of the SIM to send the Command to.",
+                          "key": "Sim",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The HTTP method we use to call `callback_url`. Can be: `POST` or `GET`, and the default is `POST`.",
+                          "key": "CallbackMethod",
+                          "value": "GET"
+                        },
+                        {
+                          "description": "The URL we call using the `callback_url` when the Command has finished sending, whether the command was delivered or it failed.",
+                          "key": "CallbackUrl",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "The mode to use when sending the SMS message. Can be: `text` or `binary`. The default SMS mode is `text`.",
+                          "key": "CommandMode",
+                          "value": "binary"
+                        },
+                        {
+                          "description": "Whether to include the SID of the command in the message body. Can be: `none`, `start`, or `end`, and the default behavior is `none`. When sending a Command to a SIM in text mode, we can automatically include the SID of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.  A value of `start` will prepend the message with the Command SID, and `end` will append it to the end, separating the Command SID from the message body with a space. The length of the Command SID is included in the 160 character limit so the SMS body must be 128 characters or less before the Command SID is included.",
+                          "key": "IncludeSid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Whether to request delivery receipt from the recipient. For Commands that request delivery receipt, the Command state transitions to 'delivered' once the server has received a delivery receipt from the device. The default value is `true`.",
+                          "key": "DeliveryReceiptRequested",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/Commands",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "Commands"
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Methods",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Credentials",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "Access-Control-Allow-Headers",
+                      "value": "<string>"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"status\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"more_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-22T01:40:18.000Z",
+                  "updatedAt": "2026-10-22T01:40:18.000Z",
+                  "uid": "35240-e8d7d805-c174-44c8-b774-6033ed27da6d"
+                }
+              ],
+              "createdAt": "2026-10-22T01:40:18.000Z",
+              "updatedAt": "2026-10-22T01:40:18.000Z",
+              "uid": "35240-d935a167-3637-4819-9d1d-9cc3086bdd3e"
+            }
+          ],
+          "id": "48373236-aa93-49b8-ad3e-a0d3ed7211cc",
+          "createdAt": "2026-10-22T01:40:18.000Z",
+          "updatedAt": "2026-10-22T01:40:18.000Z",
+          "uid": "35240-48373236-aa93-49b8-ad3e-a0d3ed7211cc"
+        }
+      ],
+      "id": "eaeae54c-1614-446b-951a-1ff0f48794ff",
+      "createdAt": "2026-10-22T01:40:18.000Z",
+      "updatedAt": "2026-10-22T01:40:18.000Z",
+      "uid": "35240-eaeae54c-1614-446b-951a-1ff0f48794ff"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://programmable-wireless.api.korewireless.com"
+    }
+  ]
+}
