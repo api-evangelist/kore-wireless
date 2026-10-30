@@ -1,4 +1,4 @@
-# KORE Wireless (kore-wireless)
+# KORE Wireless
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,133 +64,183 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-KORE Wireless (KORE Group Holdings) is an Atlanta, Georgia headquartered global IoT connectivity provider operating as a mobile virtual network operator (MVNO) across more than 190 countries, with over 20 million IoT connections under management. KORE sits in the aggregator half of the telecom value chain: it does not own spectrum or radio access network, it resells and orchestrates multi-carrier cellular connectivity, eSIM/iSIM provisioning, device management, and IoT security as a service to enterprises in healthcare, fleet, logistics, utilities, and industrial automation. In 2024 KORE acquired the Twilio IoT business — Super SIM, Programmable Wireless, and Microvisor — inheriting a genuinely developer-first API surface, and it has kept that posture. In 2026 KORE was taken private by Searchlight Capital Partners and Abry Partners and delisted from the NYSE.
+KORE Wireless (KORE Group Holdings) is an Atlanta, Georgia headquartered global IoT connectivity provider operating as a mobile virtual network operator (MVNO) across more than 190 countries, with over 20 million IoT connections under management. KORE sits in the aggregator half of the telecom value chain: it does not own spectrum or radio access network, it resells and orchestrates multi-carrier cellular connectivity, eSIM/iSIM provisioning, device management, and IoT security as a service to enterprises in healthcare, fleet, logistics, utilities, and industrial automation. In 2024 KORE acquired the Twilio IoT business — Super SIM, Programmable Wireless, and Microvisor — inheriting a genuinely developer-first API surface, and it has kept that posture: KORE publishes eight OpenAPI 3.0 specifications in a public GitHub repository (github.com/korewireless/kore-openapi) with a make-based SDK generation workflow, an open GitBook documentation site at docs.korewireless.com requiring no login, self-serve account registration at console.korewireless.com, OAuth 2.0 client-credentials authorization, signed webhooks, and CloudEvents-formatted event streams. KORE publishes no CAMARA network APIs and is not a GSMA Open Gateway operator participant — as an MVNO it consumes carrier network capability rather than exposing it, and no CAMARA, Open Gateway, TM Forum, or NEF/SCEF reference appears anywhere in its documentation. In 2026 KORE was taken private by Searchlight Capital Partners and Abry Partners and delisted from the NYSE.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/kore-wireless/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/kore-wireless/refs/heads/main/apis.yml)
+**Areas:** Telecommunications · United States · IoT · eSIM · Connectivity · MVNO · SIM Management · Roaming · Messaging · SMS · Device Management · Network APIs
 
-## Tags
+## KORE Wireless on APIs.io
 
-- Telecommunications
-- United States
-- IoT
-- eSIM
-- Connectivity
-- MVNO
-- SIM Management
-- Roaming
-- Messaging
-- SMS
-- Device Management
-- Network APIs
+Everything profiled for KORE Wireless is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/kore-wireless/](https://apis.io/providers/kore-wireless/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (35)
 
-- **Created:** 2026-07-25
-- **Modified:** 2026-07-25
+- [KORE Wireless Account API](https://apis.io/apis/kore-wireless/kore-wireless-account-api/) — Account details of customer
+- [KORE Wireless Accounts API](https://apis.io/apis/kore-wireless/kore-wireless-accounts-api/) — The Accounts API from KORE Wireless — 2 operation(s) for accounts.
+- [KORE Wireless Activation Profiles API](https://apis.io/apis/kore-wireless/kore-wireless-activation-profiles-api/) — API to manage activation profile related activities for a given account . <br> For more details please go to our help desk article…
+- [KORE Wireless Alerting API](https://apis.io/apis/kore-wireless/kore-wireless-alerting-api/) — APIs that provides alerts on subscribed events
+- [KORE Wireless Auth API](https://apis.io/apis/kore-wireless/kore-wireless-auth-api/) — The Auth API from KORE Wireless — 1 operation(s) for auth.
+- [KORE Wireless Clients API](https://apis.io/apis/kore-wireless/kore-wireless-clients-api/) — These APIs enable users to perform various operations, including creating, retrieving, updating, and deleting client information. Through these APIs, users…
+- [KORE Wireless Commands Resource API](https://apis.io/apis/kore-wireless/kore-wireless-commands-resource-api/) — The Commands Resource API from KORE Wireless — 2 operation(s) for commands resource.
+- [KORE Wireless DataSessions Resource API](https://apis.io/apis/kore-wireless/kore-wireless-datasessions-resource-api/) — The DataSessions Resource API from KORE Wireless — 1 operation(s) for datasessions resource.
+- [KORE Wireless Diagnostics API](https://apis.io/apis/kore-wireless/kore-wireless-diagnostics-api/) — The Diagnostics API from KORE Wireless — 2 operation(s) for diagnostics.
+- [KORE Wireless Eligibility API](https://apis.io/apis/kore-wireless/kore-wireless-eligibility-api/) — Retrieve details about the eligibility of a given account
+- [KORE Wireless eSIM Profile Management API](https://apis.io/apis/kore-wireless/kore-wireless-esim-profile-management-api/) — API to manage eSIM Switch related activities for a given account <br> Refer to the <a…
+- [KORE Wireless Health API](https://apis.io/apis/kore-wireless/kore-wireless-health-api/) — ping health service
+- [KORE Wireless Messages API](https://apis.io/apis/kore-wireless/kore-wireless-messages-api/) — API to send message to the SIMs about any software upgrade/similar things.
+- [KORE Wireless Provisioning API](https://apis.io/apis/kore-wireless/kore-wireless-provisioning-api/) — Status of requests made by the customer
+- [KORE Wireless RatePlans Resource API](https://apis.io/apis/kore-wireless/kore-wireless-rateplans-resource-api/) — The RatePlans Resource API from KORE Wireless — 2 operation(s) for rateplans resource.
+- [KORE Wireless Reports API](https://apis.io/apis/kore-wireless/kore-wireless-reports-api/) — Customers of KORE who pre-configure report schedules have reports automatically generated and securely stored at the scheduled times — when accessed via…
+- [KORE Wireless Secrets API](https://apis.io/apis/kore-wireless/kore-wireless-secrets-api/) — The Secrets API from KORE Wireless — 2 operation(s) for secrets.
+- [KORE Wireless Session API](https://apis.io/apis/kore-wireless/kore-wireless-session-api/) — Customers of KORE having Radius Accounting integrated at carrier level will have session events collected at KORE. Session START and STOP events are…
+- [KORE Wireless Sims Resource API](https://apis.io/apis/kore-wireless/kore-wireless-sims-resource-api/) — The Sims Resource API from KORE Wireless — 2 operation(s) for sims resource.
+- [KORE Wireless Subscription API](https://apis.io/apis/kore-wireless/kore-wireless-subscription-api/) — API provides subscription enquiries made by the customer.
+- [KORE Wireless Supersim V1 Billing Period API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1billingperiod-api/) — The SupersimV1BillingPeriod API from KORE Wireless — 1 operation(s) for supersimv1billingperiod.
+- [KORE Wireless Supersim V1 Esim Profile API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1esimprofile-api/) — The SupersimV1EsimProfile API from KORE Wireless — 2 operation(s) for supersimv1esimprofile.
+- [KORE Wireless Supersim V1 Fleet API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1fleet-api/) — The SupersimV1Fleet API from KORE Wireless — 2 operation(s) for supersimv1fleet.
+- [KORE Wireless Supersim V1 Ip Command API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1ipcommand-api/) — The SupersimV1IpCommand API from KORE Wireless — 2 operation(s) for supersimv1ipcommand.
+- [KORE Wireless Supersim V1 Network API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1network-api/) — The SupersimV1Network API from KORE Wireless — 2 operation(s) for supersimv1network.
+- [KORE Wireless Supersim V1 Network Access Profile API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1networkaccessprofile-api/) — The SupersimV1NetworkAccessProfile API from KORE Wireless — 2 operation(s) for supersimv1networkaccessprofile.
+- [KORE Wireless Supersim V1 Network Access Profile Network API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1networkaccessprofilenetwork-api/) — The SupersimV1NetworkAccessProfileNetwork API from KORE Wireless — 2 operation(s) for supersimv1networkaccessprofilenetwork.
+- [KORE Wireless Supersim V1 Settings Update API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1settingsupdate-api/) — The SupersimV1SettingsUpdate API from KORE Wireless — 1 operation(s) for supersimv1settingsupdate.
+- [KORE Wireless Supersim V1 Sim API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1sim-api/) — The SupersimV1Sim API from KORE Wireless — 2 operation(s) for supersimv1sim.
+- [KORE Wireless Supersim V1 Sim Ip Address API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1simipaddress-api/) — The SupersimV1SimIpAddress API from KORE Wireless — 1 operation(s) for supersimv1simipaddress.
+- [KORE Wireless Supersim V1 Sms Command API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1smscommand-api/) — The SupersimV1SmsCommand API from KORE Wireless — 2 operation(s) for supersimv1smscommand.
+- [KORE Wireless Supersim V1 Usage Record API](https://apis.io/apis/kore-wireless/kore-wireless-supersimv1usagerecord-api/) — The SupersimV1UsageRecord API from KORE Wireless — 1 operation(s) for supersimv1usagerecord.
+- [KORE Wireless Testing API](https://apis.io/apis/kore-wireless/kore-wireless-testing-api/) — APIs that are currently under testing
+- [KORE Wireless Usage API](https://apis.io/apis/kore-wireless/kore-wireless-usage-api/) — A user can retrieve usage records for a given subscription or plan
+- [KORE Wireless UsageRecords Resource API](https://apis.io/apis/kore-wireless/kore-wireless-usagerecords-resource-api/) — The UsageRecords Resource API from KORE Wireless — 2 operation(s) for usagerecords resource.
 
-## API Posture
+### Published properties
 
-KORE lands in the API-native half of the telecom split. Documentation at
-[docs.korewireless.com](https://docs.korewireless.com/) is fully open — no login, published as GitBook with
-`llms.txt`, `llms-full.txt`, and per-page `.md` content negotiation for agents. Account registration at
-[console.korewireless.com](https://console.korewireless.com/) is self-serve. Most importantly, KORE publishes
-**eight OpenAPI 3.0 specifications** in a public GitHub repository —
-[korewireless/kore-openapi](https://github.com/korewireless/kore-openapi) — in both YAML and JSON, with a
-machine-readable `specs/catalog.json` and a `make`-based openapi-generator SDK workflow. All eight were
-harvested verbatim into [`openapi/`](openapi/) and all eight parse as valid OpenAPI.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Authorization is **OAuth 2.0 client credentials** (RFC 6749 §4.4) against
-`https://api.korewireless.com/api-services/v1/auth/token`, with an `x-api-key` header option on ConnectivityPro
-and SMS and legacy Twilio-style HTTP basic on Super SIM. No OAuth scopes are published. No OIDC discovery
-document is served.
+#### AsyncAPI (1)
 
-### CAMARA posture
+Event-driven and webhook contracts.
 
-**KORE exposes no CAMARA APIs, and there is not even a press release claiming otherwise.** A grep of the
-complete published documentation index (358 entries) for CAMARA, Open Gateway, TM Forum, TMF, NEF, SCEF, and
-network slicing returned zero matches, and none of the eight specs contains a CAMARA-shaped operation. KORE is
-not a GSMA Open Gateway operator participant and has no Aduna channel relationship. This is expected and
-correct: Open Gateway is an MNO commitment layer, and as an MVNO KORE *consumes* carrier network capability
-rather than exposing it. Consistently, **CIBA does not appear anywhere** in KORE's auth surface. KORE holds no
-TM Forum Open API conformance certification and publishes no NEF/SCEF, 5G network-slicing, or edge/MEC API.
+- [Kore Wireless Event Streams Webhooks](https://apis.io/asyncapis/kore-wireless/kore-wireless-event-streams-webhooks/)
 
-## APIs
+#### MCP servers (1)
 
-### KORE Connectivity Pro API
+Model Context Protocol servers that expose the API to agents.
 
-The largest of KORE's published surfaces — 49 paths and 55 operations covering SIM and eSIM provisioning, eSIM profile management, activation profiles, subscriptions, accounts, usage and session data, diagnostics, eligibility checks, testing, alerting, and reporting for KORE's global multi-carrier IoT connectivity platform.
+- [kore-wireless](https://apis.io/servers/kore-wireless/kore-wireless/)
 
-- **Human URL:** [https://developer.korewireless.com/](https://developer.korewireless.com/)
-- **Base URL:** `https://api.korewireless.com/connectivity`
-- [OpenAPI](openapi/kore-wireless-connectivity-pro.yml)
-- [Documentation](https://docs.korewireless.com/omnisim/kore-omnisim-r)
+#### Agentic access (1)
 
-### KORE Super SIM API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The multi-IMSI global cellular connectivity platform KORE acquired from Twilio IoT. 20 paths and 31 operations across Sim, Fleet, NetworkAccessProfile, Network, eSimProfile, SettingsUpdate, BillingPeriod, UsageRecord, SmsCommand, IpCommand, and OTA resources.
+- [Kore Wireless Agentic Access](https://apis.io/agentic-access/kore-wireless/kore-wireless-agentic-access/)
 
-- **Human URL:** [https://docs.korewireless.com/api/products/supersim](https://docs.korewireless.com/api/products/supersim)
-- **Base URL:** `https://supersim.api.korewireless.com`
-- [OpenAPI](openapi/kore-wireless-supersim.yml)
-- [Documentation](https://docs.korewireless.com/supersim/supersim)
+#### Collections (8)
 
-### KORE Programmable Wireless API
+Postman and Open Collection request collections.
 
-The legacy Twilio IoT cellular product now operated by KORE. 9 paths and 16 operations covering Wireless Sim, RatePlan, Command, DataSession, and account- and SIM-level UsageRecord resources.
+- [Client APIs](https://apis.io/collections/kore-wireless/open-kore-wireless-api-clients/)
+- [Connectivity APIs](https://apis.io/collections/kore-wireless/open-kore-wireless-connectivity-pro/)
+- [IaM APIs](https://apis.io/collections/kore-wireless/open-kore-wireless-iam/)
+- [Programmable Wireless APIs](https://apis.io/collections/kore-wireless/open-kore-wireless-programmable-wireless/)
+- [SMS API](https://apis.io/collections/kore-wireless/open-kore-wireless-sms/)
+- [KORE - Supersim](https://apis.io/collections/kore-wireless/open-kore-wireless-supersim/)
+- [v1-token](https://apis.io/collections/kore-wireless/open-kore-wireless-token/)
+- [Webhook APIs](https://apis.io/collections/kore-wireless/open-kore-wireless-webhook/)
 
-- **Human URL:** [https://docs.korewireless.com/api/products/programmable-wireless-r](https://docs.korewireless.com/api/products/programmable-wireless-r)
-- **Base URL:** `https://programmable-wireless.api.korewireless.com`
-- [OpenAPI](openapi/kore-wireless-programmable-wireless.yml)
+#### Overlays (8)
 
-### KORE SMS API
+OpenAPI overlays, including conversational phrasing for each operation.
 
-Programmatically exchange short messages with IoT devices on KORE connectivity — send, list, and retrieve message history. Device-directed machine-to-machine SMS, not an A2P/CPaaS messaging product.
+- [Kore Wireless Api Clients Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-api-clients-overlay/)
+- [Kore Wireless Connectivity Pro Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-connectivity-pro-overlay/)
+- [Kore Wireless Iam Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-iam-overlay/)
+- [Kore Wireless Programmable Wireless Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-programmable-wireless-overlay/)
+- [Kore Wireless Sms Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-sms-overlay/)
+- [Kore Wireless Supersim Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-supersim-overlay/)
+- [Kore Wireless Token Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-token-overlay/)
+- [Kore Wireless Webhook Overlay](https://apis.io/overlays/kore-wireless/kore-wireless-webhook-overlay/)
 
-- **Human URL:** [https://developer.korewireless.com/](https://developer.korewireless.com/)
-- **Base URL:** `https://api.korewireless.com/sms`
-- [OpenAPI](openapi/kore-wireless-sms.yml)
+#### Security (3)
 
-### KORE Webhook API
+Authentication, trust centre, and vulnerability disclosure.
 
-Creates, retrieves, and modifies the signing secrets used to verify callbacks KORE sends to customer endpoints. KORE webhooks are signature-verified and idempotent; the companion Event Streams product delivers CloudEvents 1.0 events with versioned JSON Schema (draft-07) payloads to webhook or AWS Kinesis destinations.
+- [Kore Wireless Authentication](https://apis.io/security/kore-wireless/kore-wireless-authentication/)
+- [Kore Wireless Domain Security](https://apis.io/security/kore-wireless/kore-wireless-domain-security/)
+- [Kore Wireless Vulnerability Disclosure](https://apis.io/security/kore-wireless/kore-wireless-vulnerability-disclosure/)
 
-- **Human URL:** [https://docs.korewireless.com/api/global-resources/webhook](https://docs.korewireless.com/api/global-resources/webhook)
-- **Base URL:** `https://webhook.api.korewireless.com`
-- [OpenAPI](openapi/kore-wireless-webhook.yml)
-- [Documentation](https://docs.korewireless.com/developers/webhooks)
+#### OAuth scopes (1)
 
-### KORE Identity and Access Management API
+The permissions the API asks for.
 
-Manages customer accounts and their relationships — creating accounts, retrieving account hierarchies, and managing platform-specific mappings between parent and child accounts.
+- [Kore Wireless Scopes](https://apis.io/scopes/kore-wireless/kore-wireless-scopes/)
 
-- **Human URL:** [https://docs.korewireless.com/api/global-resources/iam/account](https://docs.korewireless.com/api/global-resources/iam/account)
-- **Base URL:** `https://iam.api.korewireless.com`
-- [OpenAPI](openapi/kore-wireless-iam.yml)
+## Where to find this API
 
-### KORE API Clients API
-
-Creates, retrieves, and lists the API Clients that hold the credentials and settings for an integration with KORE. An API Client is the required gateway to every other KORE API.
-
-- **Human URL:** [https://docs.korewireless.com/api/global-resources/api-clients/clients](https://docs.korewireless.com/api/global-resources/api-clients/clients)
-- **Base URL:** `https://client.api.korewireless.com`
-- [OpenAPI](openapi/kore-wireless-api-clients.yml)
-
-### KORE Token API
-
-The OAuth 2.0 authorization endpoint for the whole platform. A single POST to `/v1/auth/token` exchanges Client Credentials for a bearer access token per RFC 6749 §4.4.
-
-- **Human URL:** [https://docs.korewireless.com/developers/api-management/auth](https://docs.korewireless.com/developers/api-management/auth)
-- **Base URL:** `https://api.korewireless.com/api-services`
-- [OpenAPI](openapi/kore-wireless-token.yml)
-
-## Links
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.korewireless.com/)
 - [Documentation](https://docs.korewireless.com/)
-- [API Reference](https://docs.korewireless.com/api/api-reference)
-- [Developer Console](https://console.korewireless.com/)
-- [OpenAPI Repository](https://github.com/korewireless/kore-openapi)
-- [GitHub Organization](https://github.com/korewireless)
-- [Status](https://korewireless.service-now.com/csm?id=services_status)
+- [Getting started](https://docs.korewireless.com/developers/get-started/apis)
+- [API reference](https://docs.korewireless.com/api/api-reference)
+- [Pricing](https://docs.korewireless.com/programmable-wireless/help-and-support/pricing)
+- [Sign up](https://console.korewireless.com/)
+- [Support](https://docs.korewireless.com/troubleshooting/)
 - [Blog](https://www.korewireless.com/blog/)
-- [News](https://www.korewireless.com/news/)
+- [Security](https://www.korewireless.com/responsible-disclosure-policy/)
+- [Terms of service](https://www.korewireless.com/terms-of-use/)
+- [Privacy policy](https://www.korewireless.com/privacy-policy/)
+- [GitHub](https://github.com/korewireless)
+- [Status](https://korewireless.service-now.com/csm?id=services_status)
+
+## API Evangelist rating
+
+**Kin Score 47.4** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 79.5 |
+| Contract quality | 54.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 42.1 |
+| Developer ergonomics | 64.9 |
+| Access clarity | 10.5 |
+
+**Agent readiness 38.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 38.3** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/kore-wireless/](https://apis.io/providers/kore-wireless/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for KORE Wireless: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/kore-wireless/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
